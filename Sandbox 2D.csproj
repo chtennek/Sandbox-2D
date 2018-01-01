@@ -342,12 +342,10 @@
     <Compile Include="Assets\Rewired\Internal\Scripts\InputManager.cs" />
     <Compile Include="Assets\Rewired\Internal\Scripts\Misc\ExternalTools.cs" />
     <Compile Include="Assets\Rewired\Internal\Scripts\Platforms\Ouya\OuyaInputSource.cs" />
-    <Compile Include="Assets\Scripts\Controls\Boost2DControl.cs" />
-    <Compile Include="Assets\Scripts\Controls\BrakeControl.cs" />
-    <Compile Include="Assets\Scripts\Controls\Walk2DControl.cs" />
+    <Compile Include="Assets\Scripts\Controls\SidescrollerJump.cs" />
+    <Compile Include="Assets\Scripts\Controls\SidescrollerWalk.cs" />
     <Compile Include="Assets\Scripts\GameStateManager.cs" />
     <Compile Include="Assets\Scripts\Input\InputReceiver.cs" />
-    <Compile Include="Assets\Scripts\Input\LightBasedAimingIndicator.cs" />
     <Compile Include="Assets\Scripts\SingletonSpawner.cs" />
   </ItemGroup>
   <ItemGroup>
