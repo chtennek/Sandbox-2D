@@ -345,7 +345,7 @@
     <Compile Include="Assets\Scripts\Controls\SidescrollerControlManager.cs" />
     <Compile Include="Assets\Scripts\Controls\SidescrollerJump.cs" />
     <Compile Include="Assets\Scripts\Controls\SidescrollerWalk.cs" />
-    <Compile Include="Assets\Scripts\Controls\SidescrollerWallCling.cs" />
+    <Compile Include="Assets\Scripts\Controls\SidescrollerWallSlide.cs" />
     <Compile Include="Assets\Scripts\Controls\TopdownFreeWalk.cs" />
     <Compile Include="Assets\Scripts\GameStateManager.cs" />
     <Compile Include="Assets\Scripts\Input\InputReceiver.cs" />

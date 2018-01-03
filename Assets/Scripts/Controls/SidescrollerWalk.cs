@@ -25,7 +25,6 @@ public class SidescrollerWalk : MonoBehaviour
         {
             movement = 0;
         }
-
         float targetSpeed = walkSpeed * movement - rb.velocity.x;
         rb.AddForce(targetSpeed * Vector2.right, ForceMode2D.Impulse);
     }

@@ -20,12 +20,14 @@ public class SidescrollerJump : MonoBehaviour
 
     private InputReceiver input;
     private Rigidbody2D rb;
+    private Animator anim;
     private SidescrollerControlManager manager;
 
     private void Awake()
     {
         input = GetComponent<InputReceiver>();
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         manager = GetComponent<SidescrollerControlManager>();
         doubleJumpsLeft = maxDoubleJumps;
     }
