@@ -32,7 +32,7 @@ public class InputReceiver : MonoBehaviour
         currentMovementVector = new Vector2(x, y);
     }
 
-    public Vector3 GetQuantizedMovementVector()
+    public Vector2 GetQuantizedMovementVector()
     {
         Vector2 output = currentMovementVector;
         if (output.x > 0)
@@ -54,7 +54,28 @@ public class InputReceiver : MonoBehaviour
         return output;
     }
 
-    public Vector3 GetMovementVector()
+    public Vector2 GetCircularMovementVector()
+    {
+        if (currentMovementVector.x == 0 || currentMovementVector.y == 0)
+            return currentMovementVector;
+
+        // Rescale input space from the unit square to the unit circle
+        Vector2 circle = currentMovementVector.normalized;
+        Vector2 square;
+        float scale;
+        if (Mathf.Abs(circle.x) > Mathf.Abs(circle.y))
+        {
+            square = new Vector2(circle.x / Mathf.Abs(circle.x), circle.y / Mathf.Abs(circle.x));
+        }
+        else
+        {
+            square = new Vector2(circle.x / Mathf.Abs(circle.y), circle.y / Mathf.Abs(circle.y));
+        }
+        scale = circle.magnitude / square.magnitude;
+        return scale * currentMovementVector;
+    }
+
+    public Vector2 GetMovementVector()
     {
         return currentMovementVector;
     }

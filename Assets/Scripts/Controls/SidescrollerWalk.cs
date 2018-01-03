@@ -6,7 +6,7 @@ using System.Collections;
 public class SidescrollerWalk : MonoBehaviour
 {
     public float walkSpeed = 5f;
-    public float maxWalkableSpeed = 15f;
+    public float minWalkableSpeed = 1f;
     public float inputDeadZone = .2f;
 
     private InputReceiver input;
