@@ -6,7 +6,6 @@ using UnityEngine;
 public class SidescrollerControlManager : MonoBehaviour
 {
     public float defaultGravityScale = 2f;
-    [SerializeField]
 
     public float playerHeight = 0.22f;
     public float playerWidth = 0.22f;

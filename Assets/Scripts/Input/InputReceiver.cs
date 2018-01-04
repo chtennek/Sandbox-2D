@@ -7,6 +7,7 @@ public class InputReceiver : MonoBehaviour
 {
     public int playerId = 0;
     public Player player;
+    public float defaultDeadZone = 0f;
 
     private bool jumpBuffered;
     private bool jumpReleaseBuffered;
@@ -32,32 +33,48 @@ public class InputReceiver : MonoBehaviour
         currentMovementVector = new Vector2(x, y);
     }
 
-    public Vector2 GetQuantizedMovementVector()
+    public Vector2 GetQuantizedMovementVector() { return GetQuantizedMovementVector(defaultDeadZone); }
+    public Vector2 GetQuantizedMovementVector(float deadZone)
     {
         Vector2 output = currentMovementVector;
-        if (output.x > 0)
+        if (output.x > deadZone)
         {
             output.x = 1;
         }
-        else if (output.x < 0)
+        else if (output.x < -deadZone)
         {
             output.x = -1;
         }
-        if (output.y > 0)
+        else
+        {
+            output.x = 0;
+        }
+        if (output.y > deadZone)
         {
             output.y = 1;
         }
-        else if (output.y < 0)
+        else if (output.y < -deadZone)
         {
             output.y = -1;
+        }
+        else
+        {
+            output.y = 0;
         }
         return output;
     }
 
-    public Vector2 GetCircularMovementVector()
+    public Vector2 GetCircularMovementVector() { return GetCircularMovementVector(defaultDeadZone); }
+    public Vector2 GetCircularMovementVector(float deadZone)
     {
         if (currentMovementVector.x == 0 || currentMovementVector.y == 0)
+        {
+            if (currentMovementVector.magnitude < deadZone)
+            {
+                return Vector2.zero;
+            }
             return currentMovementVector;
+        }
 
         // Rescale input space from the unit square to the unit circle
         Vector2 circle = currentMovementVector.normalized;
@@ -72,11 +89,22 @@ public class InputReceiver : MonoBehaviour
             square = new Vector2(circle.x / Mathf.Abs(circle.y), circle.y / Mathf.Abs(circle.y));
         }
         scale = circle.magnitude / square.magnitude;
-        return scale * currentMovementVector;
+
+        Vector2 output = scale * currentMovementVector;
+        if (output.magnitude < deadZone)
+        {
+            return Vector2.zero;
+        }
+        return output;
     }
 
-    public Vector2 GetMovementVector()
+    public Vector2 GetMovementVector() { return GetMovementVector(defaultDeadZone); }
+    public Vector2 GetMovementVector(float deadZone)
     {
+        if (currentMovementVector.magnitude < deadZone)
+        {
+            return Vector2.zero;
+        }
         return currentMovementVector;
     }
 
