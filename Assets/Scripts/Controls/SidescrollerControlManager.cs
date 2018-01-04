@@ -9,6 +9,7 @@ public class SidescrollerControlManager : MonoBehaviour
     [SerializeField]
 
     public float playerHeight = 0.22f;
+    public float playerWidth = 0.22f;
     public float collisionCheckWidth = 0.05f;
     public LayerMask groundMask;
 
@@ -50,7 +51,19 @@ public class SidescrollerControlManager : MonoBehaviour
     public bool IsGrounded(Vector2 direction) { return IsGrounded(direction, groundMask); }
     public bool IsGrounded(Vector2 direction, LayerMask colliderMask)
     {
-        bool isGrounded = Physics2D.Raycast(transform.position, direction, 0.5f * playerHeight * transform.lossyScale.y + collisionCheckWidth, colliderMask);
+        Vector2 boxCenter = (Vector2)transform.position;
+        Vector2 boxSize;
+        if (Mathf.Abs(direction.y) > Mathf.Abs(direction.x))
+        {
+            boxCenter += 0.5f * playerHeight * transform.lossyScale.y * direction;
+            boxSize = new Vector2(playerWidth * transform.lossyScale.x - 2, collisionCheckWidth);
+        }
+        else
+        {
+            boxCenter += 0.5f * playerWidth * transform.lossyScale.x * direction;
+            boxSize = new Vector2(collisionCheckWidth, playerHeight * transform.lossyScale.y - 2);
+        }
+        bool isGrounded = Physics2D.OverlapBox(boxCenter, boxSize, 0, colliderMask);
         return isGrounded;
     }
 }

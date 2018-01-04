@@ -320,8 +320,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultGravityScale: 2
-  playerHeight: 0.22
-  collisionCheckWidth: 0.05
+  playerHeight: 0.21
+  playerWidth: 0.22
+  collisionCheckWidth: 0.01
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967039
