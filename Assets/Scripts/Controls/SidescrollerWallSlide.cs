@@ -23,7 +23,8 @@ public class SidescrollerWallSlide : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if ((manager.IsGrounded(Vector2.left) || manager.IsGrounded(Vector2.right)) && rb.velocity.y <= -slideSpeed)
+        if (rb.velocity.y <= -slideSpeed && (manager.IsGrounded(Vector2.left) && (!requireInput || input.GetQuantizedMovementVector().x < 0)
+            || manager.IsGrounded(Vector2.right) && (!requireInput || input.GetQuantizedMovementVector().x > 0)))
         {
             float targetSpeed = -slideSpeed - rb.velocity.y;
             rb.AddForce(targetSpeed * Vector2.up, ForceMode2D.Impulse);

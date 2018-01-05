@@ -20,14 +20,12 @@ public class SidescrollerJump : MonoBehaviour
 
     private InputReceiver input;
     private Rigidbody2D rb;
-    private Animator anim;
     private SidescrollerControlManager manager;
 
     private void Awake()
     {
         input = GetComponent<InputReceiver>();
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
         manager = GetComponent<SidescrollerControlManager>();
         doubleJumpsLeft = maxDoubleJumps;
     }
@@ -42,7 +40,7 @@ public class SidescrollerJump : MonoBehaviour
         }
 
         // Jump if we are able to
-        if (input.Jump())
+        if (input.player.GetButtonDown("Jump"))
         {
             float targetSpeed = jumpSpeed - rb.velocity.y;
             // Grounded jump
@@ -73,7 +71,7 @@ public class SidescrollerJump : MonoBehaviour
         }
 
         // Tweak jump trajectory
-        if (rb.gravityScale == 0) // [TODO] find a better way to prioritize WallCling
+        if (rb.gravityScale == 0) // [TODO] find a better way to prioritize wall slide
             return;
 
         rb.gravityScale = manager.defaultGravityScale;
@@ -81,7 +79,7 @@ public class SidescrollerJump : MonoBehaviour
         {
             rb.gravityScale = fallGravityScale;
         }
-        if (input.JumpRelease())
+        if (input.player.GetButtonUp("Jump"))
         {
             rb.gravityScale = jumpReleaseGravityScale;
         }

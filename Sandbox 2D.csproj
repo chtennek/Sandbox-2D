@@ -342,11 +342,13 @@
     <Compile Include="Assets\Rewired\Internal\Scripts\InputManager.cs" />
     <Compile Include="Assets\Rewired\Internal\Scripts\Misc\ExternalTools.cs" />
     <Compile Include="Assets\Rewired\Internal\Scripts\Platforms\Ouya\OuyaInputSource.cs" />
+    <Compile Include="Assets\Scripts\Controls\FireProjectile.cs" />
     <Compile Include="Assets\Scripts\Controls\SidescrollerControlManager.cs" />
     <Compile Include="Assets\Scripts\Controls\SidescrollerJump.cs" />
     <Compile Include="Assets\Scripts\Controls\SidescrollerWalk.cs" />
     <Compile Include="Assets\Scripts\Controls\SidescrollerWallSlide.cs" />
     <Compile Include="Assets\Scripts\Controls\TopdownFreeWalk.cs" />
+    <Compile Include="Assets\Scripts\Entities\ProjectileDriver.cs" />
     <Compile Include="Assets\Scripts\GameStateManager.cs" />
     <Compile Include="Assets\Scripts\Input\InputReceiver.cs" />
     <Compile Include="Assets\Scripts\SingletonSpawner.cs" />

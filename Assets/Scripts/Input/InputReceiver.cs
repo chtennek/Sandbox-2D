@@ -9,8 +9,6 @@ public class InputReceiver : MonoBehaviour
     public Player player;
     public float defaultDeadZone = 0f;
 
-    private bool jumpBuffered;
-    private bool jumpReleaseBuffered;
     private Vector2 currentMovementVector;
 
     private void Awake()
@@ -20,14 +18,6 @@ public class InputReceiver : MonoBehaviour
 
     private void Update()
     {
-        if (player.GetButtonDown("Jump"))
-        {
-            jumpBuffered = true;
-        }
-        if (player.GetButtonUp("Jump"))
-        {
-            jumpReleaseBuffered = true;
-        }
         float x = player.GetAxisRaw("Move Horizontal");
         float y = player.GetAxisRaw("Move Vertical");
         currentMovementVector = new Vector2(x, y);
@@ -106,25 +96,5 @@ public class InputReceiver : MonoBehaviour
             return Vector2.zero;
         }
         return currentMovementVector;
-    }
-
-    public bool JumpRelease()
-    {
-        if (jumpReleaseBuffered)
-        {
-            jumpReleaseBuffered = false;
-            return true;
-        }
-        return false;
-    }
-
-    public bool Jump()
-    {
-        if (jumpBuffered)
-        {
-            jumpBuffered = false;
-            return true;
-        }
-        return false;
     }
 }

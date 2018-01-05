@@ -32,10 +32,14 @@ public class SidescrollerControlManager : MonoBehaviour
     {
         if (sprite != null)
         {
-            if (rb.velocity.x > 0 && sprite.flipX)
-                sprite.flipX = false;
-            if (rb.velocity.x < 0 && !sprite.flipX)
-                sprite.flipX = true;
+            if (rb.velocity.x > 0)
+            {
+                transform.rotation = Quaternion.identity;
+            }
+            if (rb.velocity.x < 0)
+            {
+                transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
+            }
         }
         if (anim != null)
         {
@@ -55,12 +59,12 @@ public class SidescrollerControlManager : MonoBehaviour
         if (Mathf.Abs(direction.y) > Mathf.Abs(direction.x))
         {
             boxCenter += 0.5f * playerHeight * transform.lossyScale.y * direction;
-            boxSize = new Vector2(playerWidth * transform.lossyScale.x - 2, collisionCheckWidth);
+            boxSize = new Vector2(playerWidth * transform.lossyScale.x - collisionCheckWidth, collisionCheckWidth);
         }
         else
         {
             boxCenter += 0.5f * playerWidth * transform.lossyScale.x * direction;
-            boxSize = new Vector2(collisionCheckWidth, playerHeight * transform.lossyScale.y - 2);
+            boxSize = new Vector2(collisionCheckWidth, playerHeight * transform.lossyScale.y - collisionCheckWidth);
         }
         bool isGrounded = Physics2D.OverlapBox(boxCenter, boxSize, 0, colliderMask);
         return isGrounded;
