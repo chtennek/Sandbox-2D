@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/platformer.unity
+- path: Assets/Scenes/topdownfree.unity
   isLoaded: 1
   isActive: 1

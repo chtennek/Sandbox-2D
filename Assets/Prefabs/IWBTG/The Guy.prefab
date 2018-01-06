@@ -169,7 +169,10 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4452181501336736, guid: 9a5342f35d418104388b3fe0772b1abe,
     type: 2}
   spawnOffset: {x: 0.27, y: 0}
-  projectileVelocity: {x: 10, y: 0}
+  projectileVelocities:
+  - {x: 10, y: 0}
+  spread: {x: 0, y: 0}
+  pelletCount: 1
   fireCooldown: 0.1
   rapidFire: 0
   projectileLimit: 4

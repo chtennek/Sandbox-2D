@@ -45,6 +45,7 @@ public class SidescrollerControlManager : MonoBehaviour
         {
             anim.SetFloat("xVelocity", rb.velocity.x);
             anim.SetFloat("yVelocity", rb.velocity.y);
+            anim.SetFloat("gravityScale", rb.gravityScale);
             anim.SetBool("isGrounded", IsGrounded());
             anim.SetBool("isAgainstWall", IsGrounded(Vector2.left) || IsGrounded(Vector2.right));
         }

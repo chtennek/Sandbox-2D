@@ -26,8 +26,6 @@ GameObject:
   - component: {fileID: 114557098058623208}
   - component: {fileID: 114962711678889994}
   - component: {fileID: 114230318622476206}
-  - component: {fileID: 114798657737304790}
-  - component: {fileID: 114940100892456514}
   m_Layer: 0
   m_Name: Byakuren
   m_TagString: Untagged
@@ -123,8 +121,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 4692532665064254, guid: 627be2e2cd7e0ca4a8d50b4941e92bc2,
     type: 2}
-  spawnOffset: {x: 0, y: 0.45}
-  projectileVelocity: {x: 0, y: 20}
+  spawnOffset: {x: 0, y: 0.4}
+  projectileVelocities:
+  - {x: -1, y: 20}
+  - {x: 0, y: 20}
+  - {x: 1, y: 20}
+  spread: {x: 0, y: 0}
+  pelletCount: 1
   fireCooldown: 0.05
   rapidFire: 1
   projectileLimit: -1
@@ -141,42 +144,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerId: 0
   defaultDeadZone: 0
---- !u!114 &114798657737304790
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1784202758252470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feca23b6005af70438d0e828745a4293, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 4692532665064254, guid: 627be2e2cd7e0ca4a8d50b4941e92bc2,
-    type: 2}
-  spawnOffset: {x: 0, y: 0.45}
-  projectileVelocity: {x: -2, y: 20}
-  fireCooldown: 0.05
-  rapidFire: 1
-  projectileLimit: -1
---- !u!114 &114940100892456514
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1784202758252470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feca23b6005af70438d0e828745a4293, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 4692532665064254, guid: 627be2e2cd7e0ca4a8d50b4941e92bc2,
-    type: 2}
-  spawnOffset: {x: 0, y: 0.45}
-  projectileVelocity: {x: 2, y: 20}
-  fireCooldown: 0.05
-  rapidFire: 1
-  projectileLimit: -1
 --- !u!114 &114962711678889994
 MonoBehaviour:
   m_ObjectHideFlags: 1
