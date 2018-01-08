@@ -11,25 +11,24 @@ public class FireProjectileByInput : MonoBehaviour
     public int projectileLimit = -1; // Set to negative value for no limit
 
     private float lastFiredTimestamp = -Mathf.Infinity;
-    private List<Transform> projectilesFired = new List<Transform>();
 
     private InputReceiver input;
-    private ProjectileSpawner firer;
+    private ProjectileSpawner spawner;
 
     private void Awake()
     {
         input = GetComponent<InputReceiver>();
-        firer = GetComponent<ProjectileSpawner>();
+        spawner = GetComponent<ProjectileSpawner>();
     }
 
     private void FixedUpdate()
     {
         if (input.player.GetButtonDown("Fire") || (rapidFire && input.player.GetButton("Fire")))
         {
-            if (Time.time - lastFiredTimestamp >= fireCooldown && (projectileLimit < 0 || projectilesFired.Count < projectileLimit))
+            if (Time.time - lastFiredTimestamp >= fireCooldown && (projectileLimit < 0 || spawner.projectilesFired.Count < projectileLimit))
             {
                 lastFiredTimestamp = Time.time;
-                firer.Fire();
+                spawner.Fire();
             }
         }
     }

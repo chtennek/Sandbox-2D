@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114557098058623208}
   - component: {fileID: 114962711678889994}
   - component: {fileID: 114230318622476206}
+  - component: {fileID: 114222493029707908}
   m_Layer: 0
   m_Name: Byakuren
   m_TagString: Untagged
@@ -108,6 +109,28 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114222493029707908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1784202758252470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2447199f1d86ee4397252b322aadc36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 4692532665064254, guid: 627be2e2cd7e0ca4a8d50b4941e92bc2,
+    type: 2}
+  spawnOffset: {x: 0, y: 0.5}
+  angleWhenUpright: 0
+  fixRotation: 0
+  projectileVelocities:
+  - {x: 10, y: 80}
+  - {x: 10, y: 90}
+  - {x: 10, y: 100}
+  spread: {x: 0, y: 0}
+  pelletCount: 1
 --- !u!114 &114230318622476206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,15 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feca23b6005af70438d0e828745a4293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 4692532665064254, guid: 627be2e2cd7e0ca4a8d50b4941e92bc2,
-    type: 2}
-  spawnOffset: {x: 0, y: 0.4}
-  projectileVelocities:
-  - {x: -1, y: 20}
-  - {x: 0, y: 20}
-  - {x: 1, y: 20}
-  spread: {x: 0, y: 0}
-  pelletCount: 1
   fireCooldown: 0.05
   rapidFire: 1
   projectileLimit: -1

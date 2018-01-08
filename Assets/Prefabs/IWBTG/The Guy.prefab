@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4826492552334998}
   - component: {fileID: 212439925789309158}
-  - component: {fileID: 95872299333685300}
   - component: {fileID: 50526756293045472}
   - component: {fileID: 68055331948999404}
   - component: {fileID: 114002850118641166}
@@ -29,6 +28,8 @@ GameObject:
   - component: {fileID: 114825298844722796}
   - component: {fileID: 114807774401251590}
   - component: {fileID: 114748406172896192}
+  - component: {fileID: 114160657836750574}
+  - component: {fileID: 95731255006032270}
   m_Layer: 8
   m_Name: The Guy
   m_TagString: Untagged
@@ -89,7 +90,7 @@ EdgeCollider2D:
   - {x: 0.22, y: 0.22}
   - {x: 0, y: 0.22}
   - {x: 0, y: 0}
---- !u!95 &95872299333685300
+--- !u!95 &95731255006032270
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -119,6 +120,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerId: 0
   defaultDeadZone: 0
+--- !u!114 &114160657836750574
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1389429713334548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2447199f1d86ee4397252b322aadc36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 4452181501336736, guid: 9a5342f35d418104388b3fe0772b1abe,
+    type: 2}
+  spawnOffset: {x: 0.27, y: 0}
+  angleWhenUpright: 0
+  fixRotation: 1
+  projectileVelocities:
+  - {x: 10, y: 0}
+  spread: {x: 0, y: 0}
+  pelletCount: 1
 --- !u!114 &114322470152723574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,13 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feca23b6005af70438d0e828745a4293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 4452181501336736, guid: 9a5342f35d418104388b3fe0772b1abe,
-    type: 2}
-  spawnOffset: {x: 0.27, y: 0}
-  projectileVelocities:
-  - {x: 10, y: 0}
-  spread: {x: 0, y: 0}
-  pelletCount: 1
   fireCooldown: 0.1
   rapidFire: 0
   projectileLimit: 4

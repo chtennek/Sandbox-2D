@@ -5,9 +5,12 @@ using UnityEngine;
 public class ProjectileDriver : MonoBehaviour
 {
     public float lifetime = Mathf.Infinity;
-    public Transform sourceObject;
     public int playerId = -1;
 
+    public int damage = 0;
+
+    [HideInInspector]
+    public Transform sourceObject;
     private float spawnTimestamp;
 
     private void Awake()

@@ -17,24 +17,25 @@ public struct Action
     public float waitTime; // After current action is executed
 }
 
+[RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(ProjectileSpawner))]
 public class TopdownAI : MonoBehaviour
 {
     public Action[] actions;
-    public float movementSpeed = 5f;
+    public float movementSpeed = 1f;
     public bool loopActions = true;
 
     private int currentCommandIndex;
     private float nextActionTime;
-    private Vector2 currentDestination;
 
+    private Rigidbody2D rb;
     private ProjectileSpawner spawner;
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         spawner = GetComponent<ProjectileSpawner>();
         nextActionTime = Time.time;
-        currentDestination = transform.position;
     }
 
     private void FixedUpdate()
@@ -50,17 +51,6 @@ public class TopdownAI : MonoBehaviour
                 currentCommandIndex %= actions.Length;
             }
         }
-
-        // Handle AI movement
-        Vector2 toDestination = currentDestination - (Vector2)transform.position;
-        if (toDestination.magnitude <= movementSpeed)
-        {
-            transform.position = currentDestination;
-        }
-        else
-        {
-            transform.position += movementSpeed * (Vector3)toDestination.normalized;
-        }
     }
 
     private void ExecuteAction(Action action)
@@ -68,7 +58,7 @@ public class TopdownAI : MonoBehaviour
         switch (action.type)
         {
             case ActionType.Move:
-                currentDestination = action.target;
+                rb.velocity = action.target;
                 break;
             case ActionType.Fire:
                 spawner.Fire();

@@ -99,9 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446191285f571604e9fff90144240447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: Infinity
+  lifetime: 2
   sourceObject: {fileID: 0}
   playerId: -1
+  damage: 0
 --- !u!212 &212730478521145298
 SpriteRenderer:
   m_ObjectHideFlags: 1
