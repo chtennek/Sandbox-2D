@@ -200,8 +200,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.0332}
-  m_SizeDelta: {x: 0, y: 0.0664}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &540812019
 MonoBehaviour:
@@ -345,6 +345,7 @@ GameObject:
   - component: {fileID: 675546949}
   - component: {fileID: 675546950}
   - component: {fileID: 675546951}
+  - component: {fileID: 675546953}
   m_Layer: 0
   m_Name: Blue Angel
   m_TagString: Untagged
@@ -462,6 +463,7 @@ MonoBehaviour:
   - {x: 5, y: -120}
   spread: {x: 0, y: 0}
   pelletCount: 1
+  projectilesFired: []
 --- !u!114 &675546950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,6 +521,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &675546953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 675546944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0420ba68a4a6c240a1fff50c1dabf2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  label: HP
+  minValue: 0
+  maxValue: 100
+  currentValue: 30
+  canvasDisplay: {fileID: 791314784}
+  overrideColor: 1
+  displayColor:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 1, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  useColorGradient: 0
 --- !u!1 &791314782
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,7 +602,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.385
+  m_FillAmount: 0.431
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!222 &791314785

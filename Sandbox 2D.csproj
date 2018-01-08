@@ -343,7 +343,7 @@
     <Compile Include="Assets\Rewired\Internal\Scripts\Misc\ExternalTools.cs" />
     <Compile Include="Assets\Rewired\Internal\Scripts\Platforms\Ouya\OuyaInputSource.cs" />
     <Compile Include="Assets\Scripts\AI\TopdownAI.cs" />
-    <Compile Include="Assets\Scripts\Common\HPManager.cs" />
+    <Compile Include="Assets\Scripts\Common\StatusBar.cs" />
     <Compile Include="Assets\Scripts\Controls\FireProjectileByInput.cs" />
     <Compile Include="Assets\Scripts\Controls\SidescrollerControlManager.cs" />
     <Compile Include="Assets\Scripts\Controls\SidescrollerJump.cs" />
