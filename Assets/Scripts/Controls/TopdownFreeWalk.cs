@@ -9,9 +9,9 @@ public class TopdownFreeWalk : MonoBehaviour
     public float minWalkableSpeed = 1f;
     public float inputDeadZone = .2f;
 
-    private InputReceiver input;
-    private Rigidbody2D rb;
-    private Animator anim;
+    protected InputReceiver input;
+    protected Rigidbody2D rb;
+    protected Animator anim;
 
     void Awake()
     {
@@ -22,18 +22,14 @@ public class TopdownFreeWalk : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 movement = input.GetCircularMovementVector();
-        if (movement.magnitude <= inputDeadZone)
-        {
-            movement = Vector2.zero;
-        }
+        Vector2 movement = input.GetCircularMovementVector(inputDeadZone);
         Vector2 targetVelocity = walkSpeed * movement - rb.velocity;
         rb.AddForce(targetVelocity, ForceMode2D.Impulse);
 
         UpdateAnimation();
     }
 
-    private void UpdateAnimation()
+    protected void UpdateAnimation()
     {
         if (anim != null)
         {

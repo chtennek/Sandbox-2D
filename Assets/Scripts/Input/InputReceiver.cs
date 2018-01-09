@@ -23,6 +23,21 @@ public class InputReceiver : MonoBehaviour
         currentMovementVector = new Vector2(x, y);
     }
 
+    public Vector2 GetSingleAxisMovementVector() { return GetSingleAxisMovementVector(defaultDeadZone); }
+    public Vector2 GetSingleAxisMovementVector(float deadZone)
+    {
+        Vector2 output = GetMovementVector(deadZone);
+        if (Mathf.Abs(output.x) >= Mathf.Abs(output.y))
+        {
+            output.y = 0;
+        }
+        else
+        {
+            output.x = 0;
+        }
+        return output;
+    }
+
     public Vector2 GetQuantizedMovementVector() { return GetQuantizedMovementVector(defaultDeadZone); }
     public Vector2 GetQuantizedMovementVector(float deadZone)
     {
