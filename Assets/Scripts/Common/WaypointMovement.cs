@@ -9,6 +9,8 @@ public class WaypointMovement : MonoBehaviour
 
     public Queue<Vector2> waypoints = new Queue<Vector2>();
 
+    private Vector2 waypointLastUpdate = Mathf.Infinity * Vector2.one;
+
     private Rigidbody2D rb;
     private Animator anim;
 
@@ -20,6 +22,10 @@ public class WaypointMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (waypoints.Count > 0)
+        {
+            Debug.Log(rb.velocity);
+        }
         Vector2 waypoint = GetNextWaypoint();
         Vector2 direction = (waypoint - rb.position).normalized;
 
@@ -32,11 +38,20 @@ public class WaypointMovement : MonoBehaviour
         while (waypoints.Count > 0)
         {
             Vector2 waypoint = waypoints.Peek();
+
+            // We can't get to the waypoint, so give up
+            if (waypoint == waypointLastUpdate && rb.velocity == Vector2.zero)
+            {
+                waypoints.Dequeue();
+                continue;
+            }
+
+            // Return the waypoint if we are far enough away from it
             if (Vector2.Distance(rb.position, waypoint) >= Time.deltaTime * moveSpeed)
             {
+                waypointLastUpdate = waypoint;
                 return waypoint;
             }
-            rb.position = waypoint;
             waypoints.Dequeue();
         }
         return rb.position;

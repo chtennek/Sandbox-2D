@@ -1,0 +1,22 @@
+
+
+Walljump
+move walljump to separate script
+fix facing direction corner case
+implement requireInput
+
+OrderFreeMove
+don't push other units
+use pathfinding to go around other units
+
+Low Priority
+min walk speed
+
+entities
+movement (platforms, enemies)
+
+background w/ parallax
+level generation/editing
+
+Optimizations
+replace Rewired strings with hashes

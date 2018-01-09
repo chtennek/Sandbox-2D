@@ -52,10 +52,10 @@ public class StatusBar : MonoBehaviour
         if (canvasDisplay != null)
         {
             canvasDisplay.fillAmount = GetValuePercent();
-        }
-        if (overrideColor)
-        {
-            canvasDisplay.color = DetermineDisplayColor();
+            if (overrideColor)
+            {
+                canvasDisplay.color = DetermineDisplayColor();
+            }
         }
     }
 

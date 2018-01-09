@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 623783893}
   - component: {fileID: 623783892}
   m_Layer: 5
-  m_Name: Entity Status Bar
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
