@@ -33,7 +33,7 @@ public class EntityManager : MonoBehaviour
         }
     }
 
-    public void IssueMoveOrder(Vector2 position)
+    public void QueueMoveOrder(Vector2 position)
     {
         if (wm != null)
         {

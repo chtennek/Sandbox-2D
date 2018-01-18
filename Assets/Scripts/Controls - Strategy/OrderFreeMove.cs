@@ -22,7 +22,7 @@ public class OrderFreeMove : MonoBehaviour
             Vector2 destination = Camera.main.ScreenToWorldPoint(mouse.screenPosition);
             foreach (EntityManager entity in es.GetSelectedObjects())
             {
-                entity.IssueMoveOrder(destination);
+                entity.QueueMoveOrder(destination);
             }
         }
     }
