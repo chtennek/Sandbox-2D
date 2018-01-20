@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/strategygrid.unity
+- path: Assets/Scenes/Overmined/ruins.unity
   isLoaded: 1
   isActive: 1

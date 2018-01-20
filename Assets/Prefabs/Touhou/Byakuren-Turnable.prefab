@@ -11,6 +11,23 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1179953515154716}
   m_IsPrefabParent: 1
+--- !u!1 &1033965340641156
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4558405803982016}
+  - component: {fileID: 114826006848365314}
+  - component: {fileID: 114348715625047962}
+  m_Layer: 0
+  m_Name: Crosshair
+  m_TagString: Untagged
+  m_Icon: {fileID: 8220585740371884164, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1179953515154716
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,8 +42,6 @@ GameObject:
   - component: {fileID: 61960095833713012}
   - component: {fileID: 114228772656377980}
   - component: {fileID: 114620844753618384}
-  - component: {fileID: 114970537644254724}
-  - component: {fileID: 114963408115237772}
   m_Layer: 0
   m_Name: Byakuren-Turnable
   m_TagString: Untagged
@@ -34,6 +49,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4558405803982016
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033965340641156}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4594752304026832}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4594752304026832
 Transform:
   m_ObjectHideFlags: 1
@@ -42,8 +70,9 @@ Transform:
   m_GameObject: {fileID: 1179953515154716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -4, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
-  m_Children: []
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4558405803982016}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -83,7 +112,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.26, y: 0.36}
+    oldSize: {x: 0.8, y: 1}
     newSize: {x: 0.22, y: 0.21}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -122,6 +151,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerId: 0
   defaultDeadZone: 0
+--- !u!114 &114348715625047962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033965340641156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7596782d78c2c6040bd1ea4b042dc3f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiles: {fileID: 0}
 --- !u!114 &114620844753618384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -143,43 +184,19 @@ MonoBehaviour:
   onlyMoveForward: 1
   rotationOffset: 90
   turnSpeed: 20
---- !u!114 &114963408115237772
+--- !u!114 &114826006848365314
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1179953515154716}
+  m_GameObject: {fileID: 1033965340641156}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2447199f1d86ee4397252b322aadc36, type: 3}
+  m_Script: {fileID: 11500000, guid: 10c32b2c644a5004298317095a34b9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 4692532665064254, guid: 627be2e2cd7e0ca4a8d50b4941e92bc2,
-    type: 2}
-  spawnOffset: {x: 0, y: 0.5}
-  angleWhenUpright: 0
-  fixRotation: 0
-  projectileVelocities:
-  - {x: 10, y: 80}
-  - {x: 10, y: 90}
-  - {x: 10, y: 100}
-  spread: {x: 0, y: 0}
-  pelletCount: 1
-  projectilesFired: []
---- !u!114 &114970537644254724
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1179953515154716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feca23b6005af70438d0e828745a4293, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireCooldown: 0.05
-  rapidFire: 1
-  projectileLimit: -1
+  playerId: 0
+  defaultDeadZone: 0
 --- !u!212 &212395448083283900
 SpriteRenderer:
   m_ObjectHideFlags: 1

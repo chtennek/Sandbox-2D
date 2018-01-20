@@ -453,6 +453,9 @@
     <Compile Include="Assets\Rewired\Internal\Scripts\Misc\ExternalTools.cs" />
     <Compile Include="Assets\Rewired\Internal\Scripts\Platforms\Ouya\OuyaInputSource.cs" />
     <Compile Include="Assets\Scripts\AI\TopdownAI.cs" />
+    <Compile Include="Assets\Scripts\Common\BorderedTile.cs" />
+    <Compile Include="Assets\Scripts\Common\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Common\InventoryItem.cs" />
     <Compile Include="Assets\Scripts\Common\Mathv.cs" />
     <Compile Include="Assets\Scripts\Common\StatusBar.cs" />
     <Compile Include="Assets\Scripts\Controls - Action\FireProjectileByInput.cs" />
@@ -470,6 +473,7 @@
     <Compile Include="Assets\Scripts\Entities\ProjectileDriver.cs" />
     <Compile Include="Assets\Scripts\Entities\ProjectileSpawner.cs" />
     <Compile Include="Assets\Scripts\Input\InputReceiver.cs" />
+    <Compile Include="Assets\Scripts\Prototypes\MineTile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh.cginc" />
