@@ -20,7 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4558405803982016}
   - component: {fileID: 114826006848365314}
+  - component: {fileID: 114647590166672450}
   - component: {fileID: 114348715625047962}
+  - component: {fileID: 114725255174765560}
   m_Layer: 0
   m_Name: Crosshair
   m_TagString: Untagged
@@ -43,7 +45,7 @@ GameObject:
   - component: {fileID: 114228772656377980}
   - component: {fileID: 114620844753618384}
   m_Layer: 0
-  m_Name: Byakuren-Turnable
+  m_Name: Miner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7596782d78c2c6040bd1ea4b042dc3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiles: {fileID: 0}
+  mineableTileLayer: {fileID: 0}
 --- !u!114 &114620844753618384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -184,6 +186,31 @@ MonoBehaviour:
   onlyMoveForward: 1
   rotationOffset: 90
   turnSpeed: 20
+--- !u!114 &114647590166672450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033965340641156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a1879e80e572c4492adcc4fa6f7dcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupTileLayer: {fileID: 0}
+  inventory: {fileID: 114725255174765560}
+--- !u!114 &114725255174765560
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033965340641156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7156bdc4ccec804c9a4efc7e8fdb150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpace: 1
 --- !u!114 &114826006848365314
 MonoBehaviour:
   m_ObjectHideFlags: 1

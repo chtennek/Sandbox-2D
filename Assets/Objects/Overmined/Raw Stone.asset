@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b4a141039b8da34eab8317268cf4bc4, type: 3}
+  m_Name: Raw Stone
+  m_EditorClassIdentifier: 
+  itemName: Raw Stone
+  maxPerStack: 0
+  timeToMine: 3
+  baseTile: {fileID: 11400000, guid: 6cb16dc314f1c8343ae4df208df1f526, type: 2}
+  minedProduct: {fileID: 11400000, guid: 95ed9d6076b997e45a7e4a0dee4f30f3, type: 2}

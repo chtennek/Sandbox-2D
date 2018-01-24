@@ -453,9 +453,6 @@
     <Compile Include="Assets\Rewired\Internal\Scripts\Misc\ExternalTools.cs" />
     <Compile Include="Assets\Rewired\Internal\Scripts\Platforms\Ouya\OuyaInputSource.cs" />
     <Compile Include="Assets\Scripts\AI\TopdownAI.cs" />
-    <Compile Include="Assets\Scripts\Common\BorderedTile.cs" />
-    <Compile Include="Assets\Scripts\Common\Inventory.cs" />
-    <Compile Include="Assets\Scripts\Common\InventoryItem.cs" />
     <Compile Include="Assets\Scripts\Common\Mathv.cs" />
     <Compile Include="Assets\Scripts\Common\StatusBar.cs" />
     <Compile Include="Assets\Scripts\Controls - Action\FireProjectileByInput.cs" />
@@ -473,7 +470,11 @@
     <Compile Include="Assets\Scripts\Entities\ProjectileDriver.cs" />
     <Compile Include="Assets\Scripts\Entities\ProjectileSpawner.cs" />
     <Compile Include="Assets\Scripts\Input\InputReceiver.cs" />
-    <Compile Include="Assets\Scripts\Prototypes\MineTile.cs" />
+    <Compile Include="Assets\Scripts\Prototypes\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Prototypes\Item.cs" />
+    <Compile Include="Assets\Scripts\Prototypes\PickUpItem.cs" />
+    <Compile Include="Assets\Scripts\Tiles\BorderedTile.cs" />
+    <Compile Include="Assets\Scripts\Tiles\MineableTile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh.cginc" />
@@ -491,6 +492,7 @@
     <None Include="Assets\Rewired\Documentation\ReleaseNotes.txt" />
     <None Include="Assets\Rewired\Documentation\licences.txt" />
     <None Include="Assets\Rewired\Internal\Libraries\Runtime\Rewired_Core.XML" />
+    <None Include="Assets\Tarfmagougou\UnityInternalIcons\README.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

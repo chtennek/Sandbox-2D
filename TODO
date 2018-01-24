@@ -1,5 +1,6 @@
-
-
+Hide Rewired implementation
+EffectWrapper, Tweener (position, rotation, color)
+ScreenShake
 
 Walljump
 move walljump to separate script

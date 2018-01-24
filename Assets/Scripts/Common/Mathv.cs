@@ -2,16 +2,6 @@
 
 public class Mathv
 {
-    public static Vector3Int Floor(Vector3 v)
-    {
-        return new Vector3Int((int)Mathf.Floor(v.x), (int)Mathf.Floor(v.y), (int)Mathf.Floor(v.z));
-    }
-
-    public static Vector3Int Round(Vector3 v)
-    {
-        return new Vector3Int((int)Mathf.Round(v.x), (int)Mathf.Round(v.y), (int)Mathf.Round(v.z));
-    }
-
     // Lerp, but round to the nearest of n evenly spaced points in [a, b]
     public static float LerpQRound(float a, float b, float t, float n)
     {

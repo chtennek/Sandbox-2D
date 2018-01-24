@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b4a141039b8da34eab8317268cf4bc4, type: 3}
+  m_Name: Essence
+  m_EditorClassIdentifier: 
+  itemName: Essence
+  maxPerStack: 1
+  timeToMine: 0
+  baseTile: {fileID: 11400000, guid: 504f9130a1b510c499ab6ab8fb895557, type: 2}
+  minedProduct: {fileID: 0}
