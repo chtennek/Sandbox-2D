@@ -232,12 +232,30 @@ MonoBehaviour:
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 1
+    - _id: 27
+      _name: Aim Horizontal
+      _type: 0
+      _descriptiveName: Aim Horizontal
+      _positiveDescriptiveName: Aim Right
+      _negativeDescriptiveName: Aim Left
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 1
     - _id: 9
       _name: Move Vertical
       _type: 0
       _descriptiveName: Move Vertical
       _positiveDescriptiveName: Move Up
       _negativeDescriptiveName: Move Down
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 1
+    - _id: 28
+      _name: Aim Vertical
+      _type: 0
+      _descriptiveName: Aim Vertical
+      _positiveDescriptiveName: Aim Up
+      _negativeDescriptiveName: Aim Down
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 1
@@ -348,7 +366,7 @@ MonoBehaviour:
       - categoryId: 0
         actionIds: 
       - categoryId: 1
-        actionIds: 00000000090000000a0000000b0000000c0000001400000013000000
+        actionIds: 000000001b000000090000001c0000000a0000000b0000000c0000001400000013000000
       - categoryId: 2
         actionIds: 0d000000100000000e0000000f000000
       - categoryId: 3
@@ -441,7 +459,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 1
-        _actionId: 17
+        _actionId: 27
         _elementType: 0
         _elementIdentifierId: 2
         _axisRange: 0
@@ -452,7 +470,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 1
-        _actionId: 18
+        _actionId: 28
         _elementType: 0
         _elementIdentifierId: 3
         _axisRange: 0
@@ -752,7 +770,7 @@ MonoBehaviour:
     customControllerMaps: []
     customControllers: []
     playerIdCounter: 7
-    actionIdCounter: 25
+    actionIdCounter: 29
     actionCategoryIdCounter: 4
     inputBehaviorIdCounter: 1
     mapCategoryIdCounter: 1

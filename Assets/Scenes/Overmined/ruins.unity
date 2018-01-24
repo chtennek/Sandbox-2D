@@ -152,18 +152,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114348715625047962, guid: 390f2c4f193f9ad498d992f57dd9777d,
-        type: 2}
-      propertyPath: mineableTileLayer
-      value: 
-      objectReference: {fileID: 117033907}
     - target: {fileID: 114647590166672450, guid: 390f2c4f193f9ad498d992f57dd9777d,
         type: 2}
       propertyPath: pickupTileLayer
       value: 
       objectReference: {fileID: 117033907}
-    m_RemovedComponents:
-    - {fileID: 114348715625047962, guid: 390f2c4f193f9ad498d992f57dd9777d, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 390f2c4f193f9ad498d992f57dd9777d, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &117033903
@@ -604,10 +598,6 @@ Prefab:
     - target: {fileID: 491292, guid: c15f282b6cfd7c54b9b0309d82074bb4, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 136338, guid: c15f282b6cfd7c54b9b0309d82074bb4, type: 2}
-      propertyPath: m_Name
-      value: Rewired Input Manager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c15f282b6cfd7c54b9b0309d82074bb4, type: 2}
