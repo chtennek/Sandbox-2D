@@ -23,7 +23,7 @@ public class FireProjectileByInput : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (input.player.GetButtonDown("Fire") || (rapidFire && input.player.GetButton("Fire")))
+        if (input.GetButtonDown("Fire") || (rapidFire && input.GetButton("Fire")))
         {
             if (Time.time - lastFiredTimestamp >= fireCooldown && (projectileLimit < 0 || spawner.projectilesFired.Count < projectileLimit))
             {

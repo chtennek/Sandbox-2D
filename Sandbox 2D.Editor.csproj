@@ -259,9 +259,6 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
-    <Reference Include="Pathfinding.Ionic.Zip.Reduced">
-      <HintPath>Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
-    </Reference>
     <Reference Include="Rewired_Editor">
       <HintPath>Assets/Rewired/Internal/Libraries/Editor/Rewired_Editor.dll</HintPath>
     </Reference>
@@ -294,32 +291,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Sandbox 2D.Plugins.csproj">
+      <Project>{9E861F88-44D8-1C64-B771-1CF890AD4BBE}</Project>
+      <Name>Sandbox 2D.Plugins</Name>
+    </ProjectReference>
     <ProjectReference Include="Sandbox 2D.csproj">
       <Project>{F3CD9F5A-3B1E-B52C-784C-D0527F033EF0}</Project>
       <Name>Sandbox 2D</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AstarPathfindingProject\Editor\AIBaseEditor.cs" />
-    <Compile Include="Assets\AstarPathfindingProject\Editor\AILerpEditor.cs" />
-    <Compile Include="Assets\AstarPathfindingProject\Editor\AnimationLinkEditor.cs" />
-    <Compile Include="Assets\AstarPathfindingProject\Editor\AstarPathEditor.cs" />
-    <Compile Include="Assets\AstarPathfindingProject\Editor\AstarUpdateChecker.cs" />
-    <Compile Include="Assets\AstarPathfindingProject\Editor\AstarUpdateWindow.cs" />
-    <Compile Include="Assets\AstarPathfindingProject\Editor\CustomGraphEditorAttribute.cs" />
-    <Compile Include="Assets\AstarPathfindingProject\Editor\GraphEditors\GraphEditor.cs" />
-    <Compile Include="Assets\AstarPathfindingProject\Editor\GraphEditors\GridGeneratorEditor.cs" />
-    <Compile Include="Assets\AstarPathfindingProject\Editor\GraphEditors\NavMeshGeneratorEditor.cs" />
-    <Compile Include="Assets\AstarPathfindingProject\Editor\GraphEditors\PointGeneratorEditor.cs" />
-    <Compile Include="Assets\AstarPathfindingProject\Editor\GraphUpdateSceneEditor.cs" />
-    <Compile Include="Assets\AstarPathfindingProject\Editor\ModifierEditors\RaycastModifierEditor.cs" />
-    <Compile Include="Assets\AstarPathfindingProject\Editor\ModifierEditors\SmoothModifierEditor.cs" />
-    <Compile Include="Assets\AstarPathfindingProject\Editor\SeekerEditor.cs" />
-    <Compile Include="Assets\AstarPathfindingProject\Legacy\Editor\LegacyAIPathEditor.cs" />
-    <Compile Include="Assets\AstarPathfindingProject\Legacy\Editor\LegacyEditorHelper.cs" />
-    <Compile Include="Assets\AstarPathfindingProject\PackageTools\Editor\EditorBase.cs" />
-    <Compile Include="Assets\AstarPathfindingProject\PackageTools\Editor\EditorGUIx.cs" />
-    <Compile Include="Assets\AstarPathfindingProject\PackageTools\Editor\EnumFlagDrawer.cs" />
+    <Compile Include="Assets\Controller Tester\Scripts\Editor\TestGamepadEditor.cs" />
     <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\Editor\ControlMapperInspector.cs" />
     <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\Editor\CustomButtonInspector.cs" />
     <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\Editor\CustomSliderInspector.cs" />
@@ -335,17 +317,7 @@
     <Compile Include="Assets\Tarfmagougou\UnityInternalIcons\Editor\UnityInternalIcons.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh.cginc" />
-    <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh.shader" />
-    <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\NavmeshOutline.shader" />
-    <None Include="Assets\AstarPathfindingProject\ExampleScenes\Materials\DiffuseAlwaysVisible.shader" />
-    <None Include="Assets\AstarPathfindingProject\ExampleScenes\Materials\Projector Light.shader" />
-    <None Include="Assets\AstarPathfindingProject\ExampleScenes\_Example Scenes.txt" />
-    <None Include="Assets\AstarPathfindingProject\Plugins\DotNetZip\DotNetZipLicense.txt" />
-    <None Include="Assets\AstarPathfindingProject\Plugins\dependencies.txt" />
-    <None Include="Assets\AstarPathfindingProject\Readme.txt" />
-    <None Include="Assets\AstarPathfindingProject\Readme_upgrading.txt" />
-    <None Include="Assets\AstarPathfindingProject\link.xml" />
+    <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
     <None Include="Assets\Rewired\Documentation\ReadMe.txt" />
     <None Include="Assets\Rewired\Documentation\ReleaseNotes.txt" />
     <None Include="Assets\Rewired\Documentation\licences.txt" />

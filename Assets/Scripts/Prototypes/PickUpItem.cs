@@ -17,7 +17,7 @@ public class PickUpItem : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (input.player.GetButtonDown("Fire"))
+        if (input.GetButtonDown("Fire"))
         {
             Vector3Int position = pickupTileLayer.WorldToCell(transform.position);
             MineableTile t = pickupTileLayer.GetTile<MineableTile>(position);

@@ -1,7 +1,10 @@
 Hide Rewired implementation
-EffectWrapper, Tweener (position, rotation, color)
-ScreenShake
 
+spawner? level manager?
+
+
+Low Priority
+------------
 Walljump
 move walljump to separate script
 fix facing direction corner case
@@ -11,18 +14,8 @@ OrderFreeMove
 don't push other units
 use pathfinding to go around other units
 
-Low Priority
-------------
-min walk speed
-
 Finish StrategyGridMove
 figure out how to pull path from A* Seeker
-
-entities
-movement (platforms, enemies)
-
-background w/ parallax
-level generation/editing
 
 Optimizations
 use delegates to communicate with InputReceiver?

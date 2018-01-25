@@ -40,7 +40,7 @@ public class SidescrollerJump : MonoBehaviour
         }
 
         // Jump if we are able to
-        if (input.player.GetButtonDown("Jump"))
+        if (input.GetButtonDown("Jump"))
         {
             float targetSpeed = jumpSpeed - rb.velocity.y;
             // Grounded jump
@@ -79,7 +79,7 @@ public class SidescrollerJump : MonoBehaviour
         {
             rb.gravityScale = fallGravityScale;
         }
-        if (input.player.GetButtonUp("Jump"))
+        if (input.GetButtonUp("Jump"))
         {
             rb.gravityScale = jumpReleaseGravityScale;
         }

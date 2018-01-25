@@ -1,34 +1,36 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-using Rewired;
-
-public class InputReceiver : MonoBehaviour
+public abstract class InputReceiver : MonoBehaviour
 {
     public int playerId = 0;
-    public Player player;
     public float defaultDeadZone = 0f;
 
     private Vector2 currentMovementVector;
     private Vector2 currentAimVector;
 
-    private void Awake()
-    {
-        player = ReInput.players.GetPlayer(playerId);
-    }
+    public abstract Vector2 PollMovementVector();
+    public abstract Vector2 PollAimVector();
 
-    private void Update()
-    {
-        float x = player.GetAxisRaw("Move Horizontal");
-        float y = player.GetAxisRaw("Move Vertical");
-        currentMovementVector = new Vector2(x, y);
+    public abstract bool GetButtonDown(string id);
+    public abstract bool GetButtonUp(string id);
+    public abstract bool GetButton(string id);
 
-        x = player.GetAxisRaw("Aim Horizontal");
-        y = player.GetAxisRaw("Aim Vertical");
-        currentAimVector = new Vector2(x, y);
+    protected void Update()
+    {
+        currentMovementVector = PollMovementVector();
+        currentAimVector = PollAimVector();
     }
 
     public Vector2 GetSingleAxisMovementVector() { return GetSingleAxisMovementVector(defaultDeadZone); }
+    public Vector2 GetQuantizedMovementVector() { return GetQuantizedMovementVector(defaultDeadZone); }
+    public Vector2 GetQuantizedAimVector() { return GetQuantizedAimVector(defaultDeadZone); }
+    public Vector2 GetCircularMovementVector() { return GetCircularMovementVector(defaultDeadZone); }
+    public Vector2 GetCircularAimVector() { return GetCircularAimVector(defaultDeadZone); }
+    public Vector2 GetMovementVector() { return GetMovementVector(defaultDeadZone); }
+    public Vector2 GetAimVector() { return GetAimVector(defaultDeadZone); }
+
     public Vector2 GetSingleAxisMovementVector(float deadZone)
     {
         Vector2 output = GetMovementVector(deadZone);
@@ -43,7 +45,6 @@ public class InputReceiver : MonoBehaviour
         return output;
     }
 
-    public Vector2 GetQuantizedMovementVector() { return GetQuantizedMovementVector(defaultDeadZone); }
     public Vector2 GetQuantizedMovementVector(float deadZone)
     {
         Vector2 output = currentMovementVector;
@@ -74,7 +75,6 @@ public class InputReceiver : MonoBehaviour
         return output;
     }
 
-    public Vector2 GetQuantizedAimVector() { return GetQuantizedAimVector(defaultDeadZone); }
     public Vector2 GetQuantizedAimVector(float deadZone)
     {
         Vector2 output = currentAimVector;
@@ -105,7 +105,6 @@ public class InputReceiver : MonoBehaviour
         return output;
     }
 
-    public Vector2 GetCircularMovementVector() { return GetCircularMovementVector(defaultDeadZone); }
     public Vector2 GetCircularMovementVector(float deadZone)
     {
         if (currentMovementVector.x == 0 || currentMovementVector.y == 0)
@@ -139,7 +138,6 @@ public class InputReceiver : MonoBehaviour
         return output;
     }
 
-    public Vector2 GetCircularAimVector() { return GetCircularAimVector(defaultDeadZone); }
     public Vector2 GetCircularAimVector(float deadZone)
     {
         if (currentAimVector.x == 0 || currentAimVector.y == 0)
@@ -173,7 +171,6 @@ public class InputReceiver : MonoBehaviour
         return output;
     }
 
-    public Vector2 GetMovementVector() { return GetMovementVector(defaultDeadZone); }
     public Vector2 GetMovementVector(float deadZone)
     {
         if (currentMovementVector.magnitude < deadZone)
@@ -183,7 +180,6 @@ public class InputReceiver : MonoBehaviour
         return currentMovementVector;
     }
 
-    public Vector2 GetAimVector() { return GetAimVector(defaultDeadZone); }
     public Vector2 GetAimVector(float deadZone)
     {
         if (currentAimVector.magnitude < deadZone)
@@ -195,6 +191,7 @@ public class InputReceiver : MonoBehaviour
 
     public float GetAimRotation()
     {
-        return Mathf.Atan2(currentAimVector.y, currentAimVector.x) * Mathf.Rad2Deg;
+        Vector2 aimVector = GetAimVector();
+        return Mathf.Atan2(aimVector.y, aimVector.x) * Mathf.Rad2Deg;
     }
 }
