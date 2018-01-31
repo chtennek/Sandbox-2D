@@ -260,13 +260,13 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="Rewired_Editor">
-      <HintPath>Assets/Rewired/Internal/Libraries/Editor/Rewired_Editor.dll</HintPath>
+      <HintPath>Assets/Plugins/Rewired/Internal/Libraries/Editor/Rewired_Editor.dll</HintPath>
     </Reference>
     <Reference Include="Rewired_Core">
-      <HintPath>Assets/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
+      <HintPath>Assets/Plugins/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
     </Reference>
     <Reference Include="Rewired_Windows_Lib">
-      <HintPath>Assets/Rewired/Internal/Libraries/Runtime/Rewired_Windows_Lib.dll</HintPath>
+      <HintPath>Assets/Plugins/Rewired/Internal/Libraries/Runtime/Rewired_Windows_Lib.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>C:/Users/Kenneth Cheng/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
@@ -299,30 +299,21 @@
       <Project>{F3CD9F5A-3B1E-B52C-784C-D0527F033EF0}</Project>
       <Name>Sandbox 2D</Name>
     </ProjectReference>
+    <ProjectReference Include="Sandbox 2D.Editor.Plugins.csproj">
+      <Project>{3A05AD40-C51F-69D5-4144-3C1111CD0076}</Project>
+      <Name>Sandbox 2D.Editor.Plugins</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Controller Tester\Scripts\Editor\TestGamepadEditor.cs" />
-    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\Editor\ControlMapperInspector.cs" />
-    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\Editor\CustomButtonInspector.cs" />
-    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\Editor\CustomSliderInspector.cs" />
-    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\Editor\CustomToggleInspector.cs" />
-    <Compile Include="Assets\Rewired\Internal\Scripts\Editor\CustomInspectors\ControllerDataFilesInspector.cs" />
-    <Compile Include="Assets\Rewired\Internal\Scripts\Editor\CustomInspectors\CustomInspector_External.cs" />
-    <Compile Include="Assets\Rewired\Internal\Scripts\Editor\CustomInspectors\HardwareJoystickMapInspector.cs" />
-    <Compile Include="Assets\Rewired\Internal\Scripts\Editor\CustomInspectors\HardwareJoystickTemplateMapInspector.cs" />
-    <Compile Include="Assets\Rewired\Internal\Scripts\Editor\CustomInspectors\InputManagerInspector.cs" />
-    <Compile Include="Assets\Rewired\Internal\Scripts\Editor\CustomInspectors\UserDataStore_PlayerPrefsInspector.cs" />
-    <Compile Include="Assets\Rewired\Internal\Scripts\Editor\UnityEditorBridge.cs" />
-    <Compile Include="Assets\Tarfmagougou\UnityInternalIcons\Editor\TarfmagougouHelperUII.cs" />
-    <Compile Include="Assets\Tarfmagougou\UnityInternalIcons\Editor\UnityInternalIcons.cs" />
+    <Compile Include="Assets\Scripts\Editor\ChildrenOverwritingEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
-    <None Include="Assets\Rewired\Documentation\ReadMe.txt" />
-    <None Include="Assets\Rewired\Documentation\ReleaseNotes.txt" />
-    <None Include="Assets\Rewired\Documentation\licences.txt" />
-    <None Include="Assets\Rewired\Internal\Libraries\Runtime\Rewired_Core.XML" />
-    <None Include="Assets\Tarfmagougou\UnityInternalIcons\README.txt" />
+    <None Include="Assets\Plugins\Rewired\Documentation\ReadMe.txt" />
+    <None Include="Assets\Plugins\Rewired\Documentation\ReleaseNotes.txt" />
+    <None Include="Assets\Plugins\Rewired\Documentation\licences.txt" />
+    <None Include="Assets\Plugins\Rewired\Internal\Libraries\Runtime\Rewired_Core.XML" />
+    <None Include="Assets\Plugins\Tarfmagougou\UnityInternalIcons\README.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

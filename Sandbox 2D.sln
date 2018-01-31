@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox 2D", "Sandbox 2D.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox 2D.Plugins", "Sandbox 2D.Plugins.csproj", "{9E861F88-44D8-1C64-B771-1CF890AD4BBE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox 2D.Editor.Plugins", "Sandbox 2D.Editor.Plugins.csproj", "{3A05AD40-C51F-69D5-4144-3C1111CD0076}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox 2D.Editor", "Sandbox 2D.Editor.csproj", "{C32F460B-1F40-416B-D9E1-4DC426FEB01C}"
 EndProject
 Global
@@ -21,6 +23,10 @@ Global
 		{9E861F88-44D8-1C64-B771-1CF890AD4BBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E861F88-44D8-1C64-B771-1CF890AD4BBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E861F88-44D8-1C64-B771-1CF890AD4BBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A05AD40-C51F-69D5-4144-3C1111CD0076}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A05AD40-C51F-69D5-4144-3C1111CD0076}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A05AD40-C51F-69D5-4144-3C1111CD0076}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A05AD40-C51F-69D5-4144-3C1111CD0076}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C32F460B-1F40-416B-D9E1-4DC426FEB01C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C32F460B-1F40-416B-D9E1-4DC426FEB01C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C32F460B-1F40-416B-D9E1-4DC426FEB01C}.Release|Any CPU.ActiveCfg = Release|Any CPU

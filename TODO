@@ -1,12 +1,14 @@
-Hide Rewired implementation
+level start/pause/end
+level saving?
+UI templates
+figure out focus (menu nav w/ controller)
 
-spawner? level manager?
+move walljump to separate script
 
 
 Low Priority
 ------------
 Walljump
-move walljump to separate script
 fix facing direction corner case
 implement requireInput
 
