@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b4a141039b8da34eab8317268cf4bc4, type: 3}
   m_Name: Raw Stone
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21301630, guid: 5bd8d315291ab294794614120a023bb6, type: 3}
   itemName: Raw Stone
   maxPerStack: 0
-  timeToMine: 3
-  baseTile: {fileID: 11400000, guid: 6cb16dc314f1c8343ae4df208df1f526, type: 2}
-  minedProduct: {fileID: 11400000, guid: 95ed9d6076b997e45a7e4a0dee4f30f3, type: 2}
+  weight: 815
+  gridSize: {x: 1, y: 1}

@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b4a141039b8da34eab8317268cf4bc4, type: 3}
   m_Name: Raw Essence
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300982, guid: 5bd8d315291ab294794614120a023bb6, type: 3}
   itemName: Raw Essence
   maxPerStack: 0
-  timeToMine: 1
-  baseTile: {fileID: 11400000, guid: f8dab62179295d34ba7b8aded8599929, type: 2}
-  minedProduct: {fileID: 11400000, guid: 504f9130a1b510c499ab6ab8fb895557, type: 2}
+  weight: 491
+  gridSize: {x: 1, y: 1}

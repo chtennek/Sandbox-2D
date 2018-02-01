@@ -6,10 +6,20 @@ using UnityEngine.EventSystems;
 
 public class ItemBehaviour : MonoBehaviour, IPointerClickHandler
 {
-    public InventoryItem item;
+    [SerializeField]
+    private InventoryItem item;
     public bool selectable = true;
 
-    private Vector3 selectedOffset;
+    public InventoryItem GetItem()
+    {
+        return item;
+    }
+
+    public void SetItem(InventoryItem item)
+    {
+        this.item = item;
+        Refresh();
+    }
 
     private void Awake()
     {

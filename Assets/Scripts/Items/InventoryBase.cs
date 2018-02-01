@@ -4,9 +4,16 @@ using UnityEngine;
 
 public abstract class InventoryBase : MonoBehaviour
 {
+    // View objects
+    [Header("References")]
+    public RectTransform itemSlotPrefab;
+    public RectTransform itemPrefab;
+
+    [Header("Properties")]
     public float maxWeight;
 
     public abstract void ResetView();
+    public abstract void UpdateEntry(Transform child, InventoryItem item);
 
     public abstract bool AddItem(InventoryItem item);
     public int AddItem(InventoryItem item, int count)

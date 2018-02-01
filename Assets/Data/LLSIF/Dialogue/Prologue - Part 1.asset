@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a7e66220a985443bf4ca3904b9746b, type: 3}
+  m_Name: Prologue - Part 1
+  m_EditorClassIdentifier: 
+  script:
+  - actor: {fileID: 11400000, guid: 72d8ea29b0ffaa946a89b07633ea601c, type: 2}
+    line: Nice to meet you! I'm Kousaka Honoka, a second-year student at Otonokizaka
+      Academy.
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 72d8ea29b0ffaa946a89b07633ea601c, type: 2}
+    line: "I'm a member of the School Idol group called \u03BC's, and we participate
+      in idol activities\u266A"
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 72d8ea29b0ffaa946a89b07633ea601c, type: 2}
+    line: To be honest, there's something I'd like your help with...
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 72d8ea29b0ffaa946a89b07633ea601c, type: 2}
+    line: It's about Eli-chan-- Ah, Eli-chan is...
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 17e07076537d02948979a41ea70674e7, type: 2}
+    line: Honoka, just get to the point.
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 72d8ea29b0ffaa946a89b07633ea601c, type: 2}
+    line: Umi-chan!
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 17e07076537d02948979a41ea70674e7, type: 2}
+    line: Hello, I'm Sonoda Umi.
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 17e07076537d02948979a41ea70674e7, type: 2}
+    line: I'm sorry for calling you here on such short notice.
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 72d8ea29b0ffaa946a89b07633ea601c, type: 2}
+    line: "Umi-chan is my childhood friend, and another member of \u03BC's\u266A"
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 72d8ea29b0ffaa946a89b07633ea601c, type: 2}
+    line: And there's one more person to introduce...
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 2ba6d17a0538bbc43928cfaf6d068005, type: 2}
+    line: Honoka-chan~
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 72d8ea29b0ffaa946a89b07633ea601c, type: 2}
+    line: "Ah, Kotori-chan, over here~ Kotori-chan is my other childhood friend, and
+      part of \u03BC's as well\u266A"
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 2ba6d17a0538bbc43928cfaf6d068005, type: 2}
+    line: I'm Minami Kotori. Nice to meet you.
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 72d8ea29b0ffaa946a89b07633ea601c, type: 2}
+    line: "It hasn't been too long since we started our idol activities as \u03BC's,
+      but..."
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 72d8ea29b0ffaa946a89b07633ea601c, type: 2}
+    line: We've been getting really popular lately. It's shocking!
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 2ba6d17a0538bbc43928cfaf6d068005, type: 2}
+    line: Does it surprise you that much...?
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 72d8ea29b0ffaa946a89b07633ea601c, type: 2}
+    line: Ahaha... but because of that, we've gradually been doing more.
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 17e07076537d02948979a41ea70674e7, type: 2}
+    line: "It's good that \u03BC's is being more active, but..."
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 2ba6d17a0538bbc43928cfaf6d068005, type: 2}
+    line: We've been a bit too busy...
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 72d8ea29b0ffaa946a89b07633ea601c, type: 2}
+    line: Yeah, Kotori has even been making our outfits.
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 2ba6d17a0538bbc43928cfaf6d068005, type: 2}
+    line: So we're looking for some supporting members.
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 2ba6d17a0538bbc43928cfaf6d068005, type: 2}
+    line: Perhaps you could help us?
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 17e07076537d02948979a41ea70674e7, type: 2}
+    line: It's not too complicated.
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 17e07076537d02948979a41ea70674e7, type: 2}
+    line: Your job would mainly be to schedule our live performances and lessons.
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 17e07076537d02948979a41ea70674e7, type: 2}
+    line: We'd also appreciate it if you could direct us during lives.
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 72d8ea29b0ffaa946a89b07633ea601c, type: 2}
+    line: It seems kind of hard when you put it that way...
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 17e07076537d02948979a41ea70674e7, type: 2}
+    line: Well, all it takes is some practice.
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 72d8ea29b0ffaa946a89b07633ea601c, type: 2}
+    line: "Alright, we'll start with a live\u266A Let's go~!"
+    audio: {fileID: 0}
+  - actor: {fileID: 11400000, guid: 2ba6d17a0538bbc43928cfaf6d068005, type: 2}
+    line: Ahaha...
+    audio: {fileID: 0}

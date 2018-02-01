@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b4a141039b8da34eab8317268cf4bc4, type: 3}
   m_Name: Essence
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300984, guid: 5bd8d315291ab294794614120a023bb6, type: 3}
   itemName: Essence
   maxPerStack: 1
-  timeToMine: 0
-  baseTile: {fileID: 11400000, guid: 504f9130a1b510c499ab6ab8fb895557, type: 2}
-  minedProduct: {fileID: 0}
+  weight: 0
+  gridSize: {x: 1, y: 1}
