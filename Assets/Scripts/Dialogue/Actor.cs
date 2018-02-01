@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Actor", menuName = "Actor")]
 public class Actor : ScriptableObject
 {
-    public Sprite sprite;
+    public Sprite defaultSprite;
     public string actorName;
+
+    public Sprite[] sprites;
 }
