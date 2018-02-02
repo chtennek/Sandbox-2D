@@ -13,42 +13,12 @@ public class SidescrollerControlManager : MonoBehaviour
     public LayerMask groundMask;
 
     private Rigidbody2D rb;
-    private Animator anim;
     private SpriteRenderer sprite;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
-    }
-
-    private void FixedUpdate()
-    {
-        UpdateAnimation();
-    }
-
-    private void UpdateAnimation()
-    {
-        if (sprite != null)
-        {
-            if (rb.velocity.x > 0)
-            {
-                transform.rotation = Quaternion.identity;
-            }
-            if (rb.velocity.x < 0)
-            {
-                transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
-            }
-        }
-        if (anim != null)
-        {
-            anim.SetFloat("xVelocity", rb.velocity.x);
-            anim.SetFloat("yVelocity", rb.velocity.y);
-            anim.SetFloat("gravityScale", rb.gravityScale);
-            anim.SetBool("isGrounded", IsGrounded());
-            anim.SetBool("isAgainstWall", IsGrounded(Vector2.left) || IsGrounded(Vector2.right));
-        }
     }
 
     public bool IsGrounded() { return IsGrounded(Vector2.down, groundMask); }

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 6152e7554440035479e76f3cccbfd08e
-timeCreated: 1517506613
+timeCreated: 1517603511
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -66,7 +66,7 @@ TextureImporter:
     21300118: pokemon-blue-spritesheet_59
     21300120: pokemon-blue-spritesheet_60
     21300122: pokemon-blue-spritesheet_61
-    21300124: pokemon-blue-spritesheet_62
+    21300124: lass_down
     21300126: pokemon-blue-spritesheet_63
     21300128: pokemon-blue-spritesheet_64
     21300130: pokemon-blue-spritesheet_65
@@ -91,7 +91,7 @@ TextureImporter:
     21300168: pokemon-blue-spritesheet_84
     21300170: pokemon-blue-spritesheet_85
     21300172: pokemon-blue-spritesheet_86
-    21300174: pokemon-blue-spritesheet_87
+    21300174: lass_up
     21300176: pokemon-blue-spritesheet_88
     21300178: pokemon-blue-spritesheet_89
     21300180: pokemon-blue-spritesheet_90
@@ -99,7 +99,7 @@ TextureImporter:
     21300184: pokemon-blue-spritesheet_92
     21300186: blue_up
     21300188: pokemon-blue-spritesheet_94
-    21300190: pokemon-blue-spritesheet_95
+    21300190: fat-man_down
     21300192: pokemon-blue-spritesheet_96
     21300194: pokemon-blue-spritesheet_97
     21300196: pokemon-blue-spritesheet_98
@@ -124,7 +124,7 @@ TextureImporter:
     21300234: pokemon-blue-spritesheet_117
     21300236: pokemon-blue-spritesheet_118
     21300238: pokemon-blue-spritesheet_119
-    21300240: pokemon-blue-spritesheet_120
+    21300240: fat-man_up
     21300242: pokemon-blue-spritesheet_121
     21300244: pokemon-blue-spritesheet_122
     21300246: pokemon-blue-spritesheet_123
@@ -215,7 +215,7 @@ TextureImporter:
     21300416: pokemon-blue-spritesheet_208
     21300418: pokemon-blue-spritesheet_209
     21300420: pokemon-blue-spritesheet_210
-    21300422: pokemon-blue-spritesheet_211
+    21300422: lass_left
     21300424: pokemon-blue-spritesheet_212
     21300426: pokemon-blue-spritesheet_213
     21300428: pokemon-blue-spritesheet_214
@@ -248,7 +248,7 @@ TextureImporter:
     21300482: pokemon-blue-spritesheet_241
     21300484: blue_down-walk
     21300486: pokemon-blue-spritesheet_243
-    21300488: pokemon-blue-spritesheet_244
+    21300488: fat-man_left
     21300490: pokemon-blue-spritesheet_245
     21300492: pokemon-blue-spritesheet_246
     21300494: pokemon-blue-spritesheet_247
@@ -1250,7 +1250,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: pokemon-blue-spritesheet_62
+      name: lass_down
       rect:
         serializedVersion: 2
         x: 216
@@ -1600,7 +1600,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: pokemon-blue-spritesheet_87
+      name: lass_up
       rect:
         serializedVersion: 2
         x: 216
@@ -1712,7 +1712,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: pokemon-blue-spritesheet_95
+      name: fat-man_down
       rect:
         serializedVersion: 2
         x: 360
@@ -2062,7 +2062,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: pokemon-blue-spritesheet_120
+      name: fat-man_up
       rect:
         serializedVersion: 2
         x: 360
@@ -3336,7 +3336,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: pokemon-blue-spritesheet_211
+      name: lass_left
       rect:
         serializedVersion: 2
         x: 198
@@ -3798,7 +3798,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: pokemon-blue-spritesheet_244
+      name: fat-man_left
       rect:
         serializedVersion: 2
         x: 342

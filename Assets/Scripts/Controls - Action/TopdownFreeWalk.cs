@@ -6,6 +6,7 @@ using System.Collections;
 public class TopdownFreeWalk : MonoBehaviour
 {
     public float inputDeadZone = .2f;
+    public bool restrictToOrthogonal = true;
 
     [Space]
 
@@ -38,7 +39,7 @@ public class TopdownFreeWalk : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 movement = input.GetCircularMovementVector(inputDeadZone);
+        Vector2 movement = restrictToOrthogonal ? input.GetSingleAxisMovementVector(inputDeadZone) : input.GetCircularMovementVector(inputDeadZone);
         bool isFacingMovementDirection = true;
         Vector2 targetVelocity;
 
