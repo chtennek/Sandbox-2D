@@ -28,13 +28,11 @@ public class TopdownFreeWalk : MonoBehaviour
 
     private InputReceiver input;
     private Rigidbody2D rb;
-    private Animator anim;
 
     private void Awake()
     {
         input = GetComponent<InputReceiver>();
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -86,17 +84,6 @@ public class TopdownFreeWalk : MonoBehaviour
                 float idealDrag = acceleration / targetVelocity.magnitude;
                 rb.drag = acceleration / (acceleration * Time.deltaTime + 1); // [TODO] work around PhysX drag approximation
             }
-        }
-
-        UpdateAnimation();
-    }
-
-    private void UpdateAnimation()
-    {
-        if (anim != null)
-        {
-            anim.SetFloat("xVelocity", rb.velocity.x);
-            anim.SetFloat("yVelocity", rb.velocity.y);
         }
     }
 }

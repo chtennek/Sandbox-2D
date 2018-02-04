@@ -17,6 +17,17 @@ public class ScreenDialogueBehaviour : MonoBehaviour, IPointerClickHandler
     private string currentLine;
     private int nextLineIndex;
 
+    public static ScreenDialogueBehaviour current;
+
+    public void Awake()
+    {
+        // Establish singleton
+        if (current == null)
+            current = this;
+        else if (current != null && current != this)
+            Destroy(gameObject);
+    }
+
     private void Start()
     {
         actorText.text = "";
@@ -34,6 +45,9 @@ public class ScreenDialogueBehaviour : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData pointerEventData)
     {
+        // Dialogue completed
+        // [TODO] Put some kind of event here
+
         if (lineText.text == currentLine)
         {
             NextLine();

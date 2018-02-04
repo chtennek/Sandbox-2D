@@ -5,18 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class PlaySessionManager : MonoBehaviour
 {
-    public static PlaySessionManager session;
+    public static PlaySessionManager current;
 
     public void Awake()
     {
-        if (session == null)
-        {
-            session = this;
-        }
-        else if (session != null && session != this)
-        {
+        // Establish singleton
+        if (current == null)
+            current = this;
+        else if (current != null && current != this)
             Destroy(gameObject);
-        }
     }
 
     public void LoadScene(string scene)
