@@ -37,7 +37,7 @@ public class TopdownFreeWalk : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 movement = restrictToOrthogonal ? input.GetSingleAxisMovementVector(inputDeadZone) : input.GetCircularMovementVector(inputDeadZone);
+        Vector2 movement = restrictToOrthogonal ? input.GetAxisPairSingle("Move") : input.GetAxisPair("Move");
         bool isFacingMovementDirection = true;
         Vector2 targetVelocity;
 

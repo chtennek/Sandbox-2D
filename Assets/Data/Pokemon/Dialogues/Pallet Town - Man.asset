@@ -13,5 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   script:
   - actor: {fileID: 11400000, guid: 8fdeb6a5e100249e4b54c2b14c4ea1d7, type: 2}
-    line: 
+    line: "Technology is incredible! You can now store and recall items and Pok\xE9mon
+      as data via PC!"
     audio: {fileID: 0}

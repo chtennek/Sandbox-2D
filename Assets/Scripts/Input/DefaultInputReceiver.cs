@@ -28,9 +28,8 @@ public class DefaultInputReceiver : InputReceiver
         }
     }
 
-    private new void Update()
+    private void Update()
     {
-        base.Update();
         foreach (string s in axes)
         {
             if (Input.GetButtonDown(s) && !buttonDown.ContainsKey(s))
@@ -55,24 +54,18 @@ public class DefaultInputReceiver : InputReceiver
         return (playerId + 1).ToString() + ". " + id;
     }
 
-    // [TODO] don't hardcode axes names
-    public override Vector2 PollMovementVector()
+    public override Vector2 GetAxisPairRaw(string idBase)
     {
-        float x = Input.GetAxisRaw(WrapPlayerNum("Move Horizontal"));
-        float y = Input.GetAxisRaw(WrapPlayerNum("Move Vertical"));
+        string horizontal = idBase + " Horizontal";
+        string vertical = idBase + " Vertical";
+        float x = Input.GetAxisRaw(horizontal);
+        float y = Input.GetAxisRaw(vertical);
         return new Vector2(x, y);
     }
 
-    public override Vector2 PollAimVector()
+    public override bool GetButtonDownRaw(string id)
     {
-        float x = Input.GetAxisRaw(WrapPlayerNum("Aim Horizontal"));
-        float y = Input.GetAxisRaw(WrapPlayerNum("Aim Vertical"));
-        return new Vector2(x, y);
-    }
-
-    public override bool GetButtonDown(string id)
-    {
-        if (!Time.inFixedTimeStep)
+        if (!Time.inFixedTimeStep) // This doesn't work
         {
             return Input.GetButtonDown(WrapPlayerNum(id));
         }
@@ -82,9 +75,9 @@ public class DefaultInputReceiver : InputReceiver
         }
     }
 
-    public override bool GetButtonUp(string id)
+    public override bool GetButtonUpRaw(string id)
     {
-        if (!Time.inFixedTimeStep)
+        if (!Time.inFixedTimeStep) // This doesn't work
         {
             return Input.GetButtonUp(WrapPlayerNum(id));
         }
@@ -94,5 +87,8 @@ public class DefaultInputReceiver : InputReceiver
         }
     }
 
-    public override bool GetButton(string id) { return Input.GetButton(WrapPlayerNum(id)); }
+    public override bool GetButtonRaw(string id) { return Input.GetButton(WrapPlayerNum(id)); }
+    public override bool GetAnyButtonDownRaw() { return Input.anyKeyDown; }
+    public override bool GetAnyButtonRaw() { return Input.anyKey; }
+
 }

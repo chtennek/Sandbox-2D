@@ -298,12 +298,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AI\TopdownAI.cs" />
+    <Compile Include="Assets\Scripts\Animation\InputToAnimator.cs" />
+    <Compile Include="Assets\Scripts\Animation\RigidbodyToAnimator.cs" />
     <Compile Include="Assets\Scripts\Camera\ScreenFollowObject.cs" />
     <Compile Include="Assets\Scripts\Camera\ScreenShake.cs" />
-    <Compile Include="Assets\Scripts\Common\Mathv.cs" />
-    <Compile Include="Assets\Scripts\Common\PlaySessionManager.cs" />
-    <Compile Include="Assets\Scripts\Common\StatusBar.cs" />
     <Compile Include="Assets\Scripts\Controls - Action\FireProjectileByInput.cs" />
+    <Compile Include="Assets\Scripts\Controls - Action\SetPositionByInput.cs" />
     <Compile Include="Assets\Scripts\Controls - Action\SidescrollerControlManager.cs" />
     <Compile Include="Assets\Scripts\Controls - Action\SidescrollerJump.cs" />
     <Compile Include="Assets\Scripts\Controls - Action\SidescrollerWalk.cs" />
@@ -316,14 +316,19 @@
     <Compile Include="Assets\Scripts\Controls - Strategy\OrderFreeMove.cs" />
     <Compile Include="Assets\Scripts\Controls - Strategy\OrderGridMove.cs" />
     <Compile Include="Assets\Scripts\Controls - Strategy\WaypointMovement.cs" />
+    <Compile Include="Assets\Scripts\Core\Mathv.cs" />
+    <Compile Include="Assets\Scripts\Core\StatusBar.cs" />
+    <Compile Include="Assets\Scripts\Core\Warnings.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Actor.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Dialogue.cs" />
-    <Compile Include="Assets\Scripts\Dialogue\ScreenDialogueBehaviour.cs" />
     <Compile Include="Assets\Scripts\Entities\ProjectileDriver.cs" />
     <Compile Include="Assets\Scripts\Entities\ProjectileSpawner.cs" />
     <Compile Include="Assets\Scripts\Input\DefaultInputReceiver.cs" />
     <Compile Include="Assets\Scripts\Input\InputReceiver.cs" />
     <Compile Include="Assets\Scripts\Input\RewiredInputReceiver.cs" />
+    <Compile Include="Assets\Scripts\Interactions\DialogueOnInteract.cs" />
+    <Compile Include="Assets\Scripts\Interactions\InteractableBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Interactions\InteractorBehaviour.cs" />
     <Compile Include="Assets\Scripts\Items\InventoryBase.cs" />
     <Compile Include="Assets\Scripts\Items\InventoryGrid.cs" />
     <Compile Include="Assets\Scripts\Items\InventoryItem.cs" />
@@ -331,6 +336,9 @@
     <Compile Include="Assets\Scripts\Items\ItemBehaviour.cs" />
     <Compile Include="Assets\Scripts\Items\ItemSelector.cs" />
     <Compile Include="Assets\Scripts\Items\ItemSlotBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Pokemon\PokemonActorBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Singletons\PlaySessionManager.cs" />
+    <Compile Include="Assets\Scripts\Singletons\ScreenDialogueBehaviour.cs" />
     <Compile Include="Assets\Scripts\Tiles\BorderedTile.cs" />
   </ItemGroup>
   <ItemGroup>

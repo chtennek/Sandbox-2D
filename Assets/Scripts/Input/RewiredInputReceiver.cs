@@ -12,21 +12,18 @@ public class RewiredInputReceiver : InputReceiver
         player = ReInput.players.GetPlayer(playerId);
     }
 
-    public override Vector2 PollMovementVector()
+    public override Vector2 GetAxisPairRaw(string idBase)
     {
-        float x = player.GetAxisRaw("Move Horizontal");
-        float y = player.GetAxisRaw("Move Vertical");
+        string horizontal = idBase + " Horizontal";
+        string vertical = idBase + " Vertical";
+        float x = player.GetAxisRaw(horizontal);
+        float y = player.GetAxisRaw(vertical);
         return new Vector2(x, y);
     }
 
-    public override Vector2 PollAimVector()
-    {
-        float x = player.GetAxisRaw("Aim Horizontal");
-        float y = player.GetAxisRaw("Aim Vertical");
-        return new Vector2(x, y);
-    }
-
-    public override bool GetButtonDown(string id) { return player.GetButtonDown(id); }
-    public override bool GetButtonUp(string id) { return player.GetButtonUp(id); }
-    public override bool GetButton(string id) { return player.GetButton(id); }
+    public override bool GetButtonDownRaw(string id) { return player.GetButtonDown(id); }
+    public override bool GetButtonUpRaw(string id) { return player.GetButtonUp(id); }
+    public override bool GetButtonRaw(string id) { return player.GetButton(id); }
+    public override bool GetAnyButtonDownRaw() { return player.GetAnyButtonDown(); }
+    public override bool GetAnyButtonRaw() { return player.GetAnyButton(); }
 }

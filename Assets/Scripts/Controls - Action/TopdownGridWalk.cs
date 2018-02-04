@@ -7,6 +7,11 @@ using UnityEngine;
 [RequireComponent(typeof(InputReceiver))]
 public class TopdownGridWalk : MonoBehaviour
 {
+    [Header("Input")]
+    private InputReceiver input;
+    public string axisPairName = "Move";
+    [Space]
+
     public Vector2 gridCellSize = Vector2.one;
     public Vector2 gridCellOffset = Vector2.zero;
     public LayerMask wallColliderMask;
@@ -14,7 +19,6 @@ public class TopdownGridWalk : MonoBehaviour
     private Vector2 destination;
 
     private WaypointMovement wm;
-    private InputReceiver input;
     private Rigidbody2D rb;
 
     private void Awake()
@@ -30,7 +34,7 @@ public class TopdownGridWalk : MonoBehaviour
     {
         if (wm.waypoints.Count == 0)
         {
-            Vector2 movement = input.GetSingleAxisMovementVector().normalized;
+            Vector2 movement = input.GetAxisPairSingle(axisPairName).normalized;
             if (movement != Vector2.zero)
             {
                 Vector2 nextWaypoint = destination + Vector2.Scale(movement, gridCellSize);

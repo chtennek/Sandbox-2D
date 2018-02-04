@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class TopDownFreeTurn : MonoBehaviour
 {
-    public float inputDeadZone = .2f;
-
+    [Header("Input")]
+    private InputReceiver input;
+    public string axisPairName = "Aim";
     [Space]
 
     public float rotationOffset = 90f; // At what movement direction should we be at 0 rotation?
     public float turnSpeed = Mathf.Infinity; // Degrees per frame
-
-    private InputReceiver input;
 
     private void Awake()
     {
@@ -20,7 +19,7 @@ public class TopDownFreeTurn : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 movement = input.GetCircularAimVector(inputDeadZone);
+        Vector2 movement = input.GetAxisPair(axisPairName);
 
         if (movement != Vector2.zero)
         {

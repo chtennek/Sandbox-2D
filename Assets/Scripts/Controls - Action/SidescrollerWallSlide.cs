@@ -7,10 +7,14 @@ using UnityEngine;
 [RequireComponent(typeof(SidescrollerControlManager))]
 public class SidescrollerWallSlide : MonoBehaviour
 {
-    public float slideSpeed = 1f; // Set to 0 to cling without moving
-    public bool requireInput = false; // Set to true to require continuously moving into the wall to cling
+    [Header("Input")]
+    private InputReceiver input;
+    public string axisPairName = "Move";
+    [Space]
 
-    private InputReceiver input; // [TODO] use requireInput
+    public float slideSpeed = 1f; // Set to 0 to cling without moving
+    public bool requireInput = false; // [TODO] Set to true to require continuously moving into the wall to cling
+
     private Rigidbody2D rb;
     private SidescrollerControlManager manager;
 
@@ -23,8 +27,9 @@ public class SidescrollerWallSlide : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (rb.velocity.y <= -slideSpeed && (manager.IsGrounded(Vector2.left) && (!requireInput || input.GetQuantizedMovementVector().x < 0)
-            || manager.IsGrounded(Vector2.right) && (!requireInput || input.GetQuantizedMovementVector().x > 0)))
+        Vector2 movement = input.GetAxisPairQuantized(axisPairName);
+        if (rb.velocity.y <= -slideSpeed && (manager.IsGrounded(Vector2.left) && (!requireInput || movement.x < 0)
+            || manager.IsGrounded(Vector2.right) && (!requireInput || movement.x > 0)))
         {
             float targetSpeed = -slideSpeed - rb.velocity.y;
             rb.AddForce(targetSpeed * Vector2.up, ForceMode2D.Impulse);

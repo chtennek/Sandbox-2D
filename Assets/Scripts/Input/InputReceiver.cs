@@ -5,35 +5,59 @@ using UnityEngine;
 public abstract class InputReceiver : MonoBehaviour
 {
     public int playerId = 0;
-    public float defaultDeadZone = 0f;
+    public float defaultDeadZone = .2f;
 
-    private Vector2 currentMovementVector;
-    private Vector2 currentAimVector;
+    #region Lock pattern
+    protected static InputReceiver inputLock;
 
-    public abstract Vector2 PollMovementVector();
-    public abstract Vector2 PollAimVector();
-
-    public abstract bool GetButtonDown(string id);
-    public abstract bool GetButtonUp(string id);
-    public abstract bool GetButton(string id);
-
-    protected void Update()
+    public bool Lock()
     {
-        currentMovementVector = PollMovementVector();
-        currentAimVector = PollAimVector();
+        if (IsUnlocked())
+        {
+            inputLock = this;
+            return true;
+        }
+        return false;
     }
 
-    public Vector2 GetSingleAxisMovementVector() { return GetSingleAxisMovementVector(defaultDeadZone); }
-    public Vector2 GetQuantizedMovementVector() { return GetQuantizedMovementVector(defaultDeadZone); }
-    public Vector2 GetQuantizedAimVector() { return GetQuantizedAimVector(defaultDeadZone); }
-    public Vector2 GetCircularMovementVector() { return GetCircularMovementVector(defaultDeadZone); }
-    public Vector2 GetCircularAimVector() { return GetCircularAimVector(defaultDeadZone); }
-    public Vector2 GetMovementVector() { return GetMovementVector(defaultDeadZone); }
-    public Vector2 GetAimVector() { return GetAimVector(defaultDeadZone); }
-
-    public Vector2 GetSingleAxisMovementVector(float deadZone)
+    public void Unlock()
     {
-        Vector2 output = GetMovementVector(deadZone);
+        if (inputLock == this) inputLock = null;
+    }
+
+    public bool IsUnlocked()
+    {
+        return inputLock == null || inputLock == this;
+    }
+    #endregion
+
+    public abstract bool GetButtonDownRaw(string id);
+    public abstract bool GetButtonUpRaw(string id);
+    public abstract bool GetButtonRaw(string id);
+    public abstract bool GetAnyButtonDownRaw();
+    public abstract bool GetAnyButtonRaw();
+
+    public bool GetButtonDown(string id) { return IsUnlocked() && GetButtonDownRaw(id); }
+    public bool GetButtonUp(string id) { return IsUnlocked() && GetButtonUpRaw(id); }
+    public bool GetButton(string id) { return IsUnlocked() && GetButtonRaw(id); }
+    public bool GetAnyButtonDown() { return IsUnlocked() && GetAnyButtonDownRaw(); }
+    public bool GetAnyButton() { return IsUnlocked() && GetAnyButtonRaw(); }
+
+    public abstract Vector2 GetAxisPairRaw(string axisPairName);
+
+    public Vector2 GetAxisPair(string axisPairName)
+    {
+        Vector2 inputValues = GetAxisPairRaw(axisPairName);
+        if (inputValues.magnitude < defaultDeadZone)
+        {
+            return Vector2.zero;
+        }
+        return inputValues;
+    }
+
+    public Vector2 GetAxisPairSingle(string axisPairName)
+    {
+        Vector2 output = GetAxisPair(axisPairName);
         if (Mathf.Abs(output.x) >= Mathf.Abs(output.y))
         {
             output.y = 0;
@@ -45,14 +69,14 @@ public abstract class InputReceiver : MonoBehaviour
         return output;
     }
 
-    public Vector2 GetQuantizedMovementVector(float deadZone)
+    public Vector2 GetAxisPairQuantized(string axisPairName)
     {
-        Vector2 output = currentMovementVector;
-        if (output.x > deadZone)
+        Vector2 output = GetAxisPair(axisPairName);
+        if (output.x > defaultDeadZone)
         {
             output.x = 1;
         }
-        else if (output.x < -deadZone)
+        else if (output.x < -defaultDeadZone)
         {
             output.x = -1;
         }
@@ -60,11 +84,11 @@ public abstract class InputReceiver : MonoBehaviour
         {
             output.x = 0;
         }
-        if (output.y > deadZone)
+        if (output.y > defaultDeadZone)
         {
             output.y = 1;
         }
-        else if (output.y < -deadZone)
+        else if (output.y < -defaultDeadZone)
         {
             output.y = -1;
         }
@@ -75,123 +99,9 @@ public abstract class InputReceiver : MonoBehaviour
         return output;
     }
 
-    public Vector2 GetQuantizedAimVector(float deadZone)
+    public float GetAxisPairRotation(string axisPairName)
     {
-        Vector2 output = currentAimVector;
-        if (output.x > deadZone)
-        {
-            output.x = 1;
-        }
-        else if (output.x < -deadZone)
-        {
-            output.x = -1;
-        }
-        else
-        {
-            output.x = 0;
-        }
-        if (output.y > deadZone)
-        {
-            output.y = 1;
-        }
-        else if (output.y < -deadZone)
-        {
-            output.y = -1;
-        }
-        else
-        {
-            output.y = 0;
-        }
-        return output;
-    }
-
-    public Vector2 GetCircularMovementVector(float deadZone)
-    {
-        if (currentMovementVector.x == 0 || currentMovementVector.y == 0)
-        {
-            if (currentMovementVector.magnitude < deadZone)
-            {
-                return Vector2.zero;
-            }
-            return currentMovementVector;
-        }
-
-        // Rescale input space from the unit square to the unit circle
-        Vector2 circle = currentMovementVector.normalized;
-        Vector2 square;
-        float scale;
-        if (Mathf.Abs(circle.x) > Mathf.Abs(circle.y))
-        {
-            square = new Vector2(circle.x / Mathf.Abs(circle.x), circle.y / Mathf.Abs(circle.x));
-        }
-        else
-        {
-            square = new Vector2(circle.x / Mathf.Abs(circle.y), circle.y / Mathf.Abs(circle.y));
-        }
-        scale = circle.magnitude / square.magnitude;
-
-        Vector2 output = scale * currentMovementVector;
-        if (output.magnitude < deadZone)
-        {
-            return Vector2.zero;
-        }
-        return output;
-    }
-
-    public Vector2 GetCircularAimVector(float deadZone)
-    {
-        if (currentAimVector.x == 0 || currentAimVector.y == 0)
-        {
-            if (currentAimVector.magnitude < deadZone)
-            {
-                return Vector2.zero;
-            }
-            return currentAimVector;
-        }
-
-        // Rescale input space from the unit square to the unit circle
-        Vector2 circle = currentAimVector.normalized;
-        Vector2 square;
-        float scale;
-        if (Mathf.Abs(circle.x) > Mathf.Abs(circle.y))
-        {
-            square = new Vector2(circle.x / Mathf.Abs(circle.x), circle.y / Mathf.Abs(circle.x));
-        }
-        else
-        {
-            square = new Vector2(circle.x / Mathf.Abs(circle.y), circle.y / Mathf.Abs(circle.y));
-        }
-        scale = circle.magnitude / square.magnitude;
-
-        Vector2 output = scale * currentAimVector;
-        if (output.magnitude < deadZone)
-        {
-            return Vector2.zero;
-        }
-        return output;
-    }
-
-    public Vector2 GetMovementVector(float deadZone)
-    {
-        if (currentMovementVector.magnitude < deadZone)
-        {
-            return Vector2.zero;
-        }
-        return currentMovementVector;
-    }
-
-    public Vector2 GetAimVector(float deadZone)
-    {
-        if (currentAimVector.magnitude < deadZone)
-        {
-            return Vector2.zero;
-        }
-        return currentAimVector;
-    }
-
-    public float GetAimRotation()
-    {
-        Vector2 aimVector = GetAimVector();
-        return Mathf.Atan2(aimVector.y, aimVector.x) * Mathf.Rad2Deg;
+        Vector2 output = GetAxisPair(axisPairName);
+        return Mathf.Atan2(output.y, output.x) * Mathf.Rad2Deg;
     }
 }
