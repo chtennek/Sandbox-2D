@@ -12,15 +12,6 @@ public class SidescrollerControlManager : MonoBehaviour
     public float collisionCheckWidth = 0.05f;
     public LayerMask groundMask;
 
-    private Rigidbody2D rb;
-    private SpriteRenderer sprite;
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
-    }
-
     public bool IsGrounded() { return IsGrounded(Vector2.down, groundMask); }
     public bool IsGrounded(Vector2 direction) { return IsGrounded(direction, groundMask); }
     public bool IsGrounded(Vector2 direction, LayerMask colliderMask)

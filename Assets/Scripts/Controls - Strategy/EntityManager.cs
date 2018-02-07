@@ -37,7 +37,7 @@ public class EntityManager : MonoBehaviour
     {
         if (wm != null)
         {
-            wm.waypoints.Enqueue(position);
+            wm.AddWaypoint(position);
         }
     }
 }

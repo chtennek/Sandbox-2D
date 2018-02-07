@@ -2,67 +2,62 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+using DG.Tweening;
+
 public class WaypointMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
 
-    public Queue<Vector2> waypoints = new Queue<Vector2>();
+    private Queue<Vector3> waypoints = new Queue<Vector3>();
+    private Tweener currentTween;
 
-    private Vector2 waypointLastUpdate = Mathf.Infinity * Vector2.one;
-
-    private Rigidbody2D rb;
-    private Animator anim;
-
-    private void Awake()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        StartCoroutine("Run");
     }
 
-    private void FixedUpdate()
+    public Vector3 GetCurrentWaypoint()
     {
-        if (waypoints.Count > 0)
+        if (waypoints.Count == 0)
         {
-            Debug.Log(rb.velocity);
+            return transform.position;
         }
-        Vector2 waypoint = GetNextWaypoint();
-        Vector2 direction = (waypoint - rb.position).normalized;
-
-        rb.velocity = moveSpeed * direction;
-        UpdateAnimation();
+        return waypoints.Peek();
     }
 
-    private Vector2 GetNextWaypoint()
+    public int WaypointCount()
     {
-        while (waypoints.Count > 0)
-        {
-            Vector2 waypoint = waypoints.Peek();
+        return waypoints.Count;
+    }
 
-            // We can't get to the waypoint, so give up
-            if (waypoint == waypointLastUpdate && rb.velocity == Vector2.zero)
+    public void AddWaypoint(Vector3 position)
+    {
+        waypoints.Enqueue(position);
+    }
+
+    private IEnumerator Run()
+    {
+        while (true)
+        {
+            if (waypoints.Count > 0)
             {
+                float waitTime = ApplyNextWaypoint();
+                yield return new WaitForSeconds(waitTime);
                 waypoints.Dequeue();
-                continue;
             }
-
-            // Return the waypoint if we are far enough away from it
-            if (Vector2.Distance(rb.position, waypoint) >= Time.deltaTime * moveSpeed)
+            else
             {
-                waypointLastUpdate = waypoint;
-                return waypoint;
+                yield return null;
             }
-            waypoints.Dequeue();
         }
-        return rb.position;
     }
 
-    private void UpdateAnimation()
+    private float ApplyNextWaypoint()
     {
-        if (anim != null)
-        {
-            anim.SetFloat("xVelocity", rb.velocity.x);
-            anim.SetFloat("yVelocity", rb.velocity.y);
-        }
+        Vector3 waypoint = GetCurrentWaypoint();
+        float travelTime = (waypoint - (Vector3)transform.position).magnitude / moveSpeed;
+
+        currentTween = transform.DOMove(waypoint, travelTime).SetEase(Ease.Linear);
+        return travelTime;
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TopDownFreeTurn : MonoBehaviour
+public class TopdownFreeTurn : MonoBehaviour
 {
     [Header("Input")]
     private InputReceiver input;

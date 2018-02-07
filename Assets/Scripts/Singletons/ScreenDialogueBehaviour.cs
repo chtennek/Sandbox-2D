@@ -78,29 +78,39 @@ public sealed class ScreenDialogueBehaviour : MonoBehaviour, IPointerClickHandle
         if (actorText != null) actorText.text = "";
         if (lineText != null) lineText.text = "";
 
-        inactiveMask.enabled = false;
-        input.Lock(); // [TODO] Some speech bubbles shouldn't pause the rest of the game
-        Time.timeScale = 0;
-
         nextLineIndex = 0;
         NextLine();
     }
 
     private void Update()
     {
-        advanceScript = false;
-        if (advanceOnInputNames == null || advanceOnInputNames.Count == 0)
+        if (dialogue == null)
         {
-            advanceScript = advanceScript || input.GetAnyButtonDown();
+            inactiveMask.enabled = true;
+            input.Unlock();
+            Time.timeScale = 1;
         }
         else
         {
-            foreach (string inputName in advanceOnInputNames)
+            inactiveMask.enabled = false;
+            input.Lock(); // [TODO] Some speech bubbles shouldn't pause the rest of the game
+            Time.timeScale = 0;
+
+            advanceScript = false;
+            if (advanceOnInputNames == null || advanceOnInputNames.Count == 0)
             {
-                advanceScript = advanceScript || input.GetButtonDown(inputName);
+                advanceScript = advanceScript || input.GetAnyButtonDown();
             }
+            else
+            {
+                foreach (string inputName in advanceOnInputNames)
+                {
+                    advanceScript = advanceScript || input.GetButtonDown(inputName);
+                }
+            }
+            if (advanceScript) Advance();
         }
-        if (advanceScript) Advance();
+
     }
 
     public void OnPointerClick(PointerEventData pointerEventData)
@@ -112,13 +122,11 @@ public sealed class ScreenDialogueBehaviour : MonoBehaviour, IPointerClickHandle
     {
         if (lineText.text == currentLine)
         {
+            // If dialogue completed
             if (nextLineIndex >= dialogue.script.Length)
             {
-                // Dialogue completed
                 // [TODO] Put some kind of event here
-                inactiveMask.enabled = true;
-                input.Unlock();
-                Time.timeScale = 1;
+                dialogue = null;
             }
             else
             {
@@ -127,6 +135,7 @@ public sealed class ScreenDialogueBehaviour : MonoBehaviour, IPointerClickHandle
         }
         else
         {
+            // Display the rest of the current line immediately
             StopCoroutine("DisplayCurrentLine");
             lineText.text = currentLine;
         }

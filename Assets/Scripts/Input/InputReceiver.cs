@@ -47,6 +47,8 @@ public abstract class InputReceiver : MonoBehaviour
 
     public Vector2 GetAxisPair(string axisPairName)
     {
+        if (IsUnlocked() == false) return Vector2.zero;
+
         Vector2 inputValues = GetAxisPairRaw(axisPairName);
         if (inputValues.magnitude < defaultDeadZone)
         {
@@ -71,6 +73,7 @@ public abstract class InputReceiver : MonoBehaviour
 
     public Vector2 GetAxisPairQuantized(string axisPairName)
     {
+
         Vector2 output = GetAxisPair(axisPairName);
         if (output.x > defaultDeadZone)
         {

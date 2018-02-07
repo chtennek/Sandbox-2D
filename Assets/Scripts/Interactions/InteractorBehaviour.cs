@@ -27,7 +27,6 @@ public class InteractorBehaviour : MonoBehaviour
                 InteractableBehaviour target = col.GetComponent<InteractableBehaviour>();
                 if (target != null)
                 {
-                    Debug.Log(target);
                     target.OnInteract(transform);
                 }
             }

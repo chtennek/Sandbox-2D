@@ -3,49 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class RigidbodyToAnimator : MonoBehaviour
+public class RigidbodyToAnimator : AnimatorBase
 {
-    [Header("Parameters")]
-    public string xVelocityParameter = "xVelocity";
-    public string yVelocityParameter = "yVelocity";
-    public string gravityScaleParameter = "gravityScale";
-
-    private List<string> parameters;
-
     private Rigidbody2D rb;
-    private Animator anim;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        if (anim == null)
-        {
-            enabled = false;
-        }
-
-        parameters = new List<string>();
-        foreach (AnimatorControllerParameter p in anim.parameters)
-        {
-            parameters.Add(p.name);
-        }
-
     }
 
-    private void Update()
+    protected override void UpdateAnimation()
     {
-        UpdateAnimation();
-    }
+        if (parameters.Contains(xParameter))
+            anim.SetFloat(xParameter, rb.velocity.x);
 
-    private void UpdateAnimation()
-    {
-        if (parameters.Contains(xVelocityParameter))
-            anim.SetFloat(xVelocityParameter, rb.velocity.x);
-
-        if (parameters.Contains(yVelocityParameter))
-            anim.SetFloat(yVelocityParameter, rb.velocity.y);
-
-        if (parameters.Contains(gravityScaleParameter))
-            anim.SetFloat(gravityScaleParameter, rb.gravityScale);
+        if (parameters.Contains(yParameter))
+            anim.SetFloat(yParameter, rb.velocity.y);
     }
 }

@@ -288,8 +288,9 @@ GameObject:
   - component: {fileID: 376392226}
   - component: {fileID: 376392225}
   - component: {fileID: 376392230}
-  - component: {fileID: 376392232}
   - component: {fileID: 376392231}
+  - component: {fileID: 376392234}
+  - component: {fileID: 376392233}
   m_Layer: 0
   m_Name: Blue
   m_TagString: Untagged
@@ -320,7 +321,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.95, y: 0.95}
   m_EdgeRadius: 0
 --- !u!50 &376392226
 Rigidbody2D:
@@ -438,21 +439,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 376392224}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fd3b6546229a5549a5fbe022cfe6a0e, type: 3}
+  m_Script: {fileID: 11500000, guid: b88220d5ec31d384da3354d154d6fa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputDeadZone: 0.2
-  restrictToOrthogonal: 1
-  walkSpeed: 5
-  minWalkableSpeed: 1
-  walkSpeedLevels: Infinity
-  acceleration: 40
-  deceleration: 10
-  faceMovementDirection: 0
-  onlyMoveForward: 0
-  rotationOffset: 90
-  turnSpeed: Infinity
---- !u!114 &376392232
+  xParameter: xVelocity
+  yParameter: yVelocity
+--- !u!114 &376392233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -460,13 +452,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 376392224}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05969371b8d744149bddb10d258b37df, type: 3}
+  m_Script: {fileID: 11500000, guid: 88c4a87b2f9c664408259ed80674a2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+--- !u!114 &376392234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 376392224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9759d92f4dc3644979434dab34776d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 0}
   axisPairName: Move
-  xParameter: xVelocity
-  yParameter: yVelocity
+  bufferWindow: 0.1
+  gridCellSize: {x: 1, y: 1}
+  wallColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!224 &431765222 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224084988548310990, guid: 5820008a8929dd14fb694e6005142c7a,
@@ -578,6 +585,34 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 78a2594fcefb1ec44b69121a7b303fc5, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1085763901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1085763902}
+  m_Layer: 0
+  m_Name: Level Builder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1085763902
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1085763901}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1329234729
 Prefab:
   m_ObjectHideFlags: 0
@@ -2127,7 +2162,7 @@ GameObject:
   - component: {fileID: 1646056316}
   - component: {fileID: 1646056315}
   - component: {fileID: 1646056317}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
