@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using DG.Tweening;
+
 public class ScreenFollowObject : MonoBehaviour
 {
     public Transform[] objects;
-    public float timeToDestination = .1f;
-
-    // [TODO] allow objects to deviate from center of screen before moving
+    public float lerpValue = 0.5f;
+    public float allowableOffset = 0f;
 
     private void Update()
     {
         Vector3 target = CalculateCenterPoint();
-        iTween.MoveUpdate(gameObject, target, timeToDestination);
+        if ((transform.position - target).magnitude > allowableOffset)
+        {
+            transform.position = Vector3.Lerp(transform.position, target, lerpValue);
+        }
     }
 
     private Vector3 CalculateCenterPoint()

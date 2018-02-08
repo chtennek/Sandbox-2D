@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4014893169499282}
   - component: {fileID: 212751406305418406}
   - component: {fileID: 61346698019815278}
+  - component: {fileID: 114419473415521780}
   - component: {fileID: 114098607636546140}
   m_Layer: 0
   m_Name: NPC
@@ -79,6 +80,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 11400000, guid: ee64c425acaa24c96b01afb68ecd11d6, type: 2}
+--- !u!114 &114419473415521780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1101466715552276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a30cd6283dba8ed4fa1a0e7dbf6e9758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212751406305418406
 SpriteRenderer:
   m_ObjectHideFlags: 1

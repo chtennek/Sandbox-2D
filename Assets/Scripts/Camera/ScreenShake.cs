@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Rewired;
+using DG.Tweening;
+
 public class ScreenShake : MonoBehaviour
 {
     public MonoBehaviour[] screenScripts;
-    public Vector3 shakeVector = Vector3.up;
     public float shakeTime = 1f;
 
     private void Update()
@@ -18,6 +20,6 @@ public class ScreenShake : MonoBehaviour
 
     public void Shake()
     {
-        iTween.ShakePosition(gameObject, shakeVector, shakeTime);
+        transform.DOShakePosition(shakeTime);
     }
 }
