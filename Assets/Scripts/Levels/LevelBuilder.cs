@@ -7,12 +7,14 @@ namespace Levels
 {
     public class LevelBuilder : MonoBehaviour
     {
-        public LevelBase currentLevel;
+        public Level currentLevel;
 
         #region Editor functions
         private void ClearLevel()
         {
-            foreach (LevelObjectBase levelObject in FindObjectsOfType<LevelObjectBase>())
+            LevelObjectBase[] levelObjects = FindObjectsOfType<LevelObjectBase>();
+            Undo.RecordObjects(levelObjects, "Clear Level Objects");
+            foreach (LevelObjectBase levelObject in levelObjects)
             {
                 if (Application.isPlaying)
                 {
@@ -27,18 +29,19 @@ namespace Levels
 
         public void SaveLevel()
         {
-            List<LevelObjectData> objects = new List<LevelObjectData>();
+            List<LevelData> objects = new List<LevelData>();
 
             foreach (LevelObjectBase objScript in FindObjectsOfType<LevelObjectBase>())
             {
-                LevelObjectData objData = objScript.ToData();
+                LevelData objData = objScript.ToData();
                 objects.Add(objData);
             }
 
+            Undo.RecordObject(currentLevel, "Save Level Data");
             currentLevel.objects = objects.ToArray();
         }
 
-        public void LoadLevel(LevelBase level)
+        public void LoadLevel(Level level)
         {
             currentLevel = level;
             ReloadLevel();
@@ -50,7 +53,7 @@ namespace Levels
             objFolders[""] = null; // [TODO] eww
 
             ClearLevel();
-            foreach (LevelObjectData objData in currentLevel.objects)
+            foreach (LevelData objData in currentLevel.objects)
             {
                 // Find or create the new LevelObject's parent folder.
                 Transform objFolder;

@@ -8,16 +8,15 @@ namespace Levels
 {
     public class LevelObjectBase : MonoBehaviour
     {
-        public virtual LevelObjectData ToData()
+        public virtual LevelData ToData()
         {
-            LevelObjectData objData = new LevelObjectData(PrefabUtility.GetPrefabParent(transform) as Transform);
-            objData.name = transform.name;
+            LevelData objData = new LevelData(transform.name, PrefabUtility.GetPrefabParent(transform) as Transform);
             objData.parentName = transform.parent == null ? "" : transform.parent.name;
             objData.position = transform.position;
             return objData;
         }
 
-        public virtual void LoadData(LevelObjectData objData)
+        public virtual void LoadData(LevelData objData)
         {
             transform.name = objData.name;
             transform.position = objData.position;

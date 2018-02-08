@@ -353,10 +353,10 @@
     <Compile Include="Assets\Scripts\Items\ItemBehaviour.cs" />
     <Compile Include="Assets\Scripts\Items\ItemSelector.cs" />
     <Compile Include="Assets\Scripts\Items\ItemSlotBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Levels\LevelBase.cs" />
+    <Compile Include="Assets\Scripts\Levels\Level.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelBuilder.cs" />
+    <Compile Include="Assets\Scripts\Levels\LevelData.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelObjectBase.cs" />
-    <Compile Include="Assets\Scripts\Levels\LevelObjectData.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelObjectNPC.cs" />
     <Compile Include="Assets\Scripts\Pokemon\PokemonActorBehaviour.cs" />
     <Compile Include="Assets\Scripts\Pokemon\PokemonLevel.cs" />

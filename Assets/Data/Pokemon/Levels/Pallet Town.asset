@@ -11,5 +11,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eab5728753c7ff44eac515d0662cc134, type: 3}
   m_Name: Pallet Town
   m_EditorClassIdentifier: 
-  entities:
-  - {fileID: 0}
+  objects:
+  - prefab: {fileID: 4014893169499282, guid: 78a2594fcefb1ec44b69121a7b303fc5, type: 2}
+    name: Man
+    parentName: NPC Folder
+    position: {x: 2, y: -10, z: 0}
+  - prefab: {fileID: 4014893169499282, guid: 78a2594fcefb1ec44b69121a7b303fc5, type: 2}
+    name: Lass
+    parentName: NPC Folder
+    position: {x: -4, y: -3, z: 0}
+  - prefab: {fileID: 4382497121235676, guid: 0aed738b8de23974689c74d5b410d11b, type: 2}
+    name: Prof. Oak's Lab
+    parentName: Level Exit Folder
+    position: {x: 4, y: -6, z: 0}
+  - prefab: {fileID: 4382497121235676, guid: 25c63bcfa0177d743b0bb20b31c2547b, type: 2}
+    name: Other House
+    parentName: Level Entrance Folder
+    position: {x: 5, y: -1, z: 0}
+  - prefab: {fileID: 4382497121235676, guid: 0aed738b8de23974689c74d5b410d11b, type: 2}
+    name: Other House
+    parentName: Level Exit Folder
+    position: {x: 5, y: 0, z: 0}
+  - prefab: {fileID: 4382497121235676, guid: 25c63bcfa0177d743b0bb20b31c2547b, type: 2}
+    name: Player's House
+    parentName: Level Entrance Folder
+    position: {x: -3, y: -1, z: 0}
+  - prefab: {fileID: 4382497121235676, guid: 0aed738b8de23974689c74d5b410d11b, type: 2}
+    name: Player's House
+    parentName: Level Exit Folder
+    position: {x: -3, y: 0, z: 0}
+  - prefab: {fileID: 4382497121235676, guid: 25c63bcfa0177d743b0bb20b31c2547b, type: 2}
+    name: Prof. Oak's Lab
+    parentName: Level Entrance Folder
+    position: {x: 4, y: -7, z: 0}

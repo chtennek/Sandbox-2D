@@ -5,7 +5,7 @@ using UnityEngine;
 using Levels;
 
 [CreateAssetMenu(fileName = "Level", menuName = "Level/Pokemon")]
-public class PokemonLevel : LevelBase
+public class PokemonLevel : Level
 {
 
 }
