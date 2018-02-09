@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 
 namespace Levels
 {
-    [CreateAssetMenu(fileName = "Level", menuName = "Level/Base")]
+    [CreateAssetMenu(fileName = "Level", menuName = "Level/Level")]
     public class Level : ScriptableObject
     {
         public LevelObjectData[] objects;

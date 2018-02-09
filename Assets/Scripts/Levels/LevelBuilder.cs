@@ -64,11 +64,11 @@ namespace Levels
 
             foreach (LevelObjectData objData in currentLevel.objects)
             {
-                // Find the LevelObject's parent object.
-                Transform objFolder;
+                // Find the LevelObject's parent object with caching.
+                GameObject objFolder;
                 if (objFolders.ContainsKey(objData.parentName) == false)
                 {
-                    objFolder = GameObject.Find(objData.parentName).transform;
+                    objFolder = GameObject.Find(objData.parentName);
                     if (objFolder == null)
                     {
                         Debug.LogWarning(objData.name + ": Parent (" + objData.parentName + ") not found! Orphaning object...");
@@ -77,17 +77,20 @@ namespace Levels
                 }
                 else
                 {
-                    objFolder = objFolders[objData.parentName] as Transform;
+                    objFolder = objFolders[objData.parentName] as GameObject;
                 }
 
                 // Create the LevelObject
                 Transform target = PrefabUtility.InstantiatePrefab(objData.prefab) as Transform;
                 //Transform target = Instantiate(objData.prefab, objFolder);
-                target.parent = objFolder;
+                if (objFolder != null)
+                {
+                    target.parent = objFolder.transform;
+                }
                 LevelObjectBase objScript = target.GetComponent<LevelObjectBase>();
                 if (objScript == null)
                 {
-                    Debug.LogWarning(objScript.gameObject.name + ": LevelObject script not attached! Failed to properly load.");
+                    Debug.LogWarning(target.name + ": LevelObject script not attached! Failed to properly load.");
                 }
                 else
                 {

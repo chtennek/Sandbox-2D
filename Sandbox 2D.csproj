@@ -357,8 +357,12 @@
     <Compile Include="Assets\Scripts\Levels\Level.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelBuilder.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelData.cs" />
+    <Compile Include="Assets\Scripts\Levels\LevelEntrance.cs" />
+    <Compile Include="Assets\Scripts\Levels\LevelExit.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelObjectBase.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelObjectNPC.cs" />
+    <Compile Include="Assets\Scripts\Levels\LevelSet.cs" />
+    <Compile Include="Assets\Scripts\Levels\LevelWarp.cs" />
     <Compile Include="Assets\Scripts\Pokemon\PokemonActorBehaviour.cs" />
     <Compile Include="Assets\Scripts\Pokemon\PokemonLevel.cs" />
     <Compile Include="Assets\Scripts\Singletons\PlaySessionManager.cs" />

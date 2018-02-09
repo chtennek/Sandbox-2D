@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef7eba051ab24314e974fb60a881540b, type: 3}
+  m_Name: Kanto Region
+  m_EditorClassIdentifier: 
+  levels:
+  - {fileID: 11400000, guid: c88a2f25cd792044ebae6450f2e6a568, type: 2}
+  - {fileID: 11400000, guid: 77704c9c068ebfc44b28a2af349bb12b, type: 2}
+  - {fileID: 11400000, guid: f255c3e78e5e8be4f810a9ed56116000, type: 2}
+  - {fileID: 11400000, guid: db801617b396d3648bf297da7b339870, type: 2}
