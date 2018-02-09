@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace Levels
 {
@@ -10,7 +11,7 @@ namespace Levels
         public Level currentLevel;
 
         #region Editor functions
-        private void ClearLevel()
+        public void ClearLevel()
         {
             LevelObjectBase[] levelObjects = FindObjectsOfType<LevelObjectBase>();
             Undo.RecordObjects(levelObjects, "Clear Level Objects");
@@ -25,20 +26,27 @@ namespace Levels
                     DestroyImmediate(levelObject.gameObject);
                 }
             }
+            foreach (Tilemap tilemap in FindObjectsOfType<Tilemap>())
+            {
+                tilemap.ClearAllTiles();
+            }
         }
 
         public void SaveLevel()
         {
-            List<LevelData> objects = new List<LevelData>();
-
-            foreach (LevelObjectBase objScript in FindObjectsOfType<LevelObjectBase>())
+            List<LevelObjectData> objects = new List<LevelObjectData>();
+            foreach (LevelObjectBase objScript in FindObjectsOfType<LevelObjectBase>()) // [TODO] only look in children of LevelBuilder
             {
-                LevelData objData = objScript.ToData();
+                LevelObjectData objData = objScript.ToData();
                 objects.Add(objData);
             }
 
             Undo.RecordObject(currentLevel, "Save Level Data");
             currentLevel.objects = objects.ToArray();
+            foreach (Tilemap tilemap in FindObjectsOfType<Tilemap>()) // [TODO] only look in children of LevelBuilder
+            {
+                currentLevel.SaveTilemap(tilemap.gameObject.name, tilemap);
+            }
         }
 
         public void LoadLevel(Level level)
@@ -53,9 +61,10 @@ namespace Levels
             objFolders[""] = null; // [TODO] eww
 
             ClearLevel();
-            foreach (LevelData objData in currentLevel.objects)
+
+            foreach (LevelObjectData objData in currentLevel.objects)
             {
-                // Find or create the new LevelObject's parent folder.
+                // Find the LevelObject's parent object.
                 Transform objFolder;
                 if (objFolders.ContainsKey(objData.parentName) == false)
                 {
@@ -78,12 +87,17 @@ namespace Levels
                 LevelObjectBase objScript = target.GetComponent<LevelObjectBase>();
                 if (objScript == null)
                 {
-                    Debug.LogWarning(objScript.name + ": LevelObject script not attached! Failed to properly load.");
+                    Debug.LogWarning(objScript.gameObject.name + ": LevelObject script not attached! Failed to properly load.");
                 }
                 else
                 {
                     objScript.LoadData(objData);
                 }
+            }
+
+            foreach (Tilemap tilemap in FindObjectsOfType<Tilemap>())
+            {
+                currentLevel.LoadTilemap(tilemap.gameObject.name, tilemap);
             }
         }
         #endregion

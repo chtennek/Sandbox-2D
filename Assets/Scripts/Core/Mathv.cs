@@ -1,7 +1,24 @@
 ﻿using UnityEngine;
 
-public class Mathv
+public static class Mathv
 {
+    public static int ToBase10(int[] digits, int b)
+    {
+        // digits should be low to high
+        int value = 0;
+        for (int i = 0; i < digits.Length; i++)
+        {
+            value += digits[i] * (int)Mathf.Pow(b, i);
+        }
+        return value;
+    }
+
+    public static int DigitInBase(int n, int b, int i)
+    {
+        // i = left-shifts from one's place
+        return (n - n % (int)Mathf.Pow(b, i)) % (int)Mathf.Pow(b, i + 1);
+    }
+
     // Lerp, but round to the nearest of n evenly spaced points in [a, b]
     public static float LerpQRound(float a, float b, float t, float n)
     {

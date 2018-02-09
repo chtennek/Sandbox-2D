@@ -6,27 +6,27 @@ using Levels;
 
 public class LevelObjectNPC : LevelObjectBase
 {
-    public override LevelData ToData()
+    public override LevelObjectData ToData()
     {
-        LevelData objData = base.ToData();
+        LevelObjectData objData = base.ToData();
         DialogueOnInteract script = GetComponent<DialogueOnInteract>();
         if (script != null)
         {
-            objData.data.Add(script.dialogue);
+            objData.data["Dialogue"] = script.dialogue;
         }
         return objData;
     }
 
-    public override void LoadData(LevelData objData)
+    public override void LoadData(LevelObjectData objData)
     {
         base.LoadData(objData);
         DialogueOnInteract script = GetComponent<DialogueOnInteract>();
 
-        if (script != null && objData.data.Count > 0)
+        if (script != null && objData.data.ContainsKey("Dialogue"))
         {
-            script.dialogue = objData.data[0] as Dialogue; // [TODO] find a better serialization method
+            script.dialogue = objData.data["Dialogue"] as Dialogue;
         }
-        else
+        if (script.dialogue == null)
         {
             Debug.LogWarning(objData.name + ": Failed to load dialogue!");
         }

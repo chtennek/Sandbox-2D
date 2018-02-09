@@ -321,9 +321,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Editor\ChildrenOverwritingEditor.cs" />
+    <Compile Include="Assets\Scripts\Editor\DictionaryPropertyDrawer.cs" />
     <Compile Include="Assets\Scripts\Editor\LevelBuilderEditor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Plugins\2d-extras\Assets\Tilemap\Brushes\Tint Brush Smooth\Shaders\TintedTilemap.shader" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween43.xml" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween46.xml" />

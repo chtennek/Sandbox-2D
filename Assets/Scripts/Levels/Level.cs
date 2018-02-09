@@ -9,12 +9,22 @@ namespace Levels
     [CreateAssetMenu(fileName = "Level", menuName = "Level/Base")]
     public class Level : ScriptableObject
     {
-        public LevelData[] objects;
+        public LevelObjectData[] objects;
+        public TilemapDataDictionary tilemaps; // Dictionary<string, LevelTilemapData>
 
-        private Hashtable tilemaps;
-
-        public void SaveTilemap(string id, ITilemap tileData)
+        public void SaveTilemap(string id, Tilemap source)
         {
+            tilemaps[id] = new LevelTilemapData(source);
+        }
+
+        public void LoadTilemap(string id, Tilemap target)
+        {
+            if (tilemaps.ContainsKey(id) == false)
+            {
+                Debug.LogWarning("TilemapData " + id + " not found!");
+                return;
+            }
+            tilemaps[id].Load(target);
         }
     }
 }

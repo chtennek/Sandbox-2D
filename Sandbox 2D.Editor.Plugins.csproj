@@ -312,6 +312,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Plugins\2d-extras\Assets\Tilemap\Brushes\Coordinate Brush\Scripts\Editor\CoordinateBrush.cs" />
+    <Compile Include="Assets\Plugins\2d-extras\Assets\Tilemap\Brushes\GameObject Brush\Scripts\Editor\GameObjectBrush.cs" />
+    <Compile Include="Assets\Plugins\2d-extras\Assets\Tilemap\Brushes\Line Brush\Scripts\Editor\LineBrush.cs" />
+    <Compile Include="Assets\Plugins\2d-extras\Assets\Tilemap\Brushes\Prefab Brush\Scripts\Editor\PrefabBrush.cs" />
+    <Compile Include="Assets\Plugins\2d-extras\Assets\Tilemap\Brushes\Random Brush\Scripts\Editor\RandomBrush.cs" />
+    <Compile Include="Assets\Plugins\2d-extras\Assets\Tilemap\Brushes\Tint Brush Smooth\Scripts\Editor\TintBrushSmooth.cs" />
+    <Compile Include="Assets\Plugins\2d-extras\Assets\Tilemap\Brushes\Tint Brush\Scripts\Editor\TintBrush.cs" />
+    <Compile Include="Assets\Plugins\2d-extras\Assets\Tilemap\Tiles\Rule Tile\Scripts\Editor\RuleTileEditor.cs" />
     <Compile Include="Assets\Plugins\Controller Tester\Scripts\Editor\TestGamepadEditor.cs" />
     <Compile Include="Assets\Plugins\Rewired\Extras\ControlMapper\Scripts\Editor\ControlMapperInspector.cs" />
     <Compile Include="Assets\Plugins\Rewired\Extras\ControlMapper\Scripts\Editor\CustomButtonInspector.cs" />
@@ -325,8 +333,11 @@
     <Compile Include="Assets\Plugins\Rewired\Internal\Scripts\Editor\CustomInspectors\UserDataStore_PlayerPrefsInspector.cs" />
     <Compile Include="Assets\Plugins\Rewired\Internal\Scripts\Editor\UnityEditorBridge.cs" />
     <Compile Include="Assets\Plugins\rotorz-classtypereference\Assets\ClassTypeReference\Editor\ClassTypeReferencePropertyDrawer.cs" />
+    <Compile Include="Assets\Plugins\SerializableDictionary\Editor\SerializableDictionaryPropertyDrawer.cs" />
+    <Compile Include="Assets\Plugins\SerializableDictionary\Example\Editor\UserSerializableDictionaryPropertyDrawers.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Plugins\2d-extras\Assets\Tilemap\Brushes\Tint Brush Smooth\Shaders\TintedTilemap.shader" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween43.xml" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween46.xml" />
