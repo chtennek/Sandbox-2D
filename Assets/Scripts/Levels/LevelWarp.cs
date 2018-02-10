@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Levels
 {
-    [CreateAssetMenu(fileName = "Level Set", menuName = "Level/Level Warp")]
+    [CreateAssetMenu(fileName = "Level Warp", menuName = "Level/Level Warp")]
     public class LevelWarp : ScriptableObject
     {
         public Level targetLevel;

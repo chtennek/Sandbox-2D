@@ -47,6 +47,8 @@ namespace Levels
             {
                 currentLevel.SaveTilemap(tilemap.gameObject.name, tilemap);
             }
+            EditorUtility.SetDirty(currentLevel);
+            AssetDatabase.SaveAssets();
         }
 
         public void LoadLevel(Level level)
