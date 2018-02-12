@@ -12,6 +12,15 @@ MonoBehaviour:
   m_Name: Player's House - 1F
   m_EditorClassIdentifier: 
   objects:
+  - prefab: {fileID: 4014893169499282, guid: 78a2594fcefb1ec44b69121a7b303fc5, type: 2}
+    name: NPC
+    parentName: NPC Folder
+    position: {x: 2, y: 1, z: 0}
+    data:
+      m_keys:
+      - Dialogue
+      m_values:
+      - {fileID: 11400000, guid: ee64c425acaa24c96b01afb68ecd11d6, type: 2}
   - prefab: {fileID: 4382497121235676, guid: 25c63bcfa0177d743b0bb20b31c2547b, type: 2}
     name: Pallet Town
     parentName: Level Start Folder
@@ -24,7 +33,7 @@ MonoBehaviour:
   - prefab: {fileID: 4382497121235676, guid: 0aed738b8de23974689c74d5b410d11b, type: 2}
     name: Pallet Town
     parentName: Level Exit Folder
-    position: {x: -1, y: -3, z: 0}
+    position: {x: 0, y: -3, z: 0}
     data:
       m_keys:
       - Target
@@ -33,21 +42,12 @@ MonoBehaviour:
   - prefab: {fileID: 4382497121235676, guid: 0aed738b8de23974689c74d5b410d11b, type: 2}
     name: Pallet Town
     parentName: Level Exit Folder
-    position: {x: 0, y: -3, z: 0}
+    position: {x: -1, y: -3, z: 0}
     data:
       m_keys:
       - Target
       m_values:
       - {fileID: 11400000, guid: 987ac69b8db8efd4ab0d4d2c160baba2, type: 2}
-  - prefab: {fileID: 4014893169499282, guid: 78a2594fcefb1ec44b69121a7b303fc5, type: 2}
-    name: NPC
-    parentName: NPC Folder
-    position: {x: 2, y: 1, z: 0}
-    data:
-      m_keys:
-      - Dialogue
-      m_values:
-      - {fileID: 11400000, guid: ee64c425acaa24c96b01afb68ecd11d6, type: 2}
   tilemaps:
     m_keys:
     - Floor (Decals)

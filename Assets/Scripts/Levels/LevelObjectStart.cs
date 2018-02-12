@@ -16,7 +16,7 @@ namespace Levels
             if (target != null)
             {
                 //target.targetLevel = builder.currentLevel;
-                target.position = transform.position;
+                target.position = transform.localPosition;
                 objData.data["Target"] = target;
             }
             return objData;

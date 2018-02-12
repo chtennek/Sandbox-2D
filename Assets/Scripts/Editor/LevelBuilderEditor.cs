@@ -30,9 +30,4 @@ public class LevelBuilderEditor : Editor
         GUILayout.EndHorizontal();
         DrawDefaultInspector();
     }
-
-    private void SaveLevel()
-    {
-
-    }
 }

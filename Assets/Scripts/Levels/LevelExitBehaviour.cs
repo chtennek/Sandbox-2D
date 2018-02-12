@@ -19,7 +19,7 @@ namespace Levels
                 return;
             }
             builder.LoadLevel(startLocation.targetLevel);
-            Instantiate(builder.playerPrefab, startLocation.position, Quaternion.identity);
+            Instantiate(builder.playerPrefab, builder.transform.TransformPoint(startLocation.position), Quaternion.identity);
             Destroy(collision.gameObject);
         }
     }

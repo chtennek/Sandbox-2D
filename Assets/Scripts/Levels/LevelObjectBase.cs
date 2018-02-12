@@ -12,14 +12,14 @@ namespace Levels
         {
             LevelObjectData objData = new LevelObjectData(transform.name, PrefabUtility.GetPrefabParent(transform) as Transform);
             objData.parentName = transform.parent == null ? "" : transform.parent.name;
-            objData.position = transform.position;
+            objData.position = transform.localPosition;
             return objData;
         }
 
         public virtual void LoadData(LevelObjectData objData)
         {
             transform.name = objData.name;
-            transform.position = objData.position;
+            transform.localPosition = objData.position;
         }
 
         public void OnLoadError()

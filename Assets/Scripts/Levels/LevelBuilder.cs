@@ -14,7 +14,7 @@ namespace Levels
         #region Editor functions
         public void ClearLevel()
         {
-            LevelObjectBase[] levelObjects = FindObjectsOfType<LevelObjectBase>();
+            LevelObjectBase[] levelObjects = GetComponentsInChildren<LevelObjectBase>();
             Undo.RecordObjects(levelObjects, "Clear Level Objects");
             foreach (LevelObjectBase levelObject in levelObjects)
             {
@@ -27,7 +27,7 @@ namespace Levels
                     DestroyImmediate(levelObject.gameObject);
                 }
             }
-            foreach (Tilemap tilemap in FindObjectsOfType<Tilemap>())
+            foreach (Tilemap tilemap in GetComponentsInChildren<Tilemap>())
             {
                 tilemap.ClearAllTiles();
             }
@@ -36,7 +36,7 @@ namespace Levels
         public void SaveLevel()
         {
             List<LevelObjectData> objects = new List<LevelObjectData>();
-            foreach (LevelObjectBase objScript in FindObjectsOfType<LevelObjectBase>()) // [TODO] only look in children of LevelBuilder
+            foreach (LevelObjectBase objScript in GetComponentsInChildren<LevelObjectBase>())
             {
                 LevelObjectData objData = objScript.ToData();
                 objects.Add(objData);
@@ -44,7 +44,7 @@ namespace Levels
 
             Undo.RecordObject(currentLevel, "Save Level Data");
             currentLevel.objects = objects.ToArray();
-            foreach (Tilemap tilemap in FindObjectsOfType<Tilemap>()) // [TODO] only look in children of LevelBuilder
+            foreach (Tilemap tilemap in GetComponentsInChildren<Tilemap>())
             {
                 currentLevel.SaveTilemap(tilemap.gameObject.name, tilemap);
             }
@@ -61,27 +61,27 @@ namespace Levels
         public void ReloadLevel()
         {
             Hashtable objFolders = new Hashtable();
-            objFolders[""] = null; // [TODO] eww
+            objFolders[""] = null; // Null transform if no parent specified
 
             ClearLevel();
 
             foreach (LevelObjectData objData in currentLevel.objects)
             {
                 // Find the LevelObject's parent object with caching.
-                GameObject objFolder;
+                Transform objFolder;
                 if (objFolders.ContainsKey(objData.parentName) == false)
                 {
-                    objFolder = GameObject.Find(objData.parentName);
+                    objFolder = transform.Find(objData.parentName);
                     if (objFolder == null)
                     {
                         Debug.Log(objData.name + ": Parent (" + objData.parentName + ") not found! Orphaning object...");
-                        objFolder = gameObject;
+                        objFolder = transform;
                     }
                     objFolders[objData.parentName] = objFolder;
                 }
                 else
                 {
-                    objFolder = objFolders[objData.parentName] as GameObject;
+                    objFolder = objFolders[objData.parentName] as Transform;
                 }
 
                 // Create the LevelObject
@@ -89,8 +89,10 @@ namespace Levels
                 //Transform target = Instantiate(objData.prefab, objFolder);
                 if (objFolder != null)
                 {
-                    target.parent = objFolder.transform;
+                    target.parent = objFolder;
                 }
+
+                // Load LevelObjectData
                 LevelObjectBase objScript = target.GetComponent<LevelObjectBase>();
                 if (objScript == null)
                 {
@@ -102,7 +104,7 @@ namespace Levels
                 }
             }
 
-            foreach (Tilemap tilemap in FindObjectsOfType<Tilemap>())
+            foreach (Tilemap tilemap in GetComponentsInChildren<Tilemap>())
             {
                 currentLevel.LoadTilemap(tilemap.gameObject.name, tilemap);
             }
