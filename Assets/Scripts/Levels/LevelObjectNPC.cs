@@ -26,9 +26,9 @@ public class LevelObjectNPC : LevelObjectBase
         {
             script.dialogue = objData.data["Dialogue"] as Dialogue;
         }
-        if (script.dialogue == null)
+        if (script == null || script.dialogue == null)
         {
-            Debug.LogWarning(objData.name + ": Failed to load dialogue!");
+            OnLoadError();
         }
     }
 }

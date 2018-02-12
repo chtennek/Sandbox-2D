@@ -35,6 +35,11 @@ public class WaypointMovement : MonoBehaviour
         waypoints.Enqueue(position);
     }
 
+    public void ClearWaypoints()
+    {
+        waypoints.Clear();
+    }
+
     private IEnumerator Run()
     {
         while (true)
@@ -43,7 +48,10 @@ public class WaypointMovement : MonoBehaviour
             {
                 float waitTime = ApplyNextWaypoint();
                 yield return new WaitForSeconds(waitTime);
-                waypoints.Dequeue();
+                if (waypoints.Count > 0)
+                {
+                    waypoints.Dequeue();
+                }
             }
             else
             {

@@ -9,6 +9,7 @@ namespace Levels
     public class LevelBuilder : MonoBehaviour
     {
         public Level currentLevel;
+        public Transform playerPrefab; // [TODO] find a better spot for this
 
         #region Editor functions
         public void ClearLevel()
@@ -73,7 +74,8 @@ namespace Levels
                     objFolder = GameObject.Find(objData.parentName);
                     if (objFolder == null)
                     {
-                        Debug.LogWarning(objData.name + ": Parent (" + objData.parentName + ") not found! Orphaning object...");
+                        Debug.Log(objData.name + ": Parent (" + objData.parentName + ") not found! Orphaning object...");
+                        objFolder = gameObject;
                     }
                     objFolders[objData.parentName] = objFolder;
                 }

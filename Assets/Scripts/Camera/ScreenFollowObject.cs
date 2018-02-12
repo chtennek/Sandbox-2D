@@ -29,7 +29,10 @@ public class ScreenFollowObject : MonoBehaviour
         Vector3 sum = Vector3.zero;
         foreach (Transform t in objects)
         {
-            sum += t.position;
+            if (t != null)
+            {
+                sum += t.position;
+            }
         }
 
         sum.z = transform.position.z; // Keep the camera at a fixed depth

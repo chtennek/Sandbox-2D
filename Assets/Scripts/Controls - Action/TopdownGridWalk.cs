@@ -32,12 +32,18 @@ public class TopdownGridWalk : MonoBehaviour
     private void Update()
     {
         Vector2 toDestination = destination - transform.position;
+
+        // Check if we are close enough to buffer the next movement
         if (wm.WaypointCount() <= 1 && Mathf.Abs(toDestination.x) <= bufferWindow * gridCellSize.x && Mathf.Abs(toDestination.y) <= bufferWindow * gridCellSize.y)
         {
             Vector2 movement = input.GetAxisPairSingle(axisPairName).normalized;
+
+            // Check if there's input or not
             if (movement != Vector2.zero)
             {
                 Vector3 nextWaypoint = destination + Vector3.Scale(movement, gridCellSize);
+
+                // Check if there's something in the way
                 if (Physics2D.OverlapBox(nextWaypoint, col.bounds.size, 0, wallColliderMask) == null)
                 {
                     wm.AddWaypoint(nextWaypoint);

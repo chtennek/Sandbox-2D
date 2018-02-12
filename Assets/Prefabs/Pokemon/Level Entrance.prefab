@@ -19,8 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4382497121235676}
-  - component: {fileID: 114326960188142122}
-  - component: {fileID: 114734734578182134}
+  - component: {fileID: 114153157084794404}
   m_Layer: 0
   m_Name: Level Entrance
   m_TagString: Untagged
@@ -41,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114326960188142122
+--- !u!114 &114153157084794404
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -49,17 +48,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1431574131212904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6280e2fc8bea2e47b83e64e47a035d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b0894334824c6e47851319ebb2b7e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114734734578182134
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1431574131212904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08ba81bf27b14674db742dabd871ad7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  target: {fileID: 0}

@@ -12,27 +12,33 @@ MonoBehaviour:
   m_Name: Player's House - 1F
   m_EditorClassIdentifier: 
   objects:
+  - prefab: {fileID: 4382497121235676, guid: 25c63bcfa0177d743b0bb20b31c2547b, type: 2}
+    name: Pallet Town
+    parentName: Level Start Folder
+    position: {x: -1, y: -2, z: 0}
+    data:
+      m_keys:
+      - Target
+      m_values:
+      - {fileID: 11400000, guid: 61ce5bf868c640844ae4e7b06f6a4b13, type: 2}
   - prefab: {fileID: 4382497121235676, guid: 0aed738b8de23974689c74d5b410d11b, type: 2}
     name: Pallet Town
     parentName: Level Exit Folder
     position: {x: -1, y: -3, z: 0}
     data:
-      m_keys: []
-      m_values: []
+      m_keys:
+      - Target
+      m_values:
+      - {fileID: 11400000, guid: 987ac69b8db8efd4ab0d4d2c160baba2, type: 2}
   - prefab: {fileID: 4382497121235676, guid: 0aed738b8de23974689c74d5b410d11b, type: 2}
     name: Pallet Town
     parentName: Level Exit Folder
     position: {x: 0, y: -3, z: 0}
     data:
-      m_keys: []
-      m_values: []
-  - prefab: {fileID: 4382497121235676, guid: 25c63bcfa0177d743b0bb20b31c2547b, type: 2}
-    name: Pallet Town
-    parentName: Level Entrance Folder
-    position: {x: -1, y: -2, z: 0}
-    data:
-      m_keys: []
-      m_values: []
+      m_keys:
+      - Target
+      m_values:
+      - {fileID: 11400000, guid: 987ac69b8db8efd4ab0d4d2c160baba2, type: 2}
   - prefab: {fileID: 4014893169499282, guid: 78a2594fcefb1ec44b69121a7b303fc5, type: 2}
     name: NPC
     parentName: NPC Folder
@@ -93,9 +99,40 @@ MonoBehaviour:
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 11400000, guid: ad3b90e00064f2d47aeedfb7aa8febb9, type: 2}
-    - origin: {x: -3, y: 0, z: 0}
-      size: {x: 8, y: 6, z: 1}
+    - origin: {x: -4, y: -3, z: 0}
+      size: {x: 10, y: 10, z: 1}
       tiles:
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 0}
@@ -104,6 +141,8 @@ MonoBehaviour:
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 0}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 0}
@@ -112,6 +151,8 @@ MonoBehaviour:
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 0}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 0}
@@ -120,6 +161,8 @@ MonoBehaviour:
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 0}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 0}
@@ -128,6 +171,8 @@ MonoBehaviour:
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 0}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
       - {fileID: 11400000, guid: b8ad965afcd60404ab4728abb49c4a94, type: 2}
       - {fileID: 11400000, guid: b8ad965afcd60404ab4728abb49c4a94, type: 2}
       - {fileID: 0}
@@ -136,6 +181,8 @@ MonoBehaviour:
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 0}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
       - {fileID: 11400000, guid: 171a56052976d8e47ad5f319558fc3a0, type: 2}
       - {fileID: 11400000, guid: 171a56052976d8e47ad5f319558fc3a0, type: 2}
       - {fileID: 11400000, guid: 95874f341607c184a870c2f8657a5c70, type: 2}
@@ -144,6 +191,17 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 89983fe61dae69e48b80e59e31904f70, type: 2}
       - {fileID: 11400000, guid: 95874f341607c184a870c2f8657a5c70, type: 2}
       - {fileID: 11400000, guid: 89983fe61dae69e48b80e59e31904f70, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
+      - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
     - origin: {x: -3, y: -2, z: 0}
       size: {x: 8, y: 7, z: 1}
       tiles:

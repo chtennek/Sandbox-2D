@@ -13,56 +13,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objects:
   - prefab: {fileID: 4382497121235676, guid: 25c63bcfa0177d743b0bb20b31c2547b, type: 2}
-    name: Other House
-    parentName: Level Entrance Folder
-    position: {x: 5, y: -1, z: 0}
+    name: Prof. Oak's Lab
+    parentName: Level Start Folder
+    position: {x: 4, y: -7, z: 0}
     data:
       m_keys: []
       m_values: []
-  - prefab: {fileID: 4014893169499282, guid: 78a2594fcefb1ec44b69121a7b303fc5, type: 2}
-    name: Lass
-    parentName: NPC Folder
-    position: {x: -4, y: -3, z: 0}
+  - prefab: {fileID: 4382497121235676, guid: 25c63bcfa0177d743b0bb20b31c2547b, type: 2}
+    name: Player's House
+    parentName: Level Start Folder
+    position: {x: -3, y: -1, z: 0}
     data:
       m_keys:
-      - Dialogue
+      - Target
       m_values:
-      - {fileID: 11400000, guid: c6ee629a0c3bc43e5ad92bedc67777ad, type: 2}
+      - {fileID: 11400000, guid: 987ac69b8db8efd4ab0d4d2c160baba2, type: 2}
+  - prefab: {fileID: 4382497121235676, guid: 25c63bcfa0177d743b0bb20b31c2547b, type: 2}
+    name: Other House
+    parentName: Level Start Folder
+    position: {x: 5, y: -1, z: 0}
+    data:
+      m_keys:
+      - Target
+      m_values:
+      - {fileID: 11400000, guid: d0379f3ba07dcbc44978d23b35639310, type: 2}
   - prefab: {fileID: 4382497121235676, guid: 0aed738b8de23974689c74d5b410d11b, type: 2}
     name: Prof. Oak's Lab
     parentName: Level Exit Folder
     position: {x: 4, y: -6, z: 0}
     data:
-      m_keys: []
-      m_values: []
-  - prefab: {fileID: 4382497121235676, guid: 25c63bcfa0177d743b0bb20b31c2547b, type: 2}
-    name: Player's House
-    parentName: Level Entrance Folder
-    position: {x: -3, y: -1, z: 0}
-    data:
-      m_keys: []
-      m_values: []
-  - prefab: {fileID: 4382497121235676, guid: 0aed738b8de23974689c74d5b410d11b, type: 2}
-    name: Player's House
-    parentName: Level Exit Folder
-    position: {x: -3, y: 0, z: 0}
-    data:
-      m_keys: []
-      m_values: []
+      m_keys:
+      - Target
+      m_values:
+      - {fileID: 0}
   - prefab: {fileID: 4382497121235676, guid: 0aed738b8de23974689c74d5b410d11b, type: 2}
     name: Other House
     parentName: Level Exit Folder
     position: {x: 5, y: 0, z: 0}
     data:
-      m_keys: []
-      m_values: []
-  - prefab: {fileID: 4382497121235676, guid: 25c63bcfa0177d743b0bb20b31c2547b, type: 2}
-    name: Prof. Oak's Lab
-    parentName: Level Entrance Folder
-    position: {x: 4, y: -7, z: 0}
+      m_keys:
+      - Target
+      m_values:
+      - {fileID: 0}
+  - prefab: {fileID: 4382497121235676, guid: 0aed738b8de23974689c74d5b410d11b, type: 2}
+    name: Player's House
+    parentName: Level Exit Folder
+    position: {x: -3, y: 0, z: 0}
     data:
-      m_keys: []
-      m_values: []
+      m_keys:
+      - Target
+      m_values:
+      - {fileID: 11400000, guid: 61ce5bf868c640844ae4e7b06f6a4b13, type: 2}
   - prefab: {fileID: 4014893169499282, guid: 78a2594fcefb1ec44b69121a7b303fc5, type: 2}
     name: Man
     parentName: NPC Folder
@@ -72,6 +73,15 @@ MonoBehaviour:
       - Dialogue
       m_values:
       - {fileID: 11400000, guid: ee64c425acaa24c96b01afb68ecd11d6, type: 2}
+  - prefab: {fileID: 4014893169499282, guid: 78a2594fcefb1ec44b69121a7b303fc5, type: 2}
+    name: Lass
+    parentName: NPC Folder
+    position: {x: -4, y: -3, z: 0}
+    data:
+      m_keys:
+      - Dialogue
+      m_values:
+      - {fileID: 11400000, guid: c6ee629a0c3bc43e5ad92bedc67777ad, type: 2}
   tilemaps:
     m_keys:
     - Floor (Decals)

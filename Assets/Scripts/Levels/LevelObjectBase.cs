@@ -21,5 +21,10 @@ namespace Levels
             transform.name = objData.name;
             transform.position = objData.position;
         }
+
+        public void OnLoadError()
+        {
+            Debug.LogWarning(gameObject.name + ": Failed to load " + GetType().Name + "!");
+        }
     }
 }

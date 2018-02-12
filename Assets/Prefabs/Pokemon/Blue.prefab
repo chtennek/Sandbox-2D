@@ -212,7 +212,7 @@ MonoBehaviour:
   gridCellSize: {x: 1, y: 1}
   wallColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 3072
 --- !u!114 &114970431096574708
 MonoBehaviour:
   m_ObjectHideFlags: 1
