@@ -26,9 +26,5 @@ public class LevelObjectNPC : LevelObjectBase
         {
             script.dialogue = objData.data["Dialogue"] as Dialogue;
         }
-        if (script == null || script.dialogue == null)
-        {
-            OnLoadError();
-        }
     }
 }

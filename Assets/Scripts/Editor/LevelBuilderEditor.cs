@@ -14,18 +14,17 @@ public class LevelBuilderEditor : Editor
         if (GUILayout.Button("Save to Current"))
         {
             LevelBuilder builder = target as LevelBuilder;
-            builder.SaveLevel();
+            builder.Save();
         }
         if (GUILayout.Button("Load from Current"))
         {
             LevelBuilder builder = target as LevelBuilder;
-            builder.ReloadLevel();
+            builder.Reload();
         }
-        if (GUILayout.Button("Clear Level"))
+        if (GUILayout.Button("Clear"))
         {
             LevelBuilder builder = target as LevelBuilder;
-            builder.currentLevel = null;
-            builder.ClearLevel();
+            builder.Clear();
         }
         GUILayout.EndHorizontal();
         DrawDefaultInspector();

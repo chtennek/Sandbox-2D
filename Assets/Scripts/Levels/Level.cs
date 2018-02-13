@@ -12,6 +12,12 @@ namespace Levels
         public LevelObjectData[] objects;
         public TilemapDataDictionary tilemaps; // Dictionary<string, LevelTilemapData>
 
+        public string[] GetTilemapNames() {
+            string[] names = new string[tilemaps.Count];
+            tilemaps.Keys.CopyTo(names, 0);
+            return names;
+        }
+
         public void SaveTilemap(string id, Tilemap source)
         {
             tilemaps[id] = new LevelTilemapData(source);

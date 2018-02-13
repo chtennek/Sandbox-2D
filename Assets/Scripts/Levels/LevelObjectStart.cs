@@ -29,10 +29,6 @@ namespace Levels
             {
                 target = objData.data["Target"] as LevelStartLocation;
             }
-            if (target == null)
-            {
-                OnLoadError();
-            }
         }
     }
 }

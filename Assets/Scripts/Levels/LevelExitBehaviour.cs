@@ -18,7 +18,7 @@ namespace Levels
                 Debug.Log("Error finding next Start Location!");
                 return;
             }
-            builder.LoadLevel(startLocation.targetLevel);
+            builder.Load(startLocation.targetLevel);
             Instantiate(builder.playerPrefab, builder.transform.TransformPoint(startLocation.position), Quaternion.identity);
             Destroy(collision.gameObject);
         }

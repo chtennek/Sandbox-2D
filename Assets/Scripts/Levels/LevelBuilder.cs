@@ -6,34 +6,47 @@ using UnityEngine.Tilemaps;
 
 namespace Levels
 {
-    public class LevelBuilder : MonoBehaviour
+    public class LevelBuilder : MonoBehaviour, IBuilder<Level>
     {
-        public Level currentLevel;
+        [SerializeField]
+        private Level current;
         public Transform playerPrefab; // [TODO] find a better spot for this
 
-        #region Editor functions
-        public void ClearLevel()
+        public Level GetCurrent()
         {
-            LevelObjectBase[] levelObjects = GetComponentsInChildren<LevelObjectBase>();
-            Undo.RecordObjects(levelObjects, "Clear Level Objects");
-            foreach (LevelObjectBase levelObject in levelObjects)
+            return current;
+        }
+
+        #region Editor functions
+        public void Clear()
+        {
+            List<Transform> children = new List<Transform>();
+            foreach (Transform child in transform)
+            {
+                if (child.GetComponent<Grid>() != null)
+                    continue;
+                children.Add(child);
+            }
+            Undo.RecordObjects(children.ToArray(), "Clear LevelBuilder");
+            foreach (Transform child in children)
             {
                 if (Application.isPlaying)
                 {
-                    Destroy(levelObject.gameObject);
+                    Destroy(child.gameObject);
                 }
                 else
                 {
-                    DestroyImmediate(levelObject.gameObject);
+                    DestroyImmediate(child.gameObject);
                 }
             }
+
             foreach (Tilemap tilemap in GetComponentsInChildren<Tilemap>())
             {
                 tilemap.ClearAllTiles();
             }
         }
 
-        public void SaveLevel()
+        public void Save()
         {
             List<LevelObjectData> objects = new List<LevelObjectData>();
             foreach (LevelObjectBase objScript in GetComponentsInChildren<LevelObjectBase>())
@@ -42,30 +55,28 @@ namespace Levels
                 objects.Add(objData);
             }
 
-            Undo.RecordObject(currentLevel, "Save Level Data");
-            currentLevel.objects = objects.ToArray();
+            Undo.RecordObject(current, "Save Level Data");
+            current.objects = objects.ToArray();
             foreach (Tilemap tilemap in GetComponentsInChildren<Tilemap>())
             {
-                currentLevel.SaveTilemap(tilemap.gameObject.name, tilemap);
+                current.SaveTilemap(tilemap.gameObject.name, tilemap);
             }
-            EditorUtility.SetDirty(currentLevel);
+            EditorUtility.SetDirty(current);
             AssetDatabase.SaveAssets();
         }
 
-        public void LoadLevel(Level level)
+        public void Load(Level level)
         {
-            currentLevel = level;
-            ReloadLevel();
+            current = level;
+            Reload();
         }
 
-        public void ReloadLevel()
+        private void LoadObjects()
         {
             Hashtable objFolders = new Hashtable();
             objFolders[""] = null; // Null transform if no parent specified
 
-            ClearLevel();
-
-            foreach (LevelObjectData objData in currentLevel.objects)
+            foreach (LevelObjectData objData in current.objects)
             {
                 // Find the LevelObject's parent object with caching.
                 Transform objFolder;
@@ -74,8 +85,10 @@ namespace Levels
                     objFolder = transform.Find(objData.parentName);
                     if (objFolder == null)
                     {
-                        Debug.Log(objData.name + ": Parent (" + objData.parentName + ") not found! Orphaning object...");
-                        objFolder = transform;
+                        Debug.Log(objData.name + ": Parent (" + objData.parentName + ") not found! Creating...");
+                        objFolder = new GameObject(objData.parentName).transform;
+                        objFolder.parent = transform;
+                        objFolder.localPosition = Vector3.zero;
                     }
                     objFolders[objData.parentName] = objFolder;
                 }
@@ -103,11 +116,39 @@ namespace Levels
                     objScript.LoadData(objData);
                 }
             }
+        }
 
-            foreach (Tilemap tilemap in GetComponentsInChildren<Tilemap>())
-            {
-                currentLevel.LoadTilemap(tilemap.gameObject.name, tilemap);
+        private void LoadTilemaps() {
+            Grid grid = GetComponentInChildren<Grid>();
+            string[] tilemapNames = current.GetTilemapNames();
+            Dictionary<string, Tilemap> tilemaps = new Dictionary<string, Tilemap>();
+
+            // Create tilemap objects if we need to
+            foreach (string tilemapName in tilemapNames) {
+                Transform tilemap = grid.transform.Find(tilemapName);
+                if (tilemap == null) {
+                    Debug.Log(tilemapName + " Tilemap not found! Creating empty tilemap. Check for missing components!");
+                    tilemap = new GameObject(tilemapName).transform;
+                    tilemap.parent = grid.transform;
+                    tilemap.localPosition = Vector3.zero;
+                    tilemap.gameObject.AddComponent<Tilemap>();
+                    tilemap.gameObject.AddComponent<TilemapRenderer>();
+                }
+                tilemaps[tilemapName] = tilemap.GetComponent<Tilemap>();
             }
+
+            // Load tilemap data
+            foreach (string tilemapName in tilemaps.Keys)
+            {
+                current.LoadTilemap(tilemapName, tilemaps[tilemapName]);
+            }
+        }
+
+        public void Reload()
+        {
+            Clear();
+            LoadObjects();
+            LoadTilemaps();
         }
         #endregion
     }

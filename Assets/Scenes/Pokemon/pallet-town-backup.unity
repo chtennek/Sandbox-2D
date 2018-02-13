@@ -417,11 +417,6 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224084988548310990, guid: 5820008a8929dd14fb694e6005142c7a,
     type: 2}
   m_PrefabInternal: {fileID: 285801352}
---- !u!4 &520797174 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4871126052931458, guid: 55f3e1b79fbd6a940a4f4aba845910b7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1997807426}
 --- !u!1 &522583817
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,7 +506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 669307958}
   m_Layer: 0
-  m_Name: Level Entrance Folder
+  m_Name: Level Start Folder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -723,7 +718,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a2249f4d50a654daeb530fdfd7e90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: {fileID: 11400000, guid: 77704c9c068ebfc44b28a2af349bb12b, type: 2}
+  current: {fileID: 11400000, guid: 77704c9c068ebfc44b28a2af349bb12b, type: 2}
+  playerPrefab: {fileID: 0}
 --- !u!4 &1235980641 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4014893169499282, guid: 78a2594fcefb1ec44b69121a7b303fc5,
@@ -972,10 +968,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594b587ae0e16ca4cab886f26a40103d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objects:
-  - {fileID: 520797174}
-  lerpValue: 0.5
-  allowableOffset: 0
 --- !u!1 &1440394828
 GameObject:
   m_ObjectHideFlags: 0

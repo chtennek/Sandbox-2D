@@ -9,6 +9,18 @@ namespace Levels
     [CreateAssetMenu(fileName = "Level Set", menuName = "Level/Level Set")]
     public class LevelSet : ScriptableObject
     {
-        public Level[] levels;
+        public LevelChunk[] chunks;
+    }
+
+    [System.Serializable]
+    public class LevelChunk {
+        public Level level;
+        public Vector3 offset;
+
+        public LevelChunk(Level level, Vector3 offset)
+        {
+            this.level = level;
+            this.offset = offset;
+        }
     }
 }

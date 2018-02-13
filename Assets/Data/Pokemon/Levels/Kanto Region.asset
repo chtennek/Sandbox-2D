@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef7eba051ab24314e974fb60a881540b, type: 3}
   m_Name: Kanto Region
   m_EditorClassIdentifier: 
-  levels:
-  - {fileID: 11400000, guid: c88a2f25cd792044ebae6450f2e6a568, type: 2}
-  - {fileID: 11400000, guid: 77704c9c068ebfc44b28a2af349bb12b, type: 2}
-  - {fileID: 11400000, guid: f255c3e78e5e8be4f810a9ed56116000, type: 2}
-  - {fileID: 11400000, guid: db801617b396d3648bf297da7b339870, type: 2}
+  chunks:
+  - level: {fileID: 11400000, guid: e246e78bbc64645cfa51b3bce88b57f4, type: 2}
+    offset: {x: 0, y: 0, z: 0}
+  - level: {fileID: 11400000, guid: 77704c9c068ebfc44b28a2af349bb12b, type: 2}
+    offset: {x: -3, y: -6, z: 0}

@@ -28,10 +28,6 @@ namespace Levels
             {
                 script.startLocation = objData.data["Target"] as LevelStartLocation;
             }
-            if (script == null || script.startLocation == null)
-            {
-                OnLoadError();
-            }
         }
     }
 }
