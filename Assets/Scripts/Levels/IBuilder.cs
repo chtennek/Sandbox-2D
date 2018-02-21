@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IBuilder<T> where T : ScriptableObject {
+using Levels;
+
+public interface IBuilder {
     void Save();
-    void Load(T data);
+    void Load(Level data);
     void Reload();
     void Clear();
-    T GetCurrent();
+    Level GetCurrent();
 }

@@ -11,12 +11,17 @@ public class LevelBuilderEditor : Editor
     public override void OnInspectorGUI()
     {
         GUILayout.BeginHorizontal();
-        if (GUILayout.Button("Save to Current"))
+        if (GUILayout.Button("Save"))
         {
             LevelBuilder builder = target as LevelBuilder;
             builder.Save();
         }
-        if (GUILayout.Button("Load from Current"))
+        if (GUILayout.Button("Save All"))
+        {
+            LevelBuilder builder = target as LevelBuilder;
+            builder.SaveAll();
+        }
+        if (GUILayout.Button("Load"))
         {
             LevelBuilder builder = target as LevelBuilder;
             builder.Reload();

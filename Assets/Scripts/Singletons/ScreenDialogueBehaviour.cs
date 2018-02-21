@@ -56,7 +56,6 @@ public sealed class ScreenDialogueBehaviour : MonoBehaviour, IPointerClickHandle
             Destroy(gameObject);
             return false;
         }
-        DontDestroyOnLoad(gameObject);
         return true;
     }
     #endregion

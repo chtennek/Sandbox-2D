@@ -8,11 +8,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef7eba051ab24314e974fb60a881540b, type: 3}
+  m_Script: {fileID: 11500000, guid: eab5728753c7ff44eac515d0662cc134, type: 3}
   m_Name: Kanto Region
   m_EditorClassIdentifier: 
   chunks:
-  - level: {fileID: 11400000, guid: e246e78bbc64645cfa51b3bce88b57f4, type: 2}
-    offset: {x: 0, y: 0, z: 0}
   - level: {fileID: 11400000, guid: 77704c9c068ebfc44b28a2af349bb12b, type: 2}
     offset: {x: -3, y: -6, z: 0}
+  - level: {fileID: 11400000, guid: e246e78bbc64645cfa51b3bce88b57f4, type: 2}
+    offset: {x: 0, y: 0, z: 0}
+  objects: []
+  tilemaps:
+    m_keys: []
+    m_values: []

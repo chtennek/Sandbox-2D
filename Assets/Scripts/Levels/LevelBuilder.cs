@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 
 namespace Levels
 {
-    public class LevelBuilder : MonoBehaviour, IBuilder<Level>
+    public class LevelBuilder : MonoBehaviour, IBuilder
     {
         [SerializeField]
         private Level current;
@@ -20,13 +20,14 @@ namespace Levels
         #region Editor functions
         public void Clear()
         {
+            // Get all child objects to destroy
             List<Transform> children = new List<Transform>();
             foreach (Transform child in transform)
             {
-                if (child.GetComponent<Grid>() != null)
-                    continue;
                 children.Add(child);
             }
+
+            // Destroy children
             Undo.RecordObjects(children.ToArray(), "Clear LevelBuilder");
             foreach (Transform child in children)
             {
@@ -40,27 +41,71 @@ namespace Levels
                 }
             }
 
+            // Clear tilemaps
             foreach (Tilemap tilemap in GetComponentsInChildren<Tilemap>())
             {
                 tilemap.ClearAllTiles();
             }
         }
 
+        public void SaveAll()
+        {
+            foreach (LevelBuilder builder in GetComponentsInChildren<LevelBuilder>())
+            {
+                builder.Save();
+            }
+        }
+
         public void Save()
         {
-            List<LevelObjectData> objects = new List<LevelObjectData>();
-            foreach (LevelObjectBase objScript in GetComponentsInChildren<LevelObjectBase>())
+            // Get all non-chunk children
+            Transform gridChild = null;
+            List<Transform> chunkChildren = new List<Transform>();
+            List<Transform> levelChildren = new List<Transform>();
+            foreach (Transform child in transform)
             {
-                LevelObjectData objData = objScript.ToData();
-                objects.Add(objData);
+                if (child.GetComponent<Grid>() != null)
+                    gridChild = child;
+                else if (child.GetComponent<LevelBuilder>() != null)
+                    chunkChildren.Add(child);
+                else
+                    levelChildren.Add(child);
+            }
+
+            // Find level objects to save
+            List<LevelObjectData> objects = new List<LevelObjectData>();
+            foreach (Transform child in levelChildren) {
+                foreach (LevelObjectBase objScript in child.GetComponentsInChildren<LevelObjectBase>())
+                {
+                    LevelObjectData objData = objScript.ToData();
+                    objects.Add(objData);
+                }
+            }
+
+            List<LevelChunk> chunks = new List<LevelChunk>();
+            foreach (Transform child in chunkChildren) {
+                LevelBuilder builder = child.GetComponent<LevelBuilder>();
+                if (builder.current == null) {
+                    Debug.LogWarning("Chunk has no level specified! Skipping save...");
+                    continue;
+                }
+                chunks.Add(new LevelChunk(builder.GetCurrent(), child.localPosition));
             }
 
             Undo.RecordObject(current, "Save Level Data");
+
+            current.chunks = chunks.ToArray();
             current.objects = objects.ToArray();
-            foreach (Tilemap tilemap in GetComponentsInChildren<Tilemap>())
-            {
-                current.SaveTilemap(tilemap.gameObject.name, tilemap);
+
+            current.ClearTilemaps();
+            if (gridChild != null) {
+                current.gridPosition = gridChild.localPosition;
+                foreach (Tilemap tilemap in gridChild.GetComponentsInChildren<Tilemap>())
+                {
+                    current.SaveTilemap(tilemap.gameObject.name, tilemap);
+                }
             }
+
             EditorUtility.SetDirty(current);
             AssetDatabase.SaveAssets();
         }
@@ -69,6 +114,30 @@ namespace Levels
         {
             current = level;
             Reload();
+        }
+
+        public void Reload()
+        {
+            Clear();
+            if (current == null)
+                return;
+            LoadTilemaps();
+            LoadObjects();
+            LoadChunks();
+        }
+        #endregion
+
+        #region Loading functions
+        private void LoadChunks() {
+            foreach (LevelChunk chunk in current.chunks)
+            {
+                Transform target = new GameObject("Level Chunk").transform;
+                target.parent = transform;
+                target.localPosition = chunk.offset;
+
+                LevelBuilder script = target.gameObject.AddComponent<LevelBuilder>();
+                script.Load(chunk.level);
+            }
         }
 
         private void LoadObjects()
@@ -85,7 +154,6 @@ namespace Levels
                     objFolder = transform.Find(objData.parentName);
                     if (objFolder == null)
                     {
-                        Debug.Log(objData.name + ": Parent (" + objData.parentName + ") not found! Creating...");
                         objFolder = new GameObject(objData.parentName).transform;
                         objFolder.parent = transform;
                         objFolder.localPosition = Vector3.zero;
@@ -120,6 +188,12 @@ namespace Levels
 
         private void LoadTilemaps() {
             Grid grid = GetComponentInChildren<Grid>();
+            if (grid == null) {
+                grid = new GameObject("Grid").AddComponent<Grid>();
+                grid.transform.parent = transform;
+                grid.transform.localPosition = current.gridPosition;
+            }
+
             string[] tilemapNames = current.GetTilemapNames();
             Dictionary<string, Tilemap> tilemaps = new Dictionary<string, Tilemap>();
 
@@ -127,7 +201,6 @@ namespace Levels
             foreach (string tilemapName in tilemapNames) {
                 Transform tilemap = grid.transform.Find(tilemapName);
                 if (tilemap == null) {
-                    Debug.Log(tilemapName + " Tilemap not found! Creating empty tilemap. Check for missing components!");
                     tilemap = new GameObject(tilemapName).transform;
                     tilemap.parent = grid.transform;
                     tilemap.localPosition = Vector3.zero;
@@ -142,13 +215,6 @@ namespace Levels
             {
                 current.LoadTilemap(tilemapName, tilemaps[tilemapName]);
             }
-        }
-
-        public void Reload()
-        {
-            Clear();
-            LoadObjects();
-            LoadTilemaps();
         }
         #endregion
     }

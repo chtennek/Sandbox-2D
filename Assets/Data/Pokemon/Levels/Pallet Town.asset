@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eab5728753c7ff44eac515d0662cc134, type: 3}
   m_Name: Pallet Town
   m_EditorClassIdentifier: 
+  chunks: []
   objects:
   - prefab: {fileID: 4014893169499282, guid: 78a2594fcefb1ec44b69121a7b303fc5, type: 2}
     name: Lass
@@ -78,6 +79,7 @@ MonoBehaviour:
       - Target
       m_values:
       - {fileID: 0}
+  gridPosition: {x: -0.5, y: -0.5, z: 0}
   tilemaps:
     m_keys:
     - Floor (Decals)
@@ -87,6 +89,8 @@ MonoBehaviour:
     m_values:
     - origin: {x: -8, y: -12, z: 0}
       size: {x: 20, y: 18, z: 1}
+      orderInLayer: 0
+      hasCollider: 0
       tiles:
       - {fileID: 0}
       - {fileID: 0}
@@ -450,6 +454,8 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 95f5357827a8bb44fa944bcf6e986ecc, type: 2}
     - origin: {x: -8, y: -12, z: 0}
       size: {x: 20, y: 18, z: 1}
+      orderInLayer: 2
+      hasCollider: 1
       tiles:
       - {fileID: 11400000, guid: be2c3074d65552f4bb6ad8cc09e0c302, type: 2}
       - {fileID: 11400000, guid: be2c3074d65552f4bb6ad8cc09e0c302, type: 2}
@@ -813,6 +819,8 @@ MonoBehaviour:
       - {fileID: 0}
     - origin: {x: -8, y: -12, z: 0}
       size: {x: 20, y: 18, z: 1}
+      orderInLayer: 0
+      hasCollider: 0
       tiles:
       - {fileID: 0}
       - {fileID: 0}
@@ -1176,6 +1184,8 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 95f5357827a8bb44fa944bcf6e986ecc, type: 2}
     - origin: {x: 0, y: 0, z: 0}
       size: {x: 4, y: 6, z: 1}
+      orderInLayer: 1
+      hasCollider: 0
       tiles:
       - {fileID: 0}
       - {fileID: 0}
