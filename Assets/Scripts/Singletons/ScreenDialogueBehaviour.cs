@@ -18,7 +18,7 @@ public sealed class ScreenDialogueBehaviour : MonoBehaviour, IPointerClickHandle
     [Header("Properties")]
     public float textSpeed; // characters per second
 
-    private string currentLine;
+    private string currentLine; // [TODO] Use a queue
     private int nextLineIndex;
     private bool advanceScript;
 
@@ -32,7 +32,7 @@ public sealed class ScreenDialogueBehaviour : MonoBehaviour, IPointerClickHandle
         {
             if (_current == null)
             {
-                _current = GameObject.FindObjectOfType<ScreenDialogueBehaviour>();
+                _current = FindObjectOfType<ScreenDialogueBehaviour>();
 
                 if (_current == null)
                 {
