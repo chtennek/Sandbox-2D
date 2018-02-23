@@ -129,6 +129,9 @@ namespace Levels
 
         #region Loading functions
         private void LoadChunks() {
+            if (current.chunks == null)
+                return;
+            
             foreach (LevelChunk chunk in current.chunks)
             {
                 Transform target = new GameObject("Level Chunk").transform;
