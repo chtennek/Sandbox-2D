@@ -367,7 +367,7 @@ Prefab:
     - target: {fileID: 224301057659154160, guid: 163cb1cb98cf2493ab7fff3313319956,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 85.68773
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224301057659154160, guid: 163cb1cb98cf2493ab7fff3313319956,
         type: 2}
@@ -574,7 +574,7 @@ Prefab:
     - target: {fileID: 224266746528422440, guid: 37290258189ff1d418d4ceb516f01ca4,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -28.921932
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224266746528422440, guid: 37290258189ff1d418d4ceb516f01ca4,
         type: 2}
@@ -584,7 +584,7 @@ Prefab:
     - target: {fileID: 224266746528422440, guid: 37290258189ff1d418d4ceb516f01ca4,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 17.843866
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224266746528422440, guid: 37290258189ff1d418d4ceb516f01ca4,
         type: 2}
@@ -634,7 +634,7 @@ Prefab:
     - target: {fileID: 224183553402041190, guid: 37290258189ff1d418d4ceb516f01ca4,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -8.921933
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224260090026494820, guid: 37290258189ff1d418d4ceb516f01ca4,
         type: 2}
@@ -654,17 +654,17 @@ Prefab:
     - target: {fileID: 224260090026494820, guid: 37290258189ff1d418d4ceb516f01ca4,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 62.45353
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224260090026494820, guid: 37290258189ff1d418d4ceb516f01ca4,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 17.843866
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224260090026494820, guid: 37290258189ff1d418d4ceb516f01ca4,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 1639413863541016, guid: 37290258189ff1d418d4ceb516f01ca4, type: 2}
       propertyPath: m_Name
@@ -1001,7 +1001,7 @@ Prefab:
     - target: {fileID: 224266746528422440, guid: 37290258189ff1d418d4ceb516f01ca4,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -56.765797
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224266746528422440, guid: 37290258189ff1d418d4ceb516f01ca4,
         type: 2}
@@ -1011,7 +1011,7 @@ Prefab:
     - target: {fileID: 224266746528422440, guid: 37290258189ff1d418d4ceb516f01ca4,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 17.843866
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224266746528422440, guid: 37290258189ff1d418d4ceb516f01ca4,
         type: 2}
@@ -1061,7 +1061,7 @@ Prefab:
     - target: {fileID: 224183553402041190, guid: 37290258189ff1d418d4ceb516f01ca4,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -8.921933
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224260090026494820, guid: 37290258189ff1d418d4ceb516f01ca4,
         type: 2}
@@ -1086,12 +1086,12 @@ Prefab:
     - target: {fileID: 224260090026494820, guid: 37290258189ff1d418d4ceb516f01ca4,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 17.843866
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224260090026494820, guid: 37290258189ff1d418d4ceb516f01ca4,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 1639413863541016, guid: 37290258189ff1d418d4ceb516f01ca4, type: 2}
       propertyPath: m_Name
@@ -1100,7 +1100,7 @@ Prefab:
     - target: {fileID: 224183553402041190, guid: 37290258189ff1d418d4ceb516f01ca4,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224183553402041190, guid: 37290258189ff1d418d4ceb516f01ca4,
         type: 2}
