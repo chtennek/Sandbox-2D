@@ -23,6 +23,7 @@ MonoBehaviour:
     - origin: {x: -11, y: 0, z: 0}
       size: {x: 20, y: 36, z: 1}
       orderInLayer: 0
+      physicsLayer: 0
       hasCollider: 0
       tiles:
       - {fileID: 11400000, guid: 95f5357827a8bb44fa944bcf6e986ecc, type: 2}
@@ -748,6 +749,7 @@ MonoBehaviour:
     - origin: {x: -8, y: 0, z: 0}
       size: {x: 16, y: 36, z: 1}
       orderInLayer: 2
+      physicsLayer: 10
       hasCollider: 1
       tiles:
       - {fileID: 11400000, guid: 462c5ce6c0edbd7418c29e4ae283bd24, type: 2}
@@ -1329,6 +1331,7 @@ MonoBehaviour:
     - origin: {x: -7, y: 0, z: 0}
       size: {x: 14, y: 30, z: 1}
       orderInLayer: 1
+      physicsLayer: 0
       hasCollider: 0
       tiles:
       - {fileID: 0}

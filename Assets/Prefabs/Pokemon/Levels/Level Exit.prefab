@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8bf2ef8641bb04b8baddfc72d2d415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  startLocation: {fileID: 0}
   triggerMask:
     serializedVersion: 2
     m_Bits: 2048

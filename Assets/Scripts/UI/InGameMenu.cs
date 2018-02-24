@@ -23,9 +23,21 @@ public class InGameMenu : MonoBehaviour
 
         inactiveMask = GetComponent<Mask>();
         if (inactiveMask == null) inactiveMask = gameObject.AddComponent<Mask>();
+
+        if (this.enabled == false) OnDisable();
     }
 
-    void Update()
+    private void OnEnable()
+    {
+        Open();
+    }
+
+    private void OnDisable()
+    {
+        Close();
+    }
+
+    private void Update()
     {
         if (input != null && input.GetButtonDown(buttonName))
         {
@@ -63,6 +75,11 @@ public class InGameMenu : MonoBehaviour
             input.Lock();
             Time.timeScale = 0;
         }
+
+        foreach (Button button in GetComponentsInChildren<Button>())
+        {
+            button.enabled = true;
+        }
         inactiveMask.enabled = false;
         EventSystem.current.SetSelectedGameObject(firstSelected);
     }
@@ -77,6 +94,11 @@ public class InGameMenu : MonoBehaviour
         {
             input.Unlock();
             Time.timeScale = 1;
+        }
+
+        foreach (Button button in GetComponentsInChildren<Button>())
+        {
+            button.enabled = false;
         }
         inactiveMask.enabled = true;
     }

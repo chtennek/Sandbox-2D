@@ -43,15 +43,19 @@ MonoBehaviour:
     parentName: Level Start Folder
     position: {x: 5, y: -1, z: 0}
     data:
-      m_keys: []
-      m_values: []
+      m_keys:
+      - Target
+      m_values:
+      - {fileID: 11400000, guid: d0379f3ba07dcbc44978d23b35639310, type: 2}
   - prefab: {fileID: 4382497121235676, guid: 25c63bcfa0177d743b0bb20b31c2547b, type: 2}
     name: Player's House
     parentName: Level Start Folder
     position: {x: -3, y: -1, z: 0}
     data:
-      m_keys: []
-      m_values: []
+      m_keys:
+      - Target
+      m_values:
+      - {fileID: 11400000, guid: 987ac69b8db8efd4ab0d4d2c160baba2, type: 2}
   - prefab: {fileID: 4382497121235676, guid: 0aed738b8de23974689c74d5b410d11b, type: 2}
     name: Player's House
     parentName: Level Exit Folder
@@ -89,7 +93,8 @@ MonoBehaviour:
     m_values:
     - origin: {x: -8, y: -12, z: 0}
       size: {x: 20, y: 18, z: 1}
-      orderInLayer: 0
+      orderInLayer: 1
+      physicsLayer: 0
       hasCollider: 0
       tiles:
       - {fileID: 0}
@@ -455,6 +460,7 @@ MonoBehaviour:
     - origin: {x: -8, y: -12, z: 0}
       size: {x: 20, y: 18, z: 1}
       orderInLayer: 2
+      physicsLayer: 10
       hasCollider: 1
       tiles:
       - {fileID: 11400000, guid: be2c3074d65552f4bb6ad8cc09e0c302, type: 2}
@@ -820,6 +826,7 @@ MonoBehaviour:
     - origin: {x: -8, y: -12, z: 0}
       size: {x: 20, y: 18, z: 1}
       orderInLayer: 0
+      physicsLayer: 0
       hasCollider: 0
       tiles:
       - {fileID: 0}
@@ -1185,6 +1192,7 @@ MonoBehaviour:
     - origin: {x: 0, y: 0, z: 0}
       size: {x: 4, y: 6, z: 1}
       orderInLayer: 1
+      physicsLayer: 0
       hasCollider: 0
       tiles:
       - {fileID: 0}

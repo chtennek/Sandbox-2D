@@ -53,32 +53,15 @@ public class PlaySessionManager : MonoBehaviour
     public void Awake()
     {
         if (EnsureSingleton() == false) return;
-    }
 
-    public void OnEnable()
-    {
         SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    public void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == gameScene)
         {
-            LevelBuilder builder = FindObjectOfType<LevelBuilder>();
-            if (builder == null)
-            {
-                Debug.LogError("Game scene doesn't contain a level builder!");
-            }
-            if (currentLevel != null)
-            {
-                builder.Load(currentLevel);
-            }
-            Destroy(gameObject); // [TODO] use singleton instead of this?
+            LevelManager.LoadLevel(currentLevel);
         }
     }
 

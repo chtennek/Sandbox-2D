@@ -50,6 +50,7 @@ namespace Levels
         public Vector3Int size;
 
         public int orderInLayer;
+        public int physicsLayer;
         public bool hasCollider;
 
         public TileBase[] tiles;
@@ -64,6 +65,7 @@ namespace Levels
             this.origin = tilemap.origin;
             this.size = tilemap.size;
             this.orderInLayer = tilemap.GetComponent<TilemapRenderer>().sortingOrder;
+            this.physicsLayer = tilemap.gameObject.layer;
             this.hasCollider = tilemap.GetComponent<TilemapCollider2D>();
 
             tiles = new TileBase[tilemap.size.x * tilemap.size.y];
@@ -74,6 +76,8 @@ namespace Levels
         public void Load(Tilemap tilemap)
         {
             tilemap.GetComponent<TilemapRenderer>().sortingOrder = this.orderInLayer;
+            tilemap.gameObject.layer = this.physicsLayer;
+
             if (this.hasCollider) {
                 tilemap.gameObject.AddComponent<TilemapCollider2D>();
             }
