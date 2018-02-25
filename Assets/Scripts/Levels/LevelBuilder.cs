@@ -74,7 +74,8 @@ namespace Levels
 
             // Find level objects to save
             List<LevelObjectData> objects = new List<LevelObjectData>();
-            foreach (Transform child in levelChildren) {
+            foreach (Transform child in levelChildren)
+            {
                 foreach (LevelObjectBase objScript in child.GetComponentsInChildren<LevelObjectBase>())
                 {
                     LevelObjectData objData = objScript.ToData();
@@ -83,9 +84,11 @@ namespace Levels
             }
 
             List<LevelChunk> chunks = new List<LevelChunk>();
-            foreach (Transform child in chunkChildren) {
+            foreach (Transform child in chunkChildren)
+            {
                 LevelBuilder builder = child.GetComponent<LevelBuilder>();
-                if (builder.current == null) {
+                if (builder.current == null)
+                {
                     Debug.LogWarning("Chunk has no level specified! Skipping save...");
                     continue;
                 }
@@ -98,7 +101,8 @@ namespace Levels
             current.objects = objects.ToArray();
 
             current.ClearTilemaps();
-            if (gridChild != null) {
+            if (gridChild != null)
+            {
                 current.gridPosition = gridChild.localPosition;
                 foreach (Tilemap tilemap in gridChild.GetComponentsInChildren<Tilemap>())
                 {
@@ -106,7 +110,7 @@ namespace Levels
                 }
             }
 
-            EditorUtility.SetDirty(current);
+            //EditorUtility.SetDirty(current);
             AssetDatabase.SaveAssets();
         }
 
@@ -128,10 +132,11 @@ namespace Levels
         #endregion
 
         #region Loading functions
-        private void LoadChunks() {
+        private void LoadChunks()
+        {
             if (current.chunks == null)
                 return;
-            
+
             foreach (LevelChunk chunk in current.chunks)
             {
                 Transform target = new GameObject("Level Chunk").transform;
@@ -189,9 +194,11 @@ namespace Levels
             }
         }
 
-        private void LoadTilemaps() {
+        private void LoadTilemaps()
+        {
             Grid grid = GetComponentInChildren<Grid>();
-            if (grid == null) {
+            if (grid == null)
+            {
                 grid = new GameObject("Grid").AddComponent<Grid>();
                 grid.transform.parent = transform;
                 grid.transform.localPosition = current.gridPosition;
@@ -201,9 +208,11 @@ namespace Levels
             Dictionary<string, Tilemap> tilemaps = new Dictionary<string, Tilemap>();
 
             // Create tilemap objects if we need to
-            foreach (string tilemapName in tilemapNames) {
+            foreach (string tilemapName in tilemapNames)
+            {
                 Transform tilemap = grid.transform.Find(tilemapName);
-                if (tilemap == null) {
+                if (tilemap == null)
+                {
                     tilemap = new GameObject(tilemapName).transform;
                     tilemap.parent = grid.transform;
                     tilemap.localPosition = Vector3.zero;

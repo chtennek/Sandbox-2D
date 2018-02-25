@@ -367,10 +367,6 @@
     <Compile Include="Assets\Plugins\Rewired\Internal\Scripts\InputManager.cs" />
     <Compile Include="Assets\Plugins\Rewired\Internal\Scripts\Misc\ExternalTools.cs" />
     <Compile Include="Assets\Plugins\Rewired\Internal\Scripts\Platforms\Ouya\OuyaInputSource.cs" />
-    <Compile Include="Assets\Plugins\rotorz-classtypereference\Assets\ClassTypeReference\ClassTypeConstraintAttribute.cs" />
-    <Compile Include="Assets\Plugins\rotorz-classtypereference\Assets\ClassTypeReference\ClassTypeReference.cs" />
-    <Compile Include="Assets\Plugins\rotorz-classtypereference\Assets\Example\ExampleBehaviour.cs" />
-    <Compile Include="Assets\Plugins\rotorz-classtypereference\Assets\Example\Special.cs" />
     <Compile Include="Assets\Plugins\SerializableDictionary\Example\SerializableDictionaryExample.cs" />
     <Compile Include="Assets\Plugins\SerializableDictionary\Example\UserSerializableDictionaries.cs" />
     <Compile Include="Assets\Plugins\SerializableDictionary\SerializableDictionary.cs" />

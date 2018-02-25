@@ -516,7 +516,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 1
-        _actionId: 12
+        _actionId: 14
         _elementType: 1
         _elementIdentifierId: 15
         _axisRange: 0
@@ -526,10 +526,32 @@ MonoBehaviour:
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
+      - _actionCategoryId: 1
+        _actionId: 15
+        _elementType: 1
+        _elementIdentifierId: 5
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 2
+        _actionId: 29
+        _elementType: 1
+        _elementIdentifierId: 4
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
       - _actionCategoryId: 2
         _actionId: 13
-        _elementType: 1
-        _elementIdentifierId: 7
+        _elementType: 0
+        _elementIdentifierId: 0
         _axisRange: 0
         _invert: 0
         _axisContribution: 0
@@ -539,19 +561,8 @@ MonoBehaviour:
         _modifierKey3: 0
       - _actionCategoryId: 2
         _actionId: 16
-        _elementType: 1
-        _elementIdentifierId: 8
-        _axisRange: 0
-        _invert: 0
-        _axisContribution: 0
-        _keyboardKeyCode: 0
-        _modifierKey1: 0
-        _modifierKey2: 0
-        _modifierKey3: 0
-      - _actionCategoryId: 2
-        _actionId: 14
-        _elementType: 1
-        _elementIdentifierId: 4
+        _elementType: 0
+        _elementIdentifierId: 1
         _axisRange: 0
         _invert: 0
         _axisContribution: 0

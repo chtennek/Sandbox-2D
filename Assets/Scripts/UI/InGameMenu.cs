@@ -2,59 +2,76 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 using Rewired;
 
 public class InGameMenu : MonoBehaviour
 {
-    public string buttonName = "UIStart";
-    public InputReceiver input;
 
+    [Header("Input")]
+    public InputReceiver input;
     public bool lockInput = true;
-    public bool buttonClosesMenu = true;
     public GameObject firstSelected;
 
-    private Mask inactiveMask;
+    [Header("Button")]
+    public string openInputName = "UIStart";
+    public string closeInputName = "UIStart";
+    public string cancelInputName = "UICancel";
 
-    public void Awake()
+    [Header("Cancel")]
+    public bool closeOnCancel = false;
+    public Button invokeOnCancel;
+    public UnityEvent onCancel;
+
+    private Mask disabledMask;
+
+    private void Awake()
     {
-        if (input == null) enabled = false;
+        if (input == null)
+        {
+            Debug.LogWarning(gameObject.name + ": InputReceiver not specified! Disabling menu.");
+            enabled = false;
+        }
 
-        inactiveMask = GetComponent<Mask>();
-        if (inactiveMask == null) inactiveMask = gameObject.AddComponent<Mask>();
+        disabledMask = GetComponent<Mask>();
+        if (disabledMask == null) disabledMask = gameObject.AddComponent<Mask>();
 
-        if (this.enabled == false) OnDisable();
-    }
-
-    private void OnEnable()
-    {
-        Open();
-    }
-
-    private void OnDisable()
-    {
-        Close();
+        if (disabledMask.enabled == true) Close();
     }
 
     private void Update()
     {
-        if (input != null && input.GetButtonDown(buttonName))
+        if (input != null)
         {
-            if (buttonClosesMenu == true)
-            {
-                Toggle();
-            }
-            else
+            if (disabledMask.enabled == true && input.GetButtonDown(openInputName))
             {
                 Open();
+            }
+            else if (disabledMask.enabled == false && input.GetButtonDown(closeInputName))
+            {
+                Close();
+            }
+            else if (disabledMask.enabled == false && input.GetButtonDown(cancelInputName))
+            {
+                onCancel.Invoke();
+                if (invokeOnCancel != null)
+                {
+                    invokeOnCancel.onClick.Invoke();
+                }
+                if (closeOnCancel == true)
+                {
+                    Close();
+                }
             }
         }
     }
 
-    private void Toggle()
+    public void Toggle()
     {
-        if (inactiveMask.enabled == true)
+        if (disabledMask.enabled == true)
         {
             Open();
         }
@@ -64,12 +81,9 @@ public class InGameMenu : MonoBehaviour
         }
     }
 
-    private void Open()
+    public void Open()
     {
-        if (inactiveMask.enabled == false)
-        {
-            return;
-        }
+        Debug.Log("Open");
         if (lockInput == true)
         {
             input.Lock();
@@ -80,16 +94,13 @@ public class InGameMenu : MonoBehaviour
         {
             button.enabled = true;
         }
-        inactiveMask.enabled = false;
+        disabledMask.enabled = false;
         EventSystem.current.SetSelectedGameObject(firstSelected);
     }
 
-    private void Close()
+    public void Close()
     {
-        if (inactiveMask.enabled == true)
-        {
-            return;
-        }
+        Debug.Log("Close");
         if (lockInput == true)
         {
             input.Unlock();
@@ -100,6 +111,7 @@ public class InGameMenu : MonoBehaviour
         {
             button.enabled = false;
         }
-        inactiveMask.enabled = true;
+        disabledMask.enabled = true;
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }

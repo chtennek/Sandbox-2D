@@ -317,6 +317,7 @@
     <Compile Include="Assets\Scripts\Animation\InputToAnimator.cs" />
     <Compile Include="Assets\Scripts\Animation\RigidbodyToAnimator.cs" />
     <Compile Include="Assets\Scripts\Animation\WaypointToAnimator.cs" />
+    <Compile Include="Assets\Scripts\Camera\ScreenFollowBehaviour.cs" />
     <Compile Include="Assets\Scripts\Camera\ScreenFollowObject.cs" />
     <Compile Include="Assets\Scripts\Camera\ScreenShake.cs" />
     <Compile Include="Assets\Scripts\Controls - Action\FireProjectileByInput.cs" />
@@ -339,6 +340,7 @@
     <Compile Include="Assets\Scripts\Core\Warnings.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Actor.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Dialogue.cs" />
+    <Compile Include="Assets\Scripts\Entities\EntityBase.cs" />
     <Compile Include="Assets\Scripts\Entities\ProjectileDriver.cs" />
     <Compile Include="Assets\Scripts\Entities\ProjectileSpawner.cs" />
     <Compile Include="Assets\Scripts\Input\DefaultInputReceiver.cs" />
@@ -354,21 +356,26 @@
     <Compile Include="Assets\Scripts\Items\ItemBehaviour.cs" />
     <Compile Include="Assets\Scripts\Items\ItemSelector.cs" />
     <Compile Include="Assets\Scripts\Items\ItemSlotBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Levels\IBuilder.cs" />
     <Compile Include="Assets\Scripts\Levels\Level.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelBuilder.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelData.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelExitBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Levels\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelObjectBase.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelObjectExit.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelObjectNPC.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelObjectStart.cs" />
-    <Compile Include="Assets\Scripts\Levels\LevelSet.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelStartLocation.cs" />
     <Compile Include="Assets\Scripts\Pokemon\PokemonActorBehaviour.cs" />
     <Compile Include="Assets\Scripts\Pokemon\PokemonLevel.cs" />
+    <Compile Include="Assets\Scripts\Pokemon\PokemonSpecies.cs" />
     <Compile Include="Assets\Scripts\Singletons\PlaySessionManager.cs" />
     <Compile Include="Assets\Scripts\Singletons\ScreenDialogueBehaviour.cs" />
     <Compile Include="Assets\Scripts\Tiles\BorderedTile.cs" />
+    <Compile Include="Assets\Scripts\UI\DetailDisplay.cs" />
+    <Compile Include="Assets\Scripts\UI\InGameMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\StatusDisplay.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\2d-extras\Assets\Tilemap\Brushes\Tint Brush Smooth\Shaders\TintedTilemap.shader" />

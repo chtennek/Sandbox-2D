@@ -332,7 +332,6 @@
     <Compile Include="Assets\Plugins\Rewired\Internal\Scripts\Editor\CustomInspectors\InputManagerInspector.cs" />
     <Compile Include="Assets\Plugins\Rewired\Internal\Scripts\Editor\CustomInspectors\UserDataStore_PlayerPrefsInspector.cs" />
     <Compile Include="Assets\Plugins\Rewired\Internal\Scripts\Editor\UnityEditorBridge.cs" />
-    <Compile Include="Assets\Plugins\rotorz-classtypereference\Assets\ClassTypeReference\Editor\ClassTypeReferencePropertyDrawer.cs" />
     <Compile Include="Assets\Plugins\SerializableDictionary\Editor\SerializableDictionaryPropertyDrawer.cs" />
     <Compile Include="Assets\Plugins\SerializableDictionary\Example\Editor\UserSerializableDictionaryPropertyDrawers.cs" />
   </ItemGroup>

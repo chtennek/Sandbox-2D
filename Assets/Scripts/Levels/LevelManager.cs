@@ -5,7 +5,8 @@ using UnityEngine;
 using Levels;
 
 [RequireComponent(typeof(LevelBuilder))]
-public class LevelManager : MonoBehaviour {
+public class LevelManager : MonoBehaviour
+{
     public delegate void LevelLoadHandler(Level level);
     public static event LevelLoadHandler OnLevelLoad;
 
@@ -17,10 +18,12 @@ public class LevelManager : MonoBehaviour {
         if (builder != null)
             builder = GetComponent<LevelBuilder>();
 
-        OnLevelLoad += builder.Load;
+        if (OnLevelLoad != null)
+            OnLevelLoad += builder.Load;
     }
 
-    public static void LoadLevel(Level level) {
+    public static void LoadLevel(Level level)
+    {
         if (OnLevelLoad != null)
             OnLevelLoad(level);
     }
