@@ -1,24 +1,26 @@
-level start/pause/end
+handle transition delay for: menus, scenes
 level saving?
-UI templates
-figure out focus (menu nav w/ controller)
 
 move walljump to separate script
 
 
+Effects
+-------
+leaves falling
+
+Transitions
+-----------
+fade out (color)
+tween in from position
+scale 0 -> 1
+
+
+
 Low Priority
 ------------
-Walljump
 fix facing direction corner case
-implement requireInput
-
-OrderFreeMove
-don't push other units
-use pathfinding to go around other units
-
-Finish StrategyGridMove
-figure out how to pull path from A* Seeker
 
 Optimizations
+-------------
 use delegates to communicate with InputReceiver?
 replace Rewired strings with hashes

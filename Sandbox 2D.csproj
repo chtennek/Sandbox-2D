@@ -370,11 +370,13 @@
     <Compile Include="Assets\Scripts\Pokemon\PokemonActorBehaviour.cs" />
     <Compile Include="Assets\Scripts\Pokemon\PokemonLevel.cs" />
     <Compile Include="Assets\Scripts\Pokemon\PokemonSpecies.cs" />
-    <Compile Include="Assets\Scripts\Singletons\PlaySessionManager.cs" />
-    <Compile Include="Assets\Scripts\Singletons\ScreenDialogueBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Session\PlaySessionManager.cs" />
+    <Compile Include="Assets\Scripts\Session\PlaySessionMessenger.cs" />
+    <Compile Include="Assets\Scripts\Session\ScreenDialogueBehaviour.cs" />
     <Compile Include="Assets\Scripts\Tiles\BorderedTile.cs" />
     <Compile Include="Assets\Scripts\UI\DetailDisplay.cs" />
     <Compile Include="Assets\Scripts\UI\InGameMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\InGameMenuMessenger.cs" />
     <Compile Include="Assets\Scripts\UI\StatusDisplay.cs" />
   </ItemGroup>
   <ItemGroup>

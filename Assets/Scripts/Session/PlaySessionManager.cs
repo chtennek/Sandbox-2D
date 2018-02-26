@@ -67,23 +67,31 @@ public class PlaySessionManager : MonoBehaviour
 
     public void StartGame()
     {
+        if (EnsureSingleton() == false) return;
+
         currentLevel = null;
         SceneManager.LoadScene(gameScene);
     }
 
     public void StartGame(int levelIndex)
     {
+        if (EnsureSingleton() == false) return;
+
         currentLevel = levels[levelIndex];
         SceneManager.LoadScene(gameScene);
     }
 
     public void ToMainMenu()
     {
+        if (EnsureSingleton() == false) return;
+
         SceneManager.LoadScene(mainMenuScene);
     }
 
     public void ExitGame()
     {
+        if (EnsureSingleton() == false) return;
+
         Application.Quit();
     }
 }

@@ -4,11 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 
 using Rewired;
 
-public class InGameMenu : MonoBehaviour
+public class InGameMenu : MonoBehaviour, ICancelHandler
 {
 
     [Header("Input")]
@@ -19,7 +18,6 @@ public class InGameMenu : MonoBehaviour
     [Header("Button")]
     public string openInputName = "UIStart";
     public string closeInputName = "UIStart";
-    public string cancelInputName = "UICancel";
 
     [Header("Cancel")]
     public bool closeOnCancel = false;
@@ -40,6 +38,7 @@ public class InGameMenu : MonoBehaviour
         if (disabledMask == null) disabledMask = gameObject.AddComponent<Mask>();
 
         if (disabledMask.enabled == true) Close();
+        else Open();
     }
 
     private void Update()
@@ -54,18 +53,23 @@ public class InGameMenu : MonoBehaviour
             {
                 Close();
             }
-            else if (disabledMask.enabled == false && input.GetButtonDown(cancelInputName))
-            {
-                onCancel.Invoke();
-                if (invokeOnCancel != null)
-                {
-                    invokeOnCancel.onClick.Invoke();
-                }
-                if (closeOnCancel == true)
-                {
-                    Close();
-                }
-            }
+        }
+    }
+
+    public void OnCancel(BaseEventData eventData)
+    {
+        if (eventData.used == true)
+            return;
+        eventData.Use();
+
+        onCancel.Invoke();
+        if (invokeOnCancel != null)
+        {
+            invokeOnCancel.onClick.Invoke();
+        }
+        if (closeOnCancel == true)
+        {
+            Close();
         }
     }
 
@@ -83,7 +87,7 @@ public class InGameMenu : MonoBehaviour
 
     public void Open()
     {
-        Debug.Log("Open");
+        Debug.Log(gameObject.name + ": Open");
         if (lockInput == true)
         {
             input.Lock();
@@ -100,7 +104,7 @@ public class InGameMenu : MonoBehaviour
 
     public void Close()
     {
-        Debug.Log("Close");
+        Debug.Log(gameObject.name + ": Close");
         if (lockInput == true)
         {
             input.Unlock();

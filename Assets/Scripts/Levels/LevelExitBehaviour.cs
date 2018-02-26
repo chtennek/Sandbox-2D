@@ -12,7 +12,6 @@ namespace Levels
         public void OnTriggerEnter2D(Collider2D collision)
         {
             LevelBuilder builder = transform.root.GetComponent<LevelBuilder>();
-            Debug.Log("Switching level");
             if (builder == null || startLocation == null || startLocation.targetLevel == null)
             {
                 Debug.Log("Error finding next Start Location!");
