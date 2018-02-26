@@ -10,6 +10,11 @@ public abstract class InputReceiver : MonoBehaviour
     #region Lock pattern
     protected static InputReceiver inputLock;
 
+    public void ForceLock()
+    {
+        inputLock = this;
+    }
+
     public bool Lock()
     {
         if (IsUnlocked())
