@@ -13,41 +13,37 @@ public class PlaySessionMessenger : MonoBehaviour
 
     private IEnumerator _StartGame()
     {
-        yield return null;
-        while (isReady == false)
+        do
         {
             yield return null;
-        }
+        } while (isReady == false);
         PlaySessionManager.current.StartGame();
     }
 
     private IEnumerator _StartGame(int levelIndex)
     {
-        yield return null;
-        while (isReady == false)
+        do
         {
             yield return null;
-        }
+        } while (isReady == false);
         PlaySessionManager.current.StartGame(levelIndex);
     }
 
     private IEnumerator _ToMainMenu()
     {
-        yield return null;
-        while (isReady == false)
+        do
         {
             yield return null;
-        }
+        } while (isReady == false);
         PlaySessionManager.current.ToMainMenu();
     }
 
     private IEnumerator _ExitGame()
     {
-        yield return null;
-        while (isReady == false)
+        do
         {
             yield return null;
-        }
+        } while (isReady == false);
         PlaySessionManager.current.ExitGame();
     }
 }

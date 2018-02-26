@@ -334,6 +334,7 @@
     <Compile Include="Assets\Scripts\Controls - Strategy\OrderFreeMove.cs" />
     <Compile Include="Assets\Scripts\Controls - Strategy\OrderGridMove.cs" />
     <Compile Include="Assets\Scripts\Controls - Strategy\WaypointMovement.cs" />
+    <Compile Include="Assets\Scripts\Core\DataSerializer.cs" />
     <Compile Include="Assets\Scripts\Core\Mathv.cs" />
     <Compile Include="Assets\Scripts\Core\SerializableDictionaries.cs" />
     <Compile Include="Assets\Scripts\Core\StatusBar.cs" />
