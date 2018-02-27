@@ -8,7 +8,7 @@ public abstract class InputReceiver : MonoBehaviour
     public float defaultDeadZone = .2f;
 
     #region Lock pattern
-    protected static InputReceiver inputLock;
+    protected static InputReceiver inputLock; // [TODO] find a better way to do this
 
     public void ForceLock()
     {

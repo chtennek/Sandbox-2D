@@ -20,13 +20,17 @@ public class TopdownGridWalk : MonoBehaviour
     private WaypointMovement wm;
     private Collider2D col;
 
+    public void ResetDestination() {
+        destination = transform.position;
+    }
+
     private void Awake()
     {
         input = GetComponent<InputReceiver>();
         wm = GetComponent<WaypointMovement>();
         col = GetComponent<Collider2D>();
 
-        destination = transform.position;
+        ResetDestination();
     }
 
     private void Update()

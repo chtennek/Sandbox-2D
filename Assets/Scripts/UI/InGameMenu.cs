@@ -87,7 +87,6 @@ public class InGameMenu : MonoBehaviour, ICancelHandler
 
     public void Open()
     {
-        Debug.Log(gameObject.name + ": Open");
         if (lockInput == true)
         {
             input.Lock();
@@ -104,7 +103,6 @@ public class InGameMenu : MonoBehaviour, ICancelHandler
 
     public void Close()
     {
-        Debug.Log(gameObject.name + ": Close");
         if (lockInput == true)
         {
             input.Unlock();

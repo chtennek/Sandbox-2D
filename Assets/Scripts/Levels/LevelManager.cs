@@ -10,15 +10,15 @@ public class LevelManager : MonoBehaviour
     public delegate void LevelLoadHandler(Level level);
     public static event LevelLoadHandler OnLevelLoad;
 
-    [SerializeField]
-    private LevelBuilder builder;
+    public LevelBuilder builder;
 
     private void Awake()
     {
-        if (builder != null)
+        if (builder == null)
             builder = GetComponent<LevelBuilder>();
 
-        if (OnLevelLoad != null)
+        return;
+        if (OnLevelLoad != null && builder != null)
             OnLevelLoad += builder.Load;
     }
 

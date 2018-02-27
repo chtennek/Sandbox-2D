@@ -122,13 +122,32 @@ namespace Levels
 
         public void Reload()
         {
-            Clear();
-            if (current == null)
-                return;
-            LoadTilemaps();
-            LoadObjects();
-            LoadChunks();
+            Debug.Log("Loading level: " + current.name);
+            if (Application.isPlaying) { // [TODO] don't have too many of these
+                StartCoroutine("_Reload");
+            }
+            else {
+                Clear();
+                if (current != null)
+                {
+                    LoadTilemaps();
+                    LoadObjects();
+                    LoadChunks();
+                }
+            }
         }
+
+        private IEnumerator _Reload() {
+            Clear();
+            yield return null;
+            if (current != null)
+            {
+                LoadTilemaps();
+                LoadObjects();
+                LoadChunks();
+            }
+        }
+
         #endregion
 
         #region Loading functions
@@ -174,8 +193,7 @@ namespace Levels
                 }
 
                 // Create the LevelObject
-                Transform target = PrefabUtility.InstantiatePrefab(objData.prefab) as Transform;
-                //Transform target = Instantiate(objData.prefab, objFolder);
+                Transform target = InstantiateFromPrefab(objData.prefab);
                 if (objFolder != null)
                 {
                     target.parent = objFolder;
@@ -229,5 +247,14 @@ namespace Levels
             }
         }
         #endregion
+
+        private Transform InstantiateFromPrefab(Transform prefab) {
+            if (Application.isPlaying) {
+                return Instantiate(prefab);
+            }
+            else {
+                return PrefabUtility.InstantiatePrefab(prefab) as Transform;
+            }
+        }
     }
 }

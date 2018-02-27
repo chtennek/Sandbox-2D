@@ -13,6 +13,8 @@ public class PlaySessionManager : MonoBehaviour
     public List<Level> levels = new List<Level>();
     private Level currentLevel = null;
 
+    private bool startNewGame = true;
+
     #region Singleton pattern
     private static PlaySessionManager _current;
     public static PlaySessionManager current
@@ -59,39 +61,29 @@ public class PlaySessionManager : MonoBehaviour
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == gameScene)
+        if (scene.name == gameScene && startNewGame == false)
         {
-            LevelManager.LoadLevel(currentLevel);
+            DataSerializer.Load();
         }
     }
 
-    public void StartGame()
+    public static void StartGame(bool startNewGame)
     {
-        if (EnsureSingleton() == false) return;
-
-        currentLevel = null;
-        SceneManager.LoadScene(gameScene);
+        if (current == null) return;
+        current.currentLevel = null;
+        current.startNewGame = startNewGame;
+        SceneManager.LoadScene(current.gameScene);
     }
 
-    public void StartGame(int levelIndex)
+    public static void ToMainMenu()
     {
-        if (EnsureSingleton() == false) return;
-
-        currentLevel = levels[levelIndex];
-        SceneManager.LoadScene(gameScene);
+        if (current == null) return;
+        SceneManager.LoadScene(current.mainMenuScene);
     }
 
-    public void ToMainMenu()
+    public static void ExitGame()
     {
-        if (EnsureSingleton() == false) return;
-
-        SceneManager.LoadScene(mainMenuScene);
-    }
-
-    public void ExitGame()
-    {
-        if (EnsureSingleton() == false) return;
-
+        if (current == null) return;
         Application.Quit();
     }
 }
