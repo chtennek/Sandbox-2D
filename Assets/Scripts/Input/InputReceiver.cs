@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class InputReceiver : MonoBehaviour
 {
     public int playerId = 0;
-    public float defaultDeadZone = .2f;
+    public const float deadZone = .2f;
 
     #region Lock pattern
     protected static InputReceiver inputLock; // [TODO] find a better way to do this
@@ -55,7 +55,7 @@ public abstract class InputReceiver : MonoBehaviour
         if (IsUnlocked() == false) return Vector2.zero;
 
         Vector2 inputValues = GetAxisPairRaw(axisPairName);
-        if (inputValues.magnitude < defaultDeadZone)
+        if (inputValues.magnitude < deadZone)
         {
             return Vector2.zero;
         }
@@ -80,11 +80,11 @@ public abstract class InputReceiver : MonoBehaviour
     {
 
         Vector2 output = GetAxisPair(axisPairName);
-        if (output.x > defaultDeadZone)
+        if (output.x > deadZone)
         {
             output.x = 1;
         }
-        else if (output.x < -defaultDeadZone)
+        else if (output.x < -deadZone)
         {
             output.x = -1;
         }
@@ -92,11 +92,11 @@ public abstract class InputReceiver : MonoBehaviour
         {
             output.x = 0;
         }
-        if (output.y > defaultDeadZone)
+        if (output.y > deadZone)
         {
             output.y = 1;
         }
-        else if (output.y < -defaultDeadZone)
+        else if (output.y < -deadZone)
         {
             output.y = -1;
         }

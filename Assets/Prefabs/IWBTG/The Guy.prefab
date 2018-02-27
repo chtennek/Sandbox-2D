@@ -24,12 +24,10 @@ GameObject:
   - component: {fileID: 68055331948999404}
   - component: {fileID: 114002850118641166}
   - component: {fileID: 114322470152723574}
-  - component: {fileID: 114421290170553958}
-  - component: {fileID: 114825298844722796}
-  - component: {fileID: 114807774401251590}
   - component: {fileID: 114748406172896192}
   - component: {fileID: 114160657836750574}
   - component: {fileID: 95731255006032270}
+  - component: {fileID: 114713492497124804}
   m_Layer: 8
   m_Name: The Guy
   m_TagString: Untagged
@@ -119,7 +117,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
-  defaultDeadZone: 0
 --- !u!114 &114160657836750574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,6 +137,7 @@ MonoBehaviour:
   - {x: 10, y: 0}
   spread: {x: 0, y: 0}
   pelletCount: 1
+  projectilesFired: []
 --- !u!114 &114322470152723574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,7 +156,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967039
---- !u!114 &114421290170553958
+--- !u!114 &114713492497124804
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -166,16 +164,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1389429713334548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 212c29b40f2c8a444a8f9ddf0213749f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4fd3b6546229a5549a5fbe022cfe6a0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSpeed: 8
-  jumpReleaseGravityScale: 12
-  fallGravityScale: 4
-  maxDoubleJumps: 0
-  allowWallJump: 1
-  wallJumpVelocity: {x: 0, y: 8}
-  wallRefreshesDoubleJumps: 1
+  inputDeadZone: 0.2
+  restrictToXAxis: 1
+  restrictToYAxis: 0
+  walkSpeed: 5
+  minWalkableSpeed: 1
+  walkSpeedLevels: 2
+  acceleration: 40
+  drag: 10
+  faceMovementDirection: 0
+  onlyMoveForward: 0
+  rotationOffset: 90
+  turnSpeed: Infinity
 --- !u!114 &114748406172896192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -190,33 +193,6 @@ MonoBehaviour:
   fireCooldown: 0.1
   rapidFire: 0
   projectileLimit: 4
---- !u!114 &114807774401251590
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1389429713334548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44875be85f899af4abd5c51a938c1d99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slideSpeed: 1
-  requireInput: 0
---- !u!114 &114825298844722796
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1389429713334548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f2656a7a9442f4eb99d7c2e16becd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkSpeed: 5
-  minWalkableSpeed: 1
-  inputDeadZone: 0.2
 --- !u!212 &212439925789309158
 SpriteRenderer:
   m_ObjectHideFlags: 1

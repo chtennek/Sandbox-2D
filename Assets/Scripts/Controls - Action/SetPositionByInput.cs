@@ -31,7 +31,7 @@ public class SetPositionByInput : MonoBehaviour
         {
             return;
         }
-        movement = movement.normalized * Mathf.Lerp(minDistance, maxDistance, (movement.magnitude - input.defaultDeadZone) / (1 - input.defaultDeadZone));
+        movement = movement.normalized * Mathf.Lerp(minDistance, maxDistance, (movement.magnitude - InputReceiver.deadZone) / (1 - InputReceiver.deadZone));
         transform.localPosition = movement;
     }
 }
