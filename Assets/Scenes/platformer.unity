@@ -347,8 +347,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114000770210788974, guid: 5b70a4a2a62c3474a822c36da3e7a84d,
         type: 2}
-      propertyPath: terminalSpeed
-      value: 0
+      propertyPath: test3.R
+      value: -0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5b70a4a2a62c3474a822c36da3e7a84d, type: 2}

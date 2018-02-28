@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.3.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -338,6 +340,7 @@
     <Compile Include="Assets\Scripts\Controls - Physics\GravityFieldEffector.cs" />
     <Compile Include="Assets\Scripts\Controls - Physics\JumpEffector.cs" />
     <Compile Include="Assets\Scripts\Core\Mathv.cs" />
+    <Compile Include="Assets\Scripts\Core\Polar2.cs" />
     <Compile Include="Assets\Scripts\Core\SerializableDictionaries.cs" />
     <Compile Include="Assets\Scripts\Core\SerializableTypes.cs" />
     <Compile Include="Assets\Scripts\Core\StatusBar.cs" />
