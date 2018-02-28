@@ -2,21 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ForceHandler : MonoBehaviour
+public class FieldSummation : MovementBehaviour
 {
+    public Vector3 defaultField = 9.81f * Vector3.down;
 
-	private void Awake()
-	{
-		
-	}
+    public void FixedUpdate()
+    {
+        AddForce(defaultField);
+    }
 
-	private void Start()
-	{
-		
-	}
-	
-	private void Update()
-	{
-		
-	}
+    public Vector3 GetTotalField()
+    {
+        return defaultField;
+    }
 }

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class MovementBehaviour : MonoBehaviour
 {
-    public GroundedCheckOptions options;
+    public GroundedCheckOptions options; // [TODO] move this
 
     [SerializeField]
-    protected InputReceiver input;
+    protected InputReceiver input; // [TODO] move this
 
     private RaycastHit2D[] results = new RaycastHit2D[5];
     private Rigidbody rb;
@@ -21,6 +21,11 @@ public class MovementBehaviour : MonoBehaviour
             if (rb != null) return rb.velocity;
             if (rb2D != null) return rb2D.velocity;
             return Vector3.zero;
+        }
+        set
+        {
+            if (rb != null) rb.velocity = value;
+            if (rb2D != null) rb2D.velocity = value;
         }
     }
 
@@ -61,6 +66,7 @@ public class MovementBehaviour : MonoBehaviour
 
     public bool IsGrounded()
     {
+        // [TODO] add coll for 3D checks
         if (coll2D != null) return 0 < coll2D.Cast(options.groundedDirection, options.contactFilter, results, options.checkDistance);
         return false;
     }

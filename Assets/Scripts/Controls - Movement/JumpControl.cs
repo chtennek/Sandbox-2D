@@ -2,12 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(GravityFieldEffector))]
 public class JumpControl : BoostControl
 {
     public float[] additionalJumps = new float[0];
 
     private int currentJump = 0;
+
+    private GravityFieldEffector fields;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        fields = GetComponent<GravityFieldEffector>();
+    }
 
     protected override void FixedUpdate()
     {
@@ -16,15 +24,17 @@ public class JumpControl : BoostControl
 
         if (input.GetButtonDown(buttonName))
         {
-            if (isGrounded)
+            float field = Vector3.Dot(direction.normalized, fields.GetTotalField());
+
+            float targetHeight = magnitude;
+            if (isGrounded == false && currentJump < additionalJumps.Length)
             {
-                Boost();
-            }
-            else if (currentJump < additionalJumps.Length)
-            {
-                Boost(additionalJumps[currentJump]);
+                targetHeight = additionalJumps[currentJump];
                 currentJump++;
             }
+
+            float initialSpeed = Mathf.Sqrt(2 * Mathf.Abs(field) * targetHeight);
+            Boost(initialSpeed);
         }
     }
 
