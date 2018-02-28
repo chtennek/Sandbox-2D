@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GravityFieldEffector : MovementBehaviour
 {
-    public float drag = 0f;
-
     private HashSet<GravityField> fields = new HashSet<GravityField>();
 
     public Vector3 GetTotalField()
@@ -20,10 +18,7 @@ public class GravityFieldEffector : MovementBehaviour
 
     private void FixedUpdate()
     {
-        foreach (GravityField field in fields)
-        {
-            AddForce(field.GetForce(transform));
-        }
+        AddForce(GetTotalField());
     }
 
     public void AddField(GravityField field)

@@ -334,6 +334,9 @@
     <Compile Include="Assets\Scripts\Controls - Other\OrderFreeMove.cs" />
     <Compile Include="Assets\Scripts\Controls - Other\OrderGridMove.cs" />
     <Compile Include="Assets\Scripts\Controls - Other\WaypointMovement.cs" />
+    <Compile Include="Assets\Scripts\Controls - Physics\GravityField.cs" />
+    <Compile Include="Assets\Scripts\Controls - Physics\GravityFieldEffector.cs" />
+    <Compile Include="Assets\Scripts\Controls - Physics\JumpEffector.cs" />
     <Compile Include="Assets\Scripts\Core\Mathv.cs" />
     <Compile Include="Assets\Scripts\Core\SerializableDictionaries.cs" />
     <Compile Include="Assets\Scripts\Core\SerializableTypes.cs" />
@@ -368,8 +371,6 @@
     <Compile Include="Assets\Scripts\Levels\LevelObjectNPC.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelObjectStart.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelStartLocation.cs" />
-    <Compile Include="Assets\Scripts\Physics\GravityField.cs" />
-    <Compile Include="Assets\Scripts\Physics\GravityFieldEffector.cs" />
     <Compile Include="Assets\Scripts\Pokemon\PokemonActorBehaviour.cs" />
     <Compile Include="Assets\Scripts\Pokemon\PokemonDataSerializer.cs" />
     <Compile Include="Assets\Scripts\Pokemon\PokemonLevel.cs" />

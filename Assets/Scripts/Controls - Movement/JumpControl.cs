@@ -5,10 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(GravityFieldEffector))]
 public class JumpControl : BoostControl
 {
-    public float[] additionalJumps = new float[0];
+    [Header("Jump")]
+    public float[] airJumps = new float[0];
 
     private int currentJump = 0;
-
     private GravityFieldEffector fields;
 
     protected override void Awake()
@@ -27,9 +27,9 @@ public class JumpControl : BoostControl
             float field = Vector3.Dot(direction.normalized, fields.GetTotalField());
 
             float targetHeight = magnitude;
-            if (isGrounded == false && currentJump < additionalJumps.Length)
+            if (isGrounded == false && currentJump < airJumps.Length)
             {
-                targetHeight = additionalJumps[currentJump];
+                targetHeight = airJumps[currentJump];
                 currentJump++;
             }
 
