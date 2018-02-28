@@ -10,7 +10,7 @@ public class JumpEffector : MovementBehaviour
 
     [Header("Parameters")]
     public Vector3 direction = Vector3.up; // Direction of jump
-    public float drag = 0f;
+    public float terminalSpeed = Mathf.Infinity;
     public float fallScale = 4f;
     public float inputReleaseScale = 12f;
 
@@ -24,22 +24,18 @@ public class JumpEffector : MovementBehaviour
 
     protected void FixedUpdate()
     {
-        Vector3 field = Vector3.Dot(fields.GetTotalField(), direction.normalized) * direction.normalized;
+        Vector3 acceleration = Vector3.Dot(fields.GetTotalField(), direction.normalized) * direction.normalized;
         float vAlongDirection = Vector3.Dot(velocity, direction.normalized);
         float scale = 1f;
 
         if (vAlongDirection <= 0)
-        {
             scale = fallScale;
-        }
         else if (input.GetButton(buttonName) == false)
-        {
             scale = inputReleaseScale;
-        }
 
-        Vector3 acceleration = (scale - 1) * field;
-        AddForce(acceleration);
-        ApplyDrag(drag);
+        AddForce((scale - 1) * acceleration);
+        if (vAlongDirection <= 0 && terminalSpeed > 0)
+            ApplyDrag(scale * acceleration.magnitude / terminalSpeed);
     }
 
     private void ApplyDrag(float drag)

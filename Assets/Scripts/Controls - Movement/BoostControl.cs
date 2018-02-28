@@ -15,9 +15,7 @@ public class BoostControl : MovementBehaviour
     protected virtual void FixedUpdate()
     {
         if (input.GetButtonDown(buttonName))
-        {
             Boost(magnitude);
-        }
     }
 
     public virtual void Boost(float magnitude)
