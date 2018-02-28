@@ -2,20 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TopdownFreeTurn : MonoBehaviour
+public class TurnControl : MovementBehaviour
 {
-    [Header("Input")]
-    private InputReceiver input;
     public string axisPairName = "Aim";
-    [Space]
 
+    [Header("Parameters")]
     public float rotationOffset = 90f; // At what movement direction should we be at 0 rotation?
     public float turnSpeed = Mathf.Infinity; // Degrees per frame
-
-    private void Awake()
-    {
-        input = GetComponent<InputReceiver>();
-    }
 
     private void FixedUpdate()
     {

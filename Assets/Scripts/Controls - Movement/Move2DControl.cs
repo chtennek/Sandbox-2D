@@ -2,44 +2,32 @@
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(InputReceiver))]
-public class Movement2D : MonoBehaviour
+public class Move2DControl : MovementBehaviour
 {
-    public float inputDeadZone = .2f;
+    [Header("Input")]
+    public string axisPairName = "Move";
     public bool restrictToXAxis = true;
     public bool restrictToYAxis = true;
 
-    [Space]
-
+    [Header("Speed")]
     public float walkSpeed = 5f;
-    public float minWalkableSpeed = 1f;
+    public float minWalkableSpeed = 3f;
     public float walkSpeedLevels = 2; // number of possible speeds between walkSpeed and minWalkableSpeed
 
-    [Space]
-
+    [Header("Acceleration")]
     public float acceleration = 40; // How fast do we accelerate to walkSpeed?
-    public float drag = 10; // How fast do we stop when not moving?
+    public float deceleration = 10; // How fast do we stop when not moving?
 
-    [Space]
-
+    [Header("Rotation")]
     public bool faceMovementDirection;
     public bool onlyMoveForward;
     public float rotationOffset = 90f; // At what movement direction should we be at 0 rotation?
     public float turnSpeed = Mathf.Infinity; // Degrees per frame
 
-    private InputReceiver input;
-    private Rigidbody2D rb;
-
-    private void Awake()
-    {
-        input = GetComponent<InputReceiver>();
-        rb = GetComponent<Rigidbody2D>();
-    }
-
     private void FixedUpdate()
     {
         // Get input
-        Vector2 movement = (restrictToXAxis && restrictToYAxis) ? input.GetAxisPairSingle("Move") : input.GetAxisPair("Move");
+        Vector2 movement = (restrictToXAxis && restrictToYAxis) ? input.GetAxisPairSingle(axisPairName) : input.GetAxisPair(axisPairName);
         if (restrictToXAxis == true && restrictToYAxis == false) movement.y = 0;
         if (restrictToXAxis == false && restrictToYAxis == true) movement.x = 0;
 
@@ -56,7 +44,7 @@ public class Movement2D : MonoBehaviour
 
         // Calculate target velocity
         Vector2 targetVelocity;
-        float tq = Mathv.LerpQRound(0, 1, Mathf.InverseLerp(inputDeadZone, 1, movement.magnitude), walkSpeedLevels);
+        float tq = Mathv.LerpQRound(0, 1, Mathf.InverseLerp(input.deadZone, 1, movement.magnitude), walkSpeedLevels);
         if (onlyMoveForward && !isFacingMovementDirection)
         {
             targetVelocity = minWalkableSpeed * transform.TransformDirection(Quaternion.AngleAxis(rotationOffset, Vector3.forward) * Vector3.right);
@@ -66,8 +54,18 @@ public class Movement2D : MonoBehaviour
             targetVelocity = Mathf.Lerp(minWalkableSpeed, walkSpeed, tq) * movement.normalized;
         }
 
-        // Apply acceleration
-        rb.AddForce(acceleration * targetVelocity.normalized);
-        rb.drag = targetVelocity.magnitude == 0 ? drag : acceleration / targetVelocity.magnitude;
+        // Apply acceleration and determine appropriate drag
+        float drag = targetVelocity.magnitude == 0 ? deceleration : acceleration / targetVelocity.magnitude;
+        ApplyDrag(drag);
+        AddForce(acceleration * targetVelocity.normalized);
+    }
+
+    private void ApplyDrag(float drag)
+    {
+        Vector2 v = velocity;
+        // Only apply drag in restricted axis if we have one
+        if (restrictToXAxis == true && restrictToYAxis == false) v.y = 0;
+        if (restrictToXAxis == false && restrictToYAxis == true) v.x = 0;
+        AddForce(drag * -v);
     }
 }

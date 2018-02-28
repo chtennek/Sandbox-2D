@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class InputReceiver : MonoBehaviour
 {
     public int playerId = 0;
-    public const float deadZone = .2f;
+    public readonly float deadZone = .2f;
 
     #region Lock pattern
     protected static InputReceiver inputLock; // [TODO] find a better way to do this

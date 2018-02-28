@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.3.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -320,19 +322,20 @@
     <Compile Include="Assets\Scripts\Camera\ScreenFollowBehaviour.cs" />
     <Compile Include="Assets\Scripts\Camera\ScreenFollowObject.cs" />
     <Compile Include="Assets\Scripts\Camera\ScreenShake.cs" />
-    <Compile Include="Assets\Scripts\Controls - Action\FireProjectileByInput.cs" />
-    <Compile Include="Assets\Scripts\Controls - Action\Movement2D.cs" />
-    <Compile Include="Assets\Scripts\Controls - Action\SetPositionByInput.cs" />
-    <Compile Include="Assets\Scripts\Controls - Action\SidescrollerControlManager.cs" />
-    <Compile Include="Assets\Scripts\Controls - Action\SidescrollerJump.cs" />
-    <Compile Include="Assets\Scripts\Controls - Action\SidescrollerWallSlide.cs" />
-    <Compile Include="Assets\Scripts\Controls - Action\TopdownFreeTurn.cs" />
-    <Compile Include="Assets\Scripts\Controls - Action\TopdownGridWalk.cs" />
-    <Compile Include="Assets\Scripts\Controls - Strategy\EntityManager.cs" />
-    <Compile Include="Assets\Scripts\Controls - Strategy\EntitySelector.cs" />
-    <Compile Include="Assets\Scripts\Controls - Strategy\OrderFreeMove.cs" />
-    <Compile Include="Assets\Scripts\Controls - Strategy\OrderGridMove.cs" />
-    <Compile Include="Assets\Scripts\Controls - Strategy\WaypointMovement.cs" />
+    <Compile Include="Assets\Scripts\Controls - Movement\BoostControl.cs" />
+    <Compile Include="Assets\Scripts\Controls - Movement\ForceHandler.cs" />
+    <Compile Include="Assets\Scripts\Controls - Movement\JumpControl.cs" />
+    <Compile Include="Assets\Scripts\Controls - Movement\Move2DControl.cs" />
+    <Compile Include="Assets\Scripts\Controls - Movement\MovementBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Controls - Movement\PositionControl.cs" />
+    <Compile Include="Assets\Scripts\Controls - Movement\TurnControl.cs" />
+    <Compile Include="Assets\Scripts\Controls - Movement\TopdownGridWalk.cs" />
+    <Compile Include="Assets\Scripts\Controls - Other\EntityManager.cs" />
+    <Compile Include="Assets\Scripts\Controls - Other\EntitySelector.cs" />
+    <Compile Include="Assets\Scripts\Controls - Other\FireProjectileByInput.cs" />
+    <Compile Include="Assets\Scripts\Controls - Other\OrderFreeMove.cs" />
+    <Compile Include="Assets\Scripts\Controls - Other\OrderGridMove.cs" />
+    <Compile Include="Assets\Scripts\Controls - Other\WaypointMovement.cs" />
     <Compile Include="Assets\Scripts\Core\Mathv.cs" />
     <Compile Include="Assets\Scripts\Core\SerializableDictionaries.cs" />
     <Compile Include="Assets\Scripts\Core\SerializableTypes.cs" />

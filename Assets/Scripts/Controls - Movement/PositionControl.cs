@@ -2,27 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SetPositionByInput : MonoBehaviour
+public class PositionControl : MovementBehaviour
 {
-    [Header("Input")]
-    [SerializeField]
-    private InputReceiver input;
     public string axisPairName = "Move";
-    [Space]
 
+    [Header("Parameters")]
     public bool restrictToOrthogonal = true;
     public bool allowZeroDistance = false;
     public float minDistance = 1f;
     public float maxDistance = 1f;
-
-    private void Awake()
-    {
-        if (input == null)
-        {
-            Debug.LogWarning(Warnings.RequireComponent(this));
-            enabled = false;
-        }
-    }
 
     private void Update()
     {
@@ -31,7 +19,7 @@ public class SetPositionByInput : MonoBehaviour
         {
             return;
         }
-        movement = movement.normalized * Mathf.Lerp(minDistance, maxDistance, (movement.magnitude - InputReceiver.deadZone) / (1 - InputReceiver.deadZone));
+        movement = movement.normalized * Mathf.Lerp(minDistance, maxDistance, (movement.magnitude - input.deadZone) / (1 - input.deadZone));
         transform.localPosition = movement;
     }
 }
