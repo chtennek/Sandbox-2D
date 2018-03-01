@@ -323,6 +323,7 @@
     <Compile Include="Assets\Scripts\Editor\ChildrenOverwritingEditor.cs" />
     <Compile Include="Assets\Scripts\Editor\DictionaryPropertyDrawer.cs" />
     <Compile Include="Assets\Scripts\Editor\LevelBuilderEditor.cs" />
+    <Compile Include="Assets\Scripts\Editor\SpritePostprocessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\2d-extras\Assets\Tilemap\Brushes\Tint Brush Smooth\Shaders\TintedTilemap.shader" />
