@@ -17,6 +17,7 @@ public class InGameMenuMessenger : MonoBehaviour, ICancelHandler
 
     public void OnCancel(BaseEventData eventData)
     {
+        if (target == null) return;
         target.OnCancel(eventData);
     }
 }

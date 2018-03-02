@@ -87,6 +87,7 @@ public class DefaultInputReceiver : InputReceiver
         }
     }
 
+    public override float GetAxisRaw(string id) { return Input.GetAxisRaw(id); }
     public override bool GetButtonRaw(string id) { return Input.GetButton(WrapPlayerNum(id)); }
     public override bool GetAnyButtonDownRaw() { return Input.anyKeyDown; }
     public override bool GetAnyButtonRaw() { return Input.anyKey; }

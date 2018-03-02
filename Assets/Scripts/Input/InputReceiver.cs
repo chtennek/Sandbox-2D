@@ -36,12 +36,14 @@ public abstract class InputReceiver : MonoBehaviour
     }
     #endregion
 
+    public abstract float GetAxisRaw(string id);
     public abstract bool GetButtonDownRaw(string id);
     public abstract bool GetButtonUpRaw(string id);
     public abstract bool GetButtonRaw(string id);
     public abstract bool GetAnyButtonDownRaw();
     public abstract bool GetAnyButtonRaw();
 
+    public float GetAxis(string id) { return IsUnlocked() ? GetAxisRaw(id) : 0; }
     public bool GetButtonDown(string id) { return IsUnlocked() && GetButtonDownRaw(id); }
     public bool GetButtonUp(string id) { return IsUnlocked() && GetButtonUpRaw(id); }
     public bool GetButton(string id) { return IsUnlocked() && GetButtonRaw(id); }

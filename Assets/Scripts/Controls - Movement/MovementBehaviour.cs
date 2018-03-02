@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementBehaviour : MonoBehaviour
+public class MovementBehaviour : InputBehaviour
 {
     public GroundedCheckOptions options; // [TODO] move this
-
-    [SerializeField]
-    protected InputReceiver input; // [TODO] move this
 
     private RaycastHit2D[] results = new RaycastHit2D[5];
     private Rigidbody rb;
@@ -29,20 +26,12 @@ public class MovementBehaviour : MonoBehaviour
         }
     }
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         rb = GetComponent<Rigidbody>();
         rb2D = GetComponent<Rigidbody2D>();
         coll2D = GetComponent<Collider2D>();
-
-        if (input == null)
-            input = GetComponent<InputReceiver>();
-
-        if (input == null)
-        {
-            Warnings.NoComponentSpecified(this, input);
-            enabled = false;
-        }
     }
 
     protected void AddForce(Vector3 force) { AddForce(force, ForceMode2D.Force); }

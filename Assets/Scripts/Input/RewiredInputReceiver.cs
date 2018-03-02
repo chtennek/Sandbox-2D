@@ -21,6 +21,7 @@ public class RewiredInputReceiver : InputReceiver
         return new Vector2(x, y);
     }
 
+    public override float GetAxisRaw(string id) { return player.GetAxisRaw(id); }
     public override bool GetButtonDownRaw(string id) { return player.GetButtonDown(id); }
     public override bool GetButtonUpRaw(string id) { return player.GetButtonUp(id); }
     public override bool GetButtonRaw(string id) { return player.GetButton(id); }

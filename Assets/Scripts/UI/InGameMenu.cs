@@ -7,52 +7,55 @@ using UnityEngine.EventSystems;
 
 using Rewired;
 
-public class InGameMenu : MonoBehaviour, ICancelHandler
+[RequireComponent(typeof(CanvasGroup))]
+public class InGameMenu : InputBehaviour, ICancelHandler
 {
-
     [Header("Input")]
-    public InputReceiver input;
     public bool lockInput = true;
-    public GameObject firstSelected;
-
-    [Header("Button")]
-    public string openInputName = "UIStart";
+    public Selector selector;
+    public Selectable firstSelected;
+    public string openInputName = "UIStart"; // Use EventSystem for this to avoid dup inputs
     public string closeInputName = "UIStart";
+
+    [Header("Options")]
+    public float inactiveAlpha = 0f;
 
     [Header("Cancel")]
     public bool closeOnCancel = false;
     public Button invokeOnCancel;
     public UnityEvent onCancel;
 
-    private Mask disabledMask;
+    private CanvasGroup canvas;
 
-    private void Awake()
+    public bool Enabled
     {
-        if (input == null)
+        get { return canvas.interactable; }
+        set
         {
-            Debug.LogWarning(gameObject.name + ": InputReceiver not specified! Disabling menu.");
-            enabled = false;
+            canvas.interactable = value;
+            canvas.alpha = Enabled ? 1f : inactiveAlpha;
         }
+    }
 
-        disabledMask = GetComponent<Mask>();
-        if (disabledMask == null) disabledMask = gameObject.AddComponent<Mask>();
+    protected override void Awake()
+    {
+        base.Awake();
 
-        if (disabledMask.enabled == true) Close();
-        else Open();
+        if (firstSelected == null)
+            firstSelected = GetComponentInChildren<Selectable>();
+
+        canvas = GetComponent<CanvasGroup>();
+        Enabled = Enabled;
     }
 
     private void Update()
     {
         if (input != null)
         {
-            if (disabledMask.enabled == true && input.GetButtonDown(openInputName))
-            {
+            if (Enabled == false && input.GetButtonDown(openInputName))
                 Open();
-            }
-            else if (disabledMask.enabled == false && input.GetButtonDown(closeInputName))
-            {
+            else if (Enabled == true && input.GetButtonDown(closeInputName))
                 Close();
-            }
         }
     }
 
@@ -60,45 +63,41 @@ public class InGameMenu : MonoBehaviour, ICancelHandler
     {
         if (eventData.used == true)
             return;
+
         eventData.Use();
 
         onCancel.Invoke();
         if (invokeOnCancel != null)
-        {
             invokeOnCancel.onClick.Invoke();
-        }
+
         if (closeOnCancel == true)
-        {
             Close();
-        }
     }
 
     public void Toggle()
     {
-        if (disabledMask.enabled == true)
-        {
-            Open();
-        }
-        else
-        {
+        if (Enabled == true)
             Close();
-        }
+        else
+            Open();
     }
 
-    public void Open()
+    public void ForceOpen() { Open(true); }
+    public void Open() { Open(false); }
+    private void Open(bool forceLock)
     {
         if (lockInput == true)
         {
-            input.Lock();
+            if (forceLock == true)
+                input.ForceLock();
+            else
+                input.Lock();
+
             Time.timeScale = 0;
         }
-
-        foreach (Button button in GetComponentsInChildren<Button>())
-        {
-            button.enabled = true;
-        }
-        disabledMask.enabled = false;
-        EventSystem.current.SetSelectedGameObject(firstSelected);
+        Enabled = true;
+        if (firstSelected != null)
+            EventSystem.current.SetSelectedGameObject(firstSelected.gameObject);
     }
 
     public void Close()
@@ -108,12 +107,7 @@ public class InGameMenu : MonoBehaviour, ICancelHandler
             input.Unlock();
             Time.timeScale = 1;
         }
-
-        foreach (Button button in GetComponentsInChildren<Button>())
-        {
-            button.enabled = false;
-        }
-        disabledMask.enabled = true;
+        Enabled = false;
         EventSystem.current.SetSelectedGameObject(null);
     }
 }
