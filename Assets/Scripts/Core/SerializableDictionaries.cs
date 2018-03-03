@@ -10,3 +10,6 @@ public class ScriptableObjectDictionary : SerializableDictionary<string, Scripta
 
 [Serializable]
 public class TilemapDataDictionary : SerializableDictionary<string, Levels.LevelTilemapData> { }
+
+[Serializable]
+public class StringToMenuDictionary : SerializableDictionary<string, InGameMenu> { }

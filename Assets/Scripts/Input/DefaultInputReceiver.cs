@@ -54,15 +54,6 @@ public class DefaultInputReceiver : InputReceiver
         return (playerId + 1).ToString() + ". " + id;
     }
 
-    public override Vector2 GetAxisPairRaw(string idBase)
-    {
-        string horizontal = idBase + " Horizontal";
-        string vertical = idBase + " Vertical";
-        float x = Input.GetAxisRaw(horizontal);
-        float y = Input.GetAxisRaw(vertical);
-        return new Vector2(x, y);
-    }
-
     public override bool GetButtonDownRaw(string id)
     {
         if (!Time.inFixedTimeStep) // This doesn't work

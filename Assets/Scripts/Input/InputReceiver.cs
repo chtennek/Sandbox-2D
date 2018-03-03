@@ -32,25 +32,43 @@ public abstract class InputReceiver : MonoBehaviour
 
     public bool IsUnlocked()
     {
-        return inputLock == null || inputLock == this;
+        bool isUnlocked = inputLock == null || inputLock == this;
+        if (isUnlocked == false)
+            Debug.LogWarning("Input locked by: " + inputLock.name);
+        return isUnlocked;
     }
     #endregion
 
-    public abstract float GetAxisRaw(string id);
     public abstract bool GetButtonDownRaw(string id);
     public abstract bool GetButtonUpRaw(string id);
     public abstract bool GetButtonRaw(string id);
     public abstract bool GetAnyButtonDownRaw();
     public abstract bool GetAnyButtonRaw();
+    public abstract float GetAxisRaw(string id);
+    public virtual bool GetPositiveAxisDownRaw(string id) { return GetButtonDown(id) && GetAxisRaw(id) >= deadZone; }
+    public virtual bool GetNegativeAxisDownRaw(string id) { return GetButtonDown(id) && GetAxisRaw(id) <= deadZone; }
 
-    public float GetAxis(string id) { return IsUnlocked() ? GetAxisRaw(id) : 0; }
     public bool GetButtonDown(string id) { return IsUnlocked() && GetButtonDownRaw(id); }
     public bool GetButtonUp(string id) { return IsUnlocked() && GetButtonUpRaw(id); }
     public bool GetButton(string id) { return IsUnlocked() && GetButtonRaw(id); }
     public bool GetAnyButtonDown() { return IsUnlocked() && GetAnyButtonDownRaw(); }
     public bool GetAnyButton() { return IsUnlocked() && GetAnyButtonRaw(); }
+    public virtual bool GetPositiveAxisDown(string id) { return IsUnlocked() && GetPositiveAxisDownRaw(id); }
+    public virtual bool GetNegativeAxisDown(string id) { return IsUnlocked() && GetNegativeAxisDownRaw(id); }
+    public float GetAxis(string id)
+    {
+        float input = GetAxisRaw(id);
+        return IsUnlocked() && Mathf.Abs(input) >= deadZone ? input : 0;
+    }
 
-    public abstract Vector2 GetAxisPairRaw(string axisPairName);
+    public Vector2 GetAxisPairRaw(string axisPairName)
+    {
+        string horizontal = axisPairName + "Horizontal";
+        string vertical = axisPairName + "Vertical";
+        float x = GetAxisRaw(horizontal);
+        float y = GetAxisRaw(vertical);
+        return new Vector2(x, y);
+    }
 
     public Vector2 GetAxisPair(string axisPairName)
     {
@@ -80,7 +98,6 @@ public abstract class InputReceiver : MonoBehaviour
 
     public Vector2 GetAxisPairQuantized(string axisPairName)
     {
-
         Vector2 output = GetAxisPair(axisPairName);
         if (output.x > deadZone)
         {

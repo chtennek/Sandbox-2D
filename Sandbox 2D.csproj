@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.3.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -351,18 +349,15 @@
     <Compile Include="Assets\Scripts\Entities\ProjectileDriver.cs" />
     <Compile Include="Assets\Scripts\Entities\ProjectileSpawner.cs" />
     <Compile Include="Assets\Scripts\Input\DefaultInputReceiver.cs" />
+    <Compile Include="Assets\Scripts\Input\InputBehaviour.cs" />
     <Compile Include="Assets\Scripts\Input\InputReceiver.cs" />
     <Compile Include="Assets\Scripts\Input\RewiredInputReceiver.cs" />
     <Compile Include="Assets\Scripts\Interactions\DialogueOnInteract.cs" />
     <Compile Include="Assets\Scripts\Interactions\InteractableBehaviour.cs" />
     <Compile Include="Assets\Scripts\Interactions\InteractorBehaviour.cs" />
     <Compile Include="Assets\Scripts\Items\InventoryBase.cs" />
-    <Compile Include="Assets\Scripts\Items\InventoryGrid.cs" />
     <Compile Include="Assets\Scripts\Items\InventoryItem.cs" />
     <Compile Include="Assets\Scripts\Items\ItemBase.cs" />
-    <Compile Include="Assets\Scripts\Items\ItemBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Items\ItemSelector.cs" />
-    <Compile Include="Assets\Scripts\Items\ItemSlotBehaviour.cs" />
     <Compile Include="Assets\Scripts\Levels\IBuilder.cs" />
     <Compile Include="Assets\Scripts\Levels\Level.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelBuilder.cs" />
@@ -383,10 +378,8 @@
     <Compile Include="Assets\Scripts\Session\ScreenDialogueBehaviour.cs" />
     <Compile Include="Assets\Scripts\Session\SingletonMessenger.cs" />
     <Compile Include="Assets\Scripts\Tiles\BorderedTile.cs" />
-    <Compile Include="Assets\Scripts\UI\DetailDisplay.cs" />
     <Compile Include="Assets\Scripts\UI\InGameMenu.cs" />
-    <Compile Include="Assets\Scripts\UI\InGameMenuMessenger.cs" />
-    <Compile Include="Assets\Scripts\UI\StatusDisplay.cs" />
+    <Compile Include="Assets\Scripts\UI\UINavigator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\2d-extras\Assets\Tilemap\Brushes\Tint Brush Smooth\Shaders\TintedTilemap.shader" />

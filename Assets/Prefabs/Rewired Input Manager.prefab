@@ -224,7 +224,7 @@ MonoBehaviour:
       _excludeFromControllerAutoAssignment: 0
     actions:
     - _id: 0
-      _name: Move Horizontal
+      _name: MoveHorizontal
       _type: 0
       _descriptiveName: Move Horizontal
       _positiveDescriptiveName: Move Right
@@ -233,7 +233,7 @@ MonoBehaviour:
       _userAssignable: 1
       _categoryId: 1
     - _id: 27
-      _name: Aim Horizontal
+      _name: AimHorizontal
       _type: 0
       _descriptiveName: Aim Horizontal
       _positiveDescriptiveName: Aim Right
@@ -242,7 +242,7 @@ MonoBehaviour:
       _userAssignable: 1
       _categoryId: 1
     - _id: 9
-      _name: Move Vertical
+      _name: MoveVertical
       _type: 0
       _descriptiveName: Move Vertical
       _positiveDescriptiveName: Move Up
@@ -251,7 +251,7 @@ MonoBehaviour:
       _userAssignable: 1
       _categoryId: 1
     - _id: 28
-      _name: Aim Vertical
+      _name: AimVertical
       _type: 0
       _descriptiveName: Aim Vertical
       _positiveDescriptiveName: Aim Up

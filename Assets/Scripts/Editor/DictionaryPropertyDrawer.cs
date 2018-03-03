@@ -7,4 +7,5 @@ using UnityEngine.Tilemaps;
 
 [CustomPropertyDrawer(typeof(ScriptableObjectDictionary))]
 [CustomPropertyDrawer(typeof(TilemapDataDictionary))]
+[CustomPropertyDrawer(typeof(StringToMenuDictionary))]
 public class DictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer { }

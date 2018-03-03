@@ -56,10 +56,8 @@ GameObject:
   - component: {fileID: 222883400165376992}
   - component: {fileID: 114430776963091790}
   - component: {fileID: 114004577244912116}
-  - component: {fileID: 114514329467240582}
   - component: {fileID: 95730145246598256}
   - component: {fileID: 114985734563268066}
-  - component: {fileID: 114542172317156486}
   m_Layer: 5
   m_Name: Pokemon Item
   m_TagString: Untagged
@@ -127,7 +125,7 @@ MonoBehaviour:
         m_MethodName: Select
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 114514329467240582}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: SelectableBehaviour, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -223,28 +221,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114514329467240582
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1371332222897534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eff439abafeae4cecbd17756763a71fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114542172317156486
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1371332222897534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f309c893774f8f489a5e929ccea3461, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114985734563268066
 MonoBehaviour:
   m_ObjectHideFlags: 1
