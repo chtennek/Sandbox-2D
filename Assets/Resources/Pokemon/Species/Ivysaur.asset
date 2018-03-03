@@ -11,7 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42cb7df5302f849fc99c76bb1e25082a, type: 3}
   m_Name: Ivysaur
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  baseMaxHP: 40
-  speciesName: Ivysaur
+  speciesName: IVYSAUR
   type: 2

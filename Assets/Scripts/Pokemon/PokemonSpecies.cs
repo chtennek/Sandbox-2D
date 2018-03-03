@@ -9,7 +9,7 @@ public enum PokemonType {
 }
 
 [CreateAssetMenu(fileName = "Species", menuName = "Pokemon/Species")]
-public class PokemonSpecies : EntityBase {
+public class PokemonSpecies : ScriptableObject {
     public string speciesName;
     public PokemonType type;
 }

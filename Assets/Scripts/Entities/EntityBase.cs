@@ -5,5 +5,4 @@ using UnityEngine.Serialization;
 
 public class EntityBase : ScriptableObject {
     public Sprite sprite;
-    public float baseMaxHP;
 }

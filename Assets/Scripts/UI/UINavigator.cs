@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class UINavigator : InputBehaviour
+public class UINavigator : InputBehaviour, INavigator
 {
     [Header("Input")]
     public string axisPairName = "UI";
@@ -112,6 +112,19 @@ public class UINavigator : InputBehaviour
         }
     }
 
+    public void MenuCloseActive() { MenuClose(ActiveMenu); }
+    public void MenuClose(InGameMenu menu)
+    {
+        if (menu == null)
+            return;
+        if (ActiveMenu == menu)
+        {
+            ActiveMenu = null;
+            Selected = null;
+        }
+        menu.Enabled = false;
+    }
+
     public void MenuOpen(InGameMenu menu)
     {
         if (menu == null)
@@ -132,19 +145,6 @@ public class UINavigator : InputBehaviour
     {
         if (ActiveMenu != null)
             MenuSwitch(ActiveMenu.parentMenu);
-    }
-
-    public void MenuCloseActive() { MenuClose(ActiveMenu); }
-    public void MenuClose(InGameMenu menu)
-    {
-        if (menu == null)
-            return;
-        if (ActiveMenu == menu)
-        {
-            ActiveMenu = null;
-            Selected = null;
-        }
-        menu.Enabled = false;
     }
 
     private void ProcessMovement()

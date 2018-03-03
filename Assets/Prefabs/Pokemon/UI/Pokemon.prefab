@@ -55,11 +55,13 @@ GameObject:
   - component: {fileID: 224125191439788050}
   - component: {fileID: 222883400165376992}
   - component: {fileID: 114430776963091790}
-  - component: {fileID: 114004577244912116}
-  - component: {fileID: 95730145246598256}
   - component: {fileID: 114985734563268066}
+  - component: {fileID: 95730145246598256}
+  - component: {fileID: 114004577244912116}
+  - component: {fileID: 114389313205856356}
+  - component: {fileID: 114729719341495650}
   m_Layer: 5
-  m_Name: Pokemon Item
+  m_Name: Pokemon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,12 +123,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Select
+      - m_Target: {fileID: 114729719341495650}
+        m_MethodName: MenuOpen
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: SelectableBehaviour, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: InGameMenu, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -166,7 +168,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SQUIRTLE
+  m_Text: 
 --- !u!114 &114320909371516642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -194,6 +196,27 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114389313205856356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1371332222897534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7325774afd7844cefad6be754b579144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pokemon:
+    species: {fileID: 0}
+    nickname: 
+    level: 5
+    maxHP: 20
+    currentHP: 20
+    ATK: 10
+    DEF: 10
+    spATK: 10
+    spDEF: 10
 --- !u!114 &114430776963091790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -221,6 +244,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114729719341495650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1371332222897534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e87184ea0634574b7979830531c351, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nav: {fileID: 0}
 --- !u!114 &114985734563268066
 MonoBehaviour:
   m_ObjectHideFlags: 1
