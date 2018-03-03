@@ -18,13 +18,32 @@ public class UINavigator : InputBehaviour
     public StringToMenuDictionary closeMenuButton = new StringToMenuDictionary();
 
     [Header("Parameters")]
+    public bool pauseOnActive = true;
+    public bool lockInputOnActive = true;
     public bool moveOneElementPerInput = true;
     public int inputsPerSecond = 10;
     //public float repeatDelay = 0.1f;
 
     private float m_lastActionTime = 0f;
     private Vector2 m_lastDirection = Vector2.zero;
-    private InGameMenu m_activeMenu;
+    private InGameMenu m_ActiveMenu;
+    public InGameMenu ActiveMenu
+    {
+        get { return m_ActiveMenu; }
+        set
+        {
+            m_ActiveMenu = value;
+            if (m_ActiveMenu != null)
+            {
+                if (lockInputOnActive) input.Lock();
+                if (pauseOnActive) Time.timeScale = 0; // [TODO] doesn't work if another UINavigator exists
+            }
+            else {
+                input.Unlock();
+                Time.timeScale = 1;
+            }
+        }
+    }
 
     private Selectable m_Selected;
     public Selectable Selected
@@ -34,7 +53,7 @@ public class UINavigator : InputBehaviour
         {
             BaseEventData data = new BaseEventData(null);
             if (m_Selected != null)
-                m_Selected.OnDeselect(data); // [TODO] doesn't work if another UINavigator is also selecting it
+                m_Selected.OnDeselect(data); // [TODO] doesn't work if another UINavigator exists
 
             m_Selected = value;
             if (m_Selected != null)
@@ -44,7 +63,7 @@ public class UINavigator : InputBehaviour
 
     protected virtual void Update()
     {
-        bool closedMenuThisFrame = m_activeMenu != null && (input.GetButtonDown(closeActiveButton) || input.GetButtonDown(closeAllButton));
+        bool closedMenuThisFrame = ActiveMenu != null && (input.GetButtonDown(closeActiveButton) || input.GetButtonDown(closeAllButton));
 
         // Movement
         if (Selected != null)
@@ -54,7 +73,7 @@ public class UINavigator : InputBehaviour
         if (input.GetButtonDown(closeActiveButton))
             MenuUpOneLevel();
         if (input.GetButtonDown(closeAllButton))
-            while (m_activeMenu != null)
+            while (ActiveMenu != null)
                 MenuUpOneLevel();
 
         foreach (string buttonName in closeMenuButton.Keys)
@@ -99,30 +118,30 @@ public class UINavigator : InputBehaviour
             return;
         menu.Enabled = true;
         Selected = menu.firstSelected;
-        m_activeMenu = menu;
+        ActiveMenu = menu;
     }
 
     public void MenuSwitch(InGameMenu menu)
     {
-        MenuClose(m_activeMenu);
+        MenuClose(ActiveMenu);
         if (menu != null)
             MenuOpen(menu);
     }
 
     public void MenuUpOneLevel()
     {
-        if (m_activeMenu != null)
-            MenuSwitch(m_activeMenu.parentMenu);
+        if (ActiveMenu != null)
+            MenuSwitch(ActiveMenu.parentMenu);
     }
 
-    public void MenuCloseActive() { MenuClose(m_activeMenu); }
+    public void MenuCloseActive() { MenuClose(ActiveMenu); }
     public void MenuClose(InGameMenu menu)
     {
         if (menu == null)
             return;
-        if (m_activeMenu == menu)
+        if (ActiveMenu == menu)
         {
-            m_activeMenu = null;
+            ActiveMenu = null;
             Selected = null;
         }
         menu.Enabled = false;

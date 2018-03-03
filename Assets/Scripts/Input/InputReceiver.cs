@@ -22,6 +22,7 @@ public abstract class InputReceiver : MonoBehaviour
             inputLock = this;
             return true;
         }
+        Debug.LogWarning("Input locked by: " + inputLock.name);
         return false;
     }
 
@@ -33,8 +34,6 @@ public abstract class InputReceiver : MonoBehaviour
     public bool IsUnlocked()
     {
         bool isUnlocked = inputLock == null || inputLock == this;
-        if (isUnlocked == false)
-            Debug.LogWarning("Input locked by: " + inputLock.name);
         return isUnlocked;
     }
     #endregion
