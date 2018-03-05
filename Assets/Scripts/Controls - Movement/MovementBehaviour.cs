@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class MovementBehaviour : InputBehaviour
 {
-    public GroundedCheckOptions options; // [TODO] move this
+    public ColliderChecker colliderCheck; // [TODO] move this
 
-    private RaycastHit2D[] results = new RaycastHit2D[5];
     private Rigidbody rb;
     private Rigidbody2D rb2D;
     private Collider2D coll2D;
@@ -56,15 +55,30 @@ public class MovementBehaviour : InputBehaviour
     public bool IsGrounded()
     {
         // [TODO] add coll for 3D checks
-        if (coll2D != null) return 0 < coll2D.Cast(options.groundedDirection, options.contactFilter, results, options.checkDistance);
-        return false;
+        return colliderCheck.Cast(coll2D);
     }
 }
 
 [System.Serializable]
-public class GroundedCheckOptions
+public class ColliderChecker
 {
-    public Vector3 groundedDirection = Vector3.down;
+    public Vector3 direction = Vector3.down;
     public float checkDistance = 0.01f;
     public ContactFilter2D contactFilter;
+
+    private RaycastHit2D[] results = new RaycastHit2D[5];
+
+    public bool Cast(Collider2D coll2D)
+    {
+        if (coll2D == null) return false;
+        return 0 < coll2D.Cast(direction, contactFilter, results, checkDistance);
+    }
+
+    public bool Raycast(Collider2D coll2D)
+    {
+        Physics2D.Raycast(coll2D.transform.position, direction, contactFilter, results);
+        float width = 1f + checkDistance;
+        int count = coll2D.Raycast(direction, contactFilter, results, width);
+        return count > 0;
+    }
 }

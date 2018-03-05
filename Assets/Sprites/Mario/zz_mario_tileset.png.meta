@@ -1,0 +1,6139 @@
+fileFormatVersion: 2
+guid: bddf9c382b2fa49d7b9841e2ba49c1d9
+timeCreated: 1520131599
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: crapn_stuff_0
+    21300002: crapn_stuff_1
+    21300004: crapn_stuff_2
+    21300006: crapn_stuff_3
+    21300008: crapn_stuff_4
+    21300010: crapn_stuff_5
+    21300012: crapn_stuff_6
+    21300014: crapn_stuff_7
+    21300016: crapn_stuff_8
+    21300018: crapn_stuff_9
+    21300020: crapn_stuff_10
+    21300022: crapn_stuff_11
+    21300024: crapn_stuff_12
+    21300026: crapn_stuff_13
+    21300028: crapn_stuff_14
+    21300030: crapn_stuff_15
+    21300032: crapn_stuff_16
+    21300034: crapn_stuff_17
+    21300036: crapn_stuff_18
+    21300038: crapn_stuff_19
+    21300040: crapn_stuff_20
+    21300042: crapn_stuff_21
+    21300044: tile_?_standard_3
+    21300046: tile_?_standard_2
+    21300048: tile_?_standard_1
+    21300050: crapn_stuff_25
+    21300052: crapn_stuff_26
+    21300054: crapn_stuff_27
+    21300056: crapn_stuff_28
+    21300058: crapn_stuff_29
+    21300060: crapn_stuff_30
+    21300062: crapn_stuff_31
+    21300064: crapn_stuff_32
+    21300066: crapn_stuff_33
+    21300068: crapn_stuff_34
+    21300070: crapn_stuff_35
+    21300072: crapn_stuff_36
+    21300074: crapn_stuff_37
+    21300076: crapn_stuff_38
+    21300078: crapn_stuff_39
+    21300080: crapn_stuff_40
+    21300082: crapn_stuff_41
+    21300084: crapn_stuff_42
+    21300086: crapn_stuff_43
+    21300088: crapn_stuff_44
+    21300090: crapn_stuff_45
+    21300092: crapn_stuff_46
+    21300094: crapn_stuff_47
+    21300096: crapn_stuff_48
+    21300098: crapn_stuff_49
+    21300100: crapn_stuff_50
+    21300102: crapn_stuff_51
+    21300104: crapn_stuff_52
+    21300106: crapn_stuff_53
+    21300108: crapn_stuff_54
+    21300110: crapn_stuff_55
+    21300112: crapn_stuff_56
+    21300114: crapn_stuff_57
+    21300116: crapn_stuff_58
+    21300118: crapn_stuff_59
+    21300120: crapn_stuff_60
+    21300122: crapn_stuff_61
+    21300124: crapn_stuff_62
+    21300126: crapn_stuff_63
+    21300128: crapn_stuff_64
+    21300130: crapn_stuff_65
+    21300132: crapn_stuff_66
+    21300134: crapn_stuff_67
+    21300136: crapn_stuff_68
+    21300138: crapn_stuff_69
+    21300140: crapn_stuff_70
+    21300142: crapn_stuff_71
+    21300144: crapn_stuff_72
+    21300146: crapn_stuff_73
+    21300148: crapn_stuff_74
+    21300150: crapn_stuff_75
+    21300152: crapn_stuff_76
+    21300154: crapn_stuff_77
+    21300156: crapn_stuff_78
+    21300158: crapn_stuff_79
+    21300160: crapn_stuff_80
+    21300162: crapn_stuff_81
+    21300164: crapn_stuff_82
+    21300166: crapn_stuff_83
+    21300168: crapn_stuff_84
+    21300170: crapn_stuff_85
+    21300172: crapn_stuff_86
+    21300174: crapn_stuff_87
+    21300176: crapn_stuff_88
+    21300178: crapn_stuff_89
+    21300180: crapn_stuff_90
+    21300182: crapn_stuff_91
+    21300184: crapn_stuff_92
+    21300186: crapn_stuff_93
+    21300188: crapn_stuff_94
+    21300190: crapn_stuff_95
+    21300192: crapn_stuff_96
+    21300194: crapn_stuff_97
+    21300196: crapn_stuff_98
+    21300198: crapn_stuff_99
+    21300200: crapn_stuff_100
+    21300202: crapn_stuff_101
+    21300204: crapn_stuff_102
+    21300206: crapn_stuff_103
+    21300208: crapn_stuff_104
+    21300210: crapn_stuff_105
+    21300212: crapn_stuff_106
+    21300214: crapn_stuff_107
+    21300216: crapn_stuff_108
+    21300218: crapn_stuff_109
+    21300220: crapn_stuff_110
+    21300222: crapn_stuff_111
+    21300224: crapn_stuff_112
+    21300226: crapn_stuff_113
+    21300228: crapn_stuff_114
+    21300230: crapn_stuff_115
+    21300232: crapn_stuff_116
+    21300234: crapn_stuff_117
+    21300236: crapn_stuff_118
+    21300238: crapn_stuff_119
+    21300240: crapn_stuff_120
+    21300242: tile_square_red
+    21300244: crapn_stuff_122
+    21300246: crapn_stuff_123
+    21300248: crapn_stuff_124
+    21300250: crapn_stuff_125
+    21300252: crapn_stuff_126
+    21300254: crapn_stuff_127
+    21300256: crapn_stuff_128
+    21300258: crapn_stuff_129
+    21300260: crapn_stuff_130
+    21300262: crapn_stuff_131
+    21300264: crapn_stuff_132
+    21300266: crapn_stuff_133
+    21300268: crapn_stuff_134
+    21300270: crapn_stuff_135
+    21300272: crapn_stuff_136
+    21300274: tile_ground_red
+    21300276: crapn_stuff_138
+    21300278: crapn_stuff_139
+    21300280: crapn_stuff_140
+    21300282: crapn_stuff_141
+    21300284: crapn_stuff_142
+    21300286: crapn_stuff_143
+    21300288: crapn_stuff_144
+    21300290: crapn_stuff_145
+    21300292: crapn_stuff_146
+    21300294: crapn_stuff_147
+    21300296: crapn_stuff_148
+    21300298: crapn_stuff_149
+    21300300: crapn_stuff_150
+    21300302: crapn_stuff_151
+    21300304: crapn_stuff_152
+    21300306: crapn_stuff_153
+    21300308: crapn_stuff_154
+    21300310: crapn_stuff_155
+    21300312: crapn_stuff_156
+    21300314: crapn_stuff_157
+    21300316: crapn_stuff_158
+    21300318: crapn_stuff_159
+    21300320: crapn_stuff_160
+    21300322: crapn_stuff_161
+    21300324: crapn_stuff_162
+    21300326: crapn_stuff_163
+    21300328: crapn_stuff_164
+    21300330: crapn_stuff_165
+    21300332: crapn_stuff_166
+    21300334: crapn_stuff_167
+    21300336: crapn_stuff_168
+    21300338: crapn_stuff_169
+    21300340: crapn_stuff_170
+    21300342: crapn_stuff_171
+    21300344: crapn_stuff_172
+    21300346: crapn_stuff_173
+    21300348: crapn_stuff_174
+    21300350: crapn_stuff_175
+    21300352: crapn_stuff_176
+    21300354: crapn_stuff_177
+    21300356: crapn_stuff_178
+    21300358: crapn_stuff_179
+    21300360: crapn_stuff_180
+    21300362: crapn_stuff_181
+    21300364: crapn_stuff_182
+    21300366: crapn_stuff_183
+    21300368: crapn_stuff_184
+    21300370: crapn_stuff_185
+    21300372: crapn_stuff_186
+    21300374: crapn_stuff_187
+    21300376: crapn_stuff_188
+    21300378: crapn_stuff_189
+    21300380: crapn_stuff_190
+    21300382: crapn_stuff_191
+    21300384: crapn_stuff_192
+    21300386: crapn_stuff_193
+    21300388: crapn_stuff_194
+    21300390: crapn_stuff_195
+    21300392: crapn_stuff_196
+    21300394: crapn_stuff_197
+    21300396: crapn_stuff_198
+    21300398: crapn_stuff_199
+    21300400: crapn_stuff_200
+    21300402: crapn_stuff_201
+    21300404: crapn_stuff_202
+    21300406: crapn_stuff_203
+    21300408: crapn_stuff_204
+    21300410: crapn_stuff_205
+    21300412: crapn_stuff_206
+    21300414: crapn_stuff_207
+    21300416: crapn_stuff_208
+    21300418: crapn_stuff_209
+    21300420: crapn_stuff_210
+    21300422: crapn_stuff_211
+    21300424: crapn_stuff_212
+    21300426: crapn_stuff_213
+    21300428: crapn_stuff_214
+    21300430: crapn_stuff_215
+    21300432: crapn_stuff_216
+    21300434: crapn_stuff_217
+    21300436: crapn_stuff_218
+    21300438: crapn_stuff_219
+    21300440: crapn_stuff_220
+    21300442: crapn_stuff_221
+    21300444: crapn_stuff_222
+    21300446: crapn_stuff_223
+    21300448: crapn_stuff_224
+    21300450: crapn_stuff_225
+    21300452: crapn_stuff_226
+    21300454: crapn_stuff_227
+    21300456: crapn_stuff_228
+    21300458: crapn_stuff_229
+    21300460: crapn_stuff_230
+    21300462: crapn_stuff_231
+    21300464: crapn_stuff_232
+    21300466: crapn_stuff_233
+    21300468: crapn_stuff_234
+    21300470: crapn_stuff_235
+    21300472: crapn_stuff_236
+    21300474: crapn_stuff_237
+    21300476: crapn_stuff_238
+    21300478: crapn_stuff_239
+    21300480: crapn_stuff_240
+    21300482: crapn_stuff_241
+    21300484: crapn_stuff_242
+    21300486: crapn_stuff_243
+    21300488: crapn_stuff_244
+    21300490: crapn_stuff_245
+    21300492: crapn_stuff_246
+    21300494: crapn_stuff_247
+    21300496: crapn_stuff_248
+    21300498: crapn_stuff_249
+    21300500: crapn_stuff_250
+    21300502: crapn_stuff_251
+    21300504: crapn_stuff_252
+    21300506: crapn_stuff_253
+    21300508: crapn_stuff_254
+    21300510: crapn_stuff_255
+    21300512: crapn_stuff_256
+    21300514: crapn_stuff_257
+    21300516: crapn_stuff_258
+    21300518: crapn_stuff_259
+    21300520: crapn_stuff_260
+    21300522: crapn_stuff_261
+    21300524: crapn_stuff_262
+    21300526: crapn_stuff_263
+    21300528: crapn_stuff_264
+    21300530: crapn_stuff_265
+    21300532: crapn_stuff_266
+    21300534: crapn_stuff_267
+    21300536: crapn_stuff_268
+    21300538: crapn_stuff_269
+    21300540: crapn_stuff_270
+    21300542: crapn_stuff_271
+    21300544: crapn_stuff_272
+    21300546: crapn_stuff_273
+    21300548: crapn_stuff_274
+    21300550: crapn_stuff_275
+    21300552: crapn_stuff_276
+    21300554: crapn_stuff_277
+    21300556: crapn_stuff_278
+    21300558: crapn_stuff_279
+    21300560: crapn_stuff_280
+    21300562: crapn_stuff_281
+    21300564: crapn_stuff_282
+    21300566: crapn_stuff_283
+    21300568: crapn_stuff_284
+    21300570: crapn_stuff_285
+    21300572: crapn_stuff_286
+    21300574: crapn_stuff_287
+    21300576: crapn_stuff_288
+    21300578: crapn_stuff_289
+    21300580: crapn_stuff_290
+    21300582: crapn_stuff_291
+    21300584: crapn_stuff_292
+    21300586: crapn_stuff_293
+    21300588: crapn_stuff_294
+    21300590: crapn_stuff_295
+    21300592: crapn_stuff_296
+    21300594: crapn_stuff_297
+    21300596: crapn_stuff_298
+    21300598: crapn_stuff_299
+    21300600: crapn_stuff_300
+    21300602: crapn_stuff_301
+    21300604: crapn_stuff_302
+    21300606: crapn_stuff_303
+    21300608: crapn_stuff_304
+    21300610: crapn_stuff_305
+    21300612: crapn_stuff_306
+    21300614: crapn_stuff_307
+    21300616: crapn_stuff_308
+    21300618: crapn_stuff_309
+    21300620: crapn_stuff_310
+    21300622: crapn_stuff_311
+    21300624: crapn_stuff_312
+    21300626: crapn_stuff_313
+    21300628: crapn_stuff_314
+    21300630: crapn_stuff_315
+    21300632: crapn_stuff_316
+    21300634: crapn_stuff_317
+    21300636: crapn_stuff_318
+    21300638: crapn_stuff_319
+    21300640: crapn_stuff_320
+    21300642: crapn_stuff_321
+    21300644: crapn_stuff_322
+    21300646: crapn_stuff_323
+    21300648: crapn_stuff_324
+    21300650: crapn_stuff_325
+    21300652: crapn_stuff_326
+    21300654: crapn_stuff_327
+    21300656: crapn_stuff_328
+    21300658: crapn_stuff_329
+    21300660: crapn_stuff_330
+    21300662: crapn_stuff_331
+    21300664: crapn_stuff_332
+    21300666: crapn_stuff_333
+    21300668: crapn_stuff_334
+    21300670: crapn_stuff_335
+    21300672: crapn_stuff_336
+    21300674: crapn_stuff_337
+    21300676: crapn_stuff_338
+    21300678: crapn_stuff_339
+    21300680: crapn_stuff_340
+    21300682: crapn_stuff_341
+    21300684: crapn_stuff_342
+    21300686: crapn_stuff_343
+    21300688: crapn_stuff_344
+    21300690: crapn_stuff_345
+    21300692: crapn_stuff_346
+    21300694: crapn_stuff_347
+    21300696: crapn_stuff_348
+    21300698: crapn_stuff_349
+    21300700: crapn_stuff_350
+    21300702: crapn_stuff_351
+    21300704: crapn_stuff_352
+    21300706: crapn_stuff_353
+    21300708: crapn_stuff_354
+    21300710: _mario_tileset_0
+    21300712: _mario_tileset_1
+    21300714: _mario_tileset_2
+    21300716: _mario_tileset_3
+    21300718: _mario_tileset_4
+    21300720: _mario_tileset_5
+    21300722: _mario_tileset_6
+    21300724: _mario_tileset_7
+    21300726: _mario_tileset_8
+    21300728: _mario_tileset_9
+    21300730: _mario_tileset_10
+    21300732: _mario_tileset_11
+    21300734: _mario_tileset_12
+    21300736: _mario_tileset_13
+    21300738: _mario_tileset_14
+    21300740: _mario_tileset_15
+    21300742: _mario_tileset_16
+    21300744: _mario_tileset_17
+    21300746: _mario_tileset_18
+    21300748: _mario_tileset_19
+    21300750: _mario_tileset_20
+    21300752: _mario_tileset_21
+    21300754: _mario_tileset_22
+    21300756: _mario_tileset_23
+    21300758: _mario_tileset_24
+    21300760: _mario_tileset_25
+    21300762: _mario_tileset_26
+    21300764: _mario_tileset_27
+    21300766: _mario_tileset_28
+    21300768: _mario_tileset_29
+    21300770: _mario_tileset_30
+    21300772: _mario_tileset_31
+    21300774: _mario_tileset_32
+    21300776: _mario_tileset_33
+    21300778: _mario_tileset_34
+    21300780: _mario_tileset_35
+    21300782: _mario_tileset_36
+    21300784: _mario_tileset_37
+    21300786: _mario_tileset_38
+    21300788: _mario_tileset_39
+    21300790: _mario_tileset_40
+    21300792: _mario_tileset_41
+    21300794: _mario_tileset_42
+    21300796: _mario_tileset_43
+    21300798: _mario_tileset_44
+    21300800: _mario_tileset_45
+    21300802: _mario_tileset_46
+    21300804: _mario_tileset_47
+    21300806: _mario_tileset_48
+    21300808: _mario_tileset_49
+    21300810: _mario_tileset_50
+    21300812: _mario_tileset_51
+    21300814: _mario_tileset_52
+    21300816: _mario_tileset_53
+    21300818: _mario_tileset_54
+    21300820: _mario_tileset_55
+    21300822: _mario_tileset_56
+    21300824: _mario_tileset_57
+    21300826: _mario_tileset_58
+    21300828: _mario_tileset_59
+    21300830: _mario_tileset_60
+    21300832: _mario_tileset_61
+    21300834: _mario_tileset_62
+    21300836: _mario_tileset_63
+    21300838: _mario_tileset_64
+    21300840: _mario_tileset_65
+    21300842: _mario_tileset_66
+    21300844: _mario_tileset_67
+    21300846: _mario_tileset_68
+    21300848: _mario_tileset_69
+    21300850: _mario_tileset_70
+    21300852: _mario_tileset_71
+    21300854: _mario_tileset_72
+    21300856: _mario_tileset_73
+    21300858: _mario_tileset_74
+    21300860: _mario_tileset_75
+    21300862: _mario_tileset_76
+    21300864: _mario_tileset_77
+    21300866: _mario_tileset_78
+    21300868: _mario_tileset_79
+    21300870: _mario_tileset_80
+    21300872: _mario_tileset_81
+    21300874: _mario_tileset_82
+    21300876: _mario_tileset_83
+    21300878: _mario_tileset_84
+    21300880: _mario_tileset_85
+    21300882: _mario_tileset_86
+    21300884: _mario_tileset_87
+    21300886: _mario_tileset_88
+    21300888: _mario_tileset_89
+    21300890: _mario_tileset_90
+    21300892: _mario_tileset_91
+    21300894: _mario_tileset_92
+    21300896: _mario_tileset_93
+    21300898: _mario_tileset_94
+    21300900: _mario_tileset_95
+    21300902: _mario_tileset_96
+    21300904: _mario_tileset_97
+    21300906: _mario_tileset_98
+    21300908: _mario_tileset_99
+    21300910: _mario_tileset_100
+    21300912: _mario_tileset_101
+    21300914: _mario_tileset_102
+    21300916: _mario_tileset_103
+    21300918: _mario_tileset_104
+    21300920: _mario_tileset_105
+    21300922: _mario_tileset_106
+    21300924: _mario_tileset_107
+    21300926: _mario_tileset_108
+    21300928: _mario_tileset_109
+    21300930: _mario_tileset_110
+    21300932: _mario_tileset_111
+    21300934: _mario_tileset_112
+    21300936: _mario_tileset_113
+    21300938: _mario_tileset_114
+    21300940: _mario_tileset_115
+    21300942: _mario_tileset_116
+    21300944: _mario_tileset_117
+    21300946: _mario_tileset_118
+    21300948: _mario_tileset_119
+    21300950: _mario_tileset_120
+    21300952: _mario_tileset_122
+    21300954: _mario_tileset_123
+    21300956: _mario_tileset_124
+    21300958: _mario_tileset_125
+    21300960: _mario_tileset_126
+    21300962: _mario_tileset_127
+    21300964: _mario_tileset_128
+    21300966: _mario_tileset_129
+    21300968: _mario_tileset_130
+    21300970: _mario_tileset_131
+    21300972: _mario_tileset_132
+    21300974: _mario_tileset_133
+    21300976: _mario_tileset_134
+    21300978: _mario_tileset_135
+    21300980: _mario_tileset_136
+    21300982: _mario_tileset_137
+    21300984: _mario_tileset_138
+    21300986: _mario_tileset_139
+    21300988: _mario_tileset_140
+    21300990: _mario_tileset_141
+    21300992: _mario_tileset_142
+    21300994: _mario_tileset_143
+    21300996: _mario_tileset_144
+    21300998: _mario_tileset_145
+    21301000: _mario_tileset_146
+    21301002: _mario_tileset_147
+    21301004: _mario_tileset_148
+    21301006: _mario_tileset_149
+    21301008: _mario_tileset_150
+    21301010: _mario_tileset_151
+    21301012: _mario_tileset_152
+    21301014: _mario_tileset_153
+    21301016: _mario_tileset_154
+    21301018: _mario_tileset_155
+    21301020: _mario_tileset_156
+    21301022: _mario_tileset_157
+    21301024: _mario_tileset_158
+    21301026: _mario_tileset_159
+    21301028: _mario_tileset_160
+    21301030: _mario_tileset_161
+    21301032: _mario_tileset_162
+    21301034: _mario_tileset_163
+    21301036: _mario_tileset_164
+    21301038: _mario_tileset_165
+    21301040: _mario_tileset_166
+    21301042: _mario_tileset_167
+    21301044: _mario_tileset_168
+    21301046: _mario_tileset_169
+    21301048: _mario_tileset_170
+    21301050: _mario_tileset_171
+    21301052: _mario_tileset_172
+    21301054: _mario_tileset_173
+    21301056: _mario_tileset_174
+    21301058: _mario_tileset_175
+    21301060: _mario_tileset_176
+    21301062: _mario_tileset_177
+    21301064: _mario_tileset_178
+    21301066: _mario_tileset_179
+    21301068: _mario_tileset_180
+    21301070: _mario_tileset_181
+    21301072: _mario_tileset_182
+    21301074: _mario_tileset_183
+    21301076: _mario_tileset_184
+    21301078: _mario_tileset_185
+    21301080: _mario_tileset_186
+    21301082: _mario_tileset_187
+    21301084: _mario_tileset_188
+    21301086: _mario_tileset_189
+    21301088: _mario_tileset_190
+    21301090: _mario_tileset_191
+    21301092: _mario_tileset_192
+    21301094: _mario_tileset_193
+    21301096: _mario_tileset_194
+    21301098: _mario_tileset_195
+    21301100: _mario_tileset_196
+    21301102: _mario_tileset_197
+    21301104: _mario_tileset_198
+    21301106: _mario_tileset_199
+    21301108: _mario_tileset_200
+    21301110: _mario_tileset_201
+    21301112: _mario_tileset_202
+    21301114: _mario_tileset_203
+    21301116: _mario_tileset_204
+    21301118: _mario_tileset_205
+    21301120: _mario_tileset_206
+    21301122: _mario_tileset_207
+    21301124: _mario_tileset_208
+    21301126: _mario_tileset_209
+    21301128: _mario_tileset_210
+    21301130: _mario_tileset_211
+    21301132: _mario_tileset_212
+    21301134: _mario_tileset_213
+    21301136: _mario_tileset_214
+    21301138: _mario_tileset_215
+    21301140: _mario_tileset_216
+    21301142: _mario_tileset_217
+    21301144: _mario_tileset_218
+    21301146: _mario_tileset_219
+    21301148: _mario_tileset_220
+    21301150: _mario_tileset_221
+    21301152: _mario_tileset_222
+    21301154: _mario_tileset_223
+    21301156: _mario_tileset_224
+    21301158: _mario_tileset_225
+    21301160: _mario_tileset_226
+    21301162: _mario_tileset_227
+    21301164: _mario_tileset_228
+    21301166: _mario_tileset_229
+    21301168: _mario_tileset_230
+    21301170: _mario_tileset_231
+    21301172: _mario_tileset_232
+    21301174: _mario_tileset_233
+    21301176: _mario_tileset_234
+    21301178: _mario_tileset_235
+    21301180: _mario_tileset_236
+    21301182: _mario_tileset_237
+    21301184: _mario_tileset_238
+    21301186: _mario_tileset_239
+    21301188: _mario_tileset_240
+    21301190: _mario_tileset_241
+    21301192: _mario_tileset_242
+    21301194: _mario_tileset_243
+    21301196: _mario_tileset_244
+    21301198: _mario_tileset_245
+    21301200: _mario_tileset_246
+    21301202: _mario_tileset_247
+    21301204: _mario_tileset_248
+    21301206: _mario_tileset_249
+    21301208: _mario_tileset_250
+    21301210: _mario_tileset_251
+    21301212: _mario_tileset_252
+    21301214: _mario_tileset_253
+    21301216: _mario_tileset_254
+    21301218: _mario_tileset_255
+    21301220: _mario_tileset_256
+    21301222: _mario_tileset_257
+    21301224: _mario_tileset_258
+    21301226: _mario_tileset_259
+    21301228: _mario_tileset_260
+    21301230: _mario_tileset_261
+    21301232: _mario_tileset_262
+    21301234: _mario_tileset_263
+    21301236: _mario_tileset_264
+    21301238: _mario_tileset_265
+    21301240: _mario_tileset_266
+    21301242: _mario_tileset_267
+    21301244: _mario_tileset_268
+    21301246: _mario_tileset_269
+    21301248: _mario_tileset_270
+    21301250: _mario_tileset_271
+    21301252: _mario_tileset_272
+    21301254: _mario_tileset_273
+    21301256: _mario_tileset_274
+    21301258: _mario_tileset_275
+    21301260: _mario_tileset_276
+    21301262: _mario_tileset_277
+    21301264: _mario_tileset_278
+    21301266: _mario_tileset_279
+    21301268: _mario_tileset_280
+    21301270: _mario_tileset_281
+    21301272: _mario_tileset_282
+    21301274: _mario_tileset_283
+    21301276: _mario_tileset_284
+    21301278: _mario_tileset_285
+    21301280: _mario_tileset_286
+    21301282: _mario_tileset_287
+    21301284: _mario_tileset_288
+    21301286: _mario_tileset_289
+    21301288: _mario_tileset_290
+    21301290: _mario_tileset_291
+    21301292: _mario_tileset_292
+    21301294: _mario_tileset_293
+    21301296: _mario_tileset_294
+    21301298: _mario_tileset_295
+    21301300: _mario_tileset_296
+    21301302: _mario_tileset_297
+    21301304: _mario_tileset_298
+    21301306: _mario_tileset_299
+    21301308: _mario_tileset_300
+    21301310: _mario_tileset_301
+    21301312: _mario_tileset_302
+    21301314: _mario_tileset_303
+    21301316: _mario_tileset_304
+    21301318: _mario_tileset_305
+    21301320: _mario_tileset_306
+    21301322: _mario_tileset_307
+    21301324: _mario_tileset_308
+    21301326: _mario_tileset_309
+    21301328: _mario_tileset_310
+    21301330: _mario_tileset_311
+    21301332: _mario_tileset_312
+    21301334: _mario_tileset_313
+    21301336: _mario_tileset_314
+    21301338: _mario_tileset_315
+    21301340: _mario_tileset_316
+    21301342: _mario_tileset_317
+    21301344: _mario_tileset_318
+    21301346: _mario_tileset_319
+    21301348: _mario_tileset_320
+    21301350: _mario_tileset_321
+    21301352: _mario_tileset_322
+    21301354: _mario_tileset_323
+    21301356: _mario_tileset_324
+    21301358: _mario_tileset_325
+    21301360: _mario_tileset_326
+    21301362: _mario_tileset_327
+    21301364: _mario_tileset_328
+    21301366: _mario_tileset_329
+    21301368: _mario_tileset_330
+    21301370: _mario_tileset_331
+    21301372: _mario_tileset_332
+    21301374: _mario_tileset_333
+    21301376: _mario_tileset_334
+    21301378: _mario_tileset_335
+    21301380: _mario_tileset_336
+    21301382: _mario_tileset_337
+    21301384: _mario_tileset_338
+    21301386: _mario_tileset_339
+    21301388: _mario_tileset_340
+    21301390: _mario_tileset_341
+    21301392: _mario_tileset_342
+    21301394: _mario_tileset_343
+    21301396: _mario_tileset_344
+    21301398: _mario_tileset_345
+    21301400: _mario_tileset_346
+    21301402: _mario_tileset_347
+    21301404: _mario_tileset_348
+    21301406: _mario_tileset_349
+    21301408: _mario_tileset_350
+    21301410: _mario_tileset_351
+    21301412: _mario_tileset_352
+    21301414: _mario_tileset_353
+    21301416: _mario_tileset_354
+    21301418: zz_mario_tileset_0
+    21301420: zz_mario_tileset_1
+    21301422: zz_mario_tileset_2
+    21301424: zz_mario_tileset_3
+    21301426: zz_mario_tileset_4
+    21301428: zz_mario_tileset_5
+    21301430: zz_mario_tileset_6
+    21301432: zz_mario_tileset_7
+    21301434: zz_mario_tileset_8
+    21301436: entity_koopa_green_1
+    21301438: entity_koopa_green_2
+    21301440: entity_shell_green_1
+    21301442: entity_shell_green_2
+    21301444: zz_mario_tileset_13
+    21301446: zz_mario_tileset_14
+    21301448: zz_mario_tileset_15
+    21301450: zz_mario_tileset_16
+    21301452: zz_mario_tileset_17
+    21301454: tile_mushroom_red
+    21301456: tile_mushroom_green
+    21301458: zz_mario_tileset_20
+    21301460: zz_mario_tileset_21
+    21301462: tile_item_3
+    21301464: tile_item_2
+    21301466: tile_item_1
+    21301468: tile_item_used
+    21301470: tile_destructible_red
+    21301472: entity_goomba_red_1
+    21301474: entity_goomba_red_2
+    21301476: entity_goomba_red_dead
+    21301478: tile_coin_3
+    21301480: tile_coin_2
+    21301482: tile_coin_1
+    21301484: zz_mario_tileset_33
+    21301486: zz_mario_tileset_34
+    21301488: particle_destructible_red
+    21301490: zz_mario_tileset_36
+    21301492: zz_mario_tileset_37
+    21301494: zz_mario_tileset_38
+    21301496: zz_mario_tileset_39
+    21301498: zz_mario_tileset_40
+    21301500: zz_mario_tileset_41
+    21301502: zz_mario_tileset_42
+    21301504: zz_mario_tileset_43
+    21301506: zz_mario_tileset_44
+    21301508: zz_mario_tileset_45
+    21301510: zz_mario_tileset_46
+    21301512: zz_mario_tileset_47
+    21301514: zz_mario_tileset_48
+    21301516: zz_mario_tileset_49
+    21301518: zz_mario_tileset_50
+    21301520: zz_mario_tileset_51
+    21301522: zz_mario_tileset_52
+    21301524: zz_mario_tileset_53
+    21301526: zz_mario_tileset_54
+    21301528: zz_mario_tileset_55
+    21301530: zz_mario_tileset_56
+    21301532: zz_mario_tileset_57
+    21301534: zz_mario_tileset_58
+    21301536: zz_mario_tileset_59
+    21301538: zz_mario_tileset_60
+    21301540: zz_mario_tileset_61
+    21301542: zz_mario_tileset_62
+    21301544: zz_mario_tileset_63
+    21301546: zz_mario_tileset_64
+    21301548: zz_mario_tileset_65
+    21301550: zz_mario_tileset_66
+    21301552: zz_mario_tileset_67
+    21301554: zz_mario_tileset_68
+    21301556: zz_mario_tileset_69
+    21301558: zz_mario_tileset_70
+    21301560: zz_mario_tileset_71
+    21301562: zz_mario_tileset_72
+    21301564: zz_mario_tileset_73
+    21301566: zz_mario_tileset_74
+    21301568: zz_mario_tileset_75
+    21301570: zz_mario_tileset_76
+    21301572: zz_mario_tileset_77
+    21301574: zz_mario_tileset_78
+    21301576: zz_mario_tileset_79
+    21301578: zz_mario_tileset_80
+    21301580: zz_mario_tileset_81
+    21301582: zz_mario_tileset_82
+    21301584: zz_mario_tileset_83
+    21301586: zz_mario_tileset_84
+    21301588: zz_mario_tileset_85
+    21301590: zz_mario_tileset_86
+    21301592: zz_mario_tileset_87
+    21301594: zz_mario_tileset_88
+    21301596: zz_mario_tileset_89
+    21301598: zz_mario_tileset_90
+    21301600: zz_mario_tileset_91
+    21301602: zz_mario_tileset_92
+    21301604: zz_mario_tileset_93
+    21301606: zz_mario_tileset_94
+    21301608: zz_mario_tileset_95
+    21301610: zz_mario_tileset_96
+    21301612: zz_mario_tileset_97
+    21301614: zz_mario_tileset_98
+    21301616: zz_mario_tileset_99
+    21301618: zz_mario_tileset_100
+    21301620: zz_mario_tileset_101
+    21301622: zz_mario_tileset_102
+    21301624: zz_mario_tileset_103
+    21301626: zz_mario_tileset_104
+    21301628: zz_mario_tileset_105
+    21301630: zz_mario_tileset_106
+    21301632: zz_mario_tileset_107
+    21301634: zz_mario_tileset_108
+    21301636: zz_mario_tileset_109
+    21301638: zz_mario_tileset_110
+    21301640: zz_mario_tileset_111
+    21301642: zz_mario_tileset_112
+    21301644: zz_mario_tileset_113
+    21301646: zz_mario_tileset_114
+    21301648: zz_mario_tileset_115
+    21301650: zz_mario_tileset_116
+    21301652: zz_mario_tileset_117
+    21301654: zz_mario_tileset_118
+    21301656: zz_mario_tileset_119
+    21301658: zz_mario_tileset_120
+    21301660: zz_mario_tileset_122
+    21301662: zz_mario_tileset_123
+    21301664: zz_mario_tileset_124
+    21301666: zz_mario_tileset_125
+    21301668: zz_mario_tileset_126
+    21301670: zz_mario_tileset_127
+    21301672: zz_mario_tileset_128
+    21301674: zz_mario_tileset_129
+    21301676: zz_mario_tileset_130
+    21301678: zz_mario_tileset_131
+    21301680: zz_mario_tileset_132
+    21301682: zz_mario_tileset_133
+    21301684: zz_mario_tileset_134
+    21301686: zz_mario_tileset_135
+    21301688: zz_mario_tileset_136
+    21301690: zz_mario_tileset_138
+    21301692: zz_mario_tileset_139
+    21301694: zz_mario_tileset_140
+    21301696: zz_mario_tileset_141
+    21301698: zz_mario_tileset_142
+    21301700: zz_mario_tileset_143
+    21301702: zz_mario_tileset_144
+    21301704: zz_mario_tileset_145
+    21301706: zz_mario_tileset_146
+    21301708: zz_mario_tileset_147
+    21301710: zz_mario_tileset_148
+    21301712: zz_mario_tileset_149
+    21301714: zz_mario_tileset_150
+    21301716: zz_mario_tileset_151
+    21301718: zz_mario_tileset_152
+    21301720: zz_mario_tileset_153
+    21301722: zz_mario_tileset_154
+    21301724: zz_mario_tileset_155
+    21301726: zz_mario_tileset_156
+    21301728: zz_mario_tileset_157
+    21301730: zz_mario_tileset_158
+    21301732: zz_mario_tileset_159
+    21301734: zz_mario_tileset_160
+    21301736: zz_mario_tileset_161
+    21301738: zz_mario_tileset_162
+    21301740: zz_mario_tileset_163
+    21301742: zz_mario_tileset_164
+    21301744: zz_mario_tileset_165
+    21301746: zz_mario_tileset_166
+    21301748: zz_mario_tileset_167
+    21301750: zz_mario_tileset_168
+    21301752: zz_mario_tileset_169
+    21301754: zz_mario_tileset_170
+    21301756: zz_mario_tileset_171
+    21301758: zz_mario_tileset_172
+    21301760: zz_mario_tileset_173
+    21301762: zz_mario_tileset_174
+    21301764: zz_mario_tileset_175
+    21301766: zz_mario_tileset_176
+    21301768: zz_mario_tileset_177
+    21301770: zz_mario_tileset_178
+    21301772: zz_mario_tileset_179
+    21301774: zz_mario_tileset_180
+    21301776: zz_mario_tileset_181
+    21301778: zz_mario_tileset_182
+    21301780: zz_mario_tileset_183
+    21301782: zz_mario_tileset_184
+    21301784: zz_mario_tileset_185
+    21301786: zz_mario_tileset_186
+    21301788: zz_mario_tileset_187
+    21301790: zz_mario_tileset_188
+    21301792: zz_mario_tileset_189
+    21301794: zz_mario_tileset_190
+    21301796: zz_mario_tileset_191
+    21301798: zz_mario_tileset_192
+    21301800: zz_mario_tileset_193
+    21301802: zz_mario_tileset_194
+    21301804: zz_mario_tileset_195
+    21301806: zz_mario_tileset_196
+    21301808: zz_mario_tileset_197
+    21301810: zz_mario_tileset_198
+    21301812: zz_mario_tileset_199
+    21301814: zz_mario_tileset_200
+    21301816: zz_mario_tileset_201
+    21301818: zz_mario_tileset_202
+    21301820: zz_mario_tileset_203
+    21301822: zz_mario_tileset_204
+    21301824: zz_mario_tileset_205
+    21301826: zz_mario_tileset_206
+    21301828: zz_mario_tileset_207
+    21301830: zz_mario_tileset_208
+    21301832: zz_mario_tileset_209
+    21301834: zz_mario_tileset_210
+    21301836: zz_mario_tileset_211
+    21301838: zz_mario_tileset_212
+    21301840: zz_mario_tileset_213
+    21301842: zz_mario_tileset_214
+    21301844: zz_mario_tileset_215
+    21301846: zz_mario_tileset_216
+    21301848: zz_mario_tileset_217
+    21301850: zz_mario_tileset_218
+    21301852: zz_mario_tileset_219
+    21301854: zz_mario_tileset_220
+    21301856: zz_mario_tileset_221
+    21301858: zz_mario_tileset_222
+    21301860: zz_mario_tileset_223
+    21301862: zz_mario_tileset_224
+    21301864: zz_mario_tileset_225
+    21301866: zz_mario_tileset_226
+    21301868: zz_mario_tileset_227
+    21301870: zz_mario_tileset_228
+    21301872: zz_mario_tileset_229
+    21301874: zz_mario_tileset_230
+    21301876: zz_mario_tileset_231
+    21301878: zz_mario_tileset_232
+    21301880: zz_mario_tileset_233
+    21301882: zz_mario_tileset_234
+    21301884: zz_mario_tileset_235
+    21301886: zz_mario_tileset_236
+    21301888: zz_mario_tileset_237
+    21301890: zz_mario_tileset_238
+    21301892: zz_mario_tileset_239
+    21301894: zz_mario_tileset_240
+    21301896: zz_mario_tileset_241
+    21301898: zz_mario_tileset_242
+    21301900: zz_mario_tileset_243
+    21301902: zz_mario_tileset_244
+    21301904: zz_mario_tileset_245
+    21301906: zz_mario_tileset_246
+    21301908: zz_mario_tileset_247
+    21301910: zz_mario_tileset_248
+    21301912: zz_mario_tileset_249
+    21301914: zz_mario_tileset_250
+    21301916: zz_mario_tileset_251
+    21301918: zz_mario_tileset_252
+    21301920: zz_mario_tileset_253
+    21301922: zz_mario_tileset_254
+    21301924: zz_mario_tileset_255
+    21301926: zz_mario_tileset_256
+    21301928: zz_mario_tileset_257
+    21301930: zz_mario_tileset_258
+    21301932: zz_mario_tileset_259
+    21301934: zz_mario_tileset_260
+    21301936: zz_mario_tileset_261
+    21301938: zz_mario_tileset_262
+    21301940: zz_mario_tileset_263
+    21301942: zz_mario_tileset_264
+    21301944: zz_mario_tileset_265
+    21301946: zz_mario_tileset_266
+    21301948: zz_mario_tileset_267
+    21301950: zz_mario_tileset_268
+    21301952: zz_mario_tileset_269
+    21301954: zz_mario_tileset_270
+    21301956: zz_mario_tileset_271
+    21301958: zz_mario_tileset_272
+    21301960: zz_mario_tileset_273
+    21301962: zz_mario_tileset_274
+    21301964: zz_mario_tileset_275
+    21301966: zz_mario_tileset_276
+    21301968: zz_mario_tileset_277
+    21301970: zz_mario_tileset_278
+    21301972: zz_mario_tileset_279
+    21301974: zz_mario_tileset_280
+    21301976: zz_mario_tileset_281
+    21301978: zz_mario_tileset_282
+    21301980: zz_mario_tileset_283
+    21301982: zz_mario_tileset_284
+    21301984: zz_mario_tileset_285
+    21301986: zz_mario_tileset_286
+    21301988: zz_mario_tileset_287
+    21301990: zz_mario_tileset_288
+    21301992: zz_mario_tileset_289
+    21301994: zz_mario_tileset_290
+    21301996: zz_mario_tileset_291
+    21301998: zz_mario_tileset_292
+    21302000: zz_mario_tileset_293
+    21302002: zz_mario_tileset_294
+    21302004: zz_mario_tileset_295
+    21302006: zz_mario_tileset_296
+    21302008: zz_mario_tileset_297
+    21302010: zz_mario_tileset_298
+    21302012: zz_mario_tileset_299
+    21302014: zz_mario_tileset_300
+    21302016: zz_mario_tileset_301
+    21302018: zz_mario_tileset_302
+    21302020: zz_mario_tileset_303
+    21302022: zz_mario_tileset_304
+    21302024: zz_mario_tileset_305
+    21302026: zz_mario_tileset_306
+    21302028: zz_mario_tileset_307
+    21302030: zz_mario_tileset_308
+    21302032: zz_mario_tileset_309
+    21302034: zz_mario_tileset_310
+    21302036: zz_mario_tileset_311
+    21302038: zz_mario_tileset_312
+    21302040: zz_mario_tileset_313
+    21302042: zz_mario_tileset_314
+    21302044: zz_mario_tileset_315
+    21302046: zz_mario_tileset_316
+    21302048: zz_mario_tileset_317
+    21302050: zz_mario_tileset_318
+    21302052: zz_mario_tileset_319
+    21302054: zz_mario_tileset_320
+    21302056: zz_mario_tileset_321
+    21302058: zz_mario_tileset_322
+    21302060: zz_mario_tileset_323
+    21302062: zz_mario_tileset_324
+    21302064: zz_mario_tileset_325
+    21302066: zz_mario_tileset_326
+    21302068: zz_mario_tileset_327
+    21302070: zz_mario_tileset_328
+    21302072: zz_mario_tileset_329
+    21302074: zz_mario_tileset_330
+    21302076: zz_mario_tileset_331
+    21302078: zz_mario_tileset_332
+    21302080: zz_mario_tileset_333
+    21302082: zz_mario_tileset_334
+    21302084: zz_mario_tileset_335
+    21302086: zz_mario_tileset_336
+    21302088: zz_mario_tileset_337
+    21302090: zz_mario_tileset_338
+    21302092: zz_mario_tileset_339
+    21302094: zz_mario_tileset_340
+    21302096: zz_mario_tileset_341
+    21302098: zz_mario_tileset_342
+    21302100: zz_mario_tileset_343
+    21302102: zz_mario_tileset_344
+    21302104: zz_mario_tileset_345
+    21302106: zz_mario_tileset_346
+    21302108: zz_mario_tileset_347
+    21302110: zz_mario_tileset_348
+    21302112: zz_mario_tileset_349
+    21302114: zz_mario_tileset_350
+    21302116: zz_mario_tileset_351
+    21302118: zz_mario_tileset_352
+    21302120: zz_mario_tileset_353
+    21302122: zz_mario_tileset_354
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 32
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: zz_mario_tileset_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 534
+        width: 16
+        height: 304
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_1
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 534
+        width: 16
+        height: 304
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_2
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 534
+        width: 16
+        height: 304
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_3
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 534
+        width: 16
+        height: 304
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_4
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 822
+        width: 96
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_5
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 822
+        width: 160
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_6
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 832
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_7
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 826
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_8
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 824
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: entity_koopa_green_1
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 810
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: entity_koopa_green_2
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 810
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: entity_shell_green_1
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 810
+        width: 32
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: entity_shell_green_2
+      rect:
+        serializedVersion: 2
+        x: 1302
+        y: 808
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_13
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 808
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_14
+      rect:
+        serializedVersion: 2
+        x: 1390
+        y: 808
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_15
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 786
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_16
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 790
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_17
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 790
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tile_mushroom_red
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 782
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tile_mushroom_green
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 782
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_20
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 778
+        width: 28
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_21
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 776
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tile_item_3
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 776
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tile_item_2
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 776
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tile_item_1
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 776
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tile_item_used
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 776
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tile_destructible_red
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 776
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: entity_goomba_red_1
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 798
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: entity_goomba_red_2
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 798
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: entity_goomba_red_dead
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 798
+        width: 32
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tile_coin_3
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 750
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tile_coin_2
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 750
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tile_coin_1
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 750
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_33
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 750
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_34
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 750
+        width: 96
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: particle_destructible_red
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 776
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_36
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 752
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_37
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 752
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_38
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 746
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_39
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 746
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_40
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 744
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_41
+      rect:
+        serializedVersion: 2
+        x: 1390
+        y: 744
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_42
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 742
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_43
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 736
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_44
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 736
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_45
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 736
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_46
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 736
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_47
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 748
+        width: 96
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_48
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 738
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_49
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 738
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_50
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 738
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_51
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 738
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_52
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 738
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_53
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 738
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_54
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 752
+        width: 32
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_55
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 746
+        width: 32
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_56
+      rect:
+        serializedVersion: 2
+        x: 1302
+        y: 744
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_57
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 712
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_58
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 712
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_59
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 712
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_60
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 696
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_61
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 696
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_62
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 696
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_63
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 696
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_64
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 718
+        width: 64
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_65
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 694
+        width: 96
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_66
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 694
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_67
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 700
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_68
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 700
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_69
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 700
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_70
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 700
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_71
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 700
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_72
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 708
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_73
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 708
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_74
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 708
+        width: 32
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_75
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 684
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_76
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 684
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_77
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 682
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_78
+      rect:
+        serializedVersion: 2
+        x: 1390
+        y: 682
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_79
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 674
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_80
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 674
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_81
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 674
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_82
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 690
+        width: 48
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_83
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 700
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_84
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 684
+        width: 32
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_85
+      rect:
+        serializedVersion: 2
+        x: 1302
+        y: 682
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_86
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 656
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_87
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 656
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_88
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 656
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_89
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 656
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_90
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 660
+        width: 4
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_91
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 598
+        width: 28
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_92
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 648
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_93
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 648
+        width: 128
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_94
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 658
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_95
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 658
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_96
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 658
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_97
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 658
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_98
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 666
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_99
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 666
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_100
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 666
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_101
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 650
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_102
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 650
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_103
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 650
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_104
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 620
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_105
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 636
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_106
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 636
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_107
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 636
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_108
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 650
+        width: 48
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_109
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 652
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_110
+      rect:
+        serializedVersion: 2
+        x: 1270
+        y: 624
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_111
+      rect:
+        serializedVersion: 2
+        x: 1304
+        y: 624
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_112
+      rect:
+        serializedVersion: 2
+        x: 1352
+        y: 630
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_113
+      rect:
+        serializedVersion: 2
+        x: 1392
+        y: 630
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_114
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 596
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_115
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 596
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_116
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 616
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_117
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 614
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_118
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 620
+        width: 48
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_119
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 534
+        width: 32
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_120
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 534
+        width: 32
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tile_square_red
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 616
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_122
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 616
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_123
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 616
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_124
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 618
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_125
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 622
+        width: 48
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_126
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 608
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_127
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 608
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_128
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 608
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_129
+      rect:
+        serializedVersion: 2
+        x: 1228
+        y: 620
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_130
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 574
+        width: 8
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_131
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 548
+        width: 96
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_132
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 574
+        width: 8
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_133
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 574
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_134
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 584
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_135
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 534
+        width: 28
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_136
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 534
+        width: 28
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tile_ground_red
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 578
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_138
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 578
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_139
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 578
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_140
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 576
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_141
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 592
+        width: 48
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_142
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 566
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_143
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 566
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_144
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 566
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_145
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 582
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_146
+      rect:
+        serializedVersion: 2
+        x: 1266
+        y: 582
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_147
+      rect:
+        serializedVersion: 2
+        x: 1354
+        y: 590
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_148
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 590
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_149
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 550
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_150
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 550
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_151
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 550
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_152
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 540
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_153
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 540
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_154
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 540
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_155
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 522
+        width: 160
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_156
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 492
+        width: 30
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_157
+      rect:
+        serializedVersion: 2
+        x: 1258
+        y: 544
+        width: 28
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_158
+      rect:
+        serializedVersion: 2
+        x: 1306
+        y: 530
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_159
+      rect:
+        serializedVersion: 2
+        x: 1352
+        y: 528
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_160
+      rect:
+        serializedVersion: 2
+        x: 1392
+        y: 536
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_161
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 386
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_162
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 488
+        width: 22
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_163
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 488
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_164
+      rect:
+        serializedVersion: 2
+        x: 1018
+        y: 480
+        width: 32
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_165
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 480
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_166
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 492
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_167
+      rect:
+        serializedVersion: 2
+        x: 1166
+        y: 492
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_168
+      rect:
+        serializedVersion: 2
+        x: 1258
+        y: 502
+        width: 28
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_169
+      rect:
+        serializedVersion: 2
+        x: 1306
+        y: 496
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_170
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 386
+        width: 64
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 32}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_171
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 386
+        width: 64
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_172
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 386
+        width: 64
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_173
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 386
+        width: 64
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_174
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 410
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_175
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 442
+        width: 96
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_176
+      rect:
+        serializedVersion: 2
+        x: 1018
+        y: 426
+        width: 32
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_177
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 426
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_178
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 410
+        width: 30
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_179
+      rect:
+        serializedVersion: 2
+        x: 1258
+        y: 462
+        width: 28
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_180
+      rect:
+        serializedVersion: 2
+        x: 1306
+        y: 448
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_181
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 464
+        width: 32
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_182
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 432
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_183
+      rect:
+        serializedVersion: 2
+        x: 1414
+        y: 464
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_184
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 386
+        width: 56
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_185
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 386
+        width: 56
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_186
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 386
+        width: 56
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_187
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 404
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_188
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 410
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_189
+      rect:
+        serializedVersion: 2
+        x: 1166
+        y: 410
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_190
+      rect:
+        serializedVersion: 2
+        x: 1258
+        y: 420
+        width: 28
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_191
+      rect:
+        serializedVersion: 2
+        x: 1306
+        y: 412
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_192
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 432
+        width: 32
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_193
+      rect:
+        serializedVersion: 2
+        x: 1414
+        y: 362
+        width: 32
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_194
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 370
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_195
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 339
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_196
+      rect:
+        serializedVersion: 2
+        x: 1149
+        y: 339
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_197
+      rect:
+        serializedVersion: 2
+        x: 1221
+        y: 339
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_198
+      rect:
+        serializedVersion: 2
+        x: 1293
+        y: 339
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_199
+      rect:
+        serializedVersion: 2
+        x: 1372
+        y: 390
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_200
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 14
+        width: 302
+        height: 352
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_201
+      rect:
+        serializedVersion: 2
+        x: 1372
+        y: 350
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_202
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 286
+        width: 118
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_203
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 286
+        width: 120
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_204
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 250
+        width: 96
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_205
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 250
+        width: 39
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_206
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 251
+        width: 114
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_207
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 180
+        width: 41
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_208
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 180
+        width: 4
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_209
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 180
+        width: 40
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_210
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 180
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_211
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 180
+        width: 42
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_212
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 180
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_213
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 180
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_214
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 180
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_215
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 180
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_216
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 180
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_217
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 180
+        width: 4
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_218
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 179
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_219
+      rect:
+        serializedVersion: 2
+        x: 977
+        y: 180
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_220
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 180
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_221
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 180
+        width: 29
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_222
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 14
+        width: 152
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_223
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 14
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_224
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 158
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_225
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 158
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_226
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 158
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_227
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 158
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_228
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 158
+        width: 25
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_229
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 158
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_230
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 158
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_231
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 157
+        width: 27
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_232
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 158
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_233
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 156
+        width: 29
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_234
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 156
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_235
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 156
+        width: 31
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_236
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 158
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_237
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 158
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_238
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 158
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_239
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 155
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_240
+      rect:
+        serializedVersion: 2
+        x: 1021
+        y: 158
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_241
+      rect:
+        serializedVersion: 2
+        x: 1035
+        y: 157
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_242
+      rect:
+        serializedVersion: 2
+        x: 1049
+        y: 158
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_243
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 158
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_244
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 158
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_245
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 155
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_246
+      rect:
+        serializedVersion: 2
+        x: 1108
+        y: 157
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_247
+      rect:
+        serializedVersion: 2
+        x: 1123
+        y: 157
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_248
+      rect:
+        serializedVersion: 2
+        x: 1138
+        y: 158
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_249
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 158
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_250
+      rect:
+        serializedVersion: 2
+        x: 1174
+        y: 157
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_251
+      rect:
+        serializedVersion: 2
+        x: 1189
+        y: 158
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_252
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 158
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_253
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 158
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_254
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 158
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_255
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 158
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_256
+      rect:
+        serializedVersion: 2
+        x: 1264
+        y: 158
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_257
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 157
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_258
+      rect:
+        serializedVersion: 2
+        x: 1291
+        y: 158
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_259
+      rect:
+        serializedVersion: 2
+        x: 1313
+        y: 158
+        width: 38
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_260
+      rect:
+        serializedVersion: 2
+        x: 1351
+        y: 158
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_261
+      rect:
+        serializedVersion: 2
+        x: 1369
+        y: 157
+        width: 27
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_262
+      rect:
+        serializedVersion: 2
+        x: 1397
+        y: 158
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_263
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 136
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_264
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 137
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_265
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 137
+        width: 25
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_266
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 137
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_267
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 136
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_268
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 137
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_269
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 137
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_270
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 134
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_271
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 137
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_272
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 137
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_273
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 137
+        width: 4
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_274
+      rect:
+        serializedVersion: 2
+        x: 897
+        y: 137
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_275
+      rect:
+        serializedVersion: 2
+        x: 916
+        y: 137
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_276
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 137
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_277
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 137
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_278
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 137
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_279
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 137
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_280
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 137
+        width: 27
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_281
+      rect:
+        serializedVersion: 2
+        x: 1023
+        y: 137
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_282
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 137
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_283
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 137
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_284
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 137
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_285
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 137
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_286
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 136
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_287
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 137
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_288
+      rect:
+        serializedVersion: 2
+        x: 1146
+        y: 137
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_289
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 136
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_290
+      rect:
+        serializedVersion: 2
+        x: 1179
+        y: 137
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_291
+      rect:
+        serializedVersion: 2
+        x: 1202
+        y: 137
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_292
+      rect:
+        serializedVersion: 2
+        x: 1219
+        y: 137
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_293
+      rect:
+        serializedVersion: 2
+        x: 1237
+        y: 137
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_294
+      rect:
+        serializedVersion: 2
+        x: 1258
+        y: 137
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_295
+      rect:
+        serializedVersion: 2
+        x: 1270
+        y: 137
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_296
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 137
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_297
+      rect:
+        serializedVersion: 2
+        x: 1311
+        y: 137
+        width: 22
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_298
+      rect:
+        serializedVersion: 2
+        x: 1348
+        y: 137
+        width: 37
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_299
+      rect:
+        serializedVersion: 2
+        x: 1385
+        y: 136
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_300
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 137
+        width: 28
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_301
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 115
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_302
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 115
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_303
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 115
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_304
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 115
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_305
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 115
+        width: 27
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_306
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 115
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_307
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 115
+        width: 4
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_308
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 115
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_309
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 115
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_310
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 115
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_311
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 115
+        width: 28
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_312
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 115
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_313
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 72
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_314
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 72
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_315
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 72
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_316
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 72
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_317
+      rect:
+        serializedVersion: 2
+        x: 761
+        y: 72
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_318
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 72
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_319
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 72
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_320
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 71
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_321
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 72
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_322
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 71
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_323
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 72
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_324
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 71
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_325
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 72
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_326
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 72
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_327
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 72
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_328
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 72
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_329
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 72
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_330
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 72
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_331
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 28
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_332
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 28
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_333
+      rect:
+        serializedVersion: 2
+        x: 739
+        y: 28
+        width: 22
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_334
+      rect:
+        serializedVersion: 2
+        x: 763
+        y: 29
+        width: 28
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_335
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 29
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_336
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 29
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_337
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 29
+        width: 4
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_338
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 29
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_339
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 29
+        width: 36
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_340
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 29
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_341
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 29
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_342
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 29
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_343
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 29
+        width: 29
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_344
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 29
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_345
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 29
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_346
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 26
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_347
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 29
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_348
+      rect:
+        serializedVersion: 2
+        x: 1030
+        y: 26
+        width: 50
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_349
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 29
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_350
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 29
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_351
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 29
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_352
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 29
+        width: 4
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_353
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 29
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zz_mario_tileset_354
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 29
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

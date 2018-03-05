@@ -15,6 +15,7 @@ public class SpritePostprocessor : AssetPostprocessor
         TextureImporter importer = assetImporter as TextureImporter;
         //set your default settings to the importer here
 
+        importer.spriteImportMode = SpriteImportMode.Multiple;
         importer.filterMode = FilterMode.Point;
     }
 

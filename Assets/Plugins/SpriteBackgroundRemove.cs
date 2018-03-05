@@ -1,20 +1,25 @@
-﻿using UnityEngine;
+// original script : http://answers.unity3d.com/answers/252528/view.html
+// modified by unitycoder.com
+
+// Usage: Place this script in Editor/ folder
+// Start the tool from menu, Window/Tools/Alpha-fy Images
+
+using UnityEngine;
 using UnityEditor;
 using System.IO;
-using System;
-using System.Collections.Generic;
 
-public class ImageTool : EditorWindow
+public class SpriteBackgroundRemove : EditorWindow
 {
     Texture2D img;
     Texture2D newImg;
-    Color colorToRemove = Color.red;
-    public static ImageTool win;
+    Color colorToRemove = Color.magenta;
+    public static SpriteBackgroundRemove win;
 
     [MenuItem("Window/Tools/Alpha-fy Images")]
     static void Init()
     {
-        win = ScriptableObject.CreateInstance(typeof(ImageTool)) as ImageTool;
+        win = ScriptableObject.CreateInstance(typeof(SpriteBackgroundRemove)) as SpriteBackgroundRemove;
+        win.minSize = new Vector2(300, 350);
         win.ShowUtility();
     }
 
@@ -57,30 +62,35 @@ public class ImageTool : EditorWindow
 
     }
 
+    // for multiple images
     void RemoveColor(Color c, UnityEngine.Object[] imgs)
     {
         if (!Directory.Exists("Assets/AlphaImages/"))
         {
             Directory.CreateDirectory("Assets/AlphaImages/");
         }
+
         float inc = 0f;
         foreach (Texture2D i in imgs)
         {
             inc++;
-            if (EditorUtility.DisplayCancelableProgressBar(
-                "Playin' With Pixels",
-                "Seaching for Color Matches",
-                ((float)inc / (float)imgs.Length)))
+            if (inc % 512 == 0 && EditorUtility.DisplayCancelableProgressBar("Playin' With Pixels", "Seaching for Color Matches", ((float)inc / (float)imgs.Length)))
             {
+                Debug.LogError("Cancelled..");
                 break;
             }
 
-            //ssEditorTools.MaxImportSettings(i);
+            CheckTextureSettings(i);
+
             Color[] pixels = i.GetPixels(0, 0, i.width, i.height, 0);
+            var clear = new Color(0, 0, 0, 0);
+
             for (int p = 0; p < pixels.Length; p++)
             {
                 if (pixels[p] == c)
-                    pixels[p] = new Color(0, 0, 0, 0);
+                {
+                    pixels[p] = clear;
+                }
             }
 
             Texture2D n = new Texture2D(i.width, i.height);
@@ -97,24 +107,28 @@ public class ImageTool : EditorWindow
         AssetDatabase.Refresh();
     }
 
+    // for single image
     Texture2D RemoveColor(Color c, Texture2D i)
     {
-        //ssEditorTools.MaxImportSettings(i);
+        CheckTextureSettings(i);
 
         Color[] pixels = i.GetPixels(0, 0, i.width, i.height, 0);
 
+        var clear = new Color(0, 0, 0, 0);
+
         for (int p = 0; p < pixels.Length; p++)
         {
-            if (EditorUtility.DisplayCancelableProgressBar(
-                "Playin' With Pixels",
-                "Seaching for Color Matches",
-                ((float)p / pixels.Length)))
+            if (p % 512 == 0 && EditorUtility.DisplayCancelableProgressBar("Playin' With Pixels", "Seaching for Color Matches", ((float)p / pixels.Length)))
             {
+                Debug.LogError("Cancelled..");
                 break;
             }
 
             if (pixels[p] == c)
-                pixels[p] = new Color(0, 0, 0, 0);
+            {
+                pixels[p] = clear;
+            }
+
         }
 
         Texture2D n = new Texture2D(i.width, i.height);
@@ -123,4 +137,24 @@ public class ImageTool : EditorWindow
         EditorUtility.ClearProgressBar();
         return (n);
     }
+
+    public void CheckTextureSettings(Texture2D texture)
+    {
+        if (texture == null) { Debug.LogError("CheckTextureSettings Failed - Texture is null"); return; }
+
+        string path = AssetDatabase.GetAssetPath(texture);
+        if (string.IsNullOrEmpty(path)) { Debug.LogError("CheckTextureSettings Failed - Texture path is null"); return; }
+
+        TextureImporter textureImporter = AssetImporter.GetAtPath(path) as TextureImporter;
+
+        if (!textureImporter.isReadable)
+        {
+            Debug.Log("Enabling read/write for image " + path);
+            //            textureImporter.mipmapEnabled = false;
+            textureImporter.isReadable = true;
+            AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
+        }
+
+    }
+
 }
