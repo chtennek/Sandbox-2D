@@ -17,8 +17,8 @@ TagManager:
   - Projectiles
   - Solid Terrain
   - Player
-  - 
-  - 
+  - Hitbox
+  - Hurtbox
   - 
   - 
   - 

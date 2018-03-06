@@ -23,7 +23,7 @@ public class GravityFieldEffector : MovementBehaviour
 
     public void AddField(GravityField field)
     {
-        if (field.InFilter(gameObject.layer))
+        if (field != null && field.InFilter(gameObject.layer))
             fields.Add(field);
     }
 
