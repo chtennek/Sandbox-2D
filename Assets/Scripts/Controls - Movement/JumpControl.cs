@@ -24,20 +24,24 @@ public class JumpControl : BoostControl
 
         if (input.GetButtonDown(buttonName))
         {
-            float acceleration = Vector3.Dot(direction.normalized, fields.GetTotalField());
 
             float targetHeight = magnitude;
             if (isGrounded == true)
             {
-                Boost(CalculateRequiredSpeed(acceleration, targetHeight));
+                Jump(targetHeight);
             }
             if (isGrounded == false && currentJump < airJumps.Length)
             {
                 targetHeight = airJumps[currentJump];
                 currentJump++;
-                Boost(CalculateRequiredSpeed(acceleration, targetHeight));
+                Jump(targetHeight);
             }
         }
+    }
+
+    public void Jump(float targetHeight) {
+        float acceleration = Vector3.Dot(direction.normalized, fields.GetTotalField());
+        Boost(CalculateRequiredSpeed(acceleration, targetHeight));
     }
 
     private float CalculateRequiredSpeed(float acceleration, float targetHeight)
