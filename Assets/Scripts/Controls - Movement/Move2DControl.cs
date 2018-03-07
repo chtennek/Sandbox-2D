@@ -50,7 +50,7 @@ public class Move2DControl : MovementBehaviour
         }
         else
         {
-            targetVelocity = Mathf.Lerp(minWalkableSpeed, walkSpeed, tq) * movement.normalized;
+            targetVelocity = Mathf.Lerp(minWalkableSpeed, Mathf.Max(walkSpeed, minWalkableSpeed), tq) * movement.normalized;
         }
 
         // Apply acceleration and determine appropriate drag

@@ -312,7 +312,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AI\AIInputReceiver.cs" />
+    <Compile Include="Assets\Scripts\AI\MovementAI.cs" />
     <Compile Include="Assets\Scripts\AI\TopdownAI.cs" />
+    <Compile Include="Assets\Scripts\AI\TurnAI.cs" />
     <Compile Include="Assets\Scripts\Animation\AnimatorBase.cs" />
     <Compile Include="Assets\Scripts\Animation\InputToAnimator.cs" />
     <Compile Include="Assets\Scripts\Animation\RigidbodyToAnimator.cs" />
@@ -337,15 +340,19 @@
     <Compile Include="Assets\Scripts\Controls - Physics\GravityField.cs" />
     <Compile Include="Assets\Scripts\Controls - Physics\GravityFieldEffector.cs" />
     <Compile Include="Assets\Scripts\Controls - Physics\JumpEffector.cs" />
+    <Compile Include="Assets\Scripts\Core\DebugBehaviour.cs" />
     <Compile Include="Assets\Scripts\Core\Mathv.cs" />
     <Compile Include="Assets\Scripts\Core\Polar2.cs" />
     <Compile Include="Assets\Scripts\Core\SerializableDictionaries.cs" />
     <Compile Include="Assets\Scripts\Core\SerializableTypes.cs" />
     <Compile Include="Assets\Scripts\Core\StatusBar.cs" />
+    <Compile Include="Assets\Scripts\Core\UnityExtensions.cs" />
     <Compile Include="Assets\Scripts\Core\Warnings.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Actor.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Dialogue.cs" />
     <Compile Include="Assets\Scripts\Entities\EntityBase.cs" />
+    <Compile Include="Assets\Scripts\Entities\EntityBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Entities\Hitbox.cs" />
     <Compile Include="Assets\Scripts\Entities\ProjectileDriver.cs" />
     <Compile Include="Assets\Scripts\Entities\ProjectileSpawner.cs" />
     <Compile Include="Assets\Scripts\Input\DefaultInputReceiver.cs" />
@@ -370,6 +377,7 @@
     <Compile Include="Assets\Scripts\Levels\LevelObjectStart.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelStartLocation.cs" />
     <Compile Include="Assets\Scripts\Pokemon\PokemonActorBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Pokemon\PokemonBehaviour.cs" />
     <Compile Include="Assets\Scripts\Pokemon\PokemonDataSerializer.cs" />
     <Compile Include="Assets\Scripts\Pokemon\PokemonLevel.cs" />
     <Compile Include="Assets\Scripts\Pokemon\PokemonSpecies.cs" />
@@ -378,8 +386,11 @@
     <Compile Include="Assets\Scripts\Session\ScreenDialogueBehaviour.cs" />
     <Compile Include="Assets\Scripts\Session\SingletonMessenger.cs" />
     <Compile Include="Assets\Scripts\Tiles\BorderedTile.cs" />
+    <Compile Include="Assets\Scripts\UI\INavigator.cs" />
     <Compile Include="Assets\Scripts\UI\InGameMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\PokemonUINavigator.cs" />
     <Compile Include="Assets\Scripts\UI\UINavigator.cs" />
+    <Compile Include="Assets\Scripts\UI\UINavigatorMessenger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\2d-extras\Assets\Tilemap\Brushes\Tint Brush Smooth\Shaders\TintedTilemap.shader" />

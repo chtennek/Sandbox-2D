@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputBehaviour : MonoBehaviour {
+public class InputBehaviour : MonoBehaviour
+{
     [SerializeField]
     protected InputReceiver input;
 
-    protected virtual void Awake() {
+    protected virtual void Awake()
+    {
         if (input == null)
             input = GetComponentInParent<InputReceiver>();
 
         if (input == null)
         {
-            Warnings.NoComponentSpecified(this, input);
+            Debug.LogWarning(Warnings.NoComponentSpecified(this, typeof(InputReceiver)));
             enabled = false;
         }
     }

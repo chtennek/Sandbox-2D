@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EntityBehaviour : MonoBehaviour
 {
+    public bool destroyOnDeath = true;
     public string damageTrigger = "hitstun";
     public string destroyTrigger = "death";
     public float currentHP = 1;
@@ -19,7 +20,8 @@ public class EntityBehaviour : MonoBehaviour
     public void Damage(float damage)
     {
         currentHP -= damage;
-        if (currentHP > 0) {
+        if (currentHP > 0)
+        {
             if (anim != null && damageTrigger != "")
                 anim.SetTrigger(damageTrigger);
         }
@@ -27,7 +29,7 @@ public class EntityBehaviour : MonoBehaviour
         {
             if (anim != null && destroyTrigger != "")
                 anim.SetTrigger(destroyTrigger);
-            else
+            if (destroyOnDeath == true)
                 Destroy();
         }
     }

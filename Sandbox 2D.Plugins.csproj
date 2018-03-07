@@ -316,7 +316,6 @@
     <Compile Include="Assets\Plugins\Controller Tester\Scripts\DetectUnknownControllerMappings.cs" />
     <Compile Include="Assets\Plugins\Demigiant\DOTween\Examples\Basics.cs" />
     <Compile Include="Assets\Plugins\Demigiant\DOTween\Examples\Sequences.cs" />
-    <Compile Include="Assets\Plugins\ImageTool.cs" />
     <Compile Include="Assets\Plugins\Rewired\Examples\ControlRemapping1\Scripts\ControlRemappingDemo1.cs" />
     <Compile Include="Assets\Plugins\Rewired\Examples\CustomControllersTilt\Scripts\CustomControllersTiltDemo.cs" />
     <Compile Include="Assets\Plugins\Rewired\Examples\CustomControllersTouch\Scripts\CustomControllerDemo.cs" />
@@ -371,6 +370,7 @@
     <Compile Include="Assets\Plugins\SerializableDictionary\Example\SerializableDictionaryExample.cs" />
     <Compile Include="Assets\Plugins\SerializableDictionary\Example\UserSerializableDictionaries.cs" />
     <Compile Include="Assets\Plugins\SerializableDictionary\SerializableDictionary.cs" />
+    <Compile Include="Assets\Plugins\SpriteBackgroundRemove.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\2d-extras\Assets\Tilemap\Brushes\Tint Brush Smooth\Shaders\TintedTilemap.shader" />

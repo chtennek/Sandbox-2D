@@ -9,8 +9,8 @@ public static class Warnings
         return m.name + "." + m.GetType().Name + ": Missing required components!";
     }
 
-    public static string NoComponentSpecified(MonoBehaviour m, Component c)
+    public static string NoComponentSpecified(MonoBehaviour m, System.Type t)
     {
-        return m.name + "." + m.GetType().Name + ": No " + c.GetType().Name + " specified!";
+        return m.name + "." + m.GetType().Name + ": No " + t.ToString() + " specified!";
     }
 }

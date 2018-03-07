@@ -6,34 +6,21 @@ using UnityEngine.Events;
 public class Hitbox : MonoBehaviour
 {
     public UnityEvent onHit;
-    public Vector3 requiredDirection = Vector3.zero; // [TODO]
-    public LayerMask layers;
-    public LayerMask parentLayers;
+    public LayerMask targetLayers;
+    public bool ignoreSiblings = true;
 
-    private ContactPoint[] contacts = new ContactPoint[1];
-    private ContactPoint2D[] contacts2D = new ContactPoint2D[1];
-
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (layers.Contains(collision.gameObject.layer) == false)
+        if (ignoreSiblings && transform.parent != null && transform.parent == collision.transform.parent)
+            return;
+        if (targetLayers.Contains(collision.gameObject.layer) == false)
             return;
 
-        Vector3 direction = collision.contacts[0].normal;
-        if (requiredDirection == Vector3.zero || direction == requiredDirection)
-            OnHit();
+        OnHit();
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnHit()
     {
-        if (layers.Contains(collision.gameObject.layer) == false)
-            return;
-
-        Vector3 direction = collision.contacts[0].normal;
-        if (requiredDirection == Vector3.zero || direction == requiredDirection)
-            OnHit();
-    }
-
-    public void OnHit() {
         onHit.Invoke();
     }
 }
