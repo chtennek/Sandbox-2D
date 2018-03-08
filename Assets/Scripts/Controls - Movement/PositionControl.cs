@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PositionControl : MovementBehaviour
+public class PositionControl : InputBehaviour
 {
     public string axisPairName = "Move";
 

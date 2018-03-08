@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurnControl : MovementBehaviour
+public class TurnControl : InputBehaviour
 {
     public string axisPairName = "Aim";
 

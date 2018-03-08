@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(GravityFieldEffector))]
-public class JumpEffector : MovementBehaviour
+[RequireComponent(typeof(MovementManager))]
+public class JumpEffector : InputBehaviour
 {
     [Header("Input")]
     public string buttonName = "Jump";
@@ -14,18 +14,18 @@ public class JumpEffector : MovementBehaviour
     public float fallScale = 4f;
     public float inputReleaseScale = 12f;
 
-    private GravityFieldEffector fields;
+    private MovementManager mover;
 
     protected override void Awake()
     {
         base.Awake();
-        fields = GetComponent<GravityFieldEffector>();
+        mover = GetComponent<MovementManager>();
     }
 
     protected void FixedUpdate()
     {
-        Vector3 acceleration = Vector3.Dot(fields.GetTotalField(), direction.normalized) * direction.normalized;
-        float vAlongDirection = Vector3.Dot(velocity, direction.normalized);
+        Vector3 acceleration = Vector3.Dot(mover.GetTotalField(), direction.normalized) * direction.normalized;
+        float vAlongDirection = Vector3.Dot(mover.Velocity, direction.normalized);
         float scale = 1f;
 
         if (vAlongDirection <= 0)
@@ -33,14 +33,14 @@ public class JumpEffector : MovementBehaviour
         else if (input.GetButton(buttonName) == false)
             scale = inputReleaseScale;
 
-        AddForce((scale - 1) * acceleration);
+        mover.AddForce((scale - 1) * acceleration);
         if (vAlongDirection <= 0 && terminalSpeed > 0)
             ApplyDrag(scale * acceleration.magnitude / terminalSpeed);
     }
 
     private void ApplyDrag(float drag)
     {
-        Vector2 v = Vector3.Dot(velocity, direction.normalized) * direction.normalized;
-        AddForce(drag * -v);
+        Vector2 v = Vector3.Dot(mover.Velocity, direction.normalized) * direction.normalized;
+        mover.AddForce(drag * -v);
     }
 }

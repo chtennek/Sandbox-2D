@@ -4,16 +4,31 @@ using UnityEngine;
 
 public class EntityBehaviour : MonoBehaviour
 {
-    public bool destroyOnDeath = true;
+    [Header("Animation")]
     public string damageTrigger = "hitstun";
-    public string destroyTrigger = "death";
+    public string destroyTrigger = "destroy";
+
+    [Header("Parameters")]
+    public float lifetime = Mathf.Infinity;
+    public bool destroyAtZeroHP = true;
     public float currentHP = 1;
+
+    private float spawnTimestamp;
 
     private Animator anim;
 
     private void Awake()
     {
+        spawnTimestamp = Time.time;
         anim = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if (Time.time - spawnTimestamp > lifetime)
+        {
+            OnDeath();
+        }
     }
 
     public void Damage() { Damage(1); }
@@ -21,17 +36,24 @@ public class EntityBehaviour : MonoBehaviour
     {
         currentHP -= damage;
         if (currentHP > 0)
-        {
-            if (anim != null && damageTrigger != "")
-                anim.SetTrigger(damageTrigger);
-        }
+            OnDamage();
         else
-        {
-            if (anim != null && destroyTrigger != "")
-                anim.SetTrigger(destroyTrigger);
-            if (destroyOnDeath == true)
-                Destroy();
-        }
+            OnDeath();
+    }
+
+    public void OnDamage()
+    {
+        if (anim != null && damageTrigger != "")
+            anim.SetTrigger(damageTrigger);
+    }
+
+    public void OnDeath()
+    {
+        if (anim != null && destroyTrigger != "")
+            anim.SetTrigger(destroyTrigger);
+
+        if (destroyAtZeroHP == true)
+            Destroy();
     }
 
     public void Destroy()

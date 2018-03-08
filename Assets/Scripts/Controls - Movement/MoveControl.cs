@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Move2DControl : MovementBehaviour
+[RequireComponent(typeof(MovementManager))]
+public class MoveControl : InputBehaviour
 {
     [Header("Input")]
     public string axisPairName = "Move";
@@ -10,7 +11,7 @@ public class Move2DControl : MovementBehaviour
 
     [Header("Speed")]
     public float walkSpeed = 5f;
-    public float minWalkableSpeed = 3f;
+    public float minWalkableSpeed = 5f;
     public float walkSpeedLevels = 2; // number of possible speeds between walkSpeed and minWalkableSpeed
 
     [Header("Acceleration")]
@@ -23,7 +24,15 @@ public class Move2DControl : MovementBehaviour
     public float rotationOffset = 90f; // At what movement direction should we be at 0 rotation?
     public float turnSpeed = Mathf.Infinity; // Degrees per frame
 
-    private void FixedUpdate()
+    private MovementManager mover;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        mover = GetComponent<MovementManager>();
+    }
+
+    protected void FixedUpdate()
     {
         // Get input
         Vector2 movement = (restrictToXAxis && restrictToYAxis) ? input.GetAxisPairSingle(axisPairName) : input.GetAxisPair(axisPairName);
@@ -53,18 +62,22 @@ public class Move2DControl : MovementBehaviour
             targetVelocity = Mathf.Lerp(minWalkableSpeed, Mathf.Max(walkSpeed, minWalkableSpeed), tq) * movement.normalized;
         }
 
-        // Apply acceleration and determine appropriate drag
-        float drag = targetVelocity.magnitude == 0 ? deceleration : acceleration / targetVelocity.magnitude;
-        ApplyDrag(drag);
-        AddForce(acceleration * targetVelocity.normalized);
+        if (acceleration == Mathf.Infinity)
+            mover.Velocity = targetVelocity;
+        else
+        {
+            float drag = targetVelocity.magnitude == 0 ? deceleration : acceleration / targetVelocity.magnitude;
+            ApplyDrag(drag);
+            mover.AddForce(acceleration * targetVelocity.normalized);
+        }
     }
 
     private void ApplyDrag(float drag)
     {
-        Vector2 v = velocity;
+        Vector2 v = mover.Velocity;
         // Only apply drag in restricted axis if we have one
         if (restrictToXAxis == true && restrictToYAxis == false) v.y = 0;
         if (restrictToXAxis == false && restrictToYAxis == true) v.x = 0;
-        AddForce(drag * -v);
+        mover.AddForce(drag * -v);
     }
 }

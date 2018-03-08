@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoostControl : MovementBehaviour
+[RequireComponent(typeof(MovementManager))]
+public class BoostControl : InputBehaviour
 {
     [Header("Input")]
     public string buttonName = "Jump";
@@ -11,6 +12,14 @@ public class BoostControl : MovementBehaviour
     public bool overrideParallelV = true; // Set velocity along direction instead of adding, usually you want this
     public float magnitude = 5f;
     public Vector3 direction = Vector3.up; // [TODO] auto-normalize this
+
+    protected MovementManager mover;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        mover = GetComponent<MovementManager>();
+    }
 
     protected virtual void FixedUpdate()
     {
@@ -21,8 +30,8 @@ public class BoostControl : MovementBehaviour
     public virtual void Boost(float magnitude)
     {
         if (overrideParallelV == true)
-            magnitude -= Vector3.Dot(velocity, direction.normalized); // Adjust magnitude to account for current velocity
+            magnitude -= Vector3.Dot(mover.Velocity, direction.normalized); // Adjust magnitude to account for current velocity
 
-        AddForce(magnitude * direction.normalized, ForceMode2D.Impulse);
+        mover.AddForce(magnitude * direction.normalized, ForceMode2D.Impulse);
     }
 }
