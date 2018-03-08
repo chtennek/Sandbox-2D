@@ -176,8 +176,11 @@ GameObject:
   m_Component:
   - component: {fileID: 502476830}
   - component: {fileID: 502476829}
+  - component: {fileID: 502476833}
   - component: {fileID: 502476832}
   - component: {fileID: 502476831}
+  - component: {fileID: 502476835}
+  - component: {fileID: 502476834}
   m_Layer: 0
   m_Name: Blue Angel
   m_TagString: Untagged
@@ -240,12 +243,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 623783891}
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 1405087510}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &502476831
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 502476828}
@@ -257,23 +260,15 @@ MonoBehaviour:
   input: {fileID: 0}
   buttonName: Fire
   prefab: {fileID: 4397134010491526, guid: 7626c56b819a2134d9f4e232edd3a895, type: 2}
-  spawnCooldown: 1
+  spawnCooldown: 0.1
   rapidFire: 1
   offset: {x: 0, y: 0, z: 0}
-  angleWhenUpright: 90
   fixRotation: 0
-  velocities: []
-  polars:
-  - r: 10
-    "\u03B8": -90
+  velocity:
+    r: 10
+    "\u03B8": 0
     z: 0
-  - r: 10
-    "\u03B8": -80
-    z: 0
-  - r: 10
-    "\u03B8": -100
-    z: 0
-  spread: {x: 0, y: 0, z: 0}
+  spread: {x: 1, y: 1, z: 0}
 --- !u!114 &502476832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,6 +285,76 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   m_buttonsHeld:
   - Fire
+--- !u!95 &502476833
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 502476828}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &502476834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 502476828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd3b6546229a5549a5fbe022cfe6a0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 0}
+  axisPairName: Move
+  restrictToXAxis: 0
+  restrictToYAxis: 0
+  walkSpeed: 5
+  minWalkableSpeed: 5
+  walkSpeedLevels: 2
+  acceleration: 40
+  deceleration: 10
+  faceMovementDirection: 0
+  onlyMoveForward: 0
+  rotationOffset: 90
+  turnSpeed: Infinity
+--- !u!114 &502476835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 502476828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b500b4ce6f7f324e9fafdd23a68ab6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderCheck:
+    direction: {x: 0, y: -1, z: 0}
+    checkDistance: 0.01
+    contactFilter:
+      useTriggers: 0
+      useLayerMask: 0
+      useDepth: 0
+      useOutsideDepth: 0
+      useNormalAngle: 0
+      useOutsideNormalAngle: 0
+      layerMask:
+        serializedVersion: 2
+        m_Bits: 0
+      minDepth: 0
+      maxDepth: 0
+      minNormalAngle: 0
+      maxNormalAngle: 0
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &540812017
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,6 +713,74 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c15f282b6cfd7c54b9b0309d82074bb4, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1405087507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1405087510}
+  - component: {fileID: 1405087509}
+  - component: {fileID: 1405087508}
+  m_Layer: 0
+  m_Name: Wave 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &1405087508
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1405087507}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!320 &1405087509
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1405087507}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 30b345f0565ca024a8768a57b26a0e69, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 114018784344359660, guid: 30b345f0565ca024a8768a57b26a0e69, type: 2}
+    value: {fileID: 1405087507}
+  - key: {fileID: 114502103068986448, guid: 30b345f0565ca024a8768a57b26a0e69, type: 2}
+    value: {fileID: 502476828}
+  m_ExposedReferences:
+    m_References: []
+--- !u!4 &1405087510
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1405087507}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 502476830}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1471883087
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,14 +1036,9 @@ MonoBehaviour:
   spawnCooldown: 0.1
   rapidFire: 1
   offset: {x: 0, y: 0, z: 0}
-  angleWhenUpright: 0
   fixRotation: 0
-  velocities:
-  - {x: 0, y: 10, z: 0}
-  - {x: 2, y: 10, z: 0}
-  - {x: -2, y: 10, z: 0}
-  polars:
-  - r: 0
+  velocity:
+    r: 0
     "\u03B8": 0
     z: 0
   spread: {x: 0, y: 0, z: 0}

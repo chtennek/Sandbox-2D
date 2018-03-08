@@ -10,6 +10,7 @@ public class AIInputReceiver : InputReceiver
 
     [SerializeField]
     private string[] m_buttonsHeld = new string[0];
+    private string[] m_buttonsPressed = new string[0]; // [TODO] event consuming system extendable to InputReceiver
 
     public string HorizontalAxis { get { return axisPairName + "Horizontal"; } }
     public string VerticalAxis { get { return axisPairName + "Vertical"; } }
@@ -27,7 +28,7 @@ public class AIInputReceiver : InputReceiver
 
     public override bool GetAnyButtonRaw()
     {
-        return false;
+        return buttonsHeld.Count > 0;
     }
 
     public override float GetAxisRaw(string id)
@@ -44,7 +45,7 @@ public class AIInputReceiver : InputReceiver
 
     public override bool GetButtonRaw(string id)
     {
-        return Mathf.Approximately(GetAxisRaw(id), 0);
+        return buttonsHeld.Contains(id) || (Mathf.Approximately(GetAxisRaw(id), 0) == false);
     }
 
     public override bool GetButtonUpRaw(string id)
