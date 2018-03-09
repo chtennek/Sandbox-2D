@@ -56,7 +56,7 @@ public class EntitySpawner : InputBehaviour
         }
     }
 
-    public void Spawn() { Spawn(Vector3.zero); }
+    public void Spawn() { Spawn(velocity); }
     public void Spawn(Vector3 velocity)
     {
         Vector3 position = transform.position + transform.rotation * (Vector3)offset;
