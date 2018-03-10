@@ -5,29 +5,34 @@ using UnityEngine.Events;
 using UnityEditor;
 
 [System.Serializable]
-public struct WaypointEvent {
+public class WaypointEvent
+{
     public float t;
     public UnityEvent e;
 }
 
 [System.Serializable]
-public struct Waypoint
+public class Waypoint
 {
-    public Vector3 position;
+    public Vector3 localPosition;
+    public float approachCurvature; // Radius of arc path we're following (minus max path deviation), zero for straight line
     public float approachSpeed;
     public float waitTime; // After reaching position
     public WaypointEvent[] events;
 
     public Waypoint(Vector3 position)
     {
-        this.position = position;
+        this.localPosition = position;
+        this.approachCurvature = 0;
         this.approachSpeed = 1f;
-        this.waitTime = 0f;
+        this.waitTime = 0;
         this.events = new WaypointEvent[0];
     }
 
-    public void RunEvents(float t1, float t2) {
-        foreach (WaypointEvent e in events) {
+    public void RunEvents(float t1, float t2)
+    {
+        foreach (WaypointEvent e in events)
+        {
             if (t1 <= e.t && e.t < t2)
                 e.e.Invoke();
         }
@@ -35,12 +40,12 @@ public struct Waypoint
 
     public float GetTravelTime(Vector3 start)
     {
-        return (position - start).magnitude / approachSpeed;
+        return (localPosition - start).magnitude / approachSpeed;
     }
 
     public Vector3 GetMovementVector(Vector3 start)
     {
-        return (position - start).normalized * approachSpeed;
+        return (localPosition - start).normalized * approachSpeed;
     }
 }
 
@@ -77,7 +82,7 @@ public class WaypointControl : MonoBehaviour
         {
             ApplyWaypoint(points.Dequeue());
         }
-        else 
+        else
         {
             float t1 = Mathf.InverseLerp(currentStartTime, currentCompleteTime, Time.time - Time.deltaTime);
             float t2 = Mathf.InverseLerp(currentStartTime, currentCompleteTime, Time.time);
@@ -97,26 +102,8 @@ public class WaypointControl : MonoBehaviour
         mover.Velocity = w.GetMovementVector(transform.position);
     }
 
-    private void ProcessEvents() {
-        
-    }
-
-#if UNITY_EDITOR
-    public void OnDrawGizmosSelected()
+    private void ProcessEvents()
     {
-        for (int i = 0; i < initialPoints.Length; i++)
-        {
-            Vector3 v1 = (i == 0) ? transform.position : initialPoints[i - 1].position;
-            Vector3 v2 = initialPoints[i].position;
 
-            EditorGUI.BeginChangeCheck(); // [TODO] Move to Editor script
-            initialPoints[i].position = UnityEditor.Handles.PositionHandle(v2, Quaternion.identity);
-
-            Gizmos.matrix = Matrix4x4.TRS(v2, Quaternion.identity, Vector3.one);
-            Gizmos.matrix = Matrix4x4.identity;
-            Gizmos.color = Color.green;
-            Gizmos.DrawLine(v1, v2);
-        }
     }
-#endif
 }
