@@ -42,24 +42,23 @@ public class PathEditor : Editor
         {
             Waypoint i0 = (i == 0) ? null : t.initialPoints[i - 1];
             Waypoint i1 = t.initialPoints[i];
-            Vector3 v0 = t.transform.TransformPoint((i == 0) ? Vector3.zero : i0.localPosition);
-            Vector3 v1 = t.transform.TransformPoint(i1.localPosition);
+            Vector3 v0 = t.transform.TransformPoint((i == 0) ? Vector3.zero : i0.position);
+            Vector3 v1 = t.transform.TransformPoint(i1.position);
             float approachRadius = new Vector2(i1.approachCurvature, (v1 - v0).magnitude / 2).magnitude;
 
+            // Draw path
             Handles.matrix = Matrix4x4.TRS(v1, Quaternion.identity, Vector3.one);
             Handles.matrix = Matrix4x4.identity;
             Handles.color = Color.green;
-            if (i1.approachCurvature != 0)
+            if (Mathf.Approximately(i1.approachCurvature, 0))
             {
-                Vector3 arcCenter = (v0 + v1) / 2 + Vector3.Cross(v1 - v0, Vector3.forward).normalized * i1.approachCurvature;
-                float theta = Vector3.Dot(v0 - arcCenter, v1 - arcCenter) / ((v0 - arcCenter).magnitude * (v1 - arcCenter).magnitude);
-                Handles.DrawWireArc(Vector3.zero, Vector3.forward, Vector3.up, 90, 1);
-                Handles.DrawWireArc(arcCenter, Vector3.forward, v1 - arcCenter, theta, approachRadius);
-                //Gizmos.DrawWireSphere(arcCenter, approachRadius);
+                Handles.DrawLine(v0, v1);
             }
             else
             {
-                Handles.DrawLine(v0, v1);
+                Vector3 center = (v0 + v1) / 2 + Vector3.Cross(v1 - v0, Vector3.forward).normalized * i1.approachCurvature;
+                float theta = Mathf.Rad2Deg * Vector3.Dot(v0 - center, v1 - center) / ((v0 - center).magnitude * (v1 - center).magnitude);
+                Handles.DrawWireArc(center, Vector3.forward, v1 - center, theta, approachRadius);
             }
         }
     }
@@ -68,7 +67,7 @@ public class PathEditor : Editor
     {
         foreach (Waypoint w in t.initialPoints)
         {
-            w.localPosition = t.transform.InverseTransformPoint(Handles.FreeMoveHandle(t.transform.TransformPoint(w.localPosition), Quaternion.identity, .25f, Vector3.one, Handles.RectangleHandleCap));
+            w.position = t.transform.InverseTransformPoint(Handles.FreeMoveHandle(t.transform.TransformPoint(w.position), Quaternion.identity, .25f, Vector3.one, Handles.RectangleHandleCap));
         }
     }
 }

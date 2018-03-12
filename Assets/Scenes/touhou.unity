@@ -177,9 +177,6 @@ GameObject:
   - component: {fileID: 502476830}
   - component: {fileID: 502476829}
   - component: {fileID: 502476833}
-  - component: {fileID: 502476832}
-  - component: {fileID: 502476831}
-  - component: {fileID: 502476835}
   - component: {fileID: 502476834}
   m_Layer: 0
   m_Name: Blue Angel
@@ -243,47 +240,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 623783891}
+  - {fileID: 1008370420}
   m_Father: {fileID: 1405087510}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &502476831
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 502476828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2447199f1d86ee4397252b322aadc36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input: {fileID: 0}
-  buttonName: Fire
-  prefab: {fileID: 4397134010491526, guid: 7626c56b819a2134d9f4e232edd3a895, type: 2}
-  spawnCooldown: 0.1
-  rapidFire: 1
-  offset: {x: 0, y: 0, z: 0}
-  fixRotation: 0
-  velocity:
-    r: 10
-    "\u03B8": -90
-    z: 0
-  spread: {x: 0, y: 0, z: 0}
---- !u!114 &502476832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 502476828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbd92eaaae4d94855941feb2bee2ffd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerId: 0
-  axisPairName: Move
-  movement: {x: 0, y: 0}
-  m_buttonsHeld: []
 --- !u!95 &502476833
 Animator:
   serializedVersion: 3
@@ -313,16 +273,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialPoints:
-  - localPosition: {x: -3, y: -5, z: 0}
-    approachCurvature: 0.1
+  - position: {x: -3, y: -5, z: 0}
+    approachCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    approachCurvature: 0
     approachSpeed: 3
     waitTime: 2
     events:
-    - t: 1
+    - t: 0.9
       e:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 502476831}
+          - m_Target: {fileID: 1008370418}
             m_MethodName: Spawn
             m_Mode: 1
             m_Arguments:
@@ -335,7 +313,42 @@ MonoBehaviour:
             m_CallState: 2
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-  - localPosition: {x: -3, y: 1, z: 0}
+    - t: 1
+      e:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1008370418}
+            m_MethodName: Spawn
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+  - position: {x: -2, y: 0, z: 0}
+    approachCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
     approachCurvature: 0
     approachSpeed: 3
     waitTime: 0
@@ -344,7 +357,7 @@ MonoBehaviour:
       e:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 502476831}
+          - m_Target: {fileID: 1008370418}
             m_MethodName: Spawn
             m_Mode: 1
             m_Arguments:
@@ -357,35 +370,6 @@ MonoBehaviour:
             m_CallState: 2
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
---- !u!114 &502476835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 502476828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b500b4ce6f7f324e9fafdd23a68ab6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colliderCheck:
-    direction: {x: 0, y: -1, z: 0}
-    checkDistance: 0.01
-    contactFilter:
-      useTriggers: 0
-      useLayerMask: 0
-      useDepth: 0
-      useOutsideDepth: 0
-      useNormalAngle: 0
-      useOutsideNormalAngle: 0
-      layerMask:
-        serializedVersion: 2
-        m_Bits: 0
-      minDepth: 0
-      maxDepth: 0
-      minNormalAngle: 0
-      maxNormalAngle: 0
-  velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &540812017
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +451,7 @@ GameObject:
   - component: {fileID: 623783893}
   - component: {fileID: 623783892}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Status Bars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -697,6 +681,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1008370417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1008370420}
+  - component: {fileID: 1008370419}
+  - component: {fileID: 1008370418}
+  m_Layer: 0
+  m_Name: Turret
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1008370418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1008370417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2447199f1d86ee4397252b322aadc36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 0}
+  buttonName: Fire
+  prefab: {fileID: 4397134010491526, guid: 7626c56b819a2134d9f4e232edd3a895, type: 2}
+  spawnCooldown: 0.1
+  rapidFire: 1
+  offset: {x: 0, y: 0, z: 0}
+  fixRotation: 0
+  velocity:
+    r: 10
+    "\u03B8": -90
+    z: 0
+  spread: {x: 0, y: 0, z: 0}
+--- !u!114 &1008370419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1008370417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd92eaaae4d94855941feb2bee2ffd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerId: 0
+  axisPairName: Move
+  movement: {x: 0, y: 0}
+  m_buttonsHeld: []
+--- !u!4 &1008370420
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1008370417}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 502476830}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1302114725
 Prefab:

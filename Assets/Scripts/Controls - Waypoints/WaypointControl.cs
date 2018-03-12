@@ -4,6 +4,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEditor;
 
+[CreateAssetMenu(fileName = "waypoints", menuName = "Waypoints")]
+public class WaypointScript : ScriptableObject
+{
+    public Waypoint[] points;
+}
+
 [System.Serializable]
 public class WaypointEvent
 {
@@ -14,15 +20,16 @@ public class WaypointEvent
 [System.Serializable]
 public class Waypoint
 {
-    public Vector3 localPosition;
+    public Vector3 position; // Relative to initial position
+    public AnimationCurve approachCurve = AnimationCurve.Linear(0, 0, 1, 1);
     public float approachCurvature; // Radius of arc path we're following (minus max path deviation), zero for straight line
-    public float approachSpeed;
+    public float approachSpeed; // Translates to approach time with path length considered
     public float waitTime; // After reaching position
     public WaypointEvent[] events;
 
     public Waypoint(Vector3 position)
     {
-        this.localPosition = position;
+        this.position = position;
         this.approachCurvature = 0;
         this.approachSpeed = 1f;
         this.waitTime = 0;
@@ -33,44 +40,33 @@ public class Waypoint
     {
         foreach (WaypointEvent e in events)
         {
-            if (t1 <= e.t && e.t < t2)
+            if (t1 <= e.t && e.t < t2 || !Mathf.Approximately(t1, 1) && Mathf.Approximately(t2, 1) && Mathf.Approximately(e.t, 1))
                 e.e.Invoke();
         }
     }
 
-    public float GetTravelTime(Vector3 start)
+    public float GetTravelTimeFrom(Vector3 startPosition)
     {
-        return (localPosition - start).magnitude / approachSpeed;
-    }
-
-    public Vector3 GetMovementVector(Vector3 start)
-    {
-        return (localPosition - start).normalized * approachSpeed;
+        float time = (position - startPosition).magnitude / approachSpeed;
+        return time;
     }
 }
 
-[CreateAssetMenu(fileName = "waypoints", menuName = "Waypoints")]
-public class WaypointScript : ScriptableObject
-{
-    public Waypoint[] points;
-}
-
-[RequireComponent(typeof(MovementManager))]
 public class WaypointControl : MonoBehaviour
 {
     public Waypoint[] initialPoints = new Waypoint[0];
     public Queue<Waypoint> points = new Queue<Waypoint>();
 
+    private Vector3 anchorPosition;
+    private Vector3 lastPosition;
     private Waypoint current;
     private float currentStartTime;
     private float currentCompleteTime;
     private float nextStartTime;
 
-    private MovementManager mover;
-
     private void Awake()
     {
-        mover = GetComponent<MovementManager>();
+        anchorPosition = transform.position;
         if (initialPoints != null)
             foreach (Waypoint point in initialPoints)
                 points.Enqueue(point);
@@ -78,32 +74,36 @@ public class WaypointControl : MonoBehaviour
 
     private void Update()
     {
+        UpdateTransform();
+
         if (Time.time >= nextStartTime && points.Count > 0)
         {
             ApplyWaypoint(points.Dequeue());
         }
-        else
+
+        if (current != null)
         {
             float t1 = Mathf.InverseLerp(currentStartTime, currentCompleteTime, Time.time - Time.deltaTime);
             float t2 = Mathf.InverseLerp(currentStartTime, currentCompleteTime, Time.time);
             current.RunEvents(t1, t2);
-
-            if (Time.time >= currentCompleteTime)
-                mover.Velocity = Vector3.zero;
         }
+    }
+
+    private void UpdateTransform()
+    {
+        if (current == null)
+            return;
+        float t0 = (Time.time - currentStartTime) / (currentCompleteTime - currentStartTime);
+        float t1 = current.approachCurve.Evaluate(Mathf.Min(t0, 1));
+        transform.position = Vector3.Lerp(lastPosition, anchorPosition + current.position, t1);
     }
 
     private void ApplyWaypoint(Waypoint w)
     {
+        lastPosition = transform.position;
         current = w;
         currentStartTime = Time.time;
-        currentCompleteTime = Time.time + w.GetTravelTime(transform.position);
+        currentCompleteTime = Time.time + w.GetTravelTimeFrom(transform.position - anchorPosition);
         nextStartTime = currentCompleteTime + w.waitTime;
-        mover.Velocity = w.GetMovementVector(transform.position);
-    }
-
-    private void ProcessEvents()
-    {
-
     }
 }
