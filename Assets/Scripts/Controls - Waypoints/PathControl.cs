@@ -5,40 +5,45 @@ using UnityEngine.Events;
 using UnityEditor;
 
 [CreateAssetMenu(fileName = "waypoints", menuName = "Waypoints")]
-public class WaypointScript : ScriptableObject
+public class Path : ScriptableObject
 {
-    public Waypoint[] points;
+    public PathPoint[] points;
 }
 
 [System.Serializable]
-public class WaypointEvent
+public class PathEvent
 {
     public float t;
     public UnityEvent e;
 }
 
 [System.Serializable]
-public class Waypoint
+public class PathPoint
 {
     public Vector3 position; // Relative to initial position
     public AnimationCurve approachCurve = AnimationCurve.Linear(0, 0, 1, 1);
     public float approachCurvature; // Radius of arc path we're following (minus max path deviation), zero for straight line
     public float approachSpeed; // Translates to approach time with path length considered
     public float waitTime; // After reaching position
-    public WaypointEvent[] events;
+    public PathEvent[] events;
 
-    public Waypoint(Vector3 position)
+    public PathPoint(Vector3 position)
     {
         this.position = position;
         this.approachCurvature = 0;
         this.approachSpeed = 1f;
         this.waitTime = 0;
-        this.events = new WaypointEvent[0];
+        this.events = new PathEvent[0];
+    }
+
+    public PathPoint(Vector3 position, float approachSpeed) : this(position)
+    {
+        this.approachSpeed = approachSpeed;
     }
 
     public void RunEvents(float t1, float t2)
     {
-        foreach (WaypointEvent e in events)
+        foreach (PathEvent e in events)
         {
             if (t1 <= e.t && e.t < t2 || !Mathf.Approximately(t1, 1) && Mathf.Approximately(t2, 1) && Mathf.Approximately(e.t, 1))
                 e.e.Invoke();
@@ -52,23 +57,31 @@ public class Waypoint
     }
 }
 
-public class WaypointControl : MonoBehaviour
+public class PathControl : MonoBehaviour
 {
-    public Waypoint[] initialPoints = new Waypoint[0];
-    public Queue<Waypoint> points = new Queue<Waypoint>();
+    public PathPoint[] initialPoints = new PathPoint[0];
+    private Queue<PathPoint> points = new Queue<PathPoint>();
 
     private Vector3 anchorPosition;
     private Vector3 lastPosition;
-    private Waypoint current;
+    private PathPoint current;
     private float currentStartTime;
     private float currentCompleteTime;
     private float nextStartTime;
+
+    public int Count { get { return points.Count; } }
+
+    public void AddWaypoint(Vector3 position) { AddWaypoint(position, 1); }
+    public void AddWaypoint(Vector3 position, float speed)
+    {
+        points.Enqueue(new PathPoint(position - anchorPosition, speed));
+    }
 
     private void Awake()
     {
         anchorPosition = transform.position;
         if (initialPoints != null)
-            foreach (Waypoint point in initialPoints)
+            foreach (PathPoint point in initialPoints)
                 points.Enqueue(point);
     }
 
@@ -98,7 +111,7 @@ public class WaypointControl : MonoBehaviour
         transform.position = Vector3.Lerp(lastPosition, anchorPosition + current.position, t1);
     }
 
-    private void ApplyWaypoint(Waypoint w)
+    private void ApplyWaypoint(PathPoint w)
     {
         lastPosition = transform.position;
         current = w;

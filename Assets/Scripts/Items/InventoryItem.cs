@@ -24,9 +24,9 @@ public class InventoryItem : ItemBase
         {
             path = "Assets";
         }
-        else if (Path.GetExtension(path) != "")
+        else if (System.IO.Path.GetExtension(path) != "")
         {
-            path = path.Replace(Path.GetFileName(AssetDatabase.GetAssetPath(Selection.activeObject)), "");
+            path = path.Replace(System.IO.Path.GetFileName(AssetDatabase.GetAssetPath(Selection.activeObject)), "");
         }
 
         if (Selection.objects.Length <= 1 && Selection.activeObject.GetType() != typeof(Sprite))

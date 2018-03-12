@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(WaypointControl))]
+[CustomEditor(typeof(PathControl))]
 public class PathEditor : Editor
 {
-    private WaypointControl t;
+    private PathControl t;
 
     private void OnEnable()
     {
         EditorApplication.update += Update;
-        t = target as WaypointControl;
+        t = target as PathControl;
     }
 
     private void OnDisable()
@@ -40,8 +40,8 @@ public class PathEditor : Editor
     {
         for (int i = 0; i < t.initialPoints.Length; i++)
         {
-            Waypoint i0 = (i == 0) ? null : t.initialPoints[i - 1];
-            Waypoint i1 = t.initialPoints[i];
+            PathPoint i0 = (i == 0) ? null : t.initialPoints[i - 1];
+            PathPoint i1 = t.initialPoints[i];
             Vector3 v0 = t.transform.TransformPoint((i == 0) ? Vector3.zero : i0.position);
             Vector3 v1 = t.transform.TransformPoint(i1.position);
             float approachRadius = new Vector2(i1.approachCurvature, (v1 - v0).magnitude / 2).magnitude;
@@ -65,7 +65,7 @@ public class PathEditor : Editor
 
     private void DrawHandles()
     {
-        foreach (Waypoint w in t.initialPoints)
+        foreach (PathPoint w in t.initialPoints)
         {
             w.position = t.transform.InverseTransformPoint(Handles.FreeMoveHandle(t.transform.TransformPoint(w.position), Quaternion.identity, .25f, Vector3.one, Handles.RectangleHandleCap));
         }

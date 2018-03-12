@@ -108,7 +108,7 @@ MonoBehaviour:
       size: {x: 10, y: 10, z: 1}
       orderInLayer: 2
       physicsLayer: 10
-      hasCollider: 0
+      hasCollider: 1
       tiles:
       - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
       - {fileID: 11400000, guid: 2320fdffbf17bb4439826af713b27308, type: 2}
