@@ -45,14 +45,14 @@ public class PathPoint
     {
         foreach (PathEvent e in events)
         {
-            if (t1 <= e.t && e.t < t2 || !Mathf.Approximately(t1, 1) && Mathf.Approximately(t2, 1) && Mathf.Approximately(e.t, 1))
+            if (t1 <= e.t && e.t < t2)
                 e.e.Invoke();
         }
     }
 
     public float GetTravelTimeFrom(Vector3 startPosition)
     {
-        float time = (position - startPosition).magnitude / approachSpeed;
+        float time = (approachSpeed == 0) ? 0 : (position - startPosition).magnitude / approachSpeed;
         return time;
     }
 }
@@ -94,17 +94,26 @@ public class PathControl : MonoBehaviour
     private void Update()
     {
         UpdateTransform();
+        ProcessEvents();
 
         if (loopInitialPoints == true && points.Count == 0)
             InitializePath();
 
         if (Time.time >= nextStartTime && points.Count > 0)
             ApplyWaypoint(points.Dequeue());
+    }
 
+    private void ProcessEvents()
+    {
         if (current != null)
         {
             float t1 = Mathf.InverseLerp(currentStartTime, currentCompleteTime, Time.time - Time.deltaTime);
             float t2 = Mathf.InverseLerp(currentStartTime, currentCompleteTime, Time.time);
+            if (t1 == 1 || currentStartTime == currentCompleteTime)
+                t1 += Time.time - Time.deltaTime - currentCompleteTime;
+            if (t2 == 1 || currentStartTime == currentCompleteTime)
+                t2 += Time.time - currentCompleteTime;
+
             current.RunEvents(t1, t2);
         }
     }

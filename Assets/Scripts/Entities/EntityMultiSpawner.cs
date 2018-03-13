@@ -12,8 +12,9 @@ public class EntityMultiSpawner : EntitySpawner
 {
     [Header("Multi")]
     public RangeType type;
-    public float range = 10f;
+    public bool includeRangeEnd = true; // Set to false for easy 360-degree spawns
     public int count = 3;
+    public float range = 10f;
     public float overTime = 0f;
 
     public override void Spawn()
@@ -29,14 +30,14 @@ public class EntityMultiSpawner : EntitySpawner
         }
     }
 
-    public void SpawnOverRadius()
+    private void SpawnOverRadius()
     {
         StartCoroutine(Coroutine_SpawnOverRadius(velocity, range, count, overTime));
     }
 
-    public IEnumerator Coroutine_SpawnOverRadius(Cylindrical3 velocity, float range, int count, float overTime)
+    private IEnumerator Coroutine_SpawnOverRadius(Cylindrical3 velocity, float range, int count, float overTime)
     {
-        float increment = range / count;
+        float increment = includeRangeEnd ? range / count : range / (count + 1);
         float delay = (count <= 1) ? 0 : overTime / (count - 1);
         for (int i = 0; i < count; i++)
         {
@@ -45,17 +46,16 @@ public class EntityMultiSpawner : EntitySpawner
             if (Mathf.Approximately(delay, 0) == false)
                 yield return new WaitForSeconds(delay);
         }
-        yield return null;
     }
 
-    public void SpawnOverAngle()
+    private void SpawnOverAngle()
     {
         StartCoroutine(Coroutine_SpawnOverAngle(velocity, range, count, overTime));
     }
 
-    public IEnumerator Coroutine_SpawnOverAngle(Cylindrical3 velocity, float range, int count, float overTime)
+    private IEnumerator Coroutine_SpawnOverAngle(Cylindrical3 velocity, float range, int count, float overTime)
     {
-        float increment = range / count;
+        float increment = includeRangeEnd ? range / count : range / (count + 1);
         float delay = (count <= 1) ? 0 : overTime / (count - 1);
         for (int i = 0; i < count; i++)
         {
@@ -64,6 +64,5 @@ public class EntityMultiSpawner : EntitySpawner
             if (Mathf.Approximately(delay, 0) == false)
                 yield return new WaitForSeconds(delay);
         }
-        yield return null;
     }
 }

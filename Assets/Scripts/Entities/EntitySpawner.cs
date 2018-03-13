@@ -39,7 +39,7 @@ public class EntitySpawner : InputBehaviour
     }
 
     public virtual void Spawn() { Spawn(velocity); }
-    public void Spawn(Vector3 velocity)
+    protected void Spawn(Vector3 velocity)
     {
         Vector3 position = transform.position + transform.rotation * (Vector3)offset;
         Vector3 rotation = Vector3.forward * ((Polar2)velocity).O;

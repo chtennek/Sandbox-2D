@@ -204,7 +204,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 477308079}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3197816463ecc674e80a2dc344dc4e76, type: 3}
   m_Name: 
@@ -231,12 +231,13 @@ MonoBehaviour:
   fixRotation: 0
   velocity:
     r: 5
-    "\u03B8": 0
+    "\u03B8": -30
     z: 0
   spread: {x: 0, y: 0, z: 0}
-  type: 0
-  range: 5
-  count: 3
+  type: 1
+  includeRangeEnd: 1
+  count: 10
+  range: 60
   overTime: 0
 --- !u!114 &477308083
 MonoBehaviour:
@@ -252,8 +253,7 @@ MonoBehaviour:
   playerId: 0
   axisPairName: Move
   movement: {x: 0, y: 0}
-  m_buttonsHeld:
-  - Fire
+  m_buttonsHeld: []
 --- !u!1 &502476828
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,36 +354,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 502476828}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff06ea77462834fc2a6d0a3a943a1b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   loopInitialPoints: 0
   initialPoints:
-  - position: {x: -2.0005517, y: -4.0011683, z: 0}
-    approachCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 0
-    approachCurvature: 0
-    approachSpeed: 3
-    waitTime: 0
-    events: []
   - position: {x: -2.0005035, y: 0.000025749207, z: 0}
     approachCurve:
       serializedVersion: 2
@@ -778,8 +755,9 @@ MonoBehaviour:
     z: 0
   spread: {x: 0, y: 0, z: 0}
   type: 0
-  range: 2
+  includeRangeEnd: 1
   count: 4
+  range: 2
   overTime: 0
 --- !u!114 &1008370419
 MonoBehaviour:
@@ -926,6 +904,7 @@ GameObject:
   - component: {fileID: 1191898881}
   - component: {fileID: 1191898883}
   - component: {fileID: 1191898882}
+  - component: {fileID: 1191898884}
   m_Layer: 0
   m_Name: Blue Angel (1)
   m_TagString: Untagged
@@ -1009,6 +988,99 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &1191898884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1191898880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff06ea77462834fc2a6d0a3a943a1b54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loopInitialPoints: 1
+  initialPoints:
+  - position: {x: 0, y: 0, z: 0}
+    approachCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    approachCurvature: 0
+    approachSpeed: 0
+    waitTime: 1
+    events:
+    - t: 1.5
+      e:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 477308082}
+            m_MethodName: Spawn
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+  - position: {x: 0, y: 0, z: 0}
+    approachCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    approachCurvature: 0
+    approachSpeed: 1
+    waitTime: 1
+    events:
+    - t: 1
+      e:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 477308082}
+            m_MethodName: Spawn
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
 --- !u!1001 &1302114725
 Prefab:
   m_ObjectHideFlags: 0
