@@ -319,6 +319,7 @@
     <Compile Include="Assets\Addons\CameraPathCreator\Scripts\CPC_CameraPath.cs" />
     <Compile Include="Assets\Scripts\AI\AIInputReceiver.cs" />
     <Compile Include="Assets\Scripts\AI\MovementAI.cs" />
+    <Compile Include="Assets\Scripts\AI\TrackingAI.cs" />
     <Compile Include="Assets\Scripts\AI\TurnAI.cs" />
     <Compile Include="Assets\Scripts\Animation\AnimatorBase.cs" />
     <Compile Include="Assets\Scripts\Animation\InputToAnimator.cs" />
@@ -328,11 +329,11 @@
     <Compile Include="Assets\Scripts\Camera\ScreenFollowObject.cs" />
     <Compile Include="Assets\Scripts\Camera\ScreenShake.cs" />
     <Compile Include="Assets\Scripts\Controls - Movement\BoostControl.cs" />
+    <Compile Include="Assets\Scripts\Controls - Movement\GridMoveControl.cs" />
     <Compile Include="Assets\Scripts\Controls - Movement\JumpControl.cs" />
     <Compile Include="Assets\Scripts\Controls - Movement\MoveControl.cs" />
     <Compile Include="Assets\Scripts\Controls - Movement\MovementManager.cs" />
     <Compile Include="Assets\Scripts\Controls - Movement\PositionControl.cs" />
-    <Compile Include="Assets\Scripts\Controls - Movement\TopdownGridWalk.cs" />
     <Compile Include="Assets\Scripts\Controls - Movement\TurnControl.cs" />
     <Compile Include="Assets\Scripts\Controls - Other\EntityManager.cs" />
     <Compile Include="Assets\Scripts\Controls - Other\EntitySelector.cs" />
@@ -341,7 +342,7 @@
     <Compile Include="Assets\Scripts\Controls - Other\WaypointMovement.cs" />
     <Compile Include="Assets\Scripts\Controls - Physics\GravityField.cs" />
     <Compile Include="Assets\Scripts\Controls - Physics\JumpEffector.cs" />
-    <Compile Include="Assets\Scripts\Controls - Waypoints\WaypointControl.cs" />
+    <Compile Include="Assets\Scripts\Controls - Waypoints\PathControl.cs" />
     <Compile Include="Assets\Scripts\Core\DebugBehaviour.cs" />
     <Compile Include="Assets\Scripts\Core\Mathv.cs" />
     <Compile Include="Assets\Scripts\Core\Polar2.cs" />
@@ -353,6 +354,7 @@
     <Compile Include="Assets\Scripts\Dialogue\Actor.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Dialogue.cs" />
     <Compile Include="Assets\Scripts\Entities\EntityBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Entities\EntityMultiSpawner.cs" />
     <Compile Include="Assets\Scripts\Entities\EntitySpawner.cs" />
     <Compile Include="Assets\Scripts\Entities\Hitbox.cs" />
     <Compile Include="Assets\Scripts\Entities\ProjectileDriver.cs" />

@@ -59,6 +59,7 @@ public class PathPoint
 
 public class PathControl : MonoBehaviour
 {
+    public bool loopInitialPoints = false;
     public PathPoint[] initialPoints = new PathPoint[0];
     private Queue<PathPoint> points = new Queue<PathPoint>();
 
@@ -77,22 +78,28 @@ public class PathControl : MonoBehaviour
         points.Enqueue(new PathPoint(position - anchorPosition, speed));
     }
 
-    private void Awake()
+    private void InitializePath()
     {
-        anchorPosition = transform.position;
         if (initialPoints != null)
             foreach (PathPoint point in initialPoints)
                 points.Enqueue(point);
+    }
+
+    private void Awake()
+    {
+        anchorPosition = transform.position;
+        InitializePath();
     }
 
     private void Update()
     {
         UpdateTransform();
 
+        if (loopInitialPoints == true && points.Count == 0)
+            InitializePath();
+
         if (Time.time >= nextStartTime && points.Count > 0)
-        {
             ApplyWaypoint(points.Dequeue());
-        }
 
         if (current != null)
         {

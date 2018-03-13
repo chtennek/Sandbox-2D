@@ -16,6 +16,8 @@ public class EntitySpawner : InputBehaviour
     [Header("Transform")]
     public Vector3 offset;
     public bool fixRotation; // Use the default rotation for all entities, instead of using velocity direction
+
+    [Header("Velocity")]
     public Cylindrical3 velocity;
     public Vector3 spread;
 
@@ -36,38 +38,22 @@ public class EntitySpawner : InputBehaviour
         }
     }
 
-    public void SpawnOverRadius(Cylindrical3 velocity, float range, int count)
-    {
-        float increment = range / count;
-        for (int i = 0; i < count; i++)
-        {
-            float radius = velocity.r - range / 2 + i * increment;
-            Spawn(new Cylindrical3(radius, velocity.O, velocity.z));
-        }
-    }
-
-    public void SpawnOverAngle(Cylindrical3 velocity, float range, int count)
-    {
-        float increment = range / count;
-        for (int i = 0; i < count; i++)
-        {
-            float angle = velocity.O - range / 2 + i * increment;
-            Spawn(new Cylindrical3(velocity.r, angle, velocity.z));
-        }
-    }
-
-    public void Spawn() { Spawn(velocity); }
+    public virtual void Spawn() { Spawn(velocity); }
     public void Spawn(Vector3 velocity)
     {
         Vector3 position = transform.position + transform.rotation * (Vector3)offset;
-        Vector3 rotation = fixRotation ? Vector3.zero : Vector3.forward * ((Polar2)velocity).O;
+        Vector3 rotation = Vector3.forward * ((Polar2)velocity).O;
 
         Transform entity = Instantiate(prefab);
         entity.position = position;
-        entity.Rotate(rotation);
+        if (fixRotation == false)
+        {
+            entity.Rotate(rotation);
+            entity.Rotate(transform.eulerAngles);
+        }
 
         MovementManager mover = entity.GetComponent<MovementManager>();
         if (mover != null)
-            mover.Velocity = velocity;
+            mover.Velocity = transform.rotation * velocity;
     }
 }
