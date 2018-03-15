@@ -100,7 +100,10 @@ public class PathControl : MonoBehaviour
             InitializePath();
 
         if (Time.time >= nextStartTime && points.Count > 0)
+        {
             ApplyWaypoint(points.Dequeue());
+            ProcessEvents();
+        }
     }
 
     private void ProcessEvents()
@@ -110,9 +113,10 @@ public class PathControl : MonoBehaviour
             float t1 = Mathf.InverseLerp(currentStartTime, currentCompleteTime, Time.time - Time.deltaTime);
             float t2 = Mathf.InverseLerp(currentStartTime, currentCompleteTime, Time.time);
             if (t1 == 1 || currentStartTime == currentCompleteTime)
-                t1 += Time.time - Time.deltaTime - currentCompleteTime;
-            if (t2 == 1 || currentStartTime == currentCompleteTime)
-                t2 += Time.time - currentCompleteTime;
+            {
+                t1 = 1 + Time.time - Time.deltaTime - currentCompleteTime;
+                t2 = 1 + Time.time - currentCompleteTime;
+            }
 
             current.RunEvents(t1, t2);
         }

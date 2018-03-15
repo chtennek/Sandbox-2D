@@ -31,7 +31,7 @@ public class EntitySpawner : InputBehaviour
 
     private void Update()
     {
-        if (Time.time >= nextAllowableSpawnTime && (input.GetButtonDown(buttonName) || rapidFire && input.GetButton(buttonName)))
+        if (input != null && Time.time >= nextAllowableSpawnTime && (input.GetButtonDown(buttonName) || rapidFire && input.GetButton(buttonName)))
         {
             nextAllowableSpawnTime = Time.time + spawnCooldown;
             Spawn(ApplySpread(velocity));

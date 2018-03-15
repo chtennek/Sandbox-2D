@@ -13,9 +13,6 @@ public class InputBehaviour : MonoBehaviour
             input = GetComponentInParent<InputReceiver>();
 
         if (input == null)
-        {
             Debug.LogWarning(Warnings.NoComponentSpecified(this, typeof(InputReceiver)));
-            enabled = false;
-        }
     }
 }
