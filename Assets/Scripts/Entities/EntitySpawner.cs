@@ -34,7 +34,7 @@ public class EntitySpawner : InputBehaviour
         if (input != null && Time.time >= nextAllowableSpawnTime && (input.GetButtonDown(buttonName) || rapidFire && input.GetButton(buttonName)))
         {
             nextAllowableSpawnTime = Time.time + spawnCooldown;
-            Spawn(ApplySpread(velocity));
+            Spawn();
         }
     }
 
@@ -56,4 +56,14 @@ public class EntitySpawner : InputBehaviour
         if (mover != null)
             mover.Velocity = transform.rotation * velocity;
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(offset, velocity);
+        Gizmos.matrix = Matrix4x4.identity;
+    }
+#endif
 }
