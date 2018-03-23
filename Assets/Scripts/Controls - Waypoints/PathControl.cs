@@ -4,12 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEditor;
 
-[CreateAssetMenu(fileName = "waypoints", menuName = "Waypoints")]
-public class Path : ScriptableObject
-{
-    public PathPoint[] points;
-}
-
 [System.Serializable]
 public class PathEvent
 {

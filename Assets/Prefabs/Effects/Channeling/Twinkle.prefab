@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198901783170563886}
   - component: {fileID: 199646280659443788}
   m_Layer: 0
-  m_Name: Sparkle
+  m_Name: Twinkle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
