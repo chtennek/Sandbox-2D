@@ -8,6 +8,7 @@ public class MoveControl : InputBehaviour
     public string axisPairName = "Move";
     public bool restrictToXAxis = true;
     public bool restrictToYAxis = true;
+    public GridLayout.CellSwizzle swizzle = GridLayout.CellSwizzle.XYZ;
 
     [Header("Speed")]
     public float walkSpeed = 5f;
@@ -47,10 +48,11 @@ public class MoveControl : InputBehaviour
             float rotationDelta = Mathv.ClampAngle180(rotationTarget - transform.eulerAngles.z);
             isFacingMovementDirection = Mathf.Abs(rotationDelta) <= turnSpeed;
             rotationDelta = (rotationDelta > 0) ? Mathf.Min(rotationDelta, turnSpeed) : Mathf.Max(rotationDelta, -turnSpeed);
-            transform.Rotate(rotationDelta * Vector3.forward);
+            transform.Rotate(Grid.Swizzle(swizzle, rotationDelta * Vector3.forward));
         }
 
         // Calculate target velocity
+        movement = Grid.Swizzle(swizzle, movement);
         Vector2 targetVelocity;
         float tq = Mathv.LerpQRound(0, 1, Mathf.InverseLerp(input.deadZone, 1, movement.magnitude), walkSpeedLevels);
         if (onlyMoveForward && !isFacingMovementDirection)

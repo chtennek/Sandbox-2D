@@ -122,11 +122,14 @@ namespace Levels
 
         public void Reload()
         {
-            Debug.Log("Loading level: " + current.name);
-            if (Application.isPlaying) { // [TODO] don't have too many of these
+            if (Application.isPlaying)
+            { // [TODO] don't have too many of these
                 StartCoroutine("_Reload");
             }
-            else {
+            else
+            {
+                StartCoroutine("_Reload");
+                return;
                 Clear();
                 if (current != null)
                 {
@@ -137,11 +140,13 @@ namespace Levels
             }
         }
 
-        private IEnumerator _Reload() {
+        private IEnumerator _Reload()
+        {
             Clear();
             yield return null;
             if (current != null)
             {
+                Debug.Log("Loading level: " + current.name);
                 LoadTilemaps();
                 LoadObjects();
                 LoadChunks();
@@ -248,11 +253,14 @@ namespace Levels
         }
         #endregion
 
-        private Transform InstantiateFromPrefab(Transform prefab) {
-            if (Application.isPlaying) {
+        private Transform InstantiateFromPrefab(Transform prefab)
+        {
+            if (Application.isPlaying)
+            {
                 return Instantiate(prefab);
             }
-            else {
+            else
+            {
                 return PrefabUtility.InstantiatePrefab(prefab) as Transform;
             }
         }

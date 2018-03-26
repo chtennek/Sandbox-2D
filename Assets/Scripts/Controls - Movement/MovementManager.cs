@@ -69,6 +69,18 @@ public class MovementManager : MonoBehaviour
         {
             rb2D.AddForce(force, mode);
         }
+        else
+        {
+            switch (mode)
+            {
+                case ForceMode2D.Force:
+                    Velocity += force * Time.deltaTime;
+                    break;
+                case ForceMode2D.Impulse:
+                    Velocity += force;
+                    break;
+            }
+        }
     }
 
     public Vector3 GetTotalField()
