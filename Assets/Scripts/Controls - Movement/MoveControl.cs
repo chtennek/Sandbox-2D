@@ -20,9 +20,11 @@ public class MoveControl : InputBehaviour
     public float deceleration = 10; // How fast do we stop when not moving?
 
     [Header("Rotation")]
+    //public Vector3 defaultForwardDirection = Vector3.up; // At Quaternion.identity, what direction is forward?
     public bool faceMovementDirection;
     public bool onlyMoveForward;
-    public float rotationOffset = 90f; // At what movement direction should we be at 0 rotation?
+    public bool lookWithYAxis = false;
+    public Vector3 constantAxis = Vector3.up;
     public float turnSpeed = Mathf.Infinity; // Degrees per frame
 
     private MovementManager mover;
@@ -36,28 +38,32 @@ public class MoveControl : InputBehaviour
     protected void FixedUpdate()
     {
         // Get input
-        Vector2 movement = (restrictToXAxis && restrictToYAxis) ? input.GetAxisPairSingle(axisPairName) : input.GetAxisPair(axisPairName);
+        Vector3 movement = (restrictToXAxis && restrictToYAxis) ? input.GetAxisPairSingle(axisPairName) : input.GetAxisPair(axisPairName);
+        movement = Grid.Swizzle(swizzle, movement);
         if (restrictToXAxis == true && restrictToYAxis == false) movement.y = 0;
         if (restrictToXAxis == false && restrictToYAxis == true) movement.x = 0;
 
         // Change rotation
         bool isFacingMovementDirection = true;
-        if (faceMovementDirection && movement != Vector2.zero)
+        if (faceMovementDirection && movement != Vector3.zero)
         {
-            float rotationTarget = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg + rotationOffset;
-            float rotationDelta = Mathv.ClampAngle180(rotationTarget - transform.eulerAngles.z);
-            isFacingMovementDirection = Mathf.Abs(rotationDelta) <= turnSpeed;
-            rotationDelta = (rotationDelta > 0) ? Mathf.Min(rotationDelta, turnSpeed) : Mathf.Max(rotationDelta, -turnSpeed);
-            transform.Rotate(Grid.Swizzle(swizzle, rotationDelta * Vector3.forward));
+            Quaternion targetRotation = lookWithYAxis ? Quaternion.LookRotation(constantAxis, movement) : Quaternion.LookRotation(movement, constantAxis);
+            float rotationDelta = Quaternion.Angle(transform.rotation, targetRotation);
+
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, turnSpeed / rotationDelta);
+            isFacingMovementDirection = rotationDelta <= turnSpeed;
         }
 
-        // Calculate target velocity
-        movement = Grid.Swizzle(swizzle, movement);
-        Vector2 targetVelocity;
+        // Figure out which walk speed to use
         float tq = Mathv.LerpQRound(0, 1, Mathf.InverseLerp(input.deadZone, 1, movement.magnitude), walkSpeedLevels);
+
+        // Calculate target velocity
+        Vector3 targetVelocity;
         if (onlyMoveForward && !isFacingMovementDirection)
         {
-            targetVelocity = minWalkableSpeed * transform.TransformDirection(Quaternion.AngleAxis(rotationOffset, Vector3.forward) * Vector3.right);
+            // Turning around, move at min speed
+            Vector3 forward = transform.rotation * (lookWithYAxis ? Vector3.up : Vector3.forward);
+            targetVelocity = minWalkableSpeed * forward;
         }
         else
         {
@@ -76,10 +82,10 @@ public class MoveControl : InputBehaviour
 
     private void ApplyDrag(float drag)
     {
-        Vector2 v = mover.Velocity;
+        Vector3 v = Grid.InverseSwizzle(swizzle, mover.Velocity);
         // Only apply drag in restricted axis if we have one
         if (restrictToXAxis == true && restrictToYAxis == false) v.y = 0;
         if (restrictToXAxis == false && restrictToYAxis == true) v.x = 0;
-        mover.AddForce(drag * -v);
+        mover.AddForce(drag * -Grid.Swizzle(swizzle, v));
     }
 }

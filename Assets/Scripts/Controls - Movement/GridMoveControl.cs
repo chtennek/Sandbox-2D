@@ -7,6 +7,7 @@ public class GridMoveControl : InputBehaviour
 {
     [Header("Input")]
     public string axisPairName = "Move";
+    public GridLayout.CellSwizzle swizzle = GridLayout.CellSwizzle.XYZ;
 
     [Header("Parameters")]
     public float gridSize = 1f;
@@ -14,18 +15,18 @@ public class GridMoveControl : InputBehaviour
     public float bufferWindow = 0.1f; // percentage of grid space length
     public LayerMask wallColliderMask;
 
-    private PathControl waypointControl;
+    private PathControl pathControl;
 
     protected override void Awake()
     {
         base.Awake();
-        waypointControl = GetComponent<PathControl>();
+        pathControl = GetComponent<PathControl>();
     }
 
     private void Update()
     {
         // Check if we are close enough to buffer the next movement
-        if (waypointControl.Count < 1)
+        if (pathControl.Count < 1)
         {
             Vector2 movement = input.GetAxisPairSingle(axisPairName).normalized;
 
@@ -37,7 +38,7 @@ public class GridMoveControl : InputBehaviour
                 // Check if there's something in the way
                 if (Physics2D.OverlapPoint(target, wallColliderMask) == null)
                 {
-                    waypointControl.AddWaypoint(target, 1 / travelTime);
+                    pathControl.AddWaypoint(target, 1 / travelTime);
                 }
             }
         }

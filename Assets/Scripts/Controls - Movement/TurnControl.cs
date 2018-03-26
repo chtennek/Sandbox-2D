@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class TurnControl : InputBehaviour
 {
+    [Header("Input")]
     public string axisPairName = "Aim";
+    public GridLayout.CellSwizzle swizzle = GridLayout.CellSwizzle.XYZ;
 
     [Header("Parameters")]
-    public float rotationOffset = 90f; // At what movement direction should we be at 0 rotation?
-    public float turnSpeed = Mathf.Infinity; // Degrees per frame
+    public bool lookWithYAxis = false;
+    public Vector3 constantAxis = -Vector3.forward;
+    public float turnLerp = 1f;
 
     private void FixedUpdate()
     {
-        Vector2 movement = input.GetAxisPair(axisPairName);
+        Vector3 movement = input.GetAxisPair(axisPairName);
+        movement = Grid.Swizzle(swizzle, movement);
 
-        if (movement != Vector2.zero)
+        if (movement != Vector3.zero)
         {
-            float rotationTarget = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg + rotationOffset;
-            float rotationDelta = Mathv.ClampAngle180(rotationTarget - transform.eulerAngles.z);
-            rotationDelta = (rotationDelta > 0) ? Mathf.Min(rotationDelta, turnSpeed) : Mathf.Max(rotationDelta, -turnSpeed);
-            transform.Rotate(rotationDelta * Vector3.forward);
+            Quaternion targetRotation = lookWithYAxis ? Quaternion.LookRotation(constantAxis, movement) : Quaternion.LookRotation(movement, constantAxis);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, turnLerp);
         }
     }
 }
