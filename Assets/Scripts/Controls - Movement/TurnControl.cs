@@ -9,8 +9,7 @@ public class TurnControl : InputBehaviour
     public GridLayout.CellSwizzle swizzle = GridLayout.CellSwizzle.XYZ;
 
     [Header("Parameters")]
-    public bool lookWithYAxis = false;
-    public Vector3 constantAxis = -Vector3.forward;
+    public RotationSettings rotator;
     public float turnLerp = 1f;
 
     private void FixedUpdate()
@@ -20,7 +19,7 @@ public class TurnControl : InputBehaviour
 
         if (movement != Vector3.zero)
         {
-            Quaternion targetRotation = lookWithYAxis ? Quaternion.LookRotation(constantAxis, movement) : Quaternion.LookRotation(movement, constantAxis);
+            Quaternion targetRotation = rotator.GetRotationTowards(movement);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, turnLerp);
         }
     }

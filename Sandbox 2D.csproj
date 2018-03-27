@@ -462,6 +462,7 @@
     <Compile Include="Assets\Scripts\Session\PlaySessionManager.cs" />
     <Compile Include="Assets\Scripts\Session\ScreenDialogueBehaviour.cs" />
     <Compile Include="Assets\Scripts\Session\SingletonMessenger.cs" />
+    <Compile Include="Assets\Scripts\Structs\RotationSettings.cs" />
     <Compile Include="Assets\Scripts\Tiles\BorderedTile.cs" />
     <Compile Include="Assets\Scripts\UI\INavigator.cs" />
     <Compile Include="Assets\Scripts\UI\InGameMenu.cs" />

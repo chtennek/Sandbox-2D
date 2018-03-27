@@ -53,10 +53,15 @@ public class PathPoint
 
 public class PathControl : MonoBehaviour
 {
+    [Header("Path")]
     public bool loopInitialPoints = false;
     public PathPoint[] initialPoints = new PathPoint[0];
-    private Queue<PathPoint> points = new Queue<PathPoint>();
 
+    [Header("Rotation")]
+    public bool faceMovementDirection;
+    public RotationSettings rotator;
+
+    private Queue<PathPoint> points = new Queue<PathPoint>();
     private Vector3 anchorPosition;
     private Vector3 lastPosition;
     private PathPoint current;
@@ -122,7 +127,11 @@ public class PathControl : MonoBehaviour
             return;
         float t0 = (Time.time - currentStartTime) / (currentCompleteTime - currentStartTime);
         float t1 = current.approachCurve.Evaluate(Mathf.Min(t0, 1));
+
+        // [TODO] add curvature capabilities
         transform.position = Vector3.Lerp(lastPosition, anchorPosition + current.position, t1);
+        if (faceMovementDirection)
+            transform.rotation = rotator.GetRotationTowards(anchorPosition + current.position - lastPosition);
     }
 
     private void ApplyWaypoint(PathPoint w)

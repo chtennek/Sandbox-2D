@@ -8,8 +8,7 @@ public class TrackingAI : MonoBehaviour
     public Transform target;
 
     [Header("Parameters")]
-    public bool lookWithYAxis = false;
-    public Vector3 constantAxis = Vector3.up;
+    public RotationSettings rotator;
     public float turnLerp = 1f;
 
     void Update()
@@ -18,8 +17,7 @@ public class TrackingAI : MonoBehaviour
 
         if (target != null)
         {
-            Quaternion targetRotation = lookWithYAxis ? Quaternion.LookRotation(constantAxis, movement) : Quaternion.LookRotation(movement, constantAxis);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, turnLerp);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotator.GetRotationTowards(movement), turnLerp);
         }
     }
 }

@@ -20,11 +20,9 @@ public class MoveControl : InputBehaviour
     public float deceleration = 10; // How fast do we stop when not moving?
 
     [Header("Rotation")]
-    //public Vector3 defaultForwardDirection = Vector3.up; // At Quaternion.identity, what direction is forward?
     public bool faceMovementDirection;
     public bool onlyMoveForward;
-    public bool lookWithYAxis = false;
-    public Vector3 constantAxis = Vector3.up;
+    public RotationSettings rotator;
     public float turnSpeed = Mathf.Infinity; // Degrees per frame
 
     private MovementManager mover;
@@ -47,7 +45,7 @@ public class MoveControl : InputBehaviour
         bool isFacingMovementDirection = true;
         if (faceMovementDirection && movement != Vector3.zero)
         {
-            Quaternion targetRotation = lookWithYAxis ? Quaternion.LookRotation(constantAxis, movement) : Quaternion.LookRotation(movement, constantAxis);
+            Quaternion targetRotation = rotator.GetRotationTowards(movement);
             float rotationDelta = Quaternion.Angle(transform.rotation, targetRotation);
 
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, turnSpeed / rotationDelta);
@@ -62,7 +60,7 @@ public class MoveControl : InputBehaviour
         if (onlyMoveForward && !isFacingMovementDirection)
         {
             // Turning around, move at min speed
-            Vector3 forward = transform.rotation * (lookWithYAxis ? Vector3.up : Vector3.forward);
+            Vector3 forward = transform.rotation * (rotator.lookWithYAxis ? Vector3.up : Vector3.forward);
             targetVelocity = minWalkableSpeed * forward;
         }
         else
