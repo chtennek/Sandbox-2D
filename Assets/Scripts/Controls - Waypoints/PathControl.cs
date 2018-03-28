@@ -98,9 +98,9 @@ public class PathControl : MonoBehaviour
         if (loopInitialPoints == true && points.Count == 0)
             InitializePath();
 
-        if (Time.time >= nextStartTime && points.Count > 0)
+        if (Time.time >= nextStartTime)
         {
-            ApplyWaypoint(points.Dequeue());
+            ApplyNextWaypoint();
             ProcessEvents();
         }
     }
@@ -134,12 +134,15 @@ public class PathControl : MonoBehaviour
             transform.rotation = rotator.GetRotationTowards(anchorPosition + current.position - lastPosition);
     }
 
-    private void ApplyWaypoint(PathPoint w)
+    private void ApplyNextWaypoint()
     {
+        current = points.Count > 0 ? points.Dequeue() : null;
+        if (current == null)
+            return;
+
         lastPosition = transform.position;
-        current = w;
         currentStartTime = Time.time;
-        currentCompleteTime = Time.time + w.GetTravelTimeFrom(transform.position - anchorPosition);
-        nextStartTime = currentCompleteTime + w.waitTime;
+        currentCompleteTime = Time.time + current.GetTravelTimeFrom(transform.position - anchorPosition);
+        nextStartTime = currentCompleteTime + current.waitTime;
     }
 }

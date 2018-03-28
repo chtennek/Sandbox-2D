@@ -41,9 +41,10 @@ public class MovementManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        AddForce(GetTotalField());
         if (rb == null && rb2D == null)
             transform.position += Velocity * Time.fixedDeltaTime;
+        else
+            AddForce(GetTotalField());
     }
 
     public bool IsGrounded()

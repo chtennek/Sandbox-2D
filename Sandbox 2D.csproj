@@ -403,7 +403,7 @@
     <Compile Include="Assets\Scripts\Camera\ScreenFollowObject.cs" />
     <Compile Include="Assets\Scripts\Camera\ScreenShake.cs" />
     <Compile Include="Assets\Scripts\Controls - Movement\BoostControl.cs" />
-    <Compile Include="Assets\Scripts\Controls - Movement\GridMoveControl.cs" />
+    <Compile Include="Assets\Scripts\Controls - Movement\GridControl.cs" />
     <Compile Include="Assets\Scripts\Controls - Movement\JumpControl.cs" />
     <Compile Include="Assets\Scripts\Controls - Movement\MoveControl.cs" />
     <Compile Include="Assets\Scripts\Controls - Movement\MovementManager.cs" />
@@ -430,6 +430,7 @@
     <Compile Include="Assets\Scripts\Entities\EntityBehaviour.cs" />
     <Compile Include="Assets\Scripts\Entities\EntityMultiSpawner.cs" />
     <Compile Include="Assets\Scripts\Entities\EntitySpawner.cs" />
+    <Compile Include="Assets\Scripts\Entities\GridMovement.cs" />
     <Compile Include="Assets\Scripts\Entities\Hitbox.cs" />
     <Compile Include="Assets\Scripts\Generators\ProceduralGenerator.cs" />
     <Compile Include="Assets\Scripts\Input\DefaultInputReceiver.cs" />
