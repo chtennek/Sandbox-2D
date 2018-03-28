@@ -12,6 +12,7 @@ public class MovementManager : MonoBehaviour
 
     private Rigidbody rb;
     private Rigidbody2D rb2D;
+    private Collider coll;
     private Collider2D coll2D;
 
     public Vector3 Velocity
@@ -32,8 +33,9 @@ public class MovementManager : MonoBehaviour
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
-        rb2D = GetComponent<Rigidbody2D>();
+        rb = GetComponentInParent<Rigidbody>();
+        rb2D = GetComponentInParent<Rigidbody2D>();
+        coll = GetComponent<Collider>();
         coll2D = GetComponent<Collider2D>();
     }
 

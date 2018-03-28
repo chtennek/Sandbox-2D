@@ -27,14 +27,15 @@ GameObject:
   - component: {fileID: 65016917123963158}
   - component: {fileID: 114053103955698724}
   - component: {fileID: 114189286819299966}
-  - component: {fileID: 114532248845246278}
+  - component: {fileID: 114947783800205426}
   - component: {fileID: 114774040800537054}
+  - component: {fileID: 114820140329760170}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &4732350356366910
 Transform:
@@ -43,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1528570192047984}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: 2.5, z: 6.5}
+  m_LocalPosition: {x: 0.5, y: 1.5, z: 6.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -116,7 +117,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.99, y: 0.99, z: 0.99}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114053103955698724
 MonoBehaviour:
@@ -1205,28 +1206,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityType: 0
---- !u!114 &114532248845246278
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1528570192047984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53727e39a4f9e4751909059a4613184e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input: {fileID: 0}
-  axisPairName: Move
-  swizzle: 1
-  gridScale: {x: 1, y: 1, z: 1}
-  gridOffset: {x: 0.5, y: 0.5, z: 0.5}
-  travelTime: 0.1
-  bufferWindow: 0.1
-  wallColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  faceMovementDirection: 1
 --- !u!114 &114774040800537054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1240,3 +1219,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loopInitialPoints: 0
   initialPoints: []
+  faceMovementDirection: 0
+--- !u!114 &114820140329760170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1528570192047984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95adfe27f773f4cc4b64907756035bd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridScale: {x: 1, y: 1, z: 1}
+  gridOffset: {x: 0.5, y: 0.5, z: 0.5}
+  travelTime: 0.1
+  wallColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  pushable: 1
+--- !u!114 &114947783800205426
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1528570192047984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b074d4fbeb6341128a01b3b12ef6a44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 114053103955698724}
+  axisPairName: Move
+  swizzle: 1
