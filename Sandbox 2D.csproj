@@ -425,6 +425,8 @@
     <Compile Include="Assets\Scripts\Core\StatusBar.cs" />
     <Compile Include="Assets\Scripts\Core\UnityExtensions.cs" />
     <Compile Include="Assets\Scripts\Core\Warnings.cs" />
+    <Compile Include="Assets\Scripts\Data\PathPoint.cs" />
+    <Compile Include="Assets\Scripts\Data\Rotator.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Actor.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Dialogue.cs" />
     <Compile Include="Assets\Scripts\Entities\EntityBehaviour.cs" />
@@ -463,7 +465,6 @@
     <Compile Include="Assets\Scripts\Session\PlaySessionManager.cs" />
     <Compile Include="Assets\Scripts\Session\ScreenDialogueBehaviour.cs" />
     <Compile Include="Assets\Scripts\Session\SingletonMessenger.cs" />
-    <Compile Include="Assets\Scripts\Structs\RotationSettings.cs" />
     <Compile Include="Assets\Scripts\Tiles\BorderedTile.cs" />
     <Compile Include="Assets\Scripts\UI\INavigator.cs" />
     <Compile Include="Assets\Scripts\UI\InGameMenu.cs" />

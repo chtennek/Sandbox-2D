@@ -22,7 +22,7 @@ public class MoveControl : InputBehaviour
     [Header("Rotation")]
     public bool faceMovementDirection;
     public bool onlyMoveForward;
-    public RotationSettings rotator;
+    public Rotator rotator;
     public float turnSpeed = Mathf.Infinity; // Degrees per frame
 
     private MovementManager mover;

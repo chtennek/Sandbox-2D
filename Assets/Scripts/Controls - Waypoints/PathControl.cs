@@ -1,55 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEditor;
-
-[System.Serializable]
-public class PathEvent
-{
-    public float t;
-    public UnityEvent e;
-}
-
-[System.Serializable]
-public class PathPoint
-{
-    public Vector3 position; // Relative to initial position
-    public AnimationCurve approachCurve = AnimationCurve.Linear(0, 0, 1, 1);
-    public float approachCurvature; // Radius of arc path we're following (minus max path deviation), zero for straight line
-    public float approachSpeed; // Translates to approach time with path length considered
-    public float waitTime; // After reaching position
-    public PathEvent[] events;
-
-    public PathPoint(Vector3 position)
-    {
-        this.position = position;
-        this.approachCurvature = 0;
-        this.approachSpeed = 1f;
-        this.waitTime = 0;
-        this.events = new PathEvent[0];
-    }
-
-    public PathPoint(Vector3 position, float approachSpeed) : this(position)
-    {
-        this.approachSpeed = approachSpeed;
-    }
-
-    public void RunEvents(float t1, float t2)
-    {
-        foreach (PathEvent e in events)
-        {
-            if (t1 <= e.t && e.t < t2)
-                e.e.Invoke();
-        }
-    }
-
-    public float GetTravelTimeFrom(Vector3 startPosition)
-    {
-        float time = (approachSpeed == 0) ? 0 : (position - startPosition).magnitude / approachSpeed;
-        return time;
-    }
-}
 
 public class PathControl : MonoBehaviour
 {
@@ -57,13 +8,11 @@ public class PathControl : MonoBehaviour
     public bool loopInitialPoints = false;
     public PathPoint[] initialPoints = new PathPoint[0];
 
-    [Header("Rotation")]
-    public bool faceMovementDirection;
-    public RotationSettings rotator;
-
     private Queue<PathPoint> points = new Queue<PathPoint>();
     private Vector3 anchorPosition;
     private Vector3 lastPosition;
+    private Quaternion lastRotation;
+
     private PathPoint current;
     private float currentStartTime;
     private float currentCompleteTime;
@@ -71,10 +20,10 @@ public class PathControl : MonoBehaviour
 
     public int Count { get { return points.Count; } }
 
-    public void AddWaypoint(Vector3 position) { AddWaypoint(position, 1); }
-    public void AddWaypoint(Vector3 position, float speed)
+    public void AddWaypoint(PathPoint point)
     {
-        points.Enqueue(new PathPoint(position - anchorPosition, speed));
+        point.position -= anchorPosition;
+        points.Enqueue(point);
     }
 
     private void InitializePath()
@@ -130,8 +79,8 @@ public class PathControl : MonoBehaviour
 
         // [TODO] add curvature capabilities
         transform.position = Vector3.Lerp(lastPosition, anchorPosition + current.position, t1);
-        if (faceMovementDirection)
-            transform.rotation = rotator.GetRotationTowards(anchorPosition + current.position - lastPosition);
+        if (current.affectRotation)
+            transform.rotation = Quaternion.Lerp(lastRotation, current.rotation, t1);
     }
 
     private void ApplyNextWaypoint()
@@ -141,6 +90,7 @@ public class PathControl : MonoBehaviour
             return;
 
         lastPosition = transform.position;
+        lastRotation = transform.rotation;
         currentStartTime = Time.time;
         currentCompleteTime = Time.time + current.GetTravelTimeFrom(transform.position - anchorPosition);
         nextStartTime = currentCompleteTime + current.waitTime;

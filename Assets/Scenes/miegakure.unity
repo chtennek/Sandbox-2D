@@ -377,7 +377,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loopInitialPoints: 0
   initialPoints: []
-  faceMovementDirection: 0
 --- !u!114 &552311116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,13 +388,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95adfe27f773f4cc4b64907756035bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridScale: {x: 1, y: 1, z: 1}
-  gridOffset: {x: 0, y: 0, z: 0}
-  travelTime: 0.1
   wallColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
   pushable: 1
+  gridScale: {x: 1, y: 1, z: 1}
+  gridOffset: {x: 0, y: 0, z: 0}
+  travelTime: 0.1
+  rotator:
+    lookWithYAxis: 0
+    constantAxis: {x: 0, y: 0, z: 0}
+  faceMovementDirection: 0
+  rollInMovementDirection: 0
 --- !u!54 &552311117
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1721,6 +1725,11 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1775680359}
+    - target: {fileID: 114820140329760170, guid: 1aa901e95e11e644a974282b0e8a4428,
+        type: 2}
+      propertyPath: faceMovementDirection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1aa901e95e11e644a974282b0e8a4428, type: 2}
   m_IsPrefabParent: 0
@@ -2100,7 +2109,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loopInitialPoints: 0
   initialPoints: []
-  faceMovementDirection: 0
 --- !u!114 &1789953503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2112,13 +2120,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95adfe27f773f4cc4b64907756035bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridScale: {x: 1, y: 1, z: 1}
-  gridOffset: {x: 0, y: 0, z: 0}
-  travelTime: 0.1
   wallColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
   pushable: 1
+  gridScale: {x: 1, y: 1, z: 1}
+  gridOffset: {x: 0, y: 0, z: 0}
+  travelTime: 0.1
+  rotator:
+    lookWithYAxis: 0
+    constantAxis: {x: 0, y: 0, z: 0}
+  faceMovementDirection: 0
+  rollInMovementDirection: 0
 --- !u!54 &1789953504
 Rigidbody:
   m_ObjectHideFlags: 0

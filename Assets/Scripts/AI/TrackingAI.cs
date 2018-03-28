@@ -8,7 +8,7 @@ public class TrackingAI : MonoBehaviour
     public Transform target;
 
     [Header("Parameters")]
-    public RotationSettings rotator;
+    public Rotator rotator;
     public float turnLerp = 1f;
 
     void Update()
