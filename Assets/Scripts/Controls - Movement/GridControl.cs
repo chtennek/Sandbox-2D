@@ -8,7 +8,12 @@ public class GridControl : InputBehaviour
     [Header("Input")]
     public string axisPairName = "Move";
     public GridLayout.CellSwizzle swizzle = GridLayout.CellSwizzle.XYZ;
-    public bool turnSeparately = true;
+    public bool turnSeparately = false;
+    public float bufferWindow = 0f; // Set to negative for input delay
+
+    [Header("Behaviours")]
+    public Vector3 gravity = .1f * Vector3.down; // "gravity" by [TODO] travelTime per unit
+    public bool slide; // [TODO] ice behaviour
 
     private PathControl pathControl;
     private GridMovement gridMovement;
@@ -22,14 +27,30 @@ public class GridControl : InputBehaviour
 
     private void Update()
     {
-        // [TODO] Check if we are close enough to buffer the next movement
-
-        Vector3 movement = input.GetAxisPairSingle(axisPairName).normalized;
+        Vector3 movement = (input == null) ? Vector2.zero : input.GetAxisPairSingle(axisPairName).normalized;
         movement = Grid.Swizzle(swizzle, movement);
+
+        // Process gravity first
+        if (gravity != Vector3.zero) // [TODO] improve performance, cache check?
+        {
+            Vector3 direction = Vector3.Scale(gridMovement.gridScale, gravity.normalized);
+            if (gridMovement.Move(direction, true) == true)
+                return;
+        }
+
+        if (Time.time < pathControl.EndTime - bufferWindow)
+            return;
+
+        // Process movement
         if (movement == Vector3.zero)
             return;
 
-        if (turnSeparately == false || gridMovement.RotateTowards(movement, Vector3.zero) == false)
-            gridMovement.Move(movement);
+        if (turnSeparately == true)
+        {
+            if (gridMovement.RotateTowards(movement, Vector3.zero) == true)
+                return;
+        }
+
+        gridMovement.Move(movement);
     }
 }

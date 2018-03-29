@@ -18,7 +18,8 @@ public class PathControl : MonoBehaviour
     private float currentCompleteTime;
     private float nextStartTime;
 
-    public int Count { get { return points.Count; } }
+    public float EndTime { get { return points.Count == 0 ? nextStartTime : Mathf.Infinity; }}
+    public int Count { get { return (Time.time >= nextStartTime) ? 0 : points.Count + 1; } }
 
     public void AddWaypoint(PathPoint point)
     {
@@ -60,7 +61,7 @@ public class PathControl : MonoBehaviour
         {
             float t1 = Mathf.InverseLerp(currentStartTime, currentCompleteTime, Time.time - Time.deltaTime);
             float t2 = Mathf.InverseLerp(currentStartTime, currentCompleteTime, Time.time);
-            if (t1 == 1 || currentStartTime == currentCompleteTime)
+            if (Mathf.Approximately(t1, 1) || Mathf.Approximately(currentStartTime, currentCompleteTime))
             {
                 t1 = 1 + Time.time - Time.deltaTime - currentCompleteTime;
                 t2 = 1 + Time.time - currentCompleteTime;

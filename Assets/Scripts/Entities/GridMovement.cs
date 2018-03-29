@@ -8,7 +8,6 @@ public class GridMovement : MonoBehaviour
     [Header("Movement")]
     public LayerMask wallColliderMask;
     public bool pushable = true;
-    public Vector3 gravity = .1f * Vector3.down; // "gravity" by [TODO] travelTime per unit
 
     [Header("Position")]
     public Vector3 gridScale = Vector3.one;
@@ -19,8 +18,6 @@ public class GridMovement : MonoBehaviour
     public Rotator rotator;
     public bool faceMovementDirection;
     public float rollInMovementDirection;
-
-    private bool checkGravity = true; // [TODO] merge this with "ice" behaviour
 
     private Rigidbody rb;
     private Rigidbody2D rb2D;
@@ -34,15 +31,6 @@ public class GridMovement : MonoBehaviour
             Debug.Log("No Rigidbody attached to GridMovement. Pushable behaviour won't work properly!");
 
         pathControl = GetComponent<PathControl>();
-    }
-
-    private void Update()
-    {
-        if (gravity != Vector3.zero && pathControl.Count == 0) // [TODO] improve performance, only check after some movement 
-        {
-            if (Move(Vector3.Scale(gridScale, gravity.normalized), true) == false)
-                checkGravity = false;
-        }
     }
 
     public bool RotateTowards(Vector3 direction, Vector3 relativePivot)
@@ -87,7 +75,6 @@ public class GridMovement : MonoBehaviour
             return false;
 
         Push(movement, fixRotation);
-        checkGravity = true;
         return true;
     }
 
