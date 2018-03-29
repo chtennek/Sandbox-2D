@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(MovementManager))]
+[RequireComponent(typeof(RigidbodyWrapper))]
 public class MoveControl : InputBehaviour
 {
     [Header("Input")]
@@ -25,12 +25,12 @@ public class MoveControl : InputBehaviour
     public Rotator rotator;
     public float turnSpeed = Mathf.Infinity; // Degrees per frame
 
-    private MovementManager mover;
+    private RigidbodyWrapper mover;
 
     protected override void Awake()
     {
         base.Awake();
-        mover = GetComponent<MovementManager>();
+        mover = GetComponent<RigidbodyWrapper>();
     }
 
     protected void FixedUpdate()

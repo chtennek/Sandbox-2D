@@ -406,8 +406,8 @@
     <Compile Include="Assets\Scripts\Controls - Movement\GridControl.cs" />
     <Compile Include="Assets\Scripts\Controls - Movement\JumpControl.cs" />
     <Compile Include="Assets\Scripts\Controls - Movement\MoveControl.cs" />
-    <Compile Include="Assets\Scripts\Controls - Movement\MovementManager.cs" />
     <Compile Include="Assets\Scripts\Controls - Movement\PositionControl.cs" />
+    <Compile Include="Assets\Scripts\Controls - Movement\RigidbodyWrapper.cs" />
     <Compile Include="Assets\Scripts\Controls - Movement\TurnControl.cs" />
     <Compile Include="Assets\Scripts\Controls - Other\EntityManager.cs" />
     <Compile Include="Assets\Scripts\Controls - Other\EntitySelector.cs" />

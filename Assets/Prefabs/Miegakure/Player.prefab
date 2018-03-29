@@ -26,7 +26,6 @@ GameObject:
   - component: {fileID: 54955580021037152}
   - component: {fileID: 65016917123963158}
   - component: {fileID: 114053103955698724}
-  - component: {fileID: 114189286819299966}
   - component: {fileID: 114947783800205426}
   - component: {fileID: 114774040800537054}
   - component: {fileID: 114820140329760170}
@@ -44,7 +43,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1528570192047984}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: 4.5, z: 7.5}
+  m_LocalPosition: {x: 6.5, y: 4.5, z: 4.5}
   m_LocalScale: {x: 0.99, y: 0.99, z: 0.99}
   m_Children: []
   m_Father: {fileID: 0}
@@ -131,35 +130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
---- !u!114 &114189286819299966
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1528570192047984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b500b4ce6f7f324e9fafdd23a68ab6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colliderCheck:
-    direction: {x: 0, y: -1, z: 0}
-    checkDistance: 0.01
-    contactFilter:
-      useTriggers: 0
-      useLayerMask: 0
-      useDepth: 0
-      useOutsideDepth: 0
-      useNormalAngle: 0
-      useOutsideNormalAngle: 0
-      layerMask:
-        serializedVersion: 2
-        m_Bits: 0
-      minDepth: 0
-      maxDepth: 0
-      minNormalAngle: 0
-      maxNormalAngle: 0
-  velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &114298526315048996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1219,7 +1189,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loopInitialPoints: 0
   initialPoints: []
-  faceMovementDirection: 0
 --- !u!114 &114820140329760170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1231,13 +1200,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95adfe27f773f4cc4b64907756035bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridScale: {x: 1, y: 1, z: 1}
-  gridOffset: {x: 0.5, y: 0.5, z: 0.5}
-  travelTime: 0.1
   wallColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
   pushable: 1
+  gravity: {x: 0, y: -0.1, z: 0}
+  gridScale: {x: 1, y: 1, z: 1}
+  gridOffset: {x: 0.5, y: 0.5, z: 0.5}
+  travelTime: 0.1
+  rotator:
+    lookWithYAxis: 0
+    constantAxis: {x: 0, y: 0, z: 0}
+  faceMovementDirection: 1
+  rollInMovementDirection: 0
 --- !u!114 &114947783800205426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1252,3 +1227,4 @@ MonoBehaviour:
   input: {fileID: 114053103955698724}
   axisPairName: Move
   swizzle: 1
+  turnSeparately: 0

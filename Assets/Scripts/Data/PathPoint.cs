@@ -10,6 +10,12 @@ public class PathEvent
     public UnityEvent e;
 }
 
+public enum PathMode
+{
+    Speed,
+    Time,
+}
+
 [System.Serializable]
 public class PathPoint
 {
@@ -18,8 +24,11 @@ public class PathPoint
     public bool affectRotation = false;
 
     public AnimationCurve approachCurve = AnimationCurve.Linear(0, 0, 1, 1);
-    public float approachCurvature = 0; // Radius of arc path we're following (minus max path deviation), zero for straight line
     public float approachSpeed = 1f; // Translates to approach time with path length considered
+    public PathMode approachMode = PathMode.Speed;
+
+    public float approachCurvature = 0; // [TODO] Radius of arc path we're following (minus max path deviation), zero for straight line
+
     public float waitTime = 0; // After reaching position
     public PathEvent[] events;
 
@@ -34,10 +43,20 @@ public class PathPoint
         this.approachSpeed = approachSpeed;
     }
 
+    public PathPoint(Vector3 position, float approachSpeed, PathMode approachMode) : this(position, approachSpeed)
+    {
+        this.approachMode = approachMode;
+    }
+
     public PathPoint(Vector3 position, Quaternion rotation, float approachSpeed) : this(position, approachSpeed)
     {
         this.rotation = rotation;
         this.affectRotation = true;
+    }
+
+    public PathPoint(Vector3 position, Quaternion rotation, float approachSpeed, PathMode approachMode) : this(position, rotation, approachSpeed)
+    {
+        this.approachMode = approachMode;
     }
 
     public void RunEvents(float t1, float t2)
@@ -51,7 +70,8 @@ public class PathPoint
 
     public float GetTravelTimeFrom(Vector3 startPosition)
     {
-        float time = (approachSpeed == 0) ? 0 : (position - startPosition).magnitude / approachSpeed;
-        return time;
+        if (approachMode == PathMode.Speed)
+            return (approachSpeed == 0) ? 0 : (position - startPosition).magnitude / approachSpeed;
+        return approachSpeed;
     }
 }

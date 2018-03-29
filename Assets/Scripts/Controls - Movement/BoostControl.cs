@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MovementManager))]
+[RequireComponent(typeof(RigidbodyWrapper))]
 public class BoostControl : InputBehaviour
 {
     [Header("Input")]
@@ -13,12 +13,12 @@ public class BoostControl : InputBehaviour
     public float magnitude = 5f;
     public Vector3 direction = Vector3.up; // [TODO] auto-normalize this
 
-    protected MovementManager mover;
+    protected RigidbodyWrapper mover;
 
     protected override void Awake()
     {
         base.Awake();
-        mover = GetComponent<MovementManager>();
+        mover = GetComponent<RigidbodyWrapper>();
     }
 
     protected virtual void FixedUpdate()

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MovementManager))]
+[RequireComponent(typeof(RigidbodyWrapper))]
 public class JumpEffector : InputBehaviour
 {
     [Header("Input")]
@@ -14,12 +14,12 @@ public class JumpEffector : InputBehaviour
     public float fallScale = 4f;
     public float inputReleaseScale = 12f;
 
-    private MovementManager mover;
+    private RigidbodyWrapper mover;
 
     protected override void Awake()
     {
         base.Awake();
-        mover = GetComponent<MovementManager>();
+        mover = GetComponent<RigidbodyWrapper>();
     }
 
     protected void FixedUpdate()

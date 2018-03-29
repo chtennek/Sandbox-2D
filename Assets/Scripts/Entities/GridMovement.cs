@@ -8,6 +8,7 @@ public class GridMovement : MonoBehaviour
     [Header("Movement")]
     public LayerMask wallColliderMask;
     public bool pushable = true;
+    public Vector3 gravity = .1f * Vector3.down; // "gravity" by [TODO] travelTime per unit
 
     [Header("Position")]
     public Vector3 gridScale = Vector3.one;
@@ -17,7 +18,9 @@ public class GridMovement : MonoBehaviour
     [Header("Rotation")]
     public Rotator rotator;
     public bool faceMovementDirection;
-    public bool rollInMovementDirection;
+    public float rollInMovementDirection;
+
+    private bool checkGravity = true; // [TODO] merge this with "ice" behaviour
 
     private Rigidbody rb;
     private Rigidbody2D rb2D;
@@ -33,42 +36,76 @@ public class GridMovement : MonoBehaviour
         pathControl = GetComponent<PathControl>();
     }
 
-    public void RotateTowards(Vector3 v)
+    private void Update()
     {
-
+        if (gravity != Vector3.zero && pathControl.Count == 0) // [TODO] improve performance, only check after some movement 
+        {
+            if (Move(Vector3.Scale(gridScale, gravity.normalized), true) == false)
+                checkGravity = false;
+        }
     }
 
-    public void Move(Vector3 v)
+    public bool RotateTowards(Vector3 direction, Vector3 relativePivot)
+    {
+        if (pathControl.Count > 0 || direction == Vector3.zero)
+            return false;
+
+        Vector3 pivot = transform.position + relativePivot;
+        Quaternion rotation = rotator.GetRotationTowards(direction);
+        Vector3 rotatedPosition = Mathv.RotateAround(transform.position, pivot, rotation);
+
+        if (rotatedPosition == transform.position && Quaternion.Angle(rotation, transform.rotation) < Mathf.Epsilon)
+            return false;
+
+        pathControl.AddWaypoint(new PathPoint(rotatedPosition, rotation, travelTime, PathMode.Time));
+        return true;
+    }
+
+    public bool RotateAround(Vector3 pivot, Quaternion rotation)
+    {
+        // Check if we're moving
+        if (pathControl.Count > 0 || Quaternion.Angle(rotation, Quaternion.identity) < Mathf.Epsilon)
+            return false;
+
+        Vector3 rotatedPosition = Mathv.RotateAround(transform.position, pivot, rotation);
+        pathControl.AddWaypoint(new PathPoint(rotatedPosition, rotation, travelTime, PathMode.Time));
+        return true;
+    }
+
+    public bool Move(Vector3 v) { return Move(v, false); }
+    public bool Move(Vector3 v, bool fixRotation)
     {
         // Check if we're moving
         if (pathControl.Count > 0 || v == Vector3.zero)
-            return;
+            return false;
 
         Vector3 target = FindNearestGridPoint(transform.position + Vector3.Scale(gridScale, v));
         Vector3 movement = target - transform.position;
 
         // Check if there's something in the way
         if (IsPushableTowards(movement) == false)
-            return;
+            return false;
 
-        Push(movement);
+        Push(movement, fixRotation);
+        checkGravity = true;
+        return true;
     }
 
     // [TODO] don't assume we've already checked IsPushable?
     // [TODO] add running checklist to avoid infinite loops in weird cases
-    private void Push(Vector3 movement)
+    private void Push(Vector3 movement, bool fixRotation)
     {
         Vector3 target = transform.position + movement;
-        if (rollInMovementDirection)
+        if (rollInMovementDirection != 0 && fixRotation == false)
         {
-            Quaternion rotation = Quaternion.AngleAxis(90, Vector3.Cross(Vector3.up, movement)) * transform.rotation;
-            pathControl.AddWaypoint(new PathPoint(target, rotation, 1 / travelTime));
+            Quaternion rotation = Quaternion.AngleAxis(rollInMovementDirection, Vector3.Cross(Vector3.up, movement)) * transform.rotation; // [TODO] what if we're moving Vector3.up?
+            pathControl.AddWaypoint(new PathPoint(target, rotation, travelTime, PathMode.Time));
         }
         else
         {
-            pathControl.AddWaypoint(new PathPoint(target, 1 / travelTime));
+            pathControl.AddWaypoint(new PathPoint(target, travelTime, PathMode.Time));
 
-            if (faceMovementDirection)
+            if (faceMovementDirection && fixRotation == false)
                 transform.rotation = rotator.GetRotationTowards(movement);
         }
 
@@ -76,7 +113,7 @@ public class GridMovement : MonoBehaviour
         {
             GridMovement g = t.GetComponent<GridMovement>();
             if (g != null && g.pushable == true)
-                g.Push(movement);
+                g.Push(movement, fixRotation);
         }
     }
 

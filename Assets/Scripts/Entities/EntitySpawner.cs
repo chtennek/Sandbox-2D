@@ -52,7 +52,7 @@ public class EntitySpawner : InputBehaviour
             entity.Rotate(transform.eulerAngles);
         }
 
-        MovementManager mover = entity.GetComponent<MovementManager>();
+        RigidbodyWrapper mover = entity.GetComponent<RigidbodyWrapper>();
         if (mover != null)
             mover.Velocity = transform.rotation * velocity;
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementManager : MonoBehaviour
+public class RigidbodyWrapper : MonoBehaviour
 {
     public ColliderChecker colliderCheck; // [TODO] move this
 
@@ -41,10 +41,12 @@ public class MovementManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (rb == null && rb2D == null)
+        if ((rb == null && rb2D == null) ||
+            (rb != null && rb.isKinematic == true) ||
+            (rb2D != null && rb2D.isKinematic == true))
             transform.position += Velocity * Time.fixedDeltaTime;
-        else
-            AddForce(GetTotalField());
+
+        AddForce(GetTotalField());
     }
 
     public bool IsGrounded()
@@ -56,7 +58,7 @@ public class MovementManager : MonoBehaviour
     public void AddForce(Vector3 force) { AddForce(force, ForceMode2D.Force); }
     public void AddForce(Vector3 force, ForceMode2D mode)
     {
-        if (rb != null)
+        if (rb != null && rb.isKinematic == false)
         {
             switch (mode)
             {
@@ -68,7 +70,7 @@ public class MovementManager : MonoBehaviour
                     break;
             }
         }
-        else if (rb2D != null)
+        else if (rb2D != null && rb2D.isKinematic == false)
         {
             rb2D.AddForce(force, mode);
         }
