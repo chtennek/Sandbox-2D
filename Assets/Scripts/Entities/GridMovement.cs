@@ -6,7 +6,7 @@ using UnityEngine;
 public class GridMovement : MonoBehaviour
 {
     [Header("Movement")]
-    public LayerMask wallColliderMask;
+    public LayerMask wallColliderMask = ~0;
     public bool pushable = true;
 
     [Header("Position")]
@@ -17,13 +17,13 @@ public class GridMovement : MonoBehaviour
     [Header("Rotation")]
     public Rotator rotator;
     public bool faceMovementDirection;
-    public float rollInMovementDirection;
+    public Vector3 rollInMovementDirection;
 
     private Rigidbody rb;
     private Rigidbody2D rb2D;
     private PathControl pathControl;
 
-    private void Awake()
+	private void Awake()
     {
         rb = GetComponentInParent<Rigidbody>();
         rb2D = GetComponentInParent<Rigidbody2D>();
@@ -83,9 +83,13 @@ public class GridMovement : MonoBehaviour
     private void Push(Vector3 movement, bool fixRotation)
     {
         Vector3 target = transform.position + movement;
-        if (rollInMovementDirection != 0 && fixRotation == false)
+        if (rollInMovementDirection != Vector3.zero && fixRotation == false)
         {
-            Quaternion rotation = Quaternion.AngleAxis(rollInMovementDirection, Vector3.Cross(Vector3.up, movement)) * transform.rotation; // [TODO] what if we're moving Vector3.up?
+            float angle = Vector3.Dot(movement, rollInMovementDirection);
+            Vector3 axis = Vector3.Cross(Vector3.up, movement);
+
+            // [TODO] what if we're moving Vector3.up?
+            Quaternion rotation = Quaternion.AngleAxis(angle, axis) * transform.rotation;
             pathControl.AddWaypoint(new PathPoint(target, rotation, travelTime, PathMode.Time));
         }
         else
@@ -104,7 +108,7 @@ public class GridMovement : MonoBehaviour
         }
     }
 
-    private bool IsPushableTowards(Vector3 movement)
+    public bool IsPushableTowards(Vector3 movement)
     {
         foreach (Transform t in SweepTestAll(movement))
         {

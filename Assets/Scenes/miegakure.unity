@@ -212,6 +212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 552311114}
   - component: {fileID: 552311117}
+  - component: {fileID: 552311118}
   - component: {fileID: 552311116}
   - component: {fileID: 552311115}
   m_Layer: 0
@@ -227,7 +228,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 552311113}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 7.5, y: 1.5, z: 5.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -235,7 +236,7 @@ Transform:
   - {fileID: 2089915146}
   m_Father: {fileID: 324334447}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &552311115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,7 +265,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   pushable: 1
-  gravity: {x: 0, y: -0.1, z: 0}
   gridScale: {x: 1, y: 1, z: 1}
   gridOffset: {x: 0.5, y: 0.5, z: 0.5}
   travelTime: 0.1
@@ -272,7 +272,7 @@ MonoBehaviour:
     lookWithYAxis: 0
     constantAxis: {x: 0, y: 0, z: 0}
   faceMovementDirection: 0
-  rollInMovementDirection: 0
+  rollInMovementDirection: {x: 180, y: 0, z: 0}
 --- !u!54 &552311117
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -288,6 +288,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &552311118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 552311113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b074d4fbeb6341128a01b3b12ef6a44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 0}
+  axisPairName: Move
+  swizzle: 0
+  turnSeparately: 0
+  bufferWindow: 0
+  gravity: {x: 0, y: -0.1, z: 0}
+  slide: 0
 --- !u!43 &572505719
 Mesh:
   m_ObjectHideFlags: 0
@@ -1693,6 +1711,11 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114947783800205426, guid: 1aa901e95e11e644a974282b0e8a4428,
+        type: 2}
+      propertyPath: bufferWindow
+      value: -0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1aa901e95e11e644a974282b0e8a4428, type: 2}
   m_IsPrefabParent: 0
@@ -1884,7 +1907,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-2158
+  m_Name: pb_Mesh-1950
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -2034,6 +2057,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1789953501}
   - component: {fileID: 1789953504}
+  - component: {fileID: 1789953505}
   - component: {fileID: 1789953503}
   - component: {fileID: 1789953502}
   m_Layer: 0
@@ -2086,7 +2110,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   pushable: 1
-  gravity: {x: 0, y: -0.1, z: 0}
   gridScale: {x: 1, y: 1, z: 1}
   gridOffset: {x: 0.5, y: 0.5, z: 0.5}
   travelTime: 0.1
@@ -2094,7 +2117,7 @@ MonoBehaviour:
     lookWithYAxis: 0
     constantAxis: {x: 0, y: 0, z: 0}
   faceMovementDirection: 0
-  rollInMovementDirection: 0
+  rollInMovementDirection: {x: 180, y: 0, z: 0}
 --- !u!54 &1789953504
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2110,6 +2133,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1789953505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1789953500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b074d4fbeb6341128a01b3b12ef6a44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 0}
+  axisPairName: Move
+  swizzle: 0
+  turnSeparately: 0
+  bufferWindow: 0
+  gravity: {x: 0, y: -0.1, z: 0}
+  slide: 0
 --- !u!1 &1877746034
 GameObject:
   m_ObjectHideFlags: 0
