@@ -393,6 +393,7 @@
     <Compile Include="Assets\ProCore\ProGrids\MonoBehaviour\pg_IgnoreSnap.cs" />
     <Compile Include="Assets\Scripts\AI\AIInputReceiver.cs" />
     <Compile Include="Assets\Scripts\AI\MovementAI.cs" />
+    <Compile Include="Assets\Scripts\AI\PathControl.cs" />
     <Compile Include="Assets\Scripts\AI\TrackingAI.cs" />
     <Compile Include="Assets\Scripts\AI\TurnAI.cs" />
     <Compile Include="Assets\Scripts\Animation\AnimatorBase.cs" />
@@ -416,7 +417,6 @@
     <Compile Include="Assets\Scripts\Controls - Other\WaypointMovement.cs" />
     <Compile Include="Assets\Scripts\Controls - Physics\GravityField.cs" />
     <Compile Include="Assets\Scripts\Controls - Physics\JumpEffector.cs" />
-    <Compile Include="Assets\Scripts\Controls - Waypoints\PathControl.cs" />
     <Compile Include="Assets\Scripts\Core\DebugBehaviour.cs" />
     <Compile Include="Assets\Scripts\Core\Mathv.cs" />
     <Compile Include="Assets\Scripts\Core\Polar2.cs" />

@@ -18,7 +18,7 @@ public class PathControl : MonoBehaviour
     private float currentCompleteTime;
     private float nextStartTime;
 
-    public float EndTime { get { return points.Count == 0 ? nextStartTime : Mathf.Infinity; }}
+    public float EndTime { get { return points.Count == 0 ? nextStartTime : Mathf.Infinity; } }
     public int Count { get { return (Time.time >= nextStartTime) ? 0 : points.Count + 1; } }
 
     public void AddWaypoint(PathPoint point)
@@ -34,7 +34,7 @@ public class PathControl : MonoBehaviour
                 points.Enqueue(point);
     }
 
-    private void Awake()
+    private void Start()
     {
         anchorPosition = transform.position;
         InitializePath();
@@ -76,7 +76,7 @@ public class PathControl : MonoBehaviour
         if (current == null)
             return;
         float t0 = (Time.time - currentStartTime) / (currentCompleteTime - currentStartTime);
-        float t1 = current.approachCurve.Evaluate(Mathf.Min(t0, 1));
+        float t1 = current.approachCurve.Evaluate(Mathf.Clamp(t0, 0, 1));
 
         // [TODO] add curvature capabilities
         transform.position = Vector3.Lerp(lastPosition, anchorPosition + current.position, t1);
