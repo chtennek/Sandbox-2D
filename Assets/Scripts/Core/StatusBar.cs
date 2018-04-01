@@ -17,17 +17,17 @@ public class StatusBar : MonoBehaviour
 
     public void AddValue(int value)
     {
-        currentValue = Mathf.Min(maxValue, currentValue + value);
+        currentValue = Mathf.Clamp(currentValue + value, minValue, maxValue);
     }
 
     public void SubtractValue(int value)
     {
-        currentValue = Mathf.Max(minValue, currentValue - value);
+        currentValue = Mathf.Clamp(currentValue - value, minValue, maxValue);
     }
 
     public void SetValue(int value)
     {
-        currentValue = Mathf.Clamp(currentValue + value, minValue, maxValue);
+        currentValue = Mathf.Clamp(value, minValue, maxValue);
     }
 
     public void AddPercent(float percent)
@@ -44,7 +44,6 @@ public class StatusBar : MonoBehaviour
     {
         SetValue((int)Mathf.Floor(percent * maxValue));
     }
-
 
     private void Update()
     {

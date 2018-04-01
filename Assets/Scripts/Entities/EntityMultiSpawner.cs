@@ -20,7 +20,7 @@ public class EntityMultiSpawner : EntitySpawner
     public float radiusRange = 0f;
     public float radiusTime = 0f;
     public float RadiusDelay { get { return (radiusCount <= 1) ? 0 : radiusTime / (radiusCount - 1); } }
-    public float RadiusIncrement { get { return radiusRange / (radiusCount - 1); } }
+    public float RadiusIncrement { get { return (radiusCount <= 1) ? 0 : radiusRange / (radiusCount - 1); } }
 
     [Header("Angle")]
     public int angleCount = 1;
@@ -28,14 +28,16 @@ public class EntityMultiSpawner : EntitySpawner
     public float angleTime = 0f;
     public bool includeRangeEnd = true; // Set to false for easy 360-degree spawns
     public bool mirrorRange = false; // Include negative range to easily specify by center
-    public float AngleInitial { get { return mirrorRange ? velocity.O - angleRange / 2 : velocity.O; } }
+    public float AngleInitial { get { return (angleCount <= 1) ? 0 : mirrorRange ? velocity.O - angleRange : velocity.O; } }
     public float AngleDelay { get { return (angleCount <= 1) ? 0 : angleTime / (angleCount - 1); } }
     public float AngleIncrement
     {
         get
         {
-            float increment = includeRangeEnd ? angleRange / (angleCount - 1) : angleRange / angleCount;
-            return mirrorRange ? increment * 2 : increment;
+            if (angleCount <= 1) return 0;
+            float range = mirrorRange ? angleRange * 2 : angleRange;
+            float increment = includeRangeEnd ? range / (angleCount - 1) : range / angleCount;
+            return increment;
         }
     }
 

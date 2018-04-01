@@ -13,13 +13,13 @@ TagManager:
   - UI
   - 
   - 
-  - Units
-  - Projectiles
-  - Solid Units
-  - Player
+  - Units 1
+  - Projectiles 1
+  - Units 2
+  - Projectiles 2
   - Hitbox
   - Hurtbox
-  - 
+  - Triggers
   - 
   - 
   - 

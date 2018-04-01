@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(GridMovement))]
-public class SpawnTrigger : Trigger {
+public class SpawnTrigger : Trigger
+{
+    public LayerMask mask;
+    private Collider coll;
     private GridMovement gridMovement;
 
-	private void Awake()
-	{
+    private void Awake()
+    {
+        coll = GetComponent<Collider>();
         gridMovement = GetComponent<GridMovement>();
-	}
+    }
 
-	protected override bool ConditionsMet() {
-        return gridMovement.IsPushableTowards(Vector3.down);
+    protected override bool Check()
+    {
+        return Physics.CheckBox(transform.position, coll.bounds.extents, Quaternion.identity, mask) == false && gridMovement.IsPushableTowards(Vector3.down);
     }
 }

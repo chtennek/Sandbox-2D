@@ -3,13 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class Trigger : MonoBehaviour {
-    public UnityEvent actions;
+public abstract class Trigger : MonoBehaviour
+{
+    public bool checkOnUpdate = true;
+    public UnityEvent onActivate;
+    public UnityEvent onDeactivate;
+    public UnityEvent onActive;
 
-    protected virtual void Update () {
-        if (ConditionsMet() == true)
-            actions.Invoke();
-	}
+    private bool lastCheckValue = false;
 
-    protected abstract bool ConditionsMet();
+    protected virtual void Update()
+    {
+        if (checkOnUpdate == true)
+        {
+            bool currentCheckValue = Check();
+
+            if (currentCheckValue == true)
+                onActive.Invoke();
+
+            if (currentCheckValue == lastCheckValue)
+                return;
+
+            if (currentCheckValue == true)
+                onActive.Invoke();
+            else
+                onDeactivate.Invoke();
+
+            lastCheckValue = currentCheckValue;
+        }
+    }
+
+    protected abstract bool Check();
 }

@@ -109,6 +109,7 @@ public struct Polar2
 [Serializable]
 public struct Cylindrical3
 {
+    public Grid.CellSwizzle swizzle;
     public float r;
     public float θ;
     public float z;
@@ -123,6 +124,12 @@ public struct Cylindrical3
         this.r = r;
         this.θ = (θ % 360 + 360) % 360;
         this.z = z;
+        this.swizzle = Grid.CellSwizzle.XYZ;
+    }
+
+    public Cylindrical3(float r, float θ, float z, Grid.CellSwizzle swizzle) : this(r, θ, z)
+    {
+        this.swizzle = swizzle;
     }
 
     public static bool operator ==(Cylindrical3 a, Cylindrical3 b)
@@ -169,7 +176,8 @@ public struct Cylindrical3
         var cylindrical = (Cylindrical3)obj;
         return r == cylindrical.r &&
                z == cylindrical.z &&
-               O == cylindrical.O;
+               O == cylindrical.O &&
+               swizzle == cylindrical.swizzle;
     }
 
     public override int GetHashCode()
@@ -179,6 +187,7 @@ public struct Cylindrical3
         hashCode = hashCode * -1521134295 + r.GetHashCode();
         hashCode = hashCode * -1521134295 + z.GetHashCode();
         hashCode = hashCode * -1521134295 + O.GetHashCode();
+        hashCode = hashCode * -1521134295 + swizzle.GetHashCode();
         return hashCode;
     }
 
@@ -186,7 +195,7 @@ public struct Cylindrical3
     {
         Vector3 v = (Polar2)a;
         v.z = a.z;
-        return v;
+        return Grid.Swizzle(a.swizzle, v);
     }
 
     public static implicit operator Cylindrical3(Vector3 v)
@@ -198,7 +207,7 @@ public struct Cylindrical3
 
     public static implicit operator Vector2(Cylindrical3 a)
     {
-        return (Vector3)a;
+        return Grid.Swizzle(a.swizzle, a);
     }
 
     public static implicit operator Cylindrical3(Vector2 v)

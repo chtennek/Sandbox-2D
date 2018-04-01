@@ -40,10 +40,12 @@ GameObject:
   - component: {fileID: 95000804712307598}
   - component: {fileID: 50903777363217598}
   - component: {fileID: 61476205818755024}
+  - component: {fileID: 114052060702651564}
   - component: {fileID: 114229440317335048}
   - component: {fileID: 114667945027919768}
-  - component: {fileID: 114082197660113036}
+  - component: {fileID: 114655748140741010}
   - component: {fileID: 114887943815425024}
+  - component: {fileID: 114104612284573808}
   m_Layer: 0
   m_Name: Blue
   m_TagString: Player
@@ -140,6 +142,22 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114052060702651564
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1672187770078254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05969371b8d744149bddb10d258b37df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xParameter: xVelocity
+  yParameter: yVelocity
+  input: {fileID: 0}
+  axisPairName: Move
 --- !u!114 &114078852143311744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,25 +171,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 114667945027919768}
   inputName: Jump
---- !u!114 &114082197660113036
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1672187770078254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53727e39a4f9e4751909059a4613184e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input: {fileID: 0}
-  axisPairName: Move
-  gridSize: 1
-  travelTime: 0.1
-  bufferWindow: 0.1
-  wallColliderMask:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!114 &114086921226240616
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -189,6 +188,29 @@ MonoBehaviour:
   allowZeroDistance: 0
   minDistance: 1
   maxDistance: 1
+--- !u!114 &114104612284573808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1672187770078254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95adfe27f773f4cc4b64907756035bd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  pushable: 1
+  gridScale: {x: 1, y: 1, z: 1}
+  gridOffset: {x: 0, y: 0, z: 0}
+  travelTime: 0.3
+  rotator:
+    lookWithYAxis: 0
+    constantAxis: {x: 0, y: 0, z: 0}
+  faceMovementDirection: 0
+  rollInMovementDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &114229440317335048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,6 +222,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594b587ae0e16ca4cab886f26a40103d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114655748140741010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1672187770078254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b074d4fbeb6341128a01b3b12ef6a44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 114667945027919768}
+  axisPairName: Move
+  swizzle: 0
+  turnSeparately: 0
+  bufferWindow: 0
+  gravity: {x: 0, y: 0, z: 0}
+  slide: 0
 --- !u!114 &114667945027919768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -223,6 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff06ea77462834fc2a6d0a3a943a1b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loopInitialPoints: 0
   initialPoints: []
 --- !u!212 &212139649994582060
 SpriteRenderer:
@@ -237,6 +278,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:

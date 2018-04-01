@@ -98,13 +98,13 @@ public class RigidbodyWrapper : MonoBehaviour
         return total;
     }
 
-    public void AddField(GravityField field)
+    private void AddField(GravityField field)
     {
         if (field != null && field.InFilter(gameObject.layer))
             fields.Add(field);
     }
 
-    public void RemoveField(GravityField field)
+    private void RemoveField(GravityField field)
     {
         fields.Remove(field);
     }

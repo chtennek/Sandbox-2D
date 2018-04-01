@@ -24,10 +24,11 @@ GameObject:
   - component: {fileID: 50844051577204524}
   - component: {fileID: 61722725121209412}
   - component: {fileID: 114557098058623208}
+  - component: {fileID: 114783488877113450}
   - component: {fileID: 114962711678889994}
-  - component: {fileID: 114230318622476206}
-  - component: {fileID: 114222493029707908}
-  m_Layer: 0
+  - component: {fileID: 114129505640365308}
+  - component: {fileID: 114191605319236346}
+  m_Layer: 8
   m_Name: Byakuren
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1784202758252470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -109,7 +110,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114222493029707908
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114129505640365308
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -117,35 +119,64 @@ MonoBehaviour:
   m_GameObject: {fileID: 1784202758252470}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2447199f1d86ee4397252b322aadc36, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c9d04e357340164fbd7e3f16f6dc1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 4692532665064254, guid: 627be2e2cd7e0ca4a8d50b4941e92bc2,
-    type: 2}
-  spawnOffset: {x: 0, y: 0.5}
-  angleWhenUpright: 0
-  fixRotation: 0
-  projectileVelocities:
-  - {x: 10, y: 80}
-  - {x: 10, y: 90}
-  - {x: 10, y: 100}
-  spread: {x: 0, y: 0}
-  pelletCount: 1
-  projectilesFired: []
---- !u!114 &114230318622476206
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1784202758252470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feca23b6005af70438d0e828745a4293, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireCooldown: 0.05
+  input: {fileID: 0}
+  buttonName: Fire
+  prefab: {fileID: 4692532665064254, guid: 627be2e2cd7e0ca4a8d50b4941e92bc2, type: 2}
+  spawnCooldown: 0.1
   rapidFire: 1
-  projectileLimit: -1
+  offset: {x: 0, y: 0.5, z: 0}
+  fixRotation: 0
+  velocity:
+    swizzle: 0
+    r: 15
+    "\u03B8": 90
+    z: 0
+  spread: {x: 0, y: 0, z: 0}
+  outerIteration: 0
+  iterations: 1
+  iterationDelay: 0
+  radiusCount: 1
+  radiusRange: 0
+  radiusTime: 0
+  angleCount: 3
+  angleRange: 5
+  angleTime: 0
+  includeRangeEnd: 1
+  mirrorRange: 1
+--- !u!114 &114191605319236346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1784202758252470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d75008696af2946e4a42b7138b4c4f68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkOnUpdate: 1
+  onActivate:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onActive:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  mask:
+    serializedVersion: 2
+    m_Bits: 2048
+  ignoreSiblings: 1
 --- !u!114 &114557098058623208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,6 +189,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
+--- !u!114 &114783488877113450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1784202758252470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b500b4ce6f7f324e9fafdd23a68ab6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderCheck:
+    direction: {x: 0, y: -1, z: 0}
+    checkDistance: 0.01
+    contactFilter:
+      useTriggers: 0
+      useLayerMask: 0
+      useDepth: 0
+      useOutsideDepth: 0
+      useNormalAngle: 0
+      useOutsideNormalAngle: 0
+      layerMask:
+        serializedVersion: 2
+        m_Bits: 0
+      minDepth: 0
+      maxDepth: 0
+      minNormalAngle: 0
+      maxNormalAngle: 0
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &114962711678889994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -169,17 +229,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd3b6546229a5549a5fbe022cfe6a0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputDeadZone: 0.2
+  input: {fileID: 0}
+  axisPairName: Move
   restrictToXAxis: 0
   restrictToYAxis: 0
+  swizzle: 0
   walkSpeed: 5
   minWalkableSpeed: 1
   walkSpeedLevels: 2
   acceleration: 40
-  drag: 10
+  deceleration: 10
   faceMovementDirection: 0
   onlyMoveForward: 0
-  rotationOffset: 90
+  rotator:
+    lookWithYAxis: 0
+    constantAxis: {x: 0, y: 0, z: 0}
   turnSpeed: Infinity
 --- !u!212 &212057719824763956
 SpriteRenderer:
@@ -194,6 +258,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:

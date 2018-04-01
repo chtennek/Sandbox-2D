@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MatchTrigger : Trigger {
+public class MatchTrigger : Trigger
+{
 
-    protected override bool ConditionsMet()
+    protected override bool Check()
     {
         return false;
     }

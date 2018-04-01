@@ -9,9 +9,9 @@ public class EntityBehaviour : MonoBehaviour
     public string destroyTrigger = "destroy";
 
     [Header("Parameters")]
+    public bool destroyOnDeath = true;
     public float lifetime = Mathf.Infinity;
-    public bool destroyAtZeroHP = true;
-    public float currentHP = 1;
+    public StatusBar lifebar;
 
     private float spawnTimestamp;
 
@@ -32,10 +32,19 @@ public class EntityBehaviour : MonoBehaviour
     }
 
     public void Damage() { Damage(1); }
-    public void Damage(float damage)
+    public void Damage(int damage)
     {
-        currentHP -= damage;
-        if (currentHP > 0)
+        if (damage <= 0)
+            return;
+
+        if (lifebar == null)
+        {
+            OnDeath();
+            return;
+        }
+
+        lifebar.currentValue -= damage;
+        if (lifebar.currentValue > 0)
             OnDamage();
         else
             OnDeath();
@@ -52,7 +61,7 @@ public class EntityBehaviour : MonoBehaviour
         if (anim != null && destroyTrigger != "")
             anim.SetTrigger(destroyTrigger);
 
-        if (destroyAtZeroHP == true)
+        if (destroyOnDeath == true)
             Destroy();
     }
 
