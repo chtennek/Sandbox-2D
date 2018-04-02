@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,10 +11,24 @@ public class StatusBar : MonoBehaviour
     public int maxValue = 100;
     public int currentValue = 100; // Set in inspector to initial value
 
+    [Header("Display")]
+    public float lerpValue = .51f;
+    [Space]
+    public Text numericalDisplay;
+    public int zeroPadding = 0;
+    [Space]
     public Image canvasDisplay;
     public bool overrideColor = false;
     public Color[] displayColor;
     public bool useColorGradient = false;
+
+    private void Reset()
+    {
+        if (numericalDisplay == null)
+            numericalDisplay = GetComponent<Text>();
+        if (canvasDisplay == null)
+            canvasDisplay = GetComponent<Image>();
+    }
 
     public void AddValue(int value)
     {
@@ -48,9 +63,16 @@ public class StatusBar : MonoBehaviour
     private void Update()
     {
         currentValue = Mathf.Clamp(currentValue, minValue, maxValue);
+
+        if (numericalDisplay != null)
+        {
+            int lastValue = 0;
+            Int32.TryParse(numericalDisplay.text, out lastValue);
+            numericalDisplay.text = Mathf.RoundToInt(Mathf.Lerp(lastValue, currentValue, lerpValue)).ToString().PadLeft(zeroPadding, '0');
+        }
         if (canvasDisplay != null)
         {
-            canvasDisplay.fillAmount = GetValuePercent();
+            canvasDisplay.fillAmount = Mathf.Lerp(canvasDisplay.fillAmount, GetValuePercent(), lerpValue);
             if (overrideColor)
             {
                 canvasDisplay.color = DetermineDisplayColor();

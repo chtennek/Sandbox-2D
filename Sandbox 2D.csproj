@@ -415,8 +415,6 @@
     <Compile Include="Assets\Scripts\Controls - Other\OrderFreeMove.cs" />
     <Compile Include="Assets\Scripts\Controls - Other\OrderGridMove.cs" />
     <Compile Include="Assets\Scripts\Controls - Other\WaypointMovement.cs" />
-    <Compile Include="Assets\Scripts\Controls - Physics\GravityField.cs" />
-    <Compile Include="Assets\Scripts\Controls - Physics\JumpEffector.cs" />
     <Compile Include="Assets\Scripts\Core\DebugBehaviour.cs" />
     <Compile Include="Assets\Scripts\Core\Mathv.cs" />
     <Compile Include="Assets\Scripts\Core\Polar2.cs" />
@@ -463,6 +461,9 @@
     <Compile Include="Assets\Scripts\Levels\LevelObjectNPC.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelObjectStart.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelStartLocation.cs" />
+    <Compile Include="Assets\Scripts\Physics\CameraCollider2D.cs" />
+    <Compile Include="Assets\Scripts\Physics\GravityField.cs" />
+    <Compile Include="Assets\Scripts\Physics\JumpEffector.cs" />
     <Compile Include="Assets\Scripts\Session\DataSerializer.cs" />
     <Compile Include="Assets\Scripts\Session\PlaySessionManager.cs" />
     <Compile Include="Assets\Scripts\Session\ScreenDialogueBehaviour.cs" />
