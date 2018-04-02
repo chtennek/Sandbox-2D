@@ -319,7 +319,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1047972968}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff06ea77462834fc2a6d0a3a943a1b54, type: 3}
   m_Name: 
@@ -703,6 +703,18 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114613394111300706, guid: 676ffdcb7e3bd1044ade493c75819d1d,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2b9961a85697d4ad984dc68350814f16,
+        type: 3}
+    - target: {fileID: 114963991076792640, guid: 676ffdcb7e3bd1044ade493c75819d1d,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2b9961a85697d4ad984dc68350814f16,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 676ffdcb7e3bd1044ade493c75819d1d, type: 2}
   m_IsPrefabParent: 0

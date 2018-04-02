@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EntityBehaviour : MonoBehaviour
 {
@@ -9,9 +10,13 @@ public class EntityBehaviour : MonoBehaviour
     public string destroyTrigger = "destroy";
 
     [Header("Parameters")]
-    public bool destroyOnDeath = true;
+    public bool invokeDeathAfterLifetime = true;
     public float lifetime = Mathf.Infinity;
     public StatusBar lifebar;
+    public bool destroyOnDeath = true;
+
+    public UnityEvent onDamage;
+    public UnityEvent onDeath;
 
     private float spawnTimestamp;
 
@@ -27,7 +32,10 @@ public class EntityBehaviour : MonoBehaviour
     {
         if (Time.time - spawnTimestamp > lifetime)
         {
-            OnDeath();
+            if (invokeDeathAfterLifetime)
+                OnDeath();
+            else
+                Destroy();
         }
     }
 
@@ -54,6 +62,8 @@ public class EntityBehaviour : MonoBehaviour
     {
         if (anim != null && damageTrigger != "")
             anim.SetTrigger(damageTrigger);
+
+        onDamage.Invoke();
     }
 
     public void OnDeath()
@@ -63,6 +73,8 @@ public class EntityBehaviour : MonoBehaviour
 
         if (destroyOnDeath == true)
             Destroy();
+
+        onDeath.Invoke();
     }
 
     public void Destroy()
