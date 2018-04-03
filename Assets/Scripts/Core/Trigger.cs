@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public abstract class Trigger : MonoBehaviour
 {
+    public string label;
     public bool checkOnUpdate = true;
     public UnityEvent onActivate;
     public UnityEvent onDeactivate;
