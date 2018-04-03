@@ -416,11 +416,11 @@
     <Compile Include="Assets\Scripts\Controls - Movement\PositionControl.cs" />
     <Compile Include="Assets\Scripts\Controls - Movement\RigidbodyWrapper.cs" />
     <Compile Include="Assets\Scripts\Controls - Movement\TurnControl.cs" />
-    <Compile Include="Assets\Scripts\Controls - Other\EntityManager.cs" />
-    <Compile Include="Assets\Scripts\Controls - Other\EntitySelector.cs" />
-    <Compile Include="Assets\Scripts\Controls - Other\OrderFreeMove.cs" />
-    <Compile Include="Assets\Scripts\Controls - Other\OrderGridMove.cs" />
-    <Compile Include="Assets\Scripts\Controls - Other\WaypointMovement.cs" />
+    <Compile Include="Assets\Scripts\Controls - Strategy\EntityManager.cs" />
+    <Compile Include="Assets\Scripts\Controls - Strategy\EntitySelector.cs" />
+    <Compile Include="Assets\Scripts\Controls - Strategy\OrderFreeMove.cs" />
+    <Compile Include="Assets\Scripts\Controls - Strategy\OrderGridMove.cs" />
+    <Compile Include="Assets\Scripts\Controls - Strategy\WaypointMovement.cs" />
     <Compile Include="Assets\Scripts\Core\DebugBehaviour.cs" />
     <Compile Include="Assets\Scripts\Core\Mathv.cs" />
     <Compile Include="Assets\Scripts\Core\Polar2.cs" />
@@ -470,6 +470,7 @@
     <Compile Include="Assets\Scripts\Physics\CameraCollider2D.cs" />
     <Compile Include="Assets\Scripts\Physics\GravityField.cs" />
     <Compile Include="Assets\Scripts\Physics\JumpEffector.cs" />
+    <Compile Include="Assets\Scripts\Physics\LaserBehaviour.cs" />
     <Compile Include="Assets\Scripts\Session\DataSerializer.cs" />
     <Compile Include="Assets\Scripts\Session\PlaySessionManager.cs" />
     <Compile Include="Assets\Scripts\Session\ScreenDialogueBehaviour.cs" />

@@ -536,7 +536,6 @@
     <Compile Include="Assets\Scripts\Editor\DictionaryPropertyDrawer.cs" />
     <Compile Include="Assets\Scripts\Editor\LevelBuilderEditor.cs" />
     <Compile Include="Assets\Scripts\Editor\PathEditor.cs" />
-    <Compile Include="Assets\Scripts\Editor\SpritePostprocessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Fonts\Handwriting\Amatic_SC\OFL.txt" />
