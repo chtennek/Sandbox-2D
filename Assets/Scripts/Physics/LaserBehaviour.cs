@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class LaserBehaviour : MonoBehaviour
 {
     public float length = 10f; // Don't set to infinity
-    public float speed = Mathf.Infinity;
+    public float minSpeed = Mathf.Infinity;
 
     [Header("Collision")]
     public LayerMask refractMask;
@@ -23,16 +23,29 @@ public class LaserBehaviour : MonoBehaviour
     private Vector3[] positions;
     private LineRenderer[] lines;
 
+    private RigidbodyWrapper rb;
+
     private void Start()
     {
+        rb = GetComponent<RigidbodyWrapper>();
         lines = GetComponentsInChildren<LineRenderer>();
         positions = new Vector3[4 + maxReflects];
+        CalculatePositions();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (currentLength < length)
+        if (rb == null)
+            currentLength = Mathf.Min(length, currentLength + minSpeed * Time.deltaTime);
+        else
+        {
+            float lastLength = currentLength;
+            float speed = Mathf.Max(minSpeed, rb.Velocity.magnitude);
             currentLength = Mathf.Min(length, currentLength + speed * Time.deltaTime);
+
+            // Backtrack on distance traveled, as our laser extends
+            transform.position -= rb.Velocity.normalized * (currentLength - lastLength);
+        }
 
         if (Application.isPlaying == true || transform.hasChanged)
             CalculatePositions();
@@ -80,6 +93,8 @@ public class LaserBehaviour : MonoBehaviour
                 positions[i + 2] = transform.InverseTransformPoint(currentPosition);
             }
         }
+        else
+            currentPosition += currentDirection * workingLength;
 
         // Populate remaining LineRenderer points
         for (int j = i + 2; j < positions.Length; j++)
@@ -90,7 +105,8 @@ public class LaserBehaviour : MonoBehaviour
         SetPositions(positions);
     }
 
-    private void CollideWith(Transform t) {
+    private void CollideWith(Transform t)
+    {
         CollideTrigger trigger = t.GetComponent<CollideTrigger>();
         if (trigger != null)
             trigger.onActive.Invoke();

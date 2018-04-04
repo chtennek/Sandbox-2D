@@ -11,6 +11,54 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1784202758252470}
   m_IsPrefabParent: 1
+--- !u!1 &1269862352736058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4145621003028926}
+  - component: {fileID: 114237667016162590}
+  m_Layer: 8
+  m_Name: Shot-Basic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1417381632935420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4063490761551422}
+  - component: {fileID: 114859629297317768}
+  m_Layer: 8
+  m_Name: Shot-Laser (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1633437092753930
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4084755424526778}
+  - component: {fileID: 114383318085364342}
+  m_Layer: 8
+  m_Name: Shot-Laser (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1784202758252470
 GameObject:
   m_ObjectHideFlags: 0
@@ -26,7 +74,6 @@ GameObject:
   - component: {fileID: 114557098058623208}
   - component: {fileID: 114783488877113450}
   - component: {fileID: 114962711678889994}
-  - component: {fileID: 114129505640365308}
   - component: {fileID: 114191605319236346}
   m_Layer: 8
   m_Name: Byakuren
@@ -35,6 +82,45 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4063490761551422
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1417381632935420}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4997049448291754}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4084755424526778
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1633437092753930}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4997049448291754}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4145621003028926
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1269862352736058}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4997049448291754}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4997049448291754
 Transform:
   m_ObjectHideFlags: 1
@@ -42,9 +128,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1784202758252470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4145621003028926}
+  - {fileID: 4084755424526778}
+  - {fileID: 4063490761551422}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -111,12 +200,44 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114129505640365308
+--- !u!114 &114191605319236346
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1784202758252470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d75008696af2946e4a42b7138b4c4f68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  label: 
+  checkOnUpdate: 1
+  onActivate:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onActive:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  mask:
+    serializedVersion: 2
+    m_Bits: 2048
+  ignoreSiblings: 1
+--- !u!114 &114237667016162590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1269862352736058}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c9d04e357340164fbd7e3f16f6dc1a2, type: 3}
@@ -146,37 +267,30 @@ MonoBehaviour:
   angleTime: 0
   includeRangeEnd: 1
   mirrorRange: 1
---- !u!114 &114191605319236346
+--- !u!114 &114383318085364342
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1784202758252470}
+  m_GameObject: {fileID: 1633437092753930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d75008696af2946e4a42b7138b4c4f68, type: 3}
+  m_Script: {fileID: 11500000, guid: d2447199f1d86ee4397252b322aadc36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkOnUpdate: 1
-  onActivate:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onDeactivate:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onActive:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  mask:
-    serializedVersion: 2
-    m_Bits: 2048
-  ignoreSiblings: 1
+  input: {fileID: 114557098058623208}
+  buttonName: Fire
+  prefab: {fileID: 4572507885594190, guid: 140cf6c0ece975a4b8fc435c3547e110, type: 2}
+  spawnCooldown: 1
+  rapidFire: 1
+  offset: {x: 0, y: 0, z: 0}
+  fixRotation: 0
+  velocity:
+    swizzle: 0
+    r: 6
+    "\u03B8": 90
+    z: 0
+  spread: {x: 0, y: 0, z: 0}
 --- !u!114 &114557098058623208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -218,6 +332,30 @@ MonoBehaviour:
       minNormalAngle: 0
       maxNormalAngle: 0
   velocity: {x: 0, y: 0, z: 0}
+--- !u!114 &114859629297317768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1417381632935420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2447199f1d86ee4397252b322aadc36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 114557098058623208}
+  buttonName: Fire
+  prefab: {fileID: 4572507885594190, guid: 140cf6c0ece975a4b8fc435c3547e110, type: 2}
+  spawnCooldown: 1
+  rapidFire: 1
+  offset: {x: 0, y: 0, z: 0}
+  fixRotation: 0
+  velocity:
+    swizzle: 0
+    r: 6
+    "\u03B8": 90
+    z: 0
+  spread: {x: 0, y: 0, z: 0}
 --- !u!114 &114962711678889994
 MonoBehaviour:
   m_ObjectHideFlags: 1

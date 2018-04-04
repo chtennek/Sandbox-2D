@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114998997504512790}
   - component: {fileID: 114847949610278598}
   - component: {fileID: 114817709219076974}
-  - component: {fileID: 61444008421575806}
+  - component: {fileID: 114706729431597912}
   m_Layer: 11
   m_Name: Shot-Laser
   m_TagString: Untagged
@@ -83,7 +83,7 @@ Transform:
   m_GameObject: {fileID: 1643844307357956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: 1, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 4117431747908184}
   - {fileID: 4903579633556340}
@@ -103,31 +103,44 @@ Transform:
   m_Father: {fileID: 4572507885594190}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61444008421575806
-BoxCollider2D:
+--- !u!114 &114706729431597912
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1643844307357956}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 2.5, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5, y: 0.1}
-  m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 859a5d0e5f83375428dbaab5a4cae33c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  length: 2
+  minSpeed: 1
+  refractMask:
+    serializedVersion: 2
+    m_Bits: 0
+  absorbMask:
+    serializedVersion: 2
+    m_Bits: 0
+  reflectMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  maxReflects: 0
+  onRefract:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onAbsorb:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onReflect:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114817709219076974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75008696af2946e4a42b7138b4c4f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  label: 
   checkOnUpdate: 1
   onActivate:
     m_PersistentCalls:
@@ -213,7 +227,7 @@ MonoBehaviour:
   damageTrigger: hitstun
   destroyTrigger: destroy
   invokeDeathAfterLifetime: 1
-  lifetime: 2
+  lifetime: 5
   lifebar: {fileID: 0}
   destroyOnDeath: 1
   onDamage:
@@ -263,9 +277,13 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 1, y: 0, z: 0}
-  - {x: 4, y: 0, z: 0}
-  - {x: 5, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.55
@@ -274,15 +292,15 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.51638794
+        value: 0.5319141
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       - serializedVersion: 3
-        time: 0.09739143
+        time: 0.066301644
         value: 1
         inSlope: 0.02456571
         outSlope: 0.02456571
@@ -341,7 +359,7 @@ LineRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 0
+    numCapVertices: 9
     alignment: 0
     textureMode: 0
     generateLightingData: 0
@@ -384,9 +402,13 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 1, y: 0, z: 0}
-  - {x: 4, y: 0, z: 0}
-  - {x: 5, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.2
@@ -395,7 +417,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.52459717
+        value: 0.55319214
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -462,7 +484,7 @@ LineRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 0
+    numCapVertices: 9
     alignment: 0
     textureMode: 0
     generateLightingData: 0
