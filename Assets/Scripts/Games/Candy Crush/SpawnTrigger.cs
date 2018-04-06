@@ -15,8 +15,9 @@ public class SpawnTrigger : Trigger
         gridMovement = GetComponent<GridMovement>();
     }
 
-    protected override bool Check()
-    {
-        return Physics.CheckBox(transform.position, coll.bounds.extents, Quaternion.identity, mask) == false && gridMovement.IsPushableTowards(Vector3.down);
-    }
+	protected override void Update()
+	{
+        Active = Physics.CheckBox(transform.position, coll.bounds.extents, Quaternion.identity, mask) == false && gridMovement.IsPushableTowards(Vector3.down);
+		base.Update();
+	}
 }

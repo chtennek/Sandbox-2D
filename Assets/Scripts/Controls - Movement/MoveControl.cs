@@ -68,6 +68,7 @@ public class MoveControl : InputBehaviour
             targetVelocity = Mathf.Lerp(minWalkableSpeed, Mathf.Max(walkSpeed, minWalkableSpeed), tq) * movement.normalized;
         }
 
+        // Apply required force for target velocity
         if (acceleration == Mathf.Infinity)
             mover.Velocity = targetVelocity;
         else
@@ -84,6 +85,7 @@ public class MoveControl : InputBehaviour
         // Only apply drag in restricted axis if we have one
         if (restrictToXAxis == true && restrictToYAxis == false) v.y = 0;
         if (restrictToXAxis == false && restrictToYAxis == true) v.x = 0;
+        v.z = 0; // Only apply drag along movement plane
         mover.AddForce(drag * -Grid.Swizzle(swizzle, v));
     }
 }

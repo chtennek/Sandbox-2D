@@ -16,7 +16,6 @@ public class JumpControl : BoostControl
 
         if (input.GetButtonDown(buttonName))
         {
-
             float targetHeight = magnitude;
             if (isGrounded == true)
             {

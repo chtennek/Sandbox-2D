@@ -4,9 +4,4 @@ using UnityEngine;
 
 public class MatchTrigger : Trigger
 {
-
-    protected override bool Check()
-    {
-        return false;
-    }
 }

@@ -6,33 +6,28 @@ using UnityEngine.Events;
 public abstract class Trigger : MonoBehaviour
 {
     public string label;
-    public bool checkOnUpdate = true;
     public UnityEvent onActivate;
     public UnityEvent onDeactivate;
     public UnityEvent onActive;
 
-    private bool lastCheckValue = false;
-
-    protected virtual void Update()
-    {
-        if (checkOnUpdate == true)
-        {
-            bool currentCheckValue = Check();
-
-            if (currentCheckValue == true)
-                onActive.Invoke();
-
-            if (currentCheckValue == lastCheckValue)
-                return;
-
-            if (currentCheckValue == true)
-                onActive.Invoke();
-            else
+    private bool isActive = false;
+    public bool Active {
+        get {
+            return isActive;
+        }
+        set {
+            if (isActive == false && value == true)
+                onActivate.Invoke();
+            if (isActive == true && value == false)
                 onDeactivate.Invoke();
 
-            lastCheckValue = currentCheckValue;
+            isActive = value;
         }
     }
 
-    protected abstract bool Check();
+    protected virtual void Update()
+    {
+        if (isActive == true)
+            onActive.Invoke();
+    }
 }

@@ -8,6 +8,8 @@ public class RigidbodyWrapper : MonoBehaviour
 
     [SerializeField]
     private Vector3 velocity = Vector3.zero;
+
+    private HashSet<Transform> grounds = new HashSet<Transform>();
     private HashSet<GravityField> fields = new HashSet<GravityField>();
 
     private Rigidbody rb;
@@ -31,6 +33,18 @@ public class RigidbodyWrapper : MonoBehaviour
         }
     }
 
+    public float Speed
+    {
+        get
+        {
+            return Velocity.magnitude;
+        }
+        set
+        {
+            Velocity = value * Velocity.normalized;
+        }
+    }
+
     private void Awake()
     {
         rb = GetComponentInParent<Rigidbody>();
@@ -49,10 +63,43 @@ public class RigidbodyWrapper : MonoBehaviour
         AddForce(GetTotalField());
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        ContactPoint[] contacts = collision.contacts;
+        foreach (ContactPoint contact in contacts)
+        {
+            if (contact.normal == Vector3.up)
+            {
+                grounds.Add(contact.otherCollider.transform);
+            }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        ContactPoint2D[] contacts = collision.contacts;
+        foreach (ContactPoint2D contact in contacts)
+        {
+            if (contact.normal == Vector2.up)
+            {
+                grounds.Add(contact.otherCollider.transform);
+            }
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        grounds.Remove(collision.transform);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        grounds.Remove(collision.transform);
+    }
+
     public bool IsGrounded()
     {
-        // [TODO] add coll for 3D checks
-        return colliderCheck.Cast(coll2D);
+        return grounds.Count > 0;
     }
 
     public void AddForce(Vector3 force) { AddForce(force, ForceMode2D.Force); }
@@ -135,6 +182,7 @@ public class ColliderChecker
 {
     public Vector3 direction = Vector3.down;
     public float checkDistance = 0.01f;
+    public float maxAngle = 10f;
     public ContactFilter2D contactFilter;
 
     private RaycastHit2D[] results = new RaycastHit2D[5];
