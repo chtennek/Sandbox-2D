@@ -23,7 +23,6 @@ public class CollideTrigger : Trigger
     {
         if (FilterTransform(collision.transform) == false)
             return;
-        Debug.Log(collision.gameObject.name + " Enter");
         Active = true; // [TODO] keep list of overlapping triggers to avoid weird behavior
     }
 
@@ -38,7 +37,6 @@ public class CollideTrigger : Trigger
     {
         if (FilterTransform(collision.transform) == false)
             return;
-        Debug.Log(collision.gameObject.name + " Exit");
         Active = false;
     }
 

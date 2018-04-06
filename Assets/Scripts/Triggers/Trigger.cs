@@ -16,9 +16,9 @@ public abstract class Trigger : MonoBehaviour
             return isActive;
         }
         set {
-            if (isActive == false && value == true)
+            if (enabled && isActive == false && value == true)
                 onActivate.Invoke();
-            if (isActive == true && value == false)
+            if (enabled && isActive == true && value == false)
                 onDeactivate.Invoke();
 
             isActive = value;
