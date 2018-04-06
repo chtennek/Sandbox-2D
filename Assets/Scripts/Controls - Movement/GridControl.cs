@@ -8,10 +8,10 @@ public class GridControl : InputBehaviour
     [Header("Input")]
     public string axisPairName = "Move";
     public GridLayout.CellSwizzle swizzle = GridLayout.CellSwizzle.XYZ;
-    public bool turnSeparately = false;
     public float bufferWindow = 0f; // Set to negative for input delay
 
     [Header("Behaviours")]
+    public bool turnSeparately = false;
     public Vector3 gravity = .1f * Vector3.down; // "gravity" by [TODO] travelTime per unit
     public bool slide; // [TODO] ice behaviour
 
@@ -23,6 +23,10 @@ public class GridControl : InputBehaviour
         base.Awake();
         pathControl = GetComponent<PathControl>();
         gridMovement = GetComponent<GridMovement>();
+    }
+
+    public void SnapToGrid() {
+        gridMovement.Move(Vector3.zero);
     }
 
     private void Update()

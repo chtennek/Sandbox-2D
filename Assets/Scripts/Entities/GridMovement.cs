@@ -7,7 +7,8 @@ public class GridMovement : MonoBehaviour
 {
     [Header("Movement")]
     public LayerMask wallColliderMask = ~0;
-    public bool pushable = true;
+    [SerializeField]
+    private bool m_pushable = true;
 
     [Header("Position")]
     public Vector3 gridScale = Vector3.one;
@@ -23,7 +24,20 @@ public class GridMovement : MonoBehaviour
     private Rigidbody2D rb2D;
     private PathControl pathControl;
 
-	private void Awake()
+	public bool Pushable
+    {
+        get
+        {
+            return m_pushable;
+        }
+
+        set
+        {
+            m_pushable = value;
+        }
+    }
+
+    private void Awake()
     {
         rb = GetComponentInParent<Rigidbody>();
         rb2D = GetComponentInParent<Rigidbody2D>();
@@ -64,7 +78,7 @@ public class GridMovement : MonoBehaviour
     public bool Move(Vector3 v, bool fixRotation)
     {
         // Check if we're moving
-        if (pathControl.Count > 0 || v == Vector3.zero)
+        if (pathControl.Count > 0) // || v == Vector3.zero)
             return false;
 
         Vector3 target = FindNearestGridPoint(transform.position + Vector3.Scale(gridScale, v));
@@ -103,7 +117,7 @@ public class GridMovement : MonoBehaviour
         foreach (Transform t in SweepTestAll(movement))
         {
             GridMovement g = t.GetComponent<GridMovement>();
-            if (g != null && g.pushable == true)
+            if (g != null && g.Pushable == true)
                 g.Push(movement, fixRotation);
         }
     }
@@ -116,7 +130,7 @@ public class GridMovement : MonoBehaviour
             if (g == null || g.IsPushableTowards(movement) == false)
                 return false;
         }
-        return pushable;
+        return Pushable;
     }
 
     private List<Transform> SweepTestAll(Vector3 v)
@@ -142,7 +156,7 @@ public class GridMovement : MonoBehaviour
         return results;
     }
 
-    private Vector3 FindNearestGridPoint(Vector3 position)
+    public Vector3 FindNearestGridPoint(Vector3 position)
     {
         Vector3 inverseGridSize = new Vector3(1 / gridScale.x, 1 / gridScale.y, 1 / gridScale.z);
         Vector3 normalizedPosition = Vector3.Scale(inverseGridSize, position - gridOffset);
