@@ -23,6 +23,9 @@ public class CollideTrigger : Trigger
         return true;
     }
 
+    public Transform GetCollision() { return GetCollision(0); }
+    public Transform GetCollision(int index) { return collidingWith.Count <= index ? null : collidingWith[index]; }
+
     public void CollideOn(Transform transform)
     {
         collidingWith.Add(transform);

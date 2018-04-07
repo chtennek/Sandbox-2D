@@ -76,7 +76,9 @@ public class PathControl : MonoBehaviour
         if (current == null)
             return;
         float t0 = (Time.time - currentStartTime) / (currentCompleteTime - currentStartTime);
-        float t1 = current.approachCurve.Evaluate(Mathf.Clamp(t0, 0, 1));
+        float t1 = t0;
+        if (current.approachCurve != null)
+            current.approachCurve.Evaluate(Mathf.Clamp(t0, 0, 1));
 
         // [TODO] add curvature capabilities
         transform.position = Vector3.Lerp(lastPosition, anchorPosition + current.position, t1);

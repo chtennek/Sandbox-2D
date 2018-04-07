@@ -25,10 +25,6 @@ public class GridControl : InputBehaviour
         gridMovement = GetComponent<GridMovement>();
     }
 
-    public void SnapToGrid() {
-        gridMovement.Move(Vector3.zero);
-    }
-
     private void Update()
     {
         Vector3 movement = (input == null) ? Vector2.zero : input.GetAxisPairSingle(axisPairName).normalized;

@@ -19,11 +19,18 @@ public class GridMovement : MonoBehaviour
     public bool faceMovementDirection;
     public Vector3 rollInMovementDirection;
 
-    [HideInInspector] public List<GridMovement> boundObjects = new List<GridMovement>();
+    private List<GridMovement> attachedObjects = new List<GridMovement>();
+    public void AddObject(GridMovement grid) {
+        if (grid == null) return;
+        attachedObjects.Add(grid);
+    }
+    public void RemoveObject(GridMovement grid) { attachedObjects.Remove(grid); }
 
     private Rigidbody rb;
     private Rigidbody2D rb2D;
     private PathControl pathControl;
+
+    public bool IsMoving { get { return pathControl.Count > 0; }}
 
     public bool Pushable
     {
@@ -88,8 +95,13 @@ public class GridMovement : MonoBehaviour
         // Check if there's something in the way
         if (IsPushableTowards(movement) == false)
             return false;
+        foreach (GridMovement grid in attachedObjects)
+            if (grid.IsPushableTowards(movement) == false)
+                return false;
 
         Push(movement, fixRotation);
+        foreach (GridMovement grid in attachedObjects)
+            grid.Push(movement, fixRotation);
         return true;
     }
 
@@ -101,9 +113,8 @@ public class GridMovement : MonoBehaviour
         if (rollInMovementDirection != Vector3.zero && fixRotation == false)
         {
             float angle = Vector3.Dot(movement, rollInMovementDirection);
-            Vector3 axis = Vector3.Cross(Vector3.up, movement);
+            Vector3 axis = Vector3.Cross(Vector3.up, movement); // [TODO] what if we're moving Vector3.up?
 
-            // [TODO] what if we're moving Vector3.up?
             Quaternion rotation = Quaternion.AngleAxis(angle, axis) * transform.rotation;
             pathControl.AddWaypoint(new PathPoint(target, rotation, travelTime, PathMode.Time));
         }
@@ -123,15 +134,16 @@ public class GridMovement : MonoBehaviour
         }
     }
 
-    public bool IsPushableTowards(Vector3 movement)
+    public bool IsPushableTowards(Vector3 movement) { return IsPushableTowards(movement, false); }
+    public bool IsPushableTowards(Vector3 movement, bool ignoreThisPushable)
     {
         foreach (Transform t in SweepTestAll(movement))
         {
             GridMovement g = t.GetComponent<GridMovement>();
-            if (g == null || g.IsPushableTowards(movement) == false)
+            if (g == null || g.IsPushableTowards(movement, false) == false)
                 return false;
         }
-        return Pushable;
+        return ignoreThisPushable || Pushable;
     }
 
     private List<Transform> SweepTestAll(Vector3 v)
@@ -141,20 +153,27 @@ public class GridMovement : MonoBehaviour
         {
             RaycastHit[] hits = rb.SweepTestAll(v.normalized, v.magnitude);
             foreach (RaycastHit hit in hits)
-            {
-                results.Add(hit.transform);
-            }
+                if (wallColliderMask.Contains(hit.transform.gameObject.layer))
+                    results.Add(hit.transform);
         }
         else if (rb2D != null)
         {
             RaycastHit2D[] hits = new RaycastHit2D[10];
             int count = rb2D.Cast(v.normalized, hits, v.magnitude);
             for (int i = 0; i < count; i++)
-            {
-                results.Add(hits[i].transform);
-            }
+                if (wallColliderMask.Contains(hits[i].transform.gameObject.layer))
+                    results.Add(hits[i].transform);
         }
         return results;
+    }
+
+    public void SnapToGrid()
+    {
+        Move(Vector3.zero);
+    }
+
+    public Vector3 FindNearestGridPointRelative(Vector3 offset) {
+        return FindNearestGridPoint(transform.position + offset);
     }
 
     public Vector3 FindNearestGridPoint(Vector3 position)

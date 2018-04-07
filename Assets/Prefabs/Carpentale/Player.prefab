@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114576399410253258}
   - component: {fileID: 114601132709211986}
   - component: {fileID: 135237023325484502}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Interactor
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 114997323669900894}
   - component: {fileID: 114345341504927002}
   - component: {fileID: 114271137053844490}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ Transform:
   m_GameObject: {fileID: 1822312378946538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.5, y: 2.5, z: 0.5}
-  m_LocalScale: {x: 0.99, y: 0.99, z: 0.99}
+  m_LocalScale: {x: 0.95, y: 0.95, z: 0.95}
   m_Children:
   - {fileID: 4695665944890350}
   m_Father: {fileID: 0}
@@ -1267,9 +1267,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 114499353553932082}
   buttonName: Fire
-  path: {fileID: 114633385148052134}
-  grid: {fileID: 114100177313880854}
+  grid: {fileID: 114723990016059384}
   coll: {fileID: 114601132709211986}
+  currentlyHeld: {fileID: 0}
 --- !u!114 &114345341504927002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1352,31 +1352,20 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 114100177313880854}
-          m_MethodName: SnapToGrid
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 114271137053844490}
-          m_MethodName: Grab
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 114587321330531150}
           m_MethodName: set_enabled
           m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 114723990016059384}
+          m_MethodName: SnapToGrid
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1437,17 +1426,6 @@ MonoBehaviour:
         - m_Target: {fileID: 114100177313880854}
           m_MethodName: set_enabled
           m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 114271137053844490}
-          m_MethodName: Release
-          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1660,7 +1638,7 @@ MonoBehaviour:
   wallColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_pushable: 1
+  m_pushable: 0
   gridScale: {x: 1, y: 1, z: 1}
   gridOffset: {x: 0.5, y: 0.5, z: 0.5}
   travelTime: 0.3

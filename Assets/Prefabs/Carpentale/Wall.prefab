@@ -132,7 +132,7 @@ MonoBehaviour:
   m_pushable: 1
   gridScale: {x: 1, y: 1, z: 1}
   gridOffset: {x: 0.5, y: 0.5, z: 0.5}
-  travelTime: 0.1
+  travelTime: 0.3
   rotator:
     lookWithYAxis: 0
     constantAxis: {x: 0, y: 0, z: 0}
@@ -165,7 +165,7 @@ MonoBehaviour:
   input: {fileID: 0}
   axisPairName: Move
   swizzle: 0
-  turnSeparately: 0
   bufferWindow: 0
+  turnSeparately: 0
   gravity: {x: 0, y: 0, z: 0}
   slide: 0
