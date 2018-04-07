@@ -7,7 +7,7 @@ public class RigidbodyWrapper : MonoBehaviour
     public ColliderChecker colliderCheck; // [TODO] move this
 
     [SerializeField]
-    private Vector3 velocity = Vector3.zero;
+    private Vector3 m_velocity = Vector3.zero;
 
     private HashSet<Transform> grounds = new HashSet<Transform>();
     private HashSet<GravityField> fields = new HashSet<GravityField>();
@@ -23,13 +23,13 @@ public class RigidbodyWrapper : MonoBehaviour
         {
             if (rb != null) return rb.velocity;
             else if (rb2D != null) return rb2D.velocity;
-            return velocity;
+            return m_velocity;
         }
         set
         {
             if (rb != null) rb.velocity = value;
             else if (rb2D != null) rb2D.velocity = value;
-            velocity = value;
+            m_velocity = value;
         }
     }
 

@@ -409,6 +409,9 @@
     <Compile Include="Assets\Scripts\Camera\ScreenFollowBehaviour.cs" />
     <Compile Include="Assets\Scripts\Camera\ScreenFollowObject.cs" />
     <Compile Include="Assets\Scripts\Camera\ScreenShake.cs" />
+    <Compile Include="Assets\Scripts\Carpentale\AdjacencyTrigger.cs" />
+    <Compile Include="Assets\Scripts\Carpentale\GrabControl.cs" />
+    <Compile Include="Assets\Scripts\Carpentale\GridGrabControl.cs" />
     <Compile Include="Assets\Scripts\Controls - Movement\BoostControl.cs" />
     <Compile Include="Assets\Scripts\Controls - Movement\GridControl.cs" />
     <Compile Include="Assets\Scripts\Controls - Movement\JumpControl.cs" />
@@ -427,7 +430,6 @@
     <Compile Include="Assets\Scripts\Core\SerializableDictionaries.cs" />
     <Compile Include="Assets\Scripts\Core\SerializableTypes.cs" />
     <Compile Include="Assets\Scripts\Core\StatusBar.cs" />
-    <Compile Include="Assets\Scripts\Core\Trigger.cs" />
     <Compile Include="Assets\Scripts\Core\UnityExtensions.cs" />
     <Compile Include="Assets\Scripts\Core\Warnings.cs" />
     <Compile Include="Assets\Scripts\Data\PathPoint.cs" />
@@ -477,6 +479,9 @@
     <Compile Include="Assets\Scripts\Session\SingletonMessenger.cs" />
     <Compile Include="Assets\Scripts\Tiles\BorderedTile.cs" />
     <Compile Include="Assets\Scripts\Triggers\CollideTrigger.cs" />
+    <Compile Include="Assets\Scripts\Triggers\CompoundTrigger.cs" />
+    <Compile Include="Assets\Scripts\Triggers\InputTrigger.cs" />
+    <Compile Include="Assets\Scripts\Triggers\Trigger.cs" />
     <Compile Include="Assets\Scripts\UI\INavigator.cs" />
     <Compile Include="Assets\Scripts\UI\InGameMenu.cs" />
     <Compile Include="Assets\Scripts\UI\PokemonUINavigator.cs" />

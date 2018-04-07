@@ -9,7 +9,7 @@ public class InputBehaviour : MonoBehaviour
 
     protected virtual void Reset()
     {
-        input = GetComponentInParent<InputReceiver>();
+        input = GetComponent<RewiredInputReceiver>();
     }
 
     protected virtual void Awake()

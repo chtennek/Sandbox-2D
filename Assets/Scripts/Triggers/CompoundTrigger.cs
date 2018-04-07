@@ -3,57 +3,74 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CompoundTrigger : Trigger {
-    public List<Trigger> children = new List<Trigger>();
+public class CompoundTrigger : Trigger
+{
+    public bool requireAllActive = true;
+    public bool requireAllInactive = false; // requireAllActive = false means requireAllInactive = true
+    public List<Trigger> triggers = new List<Trigger>();
 
     private Dictionary<Trigger, UnityAction> activeDelegates;
     private Dictionary<Trigger, UnityAction> inactiveDelegates;
     private HashSet<Trigger> activeChildren;
 
-	private void Awake()
-	{
+    private void Awake()
+    {
         activeDelegates = new Dictionary<Trigger, UnityAction>();
         inactiveDelegates = new Dictionary<Trigger, UnityAction>();
         activeChildren = new HashSet<Trigger>();
 
-        foreach (Trigger child in children)
+        foreach (Trigger trigger in triggers)
         {
-            activeDelegates[child] = delegate {
-                MarkChildActive(child);
+            activeDelegates[trigger] = delegate
+            {
+                MarkChildActive(trigger);
             };
-            inactiveDelegates[child] = delegate {
-                MarkChildInactive(child);
+            inactiveDelegates[trigger] = delegate
+            {
+                MarkChildInactive(trigger);
             };
         }
 
-        foreach (Trigger child in children)
+        foreach (Trigger trigger in triggers)
         {
-            child.onActivate.AddListener(activeDelegates[child]);
-            child.onDeactivate.AddListener(inactiveDelegates[child]);
+            trigger.events.onActivate.AddListener(activeDelegates[trigger]);
+            trigger.events.onDeactivate.AddListener(inactiveDelegates[trigger]);
 
-            if (child.Active == true)
-                activeChildren.Add(child);
+            if (trigger.Active == true)
+                activeChildren.Add(trigger);
         }
-        Active = activeChildren.Count == children.Count;
+        UpdateActiveStatus();
     }
 
-	private void OnDestroy()
-	{
-        foreach (Trigger child in children)
-        {
-            child.onActivate.RemoveListener(activeDelegates[child]);
-            child.onDeactivate.RemoveListener(inactiveDelegates[child]);
-        }
-	}
-
-    private void MarkChildActive(Trigger child) {
-        activeChildren.Add(child);
-        Active = activeChildren.Count == children.Count;
-    }
-
-    private void MarkChildInactive(Trigger child)
+    private void OnDestroy()
     {
-        activeChildren.Remove(child);
-        Active = activeChildren.Count == children.Count;
+        foreach (Trigger trigger in triggers)
+        {
+            trigger.events.onActivate.RemoveListener(activeDelegates[trigger]);
+            trigger.events.onDeactivate.RemoveListener(inactiveDelegates[trigger]);
+        }
+    }
+
+    private void UpdateActiveStatus()
+    {
+        if (requireAllActive == true)
+            Active = activeChildren.Count == triggers.Count;
+        else
+            Active = activeChildren.Count > 0;
+
+        if (requireAllInactive == true)
+            Active = activeChildren.Count > 0;
+    }
+
+    private void MarkChildActive(Trigger trigger)
+    {
+        activeChildren.Add(trigger);
+        UpdateActiveStatus();
+    }
+
+    private void MarkChildInactive(Trigger trigger)
+    {
+        activeChildren.Remove(trigger);
+        UpdateActiveStatus();
     }
 }

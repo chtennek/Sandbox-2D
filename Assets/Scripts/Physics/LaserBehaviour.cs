@@ -109,7 +109,7 @@ public class LaserBehaviour : MonoBehaviour
     {
         CollideTrigger trigger = t.GetComponent<CollideTrigger>();
         if (trigger != null)
-            trigger.onActive.Invoke();
+            trigger.CollideOn(transform); // [TODO] CollideOff
     }
 
     public void SetPosition(int index, Vector3 position)

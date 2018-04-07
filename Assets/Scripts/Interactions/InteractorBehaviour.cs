@@ -13,7 +13,7 @@ public class InteractorBehaviour : MonoBehaviour
     {
         if (input == null)
         {
-            Debug.LogWarning(Warnings.RequireComponent(this));
+            Debug.LogWarning(Warnings.ComponentMissing(this));
             enabled = false;
         }
     }

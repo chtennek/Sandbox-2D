@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class Warnings
 {
-    public static string RequireComponent(MonoBehaviour m)
+    public static string ComponentMissing(MonoBehaviour m)
     {
         return m.name + "." + m.GetType().Name + ": Missing required components!";
     }

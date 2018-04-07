@@ -7,8 +7,7 @@ public class GridMovement : MonoBehaviour
 {
     [Header("Movement")]
     public LayerMask wallColliderMask = ~0;
-    [SerializeField]
-    private bool m_pushable = true;
+    [SerializeField] private bool m_pushable = true;
 
     [Header("Position")]
     public Vector3 gridScale = Vector3.one;
@@ -20,15 +19,17 @@ public class GridMovement : MonoBehaviour
     public bool faceMovementDirection;
     public Vector3 rollInMovementDirection;
 
+    [HideInInspector] public List<GridMovement> boundObjects = new List<GridMovement>();
+
     private Rigidbody rb;
     private Rigidbody2D rb2D;
     private PathControl pathControl;
 
-	public bool Pushable
+    public bool Pushable
     {
         get
         {
-            return m_pushable;
+            return m_pushable && pathControl.Count == 0;
         }
 
         set
@@ -42,7 +43,7 @@ public class GridMovement : MonoBehaviour
         rb = GetComponentInParent<Rigidbody>();
         rb2D = GetComponentInParent<Rigidbody2D>();
         if (rb == null && rb2D == null)
-            Debug.Log("No Rigidbody attached to GridMovement. Pushable behaviour won't work properly!");
+            Debug.Log(Warnings.ComponentMissing(this));
 
         pathControl = GetComponent<PathControl>();
     }

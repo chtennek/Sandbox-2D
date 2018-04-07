@@ -5,11 +5,15 @@ using UnityEngine.Events;
 
 public class CollideTrigger : Trigger
 {
-    public LayerMask mask;
-    public string tagName;
-    public bool ignoreSiblings = true;
+    [SerializeField] private LayerMask mask;
+    [SerializeField] private string tagName;
+    [SerializeField] private bool ignoreSiblings = true;
 
-    private bool FilterTransform(Transform t) {
+    private List<Transform> collidingWith = new List<Transform>(); // [TODO] keep list of colliding triggers to avoid weird behavior
+    public Transform Other { get { return collidingWith.Count == 0 ? null : collidingWith[0]; } }
+
+    private bool FilterTransform(Transform t)
+    {
         if (ignoreSiblings && t.parent != null && transform.parent == t.transform.parent)
             return false;
         if (mask.Contains(t.gameObject.layer) == false)
@@ -19,17 +23,31 @@ public class CollideTrigger : Trigger
         return true;
     }
 
+    public void CollideOn(Transform transform)
+    {
+        collidingWith.Add(transform);
+        Active = true;
+    }
+
+    public void CollideOff(Transform transform)
+    {
+        collidingWith.Remove(transform);
+        Active = false;
+    }
+
     public void OnTriggerEnter(Collider collision)
     {
         if (FilterTransform(collision.transform) == false)
             return;
-        Active = true; // [TODO] keep list of overlapping triggers to avoid weird behavior
+        collidingWith.Add(collision.transform);
+        Active = true;
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (FilterTransform(collision.transform) == false)
             return;
+        collidingWith.Add(collision.transform);
         Active = true;
     }
 
@@ -37,6 +55,7 @@ public class CollideTrigger : Trigger
     {
         if (FilterTransform(collision.transform) == false)
             return;
+        collidingWith.Remove(collision.transform);
         Active = false;
     }
 
@@ -44,6 +63,7 @@ public class CollideTrigger : Trigger
     {
         if (FilterTransform(collision.transform) == false)
             return;
+        collidingWith.Remove(collision.transform);
         Active = false;
     }
 }
