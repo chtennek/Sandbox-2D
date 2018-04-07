@@ -132,7 +132,7 @@ MonoBehaviour:
   m_pushable: 1
   gridScale: {x: 1, y: 1, z: 1}
   gridOffset: {x: 0.5, y: 0.5, z: 0.5}
-  travelTime: 0.3
+  travelTime: 0.25
   rotator:
     lookWithYAxis: 0
     constantAxis: {x: 0, y: 0, z: 0}

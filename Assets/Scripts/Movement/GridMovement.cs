@@ -20,7 +20,8 @@ public class GridMovement : MonoBehaviour
     public Vector3 rollInMovementDirection;
 
     private List<GridMovement> attachedObjects = new List<GridMovement>();
-    public void AddObject(GridMovement grid) {
+    public void AddObject(GridMovement grid)
+    {
         if (grid == null) return;
         attachedObjects.Add(grid);
     }
@@ -30,7 +31,7 @@ public class GridMovement : MonoBehaviour
     private Rigidbody2D rb2D;
     private PathControl pathControl;
 
-    public bool IsMoving { get { return pathControl.Count > 0; }}
+    public bool IsMoving { get { return pathControl.Count > 0; } }
 
     public bool Pushable
     {
@@ -85,8 +86,7 @@ public class GridMovement : MonoBehaviour
     public bool Move(Vector3 v) { return Move(v, false); }
     public bool Move(Vector3 v, bool fixRotation)
     {
-        // Check if we're moving
-        if (pathControl.Count > 0) // || v == Vector3.zero)
+        if (IsMoving == true)
             return false;
 
         Vector3 target = FindNearestGridPoint(transform.position + Vector3.Scale(gridScale, v));
@@ -109,6 +109,9 @@ public class GridMovement : MonoBehaviour
     // [TODO] add running checklist to avoid infinite loops in weird cases
     private void Push(Vector3 movement, bool fixRotation)
     {
+        if (IsMoving == true)
+            return;
+
         Vector3 target = transform.position + movement;
         if (rollInMovementDirection != Vector3.zero && fixRotation == false)
         {
@@ -172,7 +175,8 @@ public class GridMovement : MonoBehaviour
         Move(Vector3.zero);
     }
 
-    public Vector3 FindNearestGridPointRelative(Vector3 offset) {
+    public Vector3 FindNearestGridPointRelative(Vector3 offset)
+    {
         return FindNearestGridPoint(transform.position + offset);
     }
 

@@ -19,12 +19,21 @@ public class PathControl : MonoBehaviour
     private float nextStartTime;
 
     public float EndTime { get { return points.Count == 0 ? nextStartTime : Mathf.Infinity; } }
-    public int Count { get { return (Time.time >= nextStartTime) ? 0 : points.Count + 1; } }
+    public int Count
+    {
+        get
+        {
+            return (Time.time >= nextStartTime) ? 0 : points.Count + 1;
+        }
+    }
 
     public void AddWaypoint(PathPoint point)
     {
         point.position -= anchorPosition;
         points.Enqueue(point);
+
+        if (Time.time >= nextStartTime)
+            ApplyNextWaypoint(); // [TODO] See if we need ProcessEvents() here
     }
 
     private void InitializePath()
