@@ -19,7 +19,7 @@ public class GridMovement : MonoBehaviour
     public bool faceMovementDirection;
     public Vector3 rollInMovementDirection;
 
-    private List<GridMovement> attachedObjects = new List<GridMovement>();
+    protected List<GridMovement> attachedObjects = new List<GridMovement>();
     public void AddObject(GridMovement grid)
     {
         if (grid == null) return;
@@ -27,9 +27,9 @@ public class GridMovement : MonoBehaviour
     }
     public void RemoveObject(GridMovement grid) { attachedObjects.Remove(grid); }
 
-    private Rigidbody rb;
-    private Rigidbody2D rb2D;
-    private PathControl pathControl;
+    protected Rigidbody rb;
+    protected Rigidbody2D rb2D;
+    protected PathControl pathControl;
 
     public bool IsMoving { get { return pathControl.Count > 0; } }
 
@@ -46,7 +46,7 @@ public class GridMovement : MonoBehaviour
         }
     }
 
-    private void Awake()
+    protected void Awake()
     {
         rb = GetComponentInParent<Rigidbody>();
         rb2D = GetComponentInParent<Rigidbody2D>();
@@ -83,8 +83,8 @@ public class GridMovement : MonoBehaviour
         return true;
     }
 
-    public bool Move(Vector3 v) { return Move(v, false); }
-    public bool Move(Vector3 v, bool fixRotation)
+    public virtual bool Move(Vector3 v) { return Move(v, false); }
+    public virtual bool Move(Vector3 v, bool fixRotation)
     {
         if (IsMoving == true)
             return false;
@@ -93,21 +93,18 @@ public class GridMovement : MonoBehaviour
         Vector3 movement = target - transform.position;
 
         // Check if there's something in the way
-        if (IsPushableTowards(movement) == false)
-            return false;
-        foreach (GridMovement grid in attachedObjects)
-            if (grid.IsPushableTowards(movement) == false)
-                return false;
+        HashSet<GridMovement> pushables = GetAffectedObjectsAlong(movement, false);
+        HashSet<GridMovement> allAffected = GetAffectedObjectsAlong(movement, true);
 
-        Push(movement, fixRotation);
-        foreach (GridMovement grid in attachedObjects)
-            grid.Push(movement, fixRotation);
+        if (pushables.IsProperSubsetOf(allAffected))
+            return false;
+
+        foreach (GridMovement g in pushables)
+            g.Push(movement, fixRotation);
         return true;
     }
 
-    // [TODO] don't assume we've already checked IsPushable?
-    // [TODO] add running checklist to avoid infinite loops in weird cases
-    private void Push(Vector3 movement, bool fixRotation)
+    public void Push(Vector3 movement, bool fixRotation)
     {
         if (IsMoving == true)
             return;
@@ -128,16 +125,9 @@ public class GridMovement : MonoBehaviour
             if (faceMovementDirection && fixRotation == false)
                 transform.rotation = rotator.GetRotationTowards(movement);
         }
-
-        foreach (Transform t in SweepTestAll(movement))
-        {
-            GridMovement g = t.GetComponent<GridMovement>();
-            if (g != null && g.Pushable == true)
-                g.Push(movement, fixRotation);
-        }
     }
 
-    public bool IsPushableTowards(Vector3 movement) { return IsPushableTowards(movement, false); }
+    public bool IsPushableTowards(Vector3 movement) { return IsPushableTowards(movement, true); }
     public bool IsPushableTowards(Vector3 movement, bool ignoreThisPushable)
     {
         foreach (Transform t in SweepTestAll(movement))
@@ -149,7 +139,43 @@ public class GridMovement : MonoBehaviour
         return ignoreThisPushable || Pushable;
     }
 
-    private List<Transform> SweepTestAll(Vector3 v)
+    public HashSet<GridMovement> GetAffectedObjectsAlong(Vector3 movement, bool includeUnpushables)
+    {
+        Queue<GridMovement> sweepQueue = new Queue<GridMovement>();
+        HashSet<GridMovement> affected = new HashSet<GridMovement>();
+
+        sweepQueue.Enqueue(this);
+        affected.Add(this);
+        foreach (GridMovement grid in attachedObjects)
+        {
+            sweepQueue.Enqueue(grid);
+            affected.Add(grid);
+        }
+
+        while (sweepQueue.Count > 0)
+        {
+            GridMovement current = sweepQueue.Dequeue();
+            List<Transform> sweptObjects = current.SweepTestAll(movement);
+            foreach (Transform t in sweptObjects)
+            {
+                GridMovement g = t.GetComponent<GridMovement>();
+                if (g == null || g.Pushable == false)
+                {
+                    if (includeUnpushables == true)
+                        affected.Add(g);
+                    continue;
+                }
+
+                if (affected.Contains(g) == true)
+                    continue;
+                sweepQueue.Enqueue(g);
+                affected.Add(g);
+            }
+        }
+        return affected;
+    }
+
+    protected List<Transform> SweepTestAll(Vector3 v)
     {
         List<Transform> results = new List<Transform>();
         if (rb != null)

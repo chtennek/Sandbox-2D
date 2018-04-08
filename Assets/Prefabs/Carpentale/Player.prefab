@@ -50,10 +50,10 @@ GameObject:
   - component: {fileID: 114587321330531150}
   - component: {fileID: 114633385148052134}
   - component: {fileID: 114100177313880854}
-  - component: {fileID: 114723990016059384}
   - component: {fileID: 114997323669900894}
   - component: {fileID: 114345341504927002}
   - component: {fileID: 114271137053844490}
+  - component: {fileID: 114870918158277448}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -1267,7 +1267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 114499353553932082}
   buttonName: Fire
-  grid: {fileID: 114723990016059384}
+  grid: {fileID: 114870918158277448}
   coll: {fileID: 114601132709211986}
   currentlyHeld: {fileID: 0}
 --- !u!114 &114345341504927002
@@ -1286,7 +1286,7 @@ MonoBehaviour:
     onActivate:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114723990016059384}
+        - m_Target: {fileID: 114870918158277448}
           m_MethodName: set_Pushable
           m_Mode: 6
           m_Arguments:
@@ -1363,7 +1363,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 114723990016059384}
+        - m_Target: {fileID: 114870918158277448}
           m_MethodName: SnapToGrid
           m_Mode: 1
           m_Arguments:
@@ -1379,7 +1379,7 @@ MonoBehaviour:
     onDeactivate:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114723990016059384}
+        - m_Target: {fileID: 114870918158277448}
           m_MethodName: set_Pushable
           m_Mode: 6
           m_Arguments:
@@ -1624,7 +1624,7 @@ MonoBehaviour:
   magnitude: 1.5
   direction: {x: 0, y: 1, z: 0}
   airJumps: []
---- !u!114 &114723990016059384
+--- !u!114 &114870918158277448
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1632,7 +1632,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1822312378946538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95adfe27f773f4cc4b64907756035bd0, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d9661293b31c45798514c8009bc475d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   wallColliderMask:
@@ -1647,6 +1647,7 @@ MonoBehaviour:
     constantAxis: {x: 0, y: 0, z: 0}
   faceMovementDirection: 0
   rollInMovementDirection: {x: 0, y: 0, z: 0}
+  tagName: Block
 --- !u!114 &114997323669900894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1676,7 +1677,7 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
   other: {fileID: 4695665944890350}
-  grid: {fileID: 114723990016059384}
+  grid: {fileID: 114870918158277448}
 --- !u!135 &135237023325484502
 SphereCollider:
   m_ObjectHideFlags: 1

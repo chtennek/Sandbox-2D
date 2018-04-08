@@ -980,7 +980,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-26116
+  m_Name: pb_Mesh-1588
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -1350,25 +1350,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4642641927625008, guid: 4532b52fdd6064d1ba504c2f8b1b4685, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.98999995
-      objectReference: {fileID: 0}
-    - target: {fileID: 4642641927625008, guid: 4532b52fdd6064d1ba504c2f8b1b4685, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.98999995
-      objectReference: {fileID: 0}
-    - target: {fileID: 4642641927625008, guid: 4532b52fdd6064d1ba504c2f8b1b4685, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.98999995
-      objectReference: {fileID: 0}
     - target: {fileID: 1964988870039290, guid: 4532b52fdd6064d1ba504c2f8b1b4685, type: 2}
       propertyPath: m_Name
       value: Block (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1964988870039290, guid: 4532b52fdd6064d1ba504c2f8b1b4685, type: 2}
-      propertyPath: m_TagString
-      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4532b52fdd6064d1ba504c2f8b1b4685, type: 2}

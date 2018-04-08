@@ -65,12 +65,12 @@ public class RigidbodyWrapper : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        ContactPoint[] contacts = collision.contacts;
-        foreach (ContactPoint contact in contacts)
+		UnityEngine.ContactPoint[] contacts = collision.contacts;
+        foreach (UnityEngine.ContactPoint contact in contacts)
         {
             if (contact.normal == Vector3.up)
             {
-                grounds.Add(contact.otherCollider.transform);
+				grounds.Add(contact.otherCollider.transform);
             }
         }
     }

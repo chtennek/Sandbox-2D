@@ -15,8 +15,8 @@ public class GridControl : InputBehaviour
     public Vector3 gravity = .1f * Vector3.down; // "gravity" by [TODO] travelTime per unit
     public bool slide; // [TODO] ice behaviour
 
-    private PathControl pathControl;
-    private GridMovement gridMovement;
+    protected PathControl pathControl;
+    protected GridMovement gridMovement;
 
     protected override void Awake()
     {
@@ -25,7 +25,7 @@ public class GridControl : InputBehaviour
         gridMovement = GetComponent<GridMovement>();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         Vector3 movement = (input == null) ? Vector2.zero : input.GetAxisPairSingle(axisPairName).normalized;
         movement = Grid.Swizzle(swizzle, movement);
@@ -41,7 +41,10 @@ public class GridControl : InputBehaviour
         if (Time.time < pathControl.EndTime - bufferWindow)
             return;
 
-        // Process movement
+        ProcessMovement(movement);
+    }
+
+    protected virtual void ProcessMovement(Vector3 movement) {
         if (movement == Vector3.zero)
             return;
 
