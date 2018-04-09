@@ -1647,7 +1647,11 @@ MonoBehaviour:
     constantAxis: {x: 0, y: 0, z: 0}
   faceMovementDirection: 0
   rollInMovementDirection: {x: 0, y: 0, z: 0}
-  tagName: Block
+  mergeEffectPrefab: {fileID: 4156879727944578, guid: 816651df04fde4accbc1c830bfe553df,
+    type: 2}
+  mergeObjectsWithTag: Block
+  mergeTime: 1
+  mergeContributionWindow: 1
 --- !u!114 &114997323669900894
 MonoBehaviour:
   m_ObjectHideFlags: 1
