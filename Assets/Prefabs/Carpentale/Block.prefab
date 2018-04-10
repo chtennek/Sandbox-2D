@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33206532779801738}
   - component: {fileID: 23825419733335942}
   - component: {fileID: 65862179629162068}
+  - component: {fileID: 114871338538471340}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Block
@@ -41,6 +42,8 @@ GameObject:
   - component: {fileID: 114483957358413010}
   - component: {fileID: 114148809404588370}
   - component: {fileID: 114470812425666010}
+  - component: {fileID: 23797674314502990}
+  - component: {fileID: 114733218910616140}
   m_Layer: 0
   m_Name: Block
   m_TagString: Block
@@ -75,6 +78,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23797674314502990
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1964988870039290}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: 20533acc175a34514ba7e00bcebd9030, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!23 &23825419733335942
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -198,3 +236,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loopInitialPoints: 0
   initialPoints: []
+--- !u!114 &114733218910616140
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1964988870039290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b52748579beaf4a816dd5f55d3864a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorChannel: 4
+  radius: 1
+--- !u!114 &114871338538471340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1281860032335710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdba77b5d5306574f8343ff6c6922b54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -7,7 +7,7 @@ public class CarpentaleGridMovement : GridMovement
     [Header("Merging")]
     public Transform mergeEffectPrefab;
     public string mergeObjectsWithTag = "Block";
-    public float mergeTime = 1f;
+    public float mergeTime = .5f;
     public float mergeContributionWindow = 1f;
 
     private float mergeStartTime;
@@ -18,7 +18,6 @@ public class CarpentaleGridMovement : GridMovement
         if (IsMoving == true)
             return false;
 
-        Debug.Log(Time.time);
         Vector3 target = FindNearestGridPoint(transform.position + Vector3.Scale(gridScale, v));
         Vector3 movement = target - transform.position;
 
@@ -64,7 +63,7 @@ public class CarpentaleGridMovement : GridMovement
     {
         if (mergeEffectPrefab == null)
             return;
-        
+
         List<Vector3> cubePoints = new List<Vector3>();
         foreach (Transform container in mergeables)
         {
@@ -105,7 +104,7 @@ public class CarpentaleGridMovement : GridMovement
                 children.Add(child);
             foreach (Transform child in children)
                 child.parent = parent;
-            Destroy(mergeable);
+            Destroy(mergeable.gameObject);
         }
     }
 }
