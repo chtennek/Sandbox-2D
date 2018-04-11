@@ -5,15 +5,14 @@ using UnityEngine.Events;
 
 public class EntityBehaviour : MonoBehaviour
 {
-    [Header("Animation")]
-    public string damageTrigger = "hitstun";
-    public string destroyTrigger = "destroy";
-
-    [Header("Parameters")]
-    public bool invokeDeathAfterLifetime = true;
+    [Header("Stats")]
     public float lifetime = Mathf.Infinity;
-    public StatusBar lifebar;
     public bool destroyOnDeath = true;
+    public bool damageCausesDeath = false;
+    public StatusBar lifebar;
+
+    [Header("Effects")]
+    public int damage = 0;
 
     public UnityEvent onDamage;
     public UnityEvent onDeath;
@@ -32,24 +31,30 @@ public class EntityBehaviour : MonoBehaviour
     {
         if (Time.time - spawnTimestamp > lifetime)
         {
-            if (invokeDeathAfterLifetime)
-                OnDeath();
-            else
-                Destroy();
+            OnDeath();
         }
     }
 
     public void Damage() { Damage(1); }
-    public void Damage(int damage)
+    public void Damage(Transform other)
     {
-        if (damage <= 0)
+        EntityBehaviour entity = other.GetComponent<EntityBehaviour>();
+        if (entity == null)
             return;
 
-        if (lifebar == null)
-        {
+        entity.Damage(damage);
+        Damage(entity.damage);
+    }
+    public void Damage(int damage)
+    {
+        if (damageCausesDeath) {
             OnDeath();
             return;
         }
+        if (lifebar == null)
+            return;
+        if (damage <= 0)
+            return;
 
         lifebar.currentValue -= damage;
         if (lifebar.currentValue > 0)
@@ -60,25 +65,13 @@ public class EntityBehaviour : MonoBehaviour
 
     public void OnDamage()
     {
-        if (anim != null && damageTrigger != "")
-            anim.SetTrigger(damageTrigger);
-
         onDamage.Invoke();
     }
 
     public void OnDeath()
     {
-        if (anim != null && destroyTrigger != "")
-            anim.SetTrigger(destroyTrigger);
-
-        if (destroyOnDeath == true)
-            Destroy();
-
         onDeath.Invoke();
-    }
-
-    public void Destroy()
-    {
-        Destroy(gameObject);
+        if (destroyOnDeath == true)
+            Destroy(gameObject);
     }
 }

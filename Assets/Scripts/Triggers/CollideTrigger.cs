@@ -3,70 +3,105 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CollideTrigger : Trigger
+public class CollideTrigger : ContextTrigger
 {
     [SerializeField] private LayerMask mask;
-    [SerializeField] private string tagName;
+    [SerializeField] private string[] tagMask;
     [SerializeField] private bool ignoreSiblings = true;
 
-    private List<Transform> collidingWith = new List<Transform>(); // [TODO] keep list of colliding triggers to avoid weird behavior
-    public Transform Other { get { return collidingWith.Count == 0 ? null : collidingWith[0]; } }
-
-    private bool FilterTransform(Transform t)
+    private HashSet<Transform> collidingWith = new HashSet<Transform>();
+    public Transform Other
     {
-        if (ignoreSiblings && t.parent != null && transform.parent == t.transform.parent)
-            return false;
-        if (mask.Contains(t.gameObject.layer) == false)
-            return false;
-        if (tagName.Length > 0 && t.tag != tagName)
-            return false;
-        return true;
+        get
+        {
+            foreach (Transform other in collidingWith)
+                return other;
+            return null;
+        }
     }
 
-    public Transform GetCollision() { return GetCollision(0); }
-    public Transform GetCollision(int index) { return collidingWith.Count <= index ? null : collidingWith[index]; }
-
-    public void CollideOn(Transform transform)
+    private bool TransformMask(Transform other)
     {
-        collidingWith.Add(transform);
+        if (ignoreSiblings && other.parent != null && transform.parent == other.transform.parent)
+            return false;
+        if (mask.Contains(other.gameObject.layer) == false)
+            return false;
+
+        if (tagMask.Length == 0)
+            return true;
+        for (int i = 0; i < tagMask.Length; i++)
+        {
+            if (other.tag == tagMask[i])
+                return true;
+        }
+
+        return false;
+    }
+
+	protected override void Update()
+	{
+        base.Update();
+        foreach (Transform other in collidingWith) {
+            contextEvents.onActive.Invoke(other);
+        }
+	}
+
+	public void DestroyObject(Transform other)
+    {
+        Destroy(other.gameObject);
+    }
+
+    public void CollideOn(Transform other)
+    {
+        if (collidingWith.Add(other) == false)
+            return;
+
+        contextEvents.onActivate.Invoke(other);
         Active = true;
     }
 
-    public void CollideOff(Transform transform)
+    public void CollideOff(Transform other)
     {
-        collidingWith.Remove(transform);
+        if (collidingWith.Remove(other) == false)
+            return;
+
+        contextEvents.onDeactivate.Invoke(other);
         Active = false;
     }
 
-    public void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (FilterTransform(collision.transform) == false)
+        Transform other = collision.transform;
+        if (TransformMask(other) == false)
             return;
-        collidingWith.Add(collision.transform);
-        Active = true;
+
+        CollideOn(other);
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (FilterTransform(collision.transform) == false)
+        Transform other = collision.transform;
+        if (TransformMask(other) == false)
             return;
-        collidingWith.Add(collision.transform);
-        Active = true;
+
+        CollideOn(other);
     }
 
-    public void OnTriggerExit(Collider collision)
+    private void OnTriggerExit(Collider collision)
     {
-        if (FilterTransform(collision.transform) == false)
+        Transform other = collision.transform;
+        if (TransformMask(other) == false)
             return;
-        collidingWith.Remove(collision.transform);
-        Active = false;
+
+        CollideOff(other);
     }
 
-    public void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (FilterTransform(collision.transform) == false)
+        Transform other = collision.transform;
+        if (TransformMask(other) == false)
             return;
-        collidingWith.Remove(collision.transform);
-        Active = false;
-    }
+
+        CollideOff(other);
+     }
 }

@@ -41,4 +41,8 @@ public abstract class Trigger : MonoBehaviour
         if (isActive == true)
             events.onActive.Invoke();
     }
+
+    public void DebugLog() {
+        Debug.Log(gameObject);
+    }
 }

@@ -83,6 +83,7 @@ MonoBehaviour:
   colliderCheck:
     direction: {x: 0, y: -1, z: 0}
     checkDistance: 0.01
+    maxAngle: 10
     contactFilter:
       useTriggers: 0
       useLayerMask: 0
@@ -97,7 +98,7 @@ MonoBehaviour:
       maxDepth: 0
       minNormalAngle: 0
       maxNormalAngle: 0
-  velocity: {x: 0, y: 0, z: 0}
+  m_velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &114528708392018792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,36 +110,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75008696af2946e4a42b7138b4c4f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkOnUpdate: 1
-  onActivate:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114757707329429520}
-        m_MethodName: OnDeath
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onDeactivate:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onActive:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  comment: 
+  events:
+    onActivate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    onDeactivate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    onActive:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  contextEvents:
+    onActivate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114757707329429520}
+          m_MethodName: Damage
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: ContextUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    onDeactivate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ContextUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    onActive:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ContextUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
   mask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 4294967295
+  tagMask:
+  - Player
   ignoreSiblings: 1
 --- !u!114 &114757707329429520
 MonoBehaviour:
@@ -153,9 +173,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageTrigger: hitstun
   destroyTrigger: destroy
-  destroyOnDeath: 1
+  invokeDeathAfterLifetime: 1
   lifetime: 2
+  destroyOnDeath: 1
   lifebar: {fileID: 0}
+  damage: 1
+  onDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!212 &212064312890372392
 SpriteRenderer:
   m_ObjectHideFlags: 1

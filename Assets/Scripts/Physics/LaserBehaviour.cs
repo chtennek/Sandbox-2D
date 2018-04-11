@@ -9,15 +9,17 @@ public class LaserBehaviour : MonoBehaviour
     public float length = 10f; // Don't set to infinity
     public float minSpeed = Mathf.Infinity;
 
+    [SerializeField] private bool m_active = true;
+
     [Header("Collision")]
     public LayerMask refractMask;
     public LayerMask absorbMask;
     public LayerMask reflectMask = ~0;
     public int maxReflects = 0;
 
-    public UnityEvent onRefract;
-    public UnityEvent onAbsorb;
-    public UnityEvent onReflect;
+    //public UnityEvent onRefract;
+    //public UnityEvent onAbsorb;
+    //public UnityEvent onReflect;
 
     private float currentLength;
     private Vector3[] positions;
@@ -35,6 +37,9 @@ public class LaserBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (m_active == false)
+            return;
+
         if (rb == null)
             currentLength = Mathf.Min(length, currentLength + minSpeed * Time.deltaTime);
         else
@@ -51,7 +56,19 @@ public class LaserBehaviour : MonoBehaviour
             CalculatePositions();
     }
 
-    public void CalculatePositions()
+    public void Activate()
+    {
+        m_active = true;
+    }
+
+    public void Deactivate()
+    {
+        m_active = false;
+        currentLength = 0;
+        CalculatePositions();
+    }
+
+    private void CalculatePositions()
     {
         float workingLength = currentLength;
         Vector3 currentPosition = transform.position;

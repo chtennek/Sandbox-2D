@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4692532665064254}
   - component: {fileID: 212739730329825098}
   - component: {fileID: 61973140777416780}
-  - component: {fileID: 114510598997978434}
   - component: {fileID: 114068459897972404}
-  - component: {fileID: 114860970063025814}
+  - component: {fileID: 114510598997978434}
+  - component: {fileID: 114016352065472076}
   m_Layer: 9
   m_Name: Shot-Player
   m_TagString: Untagged
@@ -69,6 +69,67 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.04, y: 0.04}
   m_EdgeRadius: 0
+--- !u!114 &114016352065472076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1540609425951334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d75008696af2946e4a42b7138b4c4f68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comment: 
+  events:
+    onActivate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    onDeactivate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    onActive:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  contextEvents:
+    onActivate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114510598997978434}
+          m_MethodName: Damage
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: ContextUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    onDeactivate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ContextUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    onActive:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ContextUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  mask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  tagMask:
+  - Enemy
+  ignoreSiblings: 1
 --- !u!114 &114068459897972404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,6 +144,7 @@ MonoBehaviour:
   colliderCheck:
     direction: {x: 0, y: -1, z: 0}
     checkDistance: 0.01
+    maxAngle: 10
     contactFilter:
       useTriggers: 0
       useLayerMask: 0
@@ -97,7 +159,7 @@ MonoBehaviour:
       maxDepth: 0
       minNormalAngle: 0
       maxNormalAngle: 0
-  velocity: {x: 0, y: 0, z: 0}
+  m_velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &114510598997978434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,53 +171,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b424a4d39d442358de5dc7e691fe52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageTrigger: hitstun
-  destroyTrigger: destroy
+  lifetime: Infinity
   destroyOnDeath: 1
-  lifetime: 2
   lifebar: {fileID: 0}
---- !u!114 &114860970063025814
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1540609425951334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d75008696af2946e4a42b7138b4c4f68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  checkOnUpdate: 1
-  onActivate:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114510598997978434}
-        m_MethodName: OnDeath
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onDeactivate:
+  damage: 1
+  onDamage:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  onActive:
+  onDeath:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  mask:
-    serializedVersion: 2
-    m_Bits: 1024
-  ignoreSiblings: 1
 --- !u!212 &212739730329825098
 SpriteRenderer:
   m_ObjectHideFlags: 1

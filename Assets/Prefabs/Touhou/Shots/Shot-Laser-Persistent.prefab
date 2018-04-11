@@ -35,9 +35,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4825965203589908}
-  - component: {fileID: 114636179173300118}
-  - component: {fileID: 114138122903628218}
   - component: {fileID: 114331652951149880}
+  - component: {fileID: 114942142233724582}
   - component: {fileID: 114310347514485960}
   m_Layer: 11
   m_Name: Shot-Laser-Persistent
@@ -94,44 +93,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1533772205453682}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 4523372173969658}
   - {fileID: 4468971786550686}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114138122903628218
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1533772205453682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b500b4ce6f7f324e9fafdd23a68ab6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colliderCheck:
-    direction: {x: 0, y: -1, z: 0}
-    checkDistance: 0.01
-    contactFilter:
-      useTriggers: 0
-      useLayerMask: 0
-      useDepth: 0
-      useOutsideDepth: 0
-      useNormalAngle: 0
-      useOutsideNormalAngle: 0
-      layerMask:
-        serializedVersion: 2
-        m_Bits: 0
-      minDepth: 0
-      maxDepth: 0
-      minNormalAngle: 0
-      maxNormalAngle: 0
-  velocity: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &114310347514485960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -143,17 +113,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859a5d0e5f83375428dbaab5a4cae33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  length: 2
-  minSpeed: 1
+  length: Infinity
+  minSpeed: 12
+  m_active: 0
   refractMask:
     serializedVersion: 2
     m_Bits: 0
   absorbMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   reflectMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   maxReflects: 0
   onRefract:
     m_PersistentCalls:
@@ -181,39 +152,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75008696af2946e4a42b7138b4c4f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  label: 
-  checkOnUpdate: 1
-  onActivate:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114636179173300118}
-        m_MethodName: OnDeath
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onDeactivate:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onActive:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  comment: 
+  events:
+    onActivate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114310347514485960}
+          m_MethodName: Activate
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    onDeactivate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114310347514485960}
+          m_MethodName: Deactivate
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    onActive:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  contextEvents:
+    onActivate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ContextUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    onDeactivate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ContextUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    onActive:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ContextUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
   mask:
     serializedVersion: 2
     m_Bits: 256
+  tagMask: []
   ignoreSiblings: 1
---- !u!114 &114636179173300118
+--- !u!114 &114942142233724582
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -221,25 +220,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1533772205453682}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85b424a4d39d442358de5dc7e691fe52, type: 3}
+  m_Script: {fileID: 11500000, guid: 68f9cb754cab64f16b7453dcc48e64ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageTrigger: hitstun
-  destroyTrigger: destroy
-  invokeDeathAfterLifetime: 1
-  lifetime: 5
-  lifebar: {fileID: 0}
-  destroyOnDeath: 1
-  onDamage:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onDeath:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  comment: 
+  events:
+    onActivate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    onDeactivate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    onActive:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  input: {fileID: 0}
+  buttonName: 
 --- !u!120 &120529716212971396
 LineRenderer:
   m_ObjectHideFlags: 1
