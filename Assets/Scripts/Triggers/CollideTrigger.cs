@@ -9,17 +9,6 @@ public class CollideTrigger : ContextTrigger
     [SerializeField] private string[] tagMask;
     [SerializeField] private bool ignoreSiblings = true;
 
-    private HashSet<Transform> collidingWith = new HashSet<Transform>();
-    public Transform Other
-    {
-        get
-        {
-            foreach (Transform other in collidingWith)
-                return other;
-            return null;
-        }
-    }
-
     private bool TransformMask(Transform other)
     {
         if (ignoreSiblings && other.parent != null && transform.parent == other.transform.parent)
@@ -38,17 +27,6 @@ public class CollideTrigger : ContextTrigger
         return false;
     }
 
-    protected override void Update()
-    {
-        Transform[] others = new Transform[collidingWith.Count];
-        collidingWith.CopyTo(others);
-        foreach (Transform other in others)
-        {
-            contextEvents.onActive.Invoke(other);
-        }
-        base.Update();
-    }
-
     public void DestroyObject(Transform other)
     {
         Destroy(other.gameObject);
@@ -56,19 +34,13 @@ public class CollideTrigger : ContextTrigger
 
     private void CollideOn(Transform other)
     {
-        if (collidingWith.Add(other) == false)
-            return;
-
-        contextEvents.onActivate.Invoke(other);
+        AddTarget(other);
         Active = true;
     }
 
     private void CollideOff(Transform other)
     {
-        if (collidingWith.Remove(other) == false)
-            return;
-
-        contextEvents.onDeactivate.Invoke(other);
+        RemoveTarget(other);
         Active = false;
     }
 

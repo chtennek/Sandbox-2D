@@ -9,6 +9,7 @@ public class TriggerEvents
     public UnityEvent onActivate;
     public UnityEvent onDeactivate;
     public UnityEvent onActive;
+    public UnityEvent onInactive;
 }
 
 public abstract class Trigger : MonoBehaviour
@@ -38,8 +39,10 @@ public abstract class Trigger : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (isActive == true)
+        if (Active == true)
             events.onActive.Invoke();
+        else
+            events.onInactive.Invoke();
     }
 
     public void DebugLog() {

@@ -79,6 +79,19 @@ public class LaserBehaviour : MonoBehaviour
         m_active = true;
     }
 
+
+    public void Activate(float time)
+    {
+        StopAllCoroutines();
+        StartCoroutine(Coroutine_Activate(time));
+    }
+
+    private IEnumerator Coroutine_Activate(float time) {
+        Activate();
+        yield return new WaitForSeconds(time);
+        Deactivate();
+    }
+
     public void Deactivate()
     {
         m_active = false;

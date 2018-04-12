@@ -32,7 +32,7 @@ public class GridGrabControl : InputBehaviour
         if (currentlyHeld != null)
             return;
 
-        Transform t = coll.Other;
+        Transform t = coll.Target;
         if (t == null) return;
 
         currentlyHeld = t.GetComponentInParent<GridMovement>();
