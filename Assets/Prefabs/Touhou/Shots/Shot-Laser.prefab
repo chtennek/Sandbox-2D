@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 114847949610278598}
   - component: {fileID: 114817709219076974}
   - component: {fileID: 114706729431597912}
-  m_Layer: 11
+  - component: {fileID: 68379873282716486}
+  m_Layer: 9
   m_Name: Shot-Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4117431747908184}
   - component: {fileID: 120957904711875564}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Inner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4903579633556340}
   - component: {fileID: 120805496057029468}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Outer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,6 +104,25 @@ Transform:
   m_Father: {fileID: 4572507885594190}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &68379873282716486
+EdgeCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1643844307357956}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 2, y: 0}
+  - {x: 2, y: 0}
 --- !u!114 &114706729431597912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859a5d0e5f83375428dbaab5a4cae33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayFullLength: 1
   length: 2
   minSpeed: 1
   m_active: 1
@@ -127,21 +148,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   maxReflects: 0
-  onRefract:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onAbsorb:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onReflect:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114817709219076974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -173,7 +179,18 @@ MonoBehaviour:
   contextEvents:
     onActivate:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 114998997504512790}
+          m_MethodName: Damage
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: ContextUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
     onDeactivate:
@@ -188,8 +205,9 @@ MonoBehaviour:
         PublicKeyToken=null
   mask:
     serializedVersion: 2
-    m_Bits: 256
-  tagMask: []
+    m_Bits: 4294967295
+  tagMask:
+  - Enemy
   ignoreSiblings: 1
 --- !u!114 &114847949610278598
 MonoBehaviour:
@@ -232,13 +250,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b424a4d39d442358de5dc7e691fe52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageTrigger: hitstun
-  destroyTrigger: destroy
-  invokeDeathAfterLifetime: 1
   lifetime: 5
   destroyOnDeath: 1
+  damageTriggersDeath: 1
   lifebar: {fileID: 0}
-  damage: 0
+  damage: 3
   onDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -287,10 +303,6 @@ LineRenderer:
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
-  - {x: 2, y: 0, z: 0}
-  - {x: 2, y: 0, z: 0}
-  - {x: 2, y: 0, z: 0}
-  - {x: 2, y: 0, z: 0}
   - {x: 2, y: 0, z: 0}
   - {x: 2, y: 0, z: 0}
   m_Parameters:
@@ -412,10 +424,6 @@ LineRenderer:
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
-  - {x: 2, y: 0, z: 0}
-  - {x: 2, y: 0, z: 0}
-  - {x: 2, y: 0, z: 0}
-  - {x: 2, y: 0, z: 0}
   - {x: 2, y: 0, z: 0}
   - {x: 2, y: 0, z: 0}
   m_Parameters:

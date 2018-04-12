@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 61722901444865062}
   - component: {fileID: 114375613975439378}
   - component: {fileID: 114200676363057306}
-  - component: {fileID: 114212865238502902}
+  - component: {fileID: 114111801820453646}
   m_Layer: 0
   m_Name: Reimu2D
   m_TagString: Untagged
@@ -108,6 +108,56 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114111801820453646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1958649794358282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d75008696af2946e4a42b7138b4c4f68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comment: 
+  events:
+    onActivate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    onDeactivate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    onActive:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  contextEvents:
+    onActivate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ContextUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    onDeactivate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ContextUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    onActive:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ContextUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  mask:
+    serializedVersion: 2
+    m_Bits: 256
+  tagMask: []
+  ignoreSiblings: 1
 --- !u!114 &114200676363057306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,23 +170,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
---- !u!114 &114212865238502902
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1958649794358282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a9759d92f4dc3644979434dab34776d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridCellSize: {x: 1, y: 1}
-  gridCellOffset: {x: 0, y: 0}
-  bufferMovement: 0
-  wallColliderMask:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!114 &114375613975439378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -149,7 +182,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
-  defaultDeadZone: 0
 --- !u!212 &212177650475847666
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -163,6 +195,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:

@@ -173,6 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: Infinity
   destroyOnDeath: 1
+  damageTriggersDeath: 1
   lifebar: {fileID: 0}
   damage: 1
   onDamage:

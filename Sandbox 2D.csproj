@@ -484,6 +484,7 @@
     <Compile Include="Assets\Scripts\Tiles\BorderedTile.cs" />
     <Compile Include="Assets\Scripts\Triggers\CollideTrigger.cs" />
     <Compile Include="Assets\Scripts\Triggers\CompoundTrigger.cs" />
+    <Compile Include="Assets\Scripts\Triggers\ContextTrigger.cs" />
     <Compile Include="Assets\Scripts\Triggers\InputTrigger.cs" />
     <Compile Include="Assets\Scripts\Triggers\Trigger.cs" />
     <Compile Include="Assets\Scripts\UI\INavigator.cs" />

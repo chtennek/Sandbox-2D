@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4903270685260808}
   - component: {fileID: 114718793947695270}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Powerup Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4744920187363616}
   - component: {fileID: 114472161469016322}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Fixed Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4366659084572478}
   - component: {fileID: 114395535681755928}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Score Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 224586257244448862}
   - component: {fileID: 222566596412838856}
   - component: {fileID: 114607246276732952}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: HP Bar Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 61669573968238760}
   - component: {fileID: 114619759982740572}
   - component: {fileID: 114061571815471508}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Blue Angel
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 222522635779079178}
   - component: {fileID: 114447064043847428}
   - component: {fileID: 114727183887007716}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: HP Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 4992808665063430}
   - component: {fileID: 114748729228516326}
   - component: {fileID: 114717999058531754}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Tracking Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 223520017116647946}
   - component: {fileID: 114834202753219986}
   - component: {fileID: 114088098321280674}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Status Bars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,6 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 3
   destroyOnDeath: 1
+  damageTriggersDeath: 0
   lifebar: {fileID: 114727183887007716}
   damage: 0
   onDamage:

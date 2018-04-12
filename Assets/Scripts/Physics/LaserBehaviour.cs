@@ -6,6 +6,9 @@ using UnityEngine.Events;
 [ExecuteInEditMode]
 public class LaserBehaviour : MonoBehaviour
 {
+    public const float MAX_LENGTH = 10000;
+
+    public bool displayFullLength = true; // In editor
     public float length = 10f; // Don't set to infinity
     public float minSpeed = Mathf.Infinity;
 
@@ -23,16 +26,31 @@ public class LaserBehaviour : MonoBehaviour
 
     private float currentLength;
     private Vector3[] positions;
-    private LineRenderer[] lines;
 
+    private LineRenderer[] lines;
     private RigidbodyWrapper rb;
+    private EdgeCollider2D coll2D;
+
+    private void Awake()
+    {
+        currentLength = 0;
+    }
 
     private void Start()
     {
         rb = GetComponent<RigidbodyWrapper>();
         lines = GetComponentsInChildren<LineRenderer>();
-        positions = new Vector3[4 + maxReflects];
-        CalculatePositions();
+        coll2D = GetComponent<EdgeCollider2D>();
+
+        RecalculatePositions();
+    }
+
+    private void OnValidate()
+    {
+        length = Mathf.Clamp(length, -MAX_LENGTH, MAX_LENGTH);
+        if (displayFullLength)
+            currentLength = length;
+        Start();
     }
 
     private void FixedUpdate()
@@ -53,7 +71,7 @@ public class LaserBehaviour : MonoBehaviour
         }
 
         if (Application.isPlaying == true || transform.hasChanged)
-            CalculatePositions();
+            RecalculatePositions();
     }
 
     public void Activate()
@@ -65,45 +83,69 @@ public class LaserBehaviour : MonoBehaviour
     {
         m_active = false;
         currentLength = 0;
-        CalculatePositions();
+        RecalculatePositions();
     }
 
-    private void CalculatePositions()
+    private void RecalculatePositions()
     {
         float workingLength = currentLength;
         Vector3 currentPosition = transform.position;
         Vector3 currentDirection = transform.rotation * Vector3.right;
         int i = 0;
 
+        if (positions == null || positions.Length != 4 + maxReflects)
+            positions = new Vector3[4 + maxReflects];
+
         // Reflect laser against walls
         if (maxReflects > 0)
         {
-            if (positions.Length != 4 + maxReflects)
-                positions = new Vector3[4 + maxReflects];
 
             RaycastHit hit;
             for (i = 0; i < maxReflects; i++)
             {
+                Vector3 point, normal;
+                float distance;
+                Transform other;
+
                 // Find next reflection/absorption point
-                if (Physics.Raycast(currentPosition, currentDirection, out hit, workingLength, absorbMask | reflectMask) == false)
+                RaycastHit2D hit2D = Physics2D.Raycast(currentPosition, currentDirection, workingLength, absorbMask | reflectMask);
+                if (true || hit2D.collider == null)
                 {
-                    currentPosition += currentDirection * workingLength;
-                    break;
+                    if (Physics.Raycast(currentPosition, currentDirection, out hit, workingLength, absorbMask | reflectMask) == false)
+                    {
+                        currentPosition += currentDirection * workingLength;
+                        break;
+                    }
+                    point = hit.point;
+                    normal = hit.normal;
+                    distance = hit.distance;
+                    other = hit.transform;
+                }
+                else
+                {
+                    point = hit2D.point;
+                    normal = hit2D.normal;
+                    distance = hit2D.distance;
+                    other = hit2D.transform;
                 }
 
                 // Send collision events
-                foreach (RaycastHit h in Physics.RaycastAll(currentPosition, currentDirection, hit.distance, refractMask))
+                foreach (RaycastHit h in Physics.RaycastAll(currentPosition, currentDirection, distance, refractMask))
                 {
-                    CollideWith(h.transform);
+                    ProcessCollision(h.transform, h.point, h.normal, h.distance);
                 }
-                CollideWith(hit.transform);
+                foreach (RaycastHit2D h in Physics2D.RaycastAll(currentPosition, currentDirection, distance, refractMask))
+                {
+                    ProcessCollision(h.transform, h.point, h.normal, h.distance);
+                }
+                ProcessCollision(other, point, normal, distance);
 
                 // Update values for next raycast
-                currentPosition = hit.point;
-                currentDirection = Vector3.Reflect(currentDirection, hit.normal);
-                workingLength -= hit.distance;
+                currentPosition = point;
+                currentDirection = Vector3.Reflect(currentDirection, normal);
+                workingLength -= distance;
 
-                if (absorbMask.Contains(hit.transform.gameObject.layer))
+                if (absorbMask.Contains(other.gameObject.layer))
                     break;
 
                 // Update LineRenderer points
@@ -122,19 +164,9 @@ public class LaserBehaviour : MonoBehaviour
         SetPositions(positions);
     }
 
-    private void CollideWith(Transform t)
+    protected virtual void ProcessCollision(Transform other, Vector3 point, Vector3 normal, float distance)
     {
-        CollideTrigger trigger = t.GetComponent<CollideTrigger>();
-        if (trigger != null)
-            trigger.CollideOn(transform); // [TODO] CollideOff
-    }
-
-    public void SetPosition(int index, Vector3 position)
-    {
-        foreach (LineRenderer line in lines)
-        {
-            line.SetPosition(index, position);
-        }
+        return;
     }
 
     public void SetPositions(Vector3[] positions)
@@ -143,6 +175,10 @@ public class LaserBehaviour : MonoBehaviour
         {
             line.positionCount = positions.Length;
             line.SetPositions(positions);
+        }
+        if (coll2D != null)
+        {
+            coll2D.points = System.Array.ConvertAll<Vector3, Vector2>(positions, x => x);
         }
     }
 }

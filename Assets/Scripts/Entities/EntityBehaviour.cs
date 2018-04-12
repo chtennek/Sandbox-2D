@@ -8,7 +8,7 @@ public class EntityBehaviour : MonoBehaviour
     [Header("Stats")]
     public float lifetime = Mathf.Infinity;
     public bool destroyOnDeath = true;
-    public bool damageCausesDeath = false;
+    public bool damageTriggersDeath = false;
     public StatusBar lifebar;
 
     [Header("Effects")]
@@ -47,7 +47,8 @@ public class EntityBehaviour : MonoBehaviour
     }
     public void Damage(int damage)
     {
-        if (damageCausesDeath) {
+        if (damageTriggersDeath)
+        {
             OnDeath();
             return;
         }

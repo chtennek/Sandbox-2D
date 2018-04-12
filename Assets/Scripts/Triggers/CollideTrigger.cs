@@ -38,20 +38,23 @@ public class CollideTrigger : ContextTrigger
         return false;
     }
 
-	protected override void Update()
-	{
-        base.Update();
-        foreach (Transform other in collidingWith) {
+    protected override void Update()
+    {
+        Transform[] others = new Transform[collidingWith.Count];
+        collidingWith.CopyTo(others);
+        foreach (Transform other in others)
+        {
             contextEvents.onActive.Invoke(other);
         }
-	}
+        base.Update();
+    }
 
-	public void DestroyObject(Transform other)
+    public void DestroyObject(Transform other)
     {
         Destroy(other.gameObject);
     }
 
-    public void CollideOn(Transform other)
+    private void CollideOn(Transform other)
     {
         if (collidingWith.Add(other) == false)
             return;
@@ -60,7 +63,7 @@ public class CollideTrigger : ContextTrigger
         Active = true;
     }
 
-    public void CollideOff(Transform other)
+    private void CollideOff(Transform other)
     {
         if (collidingWith.Remove(other) == false)
             return;
@@ -103,5 +106,5 @@ public class CollideTrigger : ContextTrigger
             return;
 
         CollideOff(other);
-     }
+    }
 }

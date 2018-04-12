@@ -15,10 +15,10 @@ TagManager:
   - UI
   - 
   - 
-  - Units 1
-  - Projectiles 1
-  - Units 2
-  - Projectiles 2
+  - Units
+  - Projectiles
+  - Collectibles
+  - 
   - Hitbox
   - Hurtbox
   - Triggers
