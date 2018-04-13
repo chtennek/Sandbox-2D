@@ -17,7 +17,7 @@ public class AdjacencyTrigger : Trigger
     {
         if (other == null || grid == null)
         {
-            Debug.LogWarning(Warnings.ComponentMissing(this));
+            Warnings.ComponentMissing(this);
             enabled = false;
         }
     }

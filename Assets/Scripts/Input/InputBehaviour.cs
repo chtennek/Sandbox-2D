@@ -9,15 +9,12 @@ public class InputBehaviour : MonoBehaviour
 
     protected virtual void Reset()
     {
-        input = GetComponent<RewiredInputReceiver>();
+        input = GetComponentInParent<InputReceiver>();
     }
 
     protected virtual void Awake()
     {
         if (input == null)
-            input = GetComponentInParent<InputReceiver>();
-
-        if (input == null)
-            Debug.LogWarning(Warnings.NoComponentSpecified(this, typeof(InputReceiver)));
+            Warnings.ComponentMissing<InputReceiver>(this);
     }
 }

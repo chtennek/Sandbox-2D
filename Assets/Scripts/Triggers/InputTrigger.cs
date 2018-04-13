@@ -17,7 +17,7 @@ public class InputTrigger : Trigger
     {
         if (input == null)
         {
-            Debug.LogWarning(Warnings.NoComponentSpecified(this, typeof(InputReceiver)));
+            Warnings.ComponentMissing<InputReceiver>(this);
             enabled = false;
         }
     }

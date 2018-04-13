@@ -2,21 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractorBehaviour : MonoBehaviour
+public class InteractorBehaviour : InputBehaviour
 {
     [Header("Input")]
-    [SerializeField]
-    private InputReceiver input;
     public string inputName = "Fire";
-
-    private void Awake()
-    {
-        if (input == null)
-        {
-            Debug.LogWarning(Warnings.ComponentMissing(this));
-            enabled = false;
-        }
-    }
 
     private void Update()
     {

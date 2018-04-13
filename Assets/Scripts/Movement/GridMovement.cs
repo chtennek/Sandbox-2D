@@ -51,7 +51,7 @@ public class GridMovement : MonoBehaviour
         rb = GetComponentInParent<Rigidbody>();
         rb2D = GetComponentInParent<Rigidbody2D>();
         if (rb == null && rb2D == null)
-            Debug.Log(Warnings.ComponentMissing(this));
+            Warnings.ComponentMissing(this);
 
         pathControl = GetComponent<PathControl>();
     }

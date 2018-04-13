@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 102145964692470904}
   - component: {fileID: 114169415261152406}
   - component: {fileID: 114892307936541622}
+  - component: {fileID: 114001786431757884}
   m_Layer: 0
   m_Name: Score
   m_TagString: Untagged
@@ -99,6 +100,26 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
+--- !u!114 &114001786431757884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1900322144184646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a54ad5ed278d734a97213470498c4d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateOnStart: 1
+  applyPermanently: 1
+  time: Infinity
+  tagName: Score
+  target: {fileID: 0}
+  multiplier: 1
+  adder: 500
+  setValue: 0
+  setter: 0
 --- !u!114 &114169415261152406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,11 +131,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b424a4d39d442358de5dc7e691fe52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageTrigger: hitstun
-  destroyTrigger: destroy
   lifetime: 1
-  lifebar: {fileID: 0}
   destroyOnDeath: 1
+  damageTriggersDeath: 0
+  lifebar: {fileID: 0}
+  damage: 0
   onDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -139,6 +160,7 @@ MonoBehaviour:
   colliderCheck:
     direction: {x: 0, y: -1, z: 0}
     checkDistance: 0.01
+    maxAngle: 10
     contactFilter:
       useTriggers: 0
       useLayerMask: 0
@@ -153,4 +175,4 @@ MonoBehaviour:
       maxDepth: 0
       minNormalAngle: 0
       maxNormalAngle: 0
-  velocity: {x: 0, y: 0, z: 0}
+  m_velocity: {x: 0, y: 0, z: 0}

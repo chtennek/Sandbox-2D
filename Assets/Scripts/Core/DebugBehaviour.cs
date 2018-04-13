@@ -7,7 +7,7 @@ public class DebugBehaviour : InputBehaviour
 {
     private void Update()
     {
-        if (input.GetButtonDown("Reload Scene"))
+        if (input != null && input.GetButtonDown("Reload Scene"))
             ReloadScene();
     }
 

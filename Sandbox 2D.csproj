@@ -420,12 +420,12 @@
     <Compile Include="Assets\Scripts\Controls - Strategy\OrderGridMove.cs" />
     <Compile Include="Assets\Scripts\Controls - Strategy\WaypointMovement.cs" />
     <Compile Include="Assets\Scripts\Core\DebugBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Core\GameValue.cs" />
     <Compile Include="Assets\Scripts\Core\Mathv.cs" />
     <Compile Include="Assets\Scripts\Core\Polar2.cs" />
     <Compile Include="Assets\Scripts\Core\Sequence.cs" />
     <Compile Include="Assets\Scripts\Core\SerializableDictionaries.cs" />
     <Compile Include="Assets\Scripts\Core\SerializableTypes.cs" />
-    <Compile Include="Assets\Scripts\Core\StatusBar.cs" />
     <Compile Include="Assets\Scripts\Core\UnityExtensions.cs" />
     <Compile Include="Assets\Scripts\Core\Warnings.cs" />
     <Compile Include="Assets\Scripts\Data\PathPoint.cs" />
@@ -470,8 +470,11 @@
     <Compile Include="Assets\Scripts\Levels\LevelObjectNPC.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelObjectStart.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelStartLocation.cs" />
+    <Compile Include="Assets\Scripts\Modifiers\FloatModifier.cs" />
+    <Compile Include="Assets\Scripts\Modifiers\FloatModifierModifier.cs" />
+    <Compile Include="Assets\Scripts\Modifiers\GameValueModifier.cs" />
     <Compile Include="Assets\Scripts\Modifiers\Modifier.cs" />
-    <Compile Include="Assets\Scripts\Modifiers\SpeedModifier.cs" />
+    <Compile Include="Assets\Scripts\Modifiers\MovementModifier.cs" />
     <Compile Include="Assets\Scripts\Movement\GridMovement.cs" />
     <Compile Include="Assets\Scripts\Movement\PathControl.cs" />
     <Compile Include="Assets\Scripts\Movement\RigidbodyWrapper.cs" />

@@ -4,13 +4,15 @@ using UnityEngine;
 
 public static class Warnings
 {
-    public static string ComponentMissing(MonoBehaviour m)
+    public static void ComponentMissing(Component c)
     {
-        return m.name + "." + m.GetType().Name + ": Missing required components!";
+        string message = c.name + "." + c.GetType().Name + ": Missing required components!";
+        Debug.LogWarning(message);
     }
 
-    public static string NoComponentSpecified(MonoBehaviour m, System.Type t)
+    public static void ComponentMissing<T>(Component c)
     {
-        return m.name + "." + m.GetType().Name + ": No " + t.ToString() + " specified!";
+        string message = c.name + "." + c.GetType().Name + ": Missing " + typeof(T).ToString() + "!";
+        Debug.LogWarning(message);
     }
 }

@@ -2,26 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Modifier : MonoBehaviour
+public abstract class ModifierBase<T> : MonoBehaviour
 {
+    [Header("Core")]
+    public bool activateOnStart = false;
     public bool applyPermanently = false;
-    [SerializeField] private float multiplier = 1f;
-    [SerializeField] private float adder;
-    [SerializeField] private float time = Mathf.Infinity;
+    public float time = Mathf.Infinity;
 
-    protected float BaseValue;
-    protected abstract float CurrentValue { get; set; }
+    [Header("Value")]
+    public string targetTag; // Search component's GameObject by tag
+
+    // TypeModifier
+    protected T BaseValue;
+    protected abstract void ModifyValue(); // Override with setting CurrentValue to modified value
+
+    // ConcreteModifier
+    protected abstract T CurrentValue { get; set; } // Override with getter and setter for target property
 
     private IEnumerator current;
 
-    protected void Apply()
+    protected virtual void Start()
     {
-        CurrentValue = BaseValue * multiplier + adder;
+        BaseValue = CurrentValue;
+        if (activateOnStart == true)
+            Activate();
+    }
+
+    private void OnDestroy()
+    {
+        Deactivate();
+    }
+
+    private void Apply()
+    {
+        ModifyValue();
         if (applyPermanently == true)
             BaseValue = CurrentValue;
     }
 
-    protected void Unapply()
+    private void Unapply()
     {
         CurrentValue = BaseValue;
     }

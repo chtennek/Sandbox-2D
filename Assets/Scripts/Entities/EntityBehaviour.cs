@@ -9,7 +9,7 @@ public class EntityBehaviour : MonoBehaviour
     public float lifetime = Mathf.Infinity;
     public bool destroyOnDeath = true;
     public bool damageTriggersDeath = false;
-    public StatusBar lifebar;
+    public GameValue lifebar;
 
     [Header("Effects")]
     public int damage = 0;
@@ -57,8 +57,8 @@ public class EntityBehaviour : MonoBehaviour
         if (damage <= 0)
             return;
 
-        lifebar.currentValue -= damage;
-        if (lifebar.currentValue > 0)
+        lifebar.Value -= damage;
+        if (lifebar.Value > 0)
             OnDamage();
         else
             OnDeath();

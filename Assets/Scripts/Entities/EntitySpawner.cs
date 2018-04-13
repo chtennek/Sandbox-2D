@@ -5,7 +5,6 @@ using UnityEngine.Serialization;
 
 public class EntitySpawner : InputBehaviour
 {
-    [Header("Input")]
     public string buttonName = "Fire";
 
     [Header("Spawn")]
