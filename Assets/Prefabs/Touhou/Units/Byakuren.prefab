@@ -1039,11 +1039,12 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: ContextUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-  mask:
+  layerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 4294967295
   tagMask: []
   ignoreSiblings: 1
+  preferRigidbody: 1
 --- !u!114 &114134747332475968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1472,12 +1473,12 @@ MonoBehaviour:
   activateOnStart: 0
   applyPermanently: 0
   time: Infinity
-  tagName: 
-  target: {fileID: 0}
-  multiplier: 1.5
-  adder: 0
-  setValue: 0
-  setter: 0
+  targetTag: 
+  parameters:
+    multiplier: 1
+    adder: 0
+    setValue: 0
+    setter: 0
 --- !u!114 &114859629297317768
 MonoBehaviour:
   m_ObjectHideFlags: 1

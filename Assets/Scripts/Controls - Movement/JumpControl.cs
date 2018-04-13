@@ -14,6 +14,7 @@ public class JumpControl : BoostControl
         bool isGrounded = mover.IsGrounded();
         if (isGrounded) RefreshJumps();
 
+        if (input == null) return;
         if (input.GetButtonDown(buttonName))
         {
             float targetHeight = magnitude;

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(GridMovement))]
-public class GridControl : InputBehaviour
+public class GridControl : MonoBehaviour
 {
     [Header("Input")]
+    public InputReceiver input;
     public string axisPairName = "Move";
     public GridLayout.CellSwizzle swizzle = GridLayout.CellSwizzle.XYZ;
     public float bufferWindow = 0f; // Set to negative for input delay
@@ -15,14 +16,31 @@ public class GridControl : InputBehaviour
     public Vector3 gravity = .1f * Vector3.down; // "gravity" by [TODO] travelTime per unit
     public bool slide; // [TODO] ice behaviour
 
-    protected PathControl pathControl;
-    protected GridMovement gridMovement;
+    [Header("References")]
+    [SerializeField]
+    private PathControl pathControl;
+    [SerializeField]
+    private GridMovement gridMovement;
 
-    protected override void Awake()
+    private void Reset()
     {
-        base.Awake();
-        pathControl = GetComponent<PathControl>();
-        gridMovement = GetComponent<GridMovement>();
+        if (input == null)
+            input = GetComponentInParent<InputReceiver>();
+
+        if (pathControl == null)
+            pathControl = GetComponentInParent<PathControl>();
+
+        if (gridMovement == null)
+            gridMovement = GetComponentInParent<GridMovement>();
+    }
+
+    private void Awake()
+    {
+        if (pathControl == null || gridMovement == null)
+        {
+            Warnings.ComponentMissing(this);
+            enabled = false;
+        }
     }
 
     protected virtual void Update()
@@ -44,7 +62,8 @@ public class GridControl : InputBehaviour
         ProcessMovement(movement);
     }
 
-    protected virtual void ProcessMovement(Vector3 movement) {
+    protected virtual void ProcessMovement(Vector3 movement)
+    {
         if (movement == Vector3.zero)
             return;
 

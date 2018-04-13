@@ -114,12 +114,13 @@ MonoBehaviour:
   activateOnStart: 1
   applyPermanently: 1
   time: Infinity
-  tagName: Score
+  targetTag: Score
+  parameters:
+    multiplier: 1
+    adder: 500
+    setValue: 0
+    setter: 0
   target: {fileID: 0}
-  multiplier: 1
-  adder: 500
-  setValue: 0
-  setter: 0
 --- !u!114 &114169415261152406
 MonoBehaviour:
   m_ObjectHideFlags: 1

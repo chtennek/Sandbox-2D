@@ -470,10 +470,12 @@
     <Compile Include="Assets\Scripts\Levels\LevelObjectNPC.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelObjectStart.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelStartLocation.cs" />
+    <Compile Include="Assets\Scripts\Modifiers\ColorModifier.cs" />
     <Compile Include="Assets\Scripts\Modifiers\FloatModifier.cs" />
     <Compile Include="Assets\Scripts\Modifiers\FloatModifierModifier.cs" />
     <Compile Include="Assets\Scripts\Modifiers\GameValueModifier.cs" />
-    <Compile Include="Assets\Scripts\Modifiers\Modifier.cs" />
+    <Compile Include="Assets\Scripts\Modifiers\MaterialColorModifier.cs" />
+    <Compile Include="Assets\Scripts\Modifiers\ModifierBase.cs" />
     <Compile Include="Assets\Scripts\Modifiers\MovementModifier.cs" />
     <Compile Include="Assets\Scripts\Movement\GridMovement.cs" />
     <Compile Include="Assets\Scripts\Movement\PathControl.cs" />

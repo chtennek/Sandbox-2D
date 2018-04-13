@@ -208,12 +208,13 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: ContextUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-  mask:
+  layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
   tagMask:
   - Enemy
   ignoreSiblings: 1
+  preferRigidbody: 1
 --- !u!114 &114847949610278598
 MonoBehaviour:
   m_ObjectHideFlags: 1

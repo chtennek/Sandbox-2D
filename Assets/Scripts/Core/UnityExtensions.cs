@@ -23,4 +23,9 @@ public static class UnityExtensions
     {
         return (mask.value & (1 << layer)) > 0;
     }
+
+    public static Color Multiply(this Color color, float value)
+    {
+        return value * (Vector4)color;
+    }
 }

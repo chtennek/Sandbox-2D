@@ -5,15 +5,16 @@ using UnityEngine.Events;
 
 public class CollideTrigger : ContextTrigger
 {
-    [SerializeField] private LayerMask mask;
-    [SerializeField] private string[] tagMask;
-    [SerializeField] private bool ignoreSiblings = true;
+    public LayerMask layerMask = ~0;
+    public string[] tagMask;
+    public bool ignoreSiblings = true;
+    public bool preferRigidbody = true;
 
     private bool TransformMask(Transform other)
     {
         if (ignoreSiblings && other.parent != null && transform.parent == other.transform.parent)
             return false;
-        if (mask.Contains(other.gameObject.layer) == false)
+        if (layerMask.Contains(other.gameObject.layer) == false)
             return false;
 
         if (tagMask.Length == 0)
@@ -44,9 +45,23 @@ public class CollideTrigger : ContextTrigger
         Active = false;
     }
 
+    private Transform FindRigidbody(Transform other, Collider coll = null, Collider2D coll2D = null)
+    {
+        if (preferRigidbody == true)
+        {
+            if (coll != null && coll.attachedRigidbody != null)
+                return coll.attachedRigidbody.transform;
+
+            if (coll2D != null && coll2D.attachedRigidbody != null)
+                return coll2D.attachedRigidbody.transform;
+        }
+        return other;
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
-        Transform other = collision.transform;
+        Transform other = FindRigidbody(collision.transform, coll: collision);
+
         if (TransformMask(other) == false)
             return;
 
@@ -55,7 +70,8 @@ public class CollideTrigger : ContextTrigger
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Transform other = collision.transform;
+        Transform other = FindRigidbody(collision.transform, coll2D: collision);
+
         if (TransformMask(other) == false)
             return;
 
@@ -64,7 +80,8 @@ public class CollideTrigger : ContextTrigger
 
     private void OnTriggerExit(Collider collision)
     {
-        Transform other = collision.transform;
+        Transform other = FindRigidbody(collision.transform, coll: collision);
+
         if (TransformMask(other) == false)
             return;
 
@@ -73,7 +90,8 @@ public class CollideTrigger : ContextTrigger
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Transform other = collision.transform;
+        Transform other = FindRigidbody(collision.transform, coll2D: collision);
+
         if (TransformMask(other) == false)
             return;
 

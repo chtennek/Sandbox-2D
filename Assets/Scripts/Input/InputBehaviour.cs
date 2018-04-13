@@ -15,6 +15,9 @@ public class InputBehaviour : MonoBehaviour
     protected virtual void Awake()
     {
         if (input == null)
+        {
             Warnings.ComponentMissing<InputReceiver>(this);
+            enabled = false;
+        }
     }
 }

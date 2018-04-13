@@ -52,7 +52,7 @@ public class CarpentaleGridMovement : GridMovement
         HashSet<Transform> mergeables = new HashSet<Transform>();
         foreach (GridMovement obj in objects)
         {
-            if (obj.gameObject.tag == mergeObjectsWithTag)
+            if (obj != null && obj.gameObject.tag == mergeObjectsWithTag) // [TODO] figure out why obj can be null
                 mergeables.Add(obj.transform);
         }
         return mergeables;

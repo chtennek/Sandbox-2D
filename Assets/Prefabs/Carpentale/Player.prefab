@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114576399410253258}
   - component: {fileID: 114601132709211986}
   - component: {fileID: 135237023325484502}
+  - component: {fileID: 114967971584945516}
   m_Layer: 8
   m_Name: Interactor
   m_TagString: Untagged
@@ -1225,8 +1226,10 @@ MonoBehaviour:
   swizzle: 1
   bufferWindow: 0
   turnSeparately: 0
-  gravity: {x: 0, y: 0, z: 0}
+  gravity: {x: 0, y: -0.1, z: 0}
   slide: 0
+  pathControl: {fileID: 114633385148052134}
+  gridMovement: {fileID: 114870918158277448}
 --- !u!114 &114140086495262636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1238,7 +1241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd3b6546229a5549a5fbe022cfe6a0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 0}
+  input: {fileID: 114499353553932082}
   axisPairName: Move
   restrictToXAxis: 0
   restrictToYAxis: 0
@@ -1452,6 +1455,11 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
+    onInactive:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   input: {fileID: 114499353553932082}
   buttonName: Fire
 --- !u!114 &114499353553932082
@@ -1527,6 +1535,11 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
+    onInactive:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   requireAllActive: 1
   requireAllInactive: 0
   triggers:
@@ -1577,10 +1590,65 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
+    onInactive:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  contextEvents:
+    onActivate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114967971584945516}
+          m_MethodName: SwitchTarget
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 114601132709211986}
+          m_MethodName: DebugLog
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: ContextUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    onDeactivate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114967971584945516}
+          m_MethodName: Deactivate
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: ContextUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    onActive:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ContextUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
   mask:
     serializedVersion: 2
     m_Bits: 4294967295
-  tagName: Block
+  tagMask:
+  - Block
   ignoreSiblings: 1
 --- !u!114 &114633385148052134
 MonoBehaviour:
@@ -1588,7 +1656,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1822312378946538}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff06ea77462834fc2a6d0a3a943a1b54, type: 3}
   m_Name: 
@@ -1618,7 +1686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52cfc6bdf4b706849af14cca14a3a225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 0}
+  input: {fileID: 114499353553932082}
   buttonName: Jump
   overrideVelocity: 1
   magnitude: 1.5
@@ -1650,8 +1718,28 @@ MonoBehaviour:
   mergeEffectPrefab: {fileID: 4156879727944578, guid: 816651df04fde4accbc1c830bfe553df,
     type: 2}
   mergeObjectsWithTag: Block
-  mergeTime: 1
+  mergeTime: 0.5
   mergeContributionWindow: 1
+--- !u!114 &114967971584945516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1020618701621642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fbd2a60be7eb7d4ab626d34b73f3b29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateOnStart: 0
+  applyPermanently: 0
+  time: Infinity
+  targetTag: 
+  parameters:
+    multiplier: 1.5
+    setValue: 1
+    setter: {r: 1, g: 1, b: 1, a: 1}
+  target: {fileID: 0}
 --- !u!114 &114997323669900894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1676,6 +1764,11 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     onActive:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    onInactive:
       m_PersistentCalls:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
