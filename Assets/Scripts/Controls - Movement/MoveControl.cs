@@ -53,7 +53,8 @@ public class MoveControl : InputBehaviour
         }
 
         // Figure out which walk speed to use
-        float tq = Mathv.LerpQRound(0, 1, Mathf.InverseLerp(input.deadZone, 1, movement.magnitude), walkSpeedLevels);
+        float inputMagnitude = Mathf.InverseLerp(input.deadZone, 1, movement.magnitude);
+        float tq = (walkSpeedLevels <= 1) ? 1 : Mathv.LerpQRound(0, 1, inputMagnitude, walkSpeedLevels);
 
         // Calculate target velocity
         Vector3 targetVelocity;

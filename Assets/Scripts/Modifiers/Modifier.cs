@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Modifier : MonoBehaviour {
+public abstract class Modifier : MonoBehaviour
+{
+    protected float BaseValue;
+    protected abstract float CurrentValue { get; set; }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [SerializeField] private float multiplier;
+    [SerializeField] private float adder;
+    [SerializeField] private float time;
+
+    public void Activate() {
+        CurrentValue = BaseValue * multiplier + adder;
+    }
+
+    public void Deactivate() {
+        CurrentValue = BaseValue;
+    }
 }
