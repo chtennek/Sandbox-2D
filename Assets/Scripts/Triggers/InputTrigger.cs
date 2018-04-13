@@ -13,21 +13,22 @@ public class InputTrigger : Trigger
         input = GetComponentInParent<InputReceiver>();
     }
 
-	private void Awake()
-	{
-        if (input == null) {
+    private void Awake()
+    {
+        if (input == null)
+        {
             Debug.LogWarning(Warnings.NoComponentSpecified(this, typeof(InputReceiver)));
             enabled = false;
         }
-	}
+    }
 
-	protected override void Update()
-	{
+    protected override void Update()
+    {
         if (input.GetButtonDown(buttonName))
             Active = true;
-        else if (input.GetButtonUp(buttonName))
+        if (input.GetButtonUp(buttonName))
             Active = false;
 
         base.Update();
-	}
+    }
 }

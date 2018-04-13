@@ -2,30 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedModifier : Modifier {
-    [SerializeField] private MoveControl control;
+public class SpeedModifier : Modifier
+{
 
-	private void Reset()
-	{
+    [Space]
+    [SerializeField]
+    private MoveControl control;
+
+    private void Reset()
+    {
         control = GetComponentInParent<MoveControl>();
-	}
+    }
 
-	private void Awake()
-	{
+    private void Awake()
+    {
         if (control != null)
             BaseValue = control.walkSpeed;
-	}
+    }
 
-	protected override float CurrentValue
-	{
-		get
-		{
+    protected override float CurrentValue
+    {
+        get
+        {
             return control.walkSpeed;
-		}
+        }
 
-		set
-		{
+        set
+        {
             control.walkSpeed = value;
-		}
-	}
+        }
+    }
 }

@@ -532,6 +532,7 @@
     <Compile Include="Assets\ProCore\ProGrids\Editor\pg_ParameterWindow.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Editor\pg_Preferences.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Editor\pg_ToggleContent.cs" />
+    <Compile Include="Assets\Scripts\Editor\ButtonDrawer.cs" />
     <Compile Include="Assets\Scripts\Editor\ChildrenOverwritingEditor.cs" />
     <Compile Include="Assets\Scripts\Editor\DictionaryPropertyDrawer.cs" />
     <Compile Include="Assets\Scripts\Editor\LevelBuilderEditor.cs" />
