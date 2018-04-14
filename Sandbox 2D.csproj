@@ -264,12 +264,6 @@
     <Reference Include="DOTween50">
       <HintPath>Assets/Plugins/Demigiant/DOTween/DOTween50.dll</HintPath>
     </Reference>
-    <Reference Include="Rewired_Core">
-      <HintPath>Assets/Plugins/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Rewired_Windows_Lib">
-      <HintPath>Assets/Plugins/Rewired/Internal/Libraries/Runtime/Rewired_Windows_Lib.dll</HintPath>
-    </Reference>
     <Reference Include="ProBuilderCore-Unity5">
       <HintPath>Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
     </Reference>
@@ -285,6 +279,18 @@
     <Reference Include="Poly2Tri">
       <HintPath>Assets/ProCore/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
     </Reference>
+    <Reference Include="Rewired_Core">
+      <HintPath>Assets/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Windows_Lib">
+      <HintPath>Assets/Rewired/Internal/Libraries/Runtime/Rewired_Windows_Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="TextMeshPro-2017.3-1.0.56-Editor">
+      <HintPath>Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-1.0.56-Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="TextMeshPro-2017.3-1.0.56-Runtime">
+      <HintPath>Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-1.0.56-Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.4/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
@@ -296,12 +302,6 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="TextMeshPro-2017.3-1.0.56-Runtime">
-      <HintPath>Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-1.0.56-Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="TextMeshPro-2017.3-1.0.56-Editor">
-      <HintPath>Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-1.0.56-Editor.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:\Program Files\Unity 2018.1.0b12\Editor\Data\MonoBleedingEdge\lib\mono\unity\mscorlib.dll</HintPath>
@@ -354,8 +354,114 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Addons\CameraPathCreator\DEMO\CPC_DEMO_UpDown.cs" />
-    <Compile Include="Assets\Addons\CameraPathCreator\Scripts\CPC_CameraPath.cs" />
+    <Compile Include="Assets\Assets\Scripts\AI\AIInputReceiver.cs" />
+    <Compile Include="Assets\Assets\Scripts\AI\MovementAI.cs" />
+    <Compile Include="Assets\Assets\Scripts\AI\TrackingAI.cs" />
+    <Compile Include="Assets\Assets\Scripts\AI\TurnAI.cs" />
+    <Compile Include="Assets\Assets\Scripts\Animation\AnimatorBase.cs" />
+    <Compile Include="Assets\Assets\Scripts\Animation\InputToAnimator.cs" />
+    <Compile Include="Assets\Assets\Scripts\Animation\RigidbodyToAnimator.cs" />
+    <Compile Include="Assets\Assets\Scripts\Animation\WaypointToAnimator.cs" />
+    <Compile Include="Assets\Assets\Scripts\Camera\ScreenFollowBehaviour.cs" />
+    <Compile Include="Assets\Assets\Scripts\Camera\ScreenFollowObject.cs" />
+    <Compile Include="Assets\Assets\Scripts\Camera\ScreenShake.cs" />
+    <Compile Include="Assets\Assets\Scripts\Controls - Movement\BoostControl.cs" />
+    <Compile Include="Assets\Assets\Scripts\Controls - Movement\GridControl.cs" />
+    <Compile Include="Assets\Assets\Scripts\Controls - Movement\JumpControl.cs" />
+    <Compile Include="Assets\Assets\Scripts\Controls - Movement\MoveControl.cs" />
+    <Compile Include="Assets\Assets\Scripts\Controls - Movement\PositionControl.cs" />
+    <Compile Include="Assets\Assets\Scripts\Controls - Movement\TurnControl.cs" />
+    <Compile Include="Assets\Assets\Scripts\Controls - Strategy\EntityManager.cs" />
+    <Compile Include="Assets\Assets\Scripts\Controls - Strategy\EntitySelector.cs" />
+    <Compile Include="Assets\Assets\Scripts\Controls - Strategy\OrderFreeMove.cs" />
+    <Compile Include="Assets\Assets\Scripts\Controls - Strategy\OrderGridMove.cs" />
+    <Compile Include="Assets\Assets\Scripts\Controls - Strategy\WaypointMovement.cs" />
+    <Compile Include="Assets\Assets\Scripts\Core\DebugBehaviour.cs" />
+    <Compile Include="Assets\Assets\Scripts\Core\GameValue.cs" />
+    <Compile Include="Assets\Assets\Scripts\Core\Mathv.cs" />
+    <Compile Include="Assets\Assets\Scripts\Core\Polar2.cs" />
+    <Compile Include="Assets\Assets\Scripts\Core\Sequence.cs" />
+    <Compile Include="Assets\Assets\Scripts\Core\SerializableDictionaries.cs" />
+    <Compile Include="Assets\Assets\Scripts\Core\SerializableTypes.cs" />
+    <Compile Include="Assets\Assets\Scripts\Core\UnityExtensions.cs" />
+    <Compile Include="Assets\Assets\Scripts\Core\Warnings.cs" />
+    <Compile Include="Assets\Assets\Scripts\Data\PathPoint.cs" />
+    <Compile Include="Assets\Assets\Scripts\Data\Rotator.cs" />
+    <Compile Include="Assets\Assets\Scripts\Dialogue\Actor.cs" />
+    <Compile Include="Assets\Assets\Scripts\Dialogue\Dialogue.cs" />
+    <Compile Include="Assets\Assets\Scripts\Effects\ColorRandomizer.cs" />
+    <Compile Include="Assets\Assets\Scripts\Effects\Randomc.cs" />
+    <Compile Include="Assets\Assets\Scripts\Entities\EntityBehaviour.cs" />
+    <Compile Include="Assets\Assets\Scripts\Entities\EntityMultiSpawner.cs" />
+    <Compile Include="Assets\Assets\Scripts\Entities\EntitySpawner.cs" />
+    <Compile Include="Assets\Assets\Scripts\Games\Candy Crush\MatchTrigger.cs" />
+    <Compile Include="Assets\Assets\Scripts\Games\Candy Crush\SpawnTrigger.cs" />
+    <Compile Include="Assets\Assets\Scripts\Games\Carpentale\AdjacencyTrigger.cs" />
+    <Compile Include="Assets\Assets\Scripts\Games\Carpentale\CarpentaleGridMovement.cs" />
+    <Compile Include="Assets\Assets\Scripts\Games\Carpentale\GrabParentProperties.cs" />
+    <Compile Include="Assets\Assets\Scripts\Games\Carpentale\GridGrabControl.cs" />
+    <Compile Include="Assets\Assets\Scripts\Games\Pokemon\PokemonActorBehaviour.cs" />
+    <Compile Include="Assets\Assets\Scripts\Games\Pokemon\PokemonBehaviour.cs" />
+    <Compile Include="Assets\Assets\Scripts\Games\Pokemon\PokemonDataSerializer.cs" />
+    <Compile Include="Assets\Assets\Scripts\Games\Pokemon\PokemonLevel.cs" />
+    <Compile Include="Assets\Assets\Scripts\Games\Pokemon\PokemonSpecies.cs" />
+    <Compile Include="Assets\Assets\Scripts\Generators\ProceduralGenerator.cs" />
+    <Compile Include="Assets\Assets\Scripts\Input\DefaultInputReceiver.cs" />
+    <Compile Include="Assets\Assets\Scripts\Input\InputBehaviour.cs" />
+    <Compile Include="Assets\Assets\Scripts\Input\InputReceiver.cs" />
+    <Compile Include="Assets\Assets\Scripts\Input\RewiredInputReceiver.cs" />
+    <Compile Include="Assets\Assets\Scripts\Interactions\DialogueOnInteract.cs" />
+    <Compile Include="Assets\Assets\Scripts\Interactions\InteractableBehaviour.cs" />
+    <Compile Include="Assets\Assets\Scripts\Interactions\InteractorBehaviour.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\InventoryBase.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\InventoryItem.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\ItemBase.cs" />
+    <Compile Include="Assets\Assets\Scripts\Levels\IBuilder.cs" />
+    <Compile Include="Assets\Assets\Scripts\Levels\Level.cs" />
+    <Compile Include="Assets\Assets\Scripts\Levels\LevelBuilder.cs" />
+    <Compile Include="Assets\Assets\Scripts\Levels\LevelData.cs" />
+    <Compile Include="Assets\Assets\Scripts\Levels\LevelExitBehaviour.cs" />
+    <Compile Include="Assets\Assets\Scripts\Levels\LevelManager.cs" />
+    <Compile Include="Assets\Assets\Scripts\Levels\LevelObjectBase.cs" />
+    <Compile Include="Assets\Assets\Scripts\Levels\LevelObjectExit.cs" />
+    <Compile Include="Assets\Assets\Scripts\Levels\LevelObjectNPC.cs" />
+    <Compile Include="Assets\Assets\Scripts\Levels\LevelObjectStart.cs" />
+    <Compile Include="Assets\Assets\Scripts\Levels\LevelStartLocation.cs" />
+    <Compile Include="Assets\Assets\Scripts\Modifiers\ColorModifier.cs" />
+    <Compile Include="Assets\Assets\Scripts\Modifiers\FloatModifier.cs" />
+    <Compile Include="Assets\Assets\Scripts\Modifiers\FloatModifierModifier.cs" />
+    <Compile Include="Assets\Assets\Scripts\Modifiers\GameValueModifier.cs" />
+    <Compile Include="Assets\Assets\Scripts\Modifiers\MaterialColorModifier.cs" />
+    <Compile Include="Assets\Assets\Scripts\Modifiers\ModifierBase.cs" />
+    <Compile Include="Assets\Assets\Scripts\Modifiers\MovementModifier.cs" />
+    <Compile Include="Assets\Assets\Scripts\Movement\GridMovement.cs" />
+    <Compile Include="Assets\Assets\Scripts\Movement\PathControl.cs" />
+    <Compile Include="Assets\Assets\Scripts\Movement\RigidbodyWrapper.cs" />
+    <Compile Include="Assets\Assets\Scripts\Physics\CameraCollider2D.cs" />
+    <Compile Include="Assets\Assets\Scripts\Physics\GravityField.cs" />
+    <Compile Include="Assets\Assets\Scripts\Physics\JumpEffector.cs" />
+    <Compile Include="Assets\Assets\Scripts\Physics\LaserBehaviour.cs" />
+    <Compile Include="Assets\Assets\Scripts\Plugins\ButtonAttribute.cs" />
+    <Compile Include="Assets\Assets\Scripts\Plugins\ButtonTest.cs" />
+    <Compile Include="Assets\Assets\Scripts\Plugins\CollapsableEventDrawer.cs" />
+    <Compile Include="Assets\Assets\Scripts\Plugins\LABColor.cs" />
+    <Compile Include="Assets\Assets\Scripts\Session\DataSerializer.cs" />
+    <Compile Include="Assets\Assets\Scripts\Session\PlaySessionManager.cs" />
+    <Compile Include="Assets\Assets\Scripts\Session\ScreenDialogueBehaviour.cs" />
+    <Compile Include="Assets\Assets\Scripts\Session\SingletonMessenger.cs" />
+    <Compile Include="Assets\Assets\Scripts\Tiles\BorderedTile.cs" />
+    <Compile Include="Assets\Assets\Scripts\Triggers\CollideTrigger.cs" />
+    <Compile Include="Assets\Assets\Scripts\Triggers\CompoundTrigger.cs" />
+    <Compile Include="Assets\Assets\Scripts\Triggers\ContextTrigger.cs" />
+    <Compile Include="Assets\Assets\Scripts\Triggers\InputTrigger.cs" />
+    <Compile Include="Assets\Assets\Scripts\Triggers\TimeTrigger.cs" />
+    <Compile Include="Assets\Assets\Scripts\Triggers\Trigger.cs" />
+    <Compile Include="Assets\Assets\Scripts\Triggers\ValueTrigger.cs" />
+    <Compile Include="Assets\Assets\Scripts\UI\INavigator.cs" />
+    <Compile Include="Assets\Assets\Scripts\UI\InGameMenu.cs" />
+    <Compile Include="Assets\Assets\Scripts\UI\PokemonUINavigator.cs" />
+    <Compile Include="Assets\Assets\Scripts\UI\UINavigator.cs" />
+    <Compile Include="Assets\Assets\Scripts\UI\UINavigatorMessenger.cs" />
     <Compile Include="Assets\ProCore\Polybrush\Code\Enum\z_BrushMirror.cs" />
     <Compile Include="Assets\ProCore\Polybrush\Code\Enum\z_ComponentIndex.cs" />
     <Compile Include="Assets\ProCore\Polybrush\Code\Enum\z_Culling.cs" />
@@ -397,114 +503,57 @@
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_SceneMeshRender.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Util.cs" />
     <Compile Include="Assets\ProCore\ProGrids\MonoBehaviour\pg_IgnoreSnap.cs" />
-    <Compile Include="Assets\Scripts\AI\AIInputReceiver.cs" />
-    <Compile Include="Assets\Scripts\AI\MovementAI.cs" />
-    <Compile Include="Assets\Scripts\AI\TrackingAI.cs" />
-    <Compile Include="Assets\Scripts\AI\TurnAI.cs" />
-    <Compile Include="Assets\Scripts\Animation\AnimatorBase.cs" />
-    <Compile Include="Assets\Scripts\Animation\InputToAnimator.cs" />
-    <Compile Include="Assets\Scripts\Animation\RigidbodyToAnimator.cs" />
-    <Compile Include="Assets\Scripts\Animation\WaypointToAnimator.cs" />
-    <Compile Include="Assets\Scripts\Camera\ScreenFollowBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Camera\ScreenFollowObject.cs" />
-    <Compile Include="Assets\Scripts\Camera\ScreenShake.cs" />
-    <Compile Include="Assets\Scripts\Controls - Movement\BoostControl.cs" />
-    <Compile Include="Assets\Scripts\Controls - Movement\GridControl.cs" />
-    <Compile Include="Assets\Scripts\Controls - Movement\JumpControl.cs" />
-    <Compile Include="Assets\Scripts\Controls - Movement\MoveControl.cs" />
-    <Compile Include="Assets\Scripts\Controls - Movement\PositionControl.cs" />
-    <Compile Include="Assets\Scripts\Controls - Movement\TurnControl.cs" />
-    <Compile Include="Assets\Scripts\Controls - Strategy\EntityManager.cs" />
-    <Compile Include="Assets\Scripts\Controls - Strategy\EntitySelector.cs" />
-    <Compile Include="Assets\Scripts\Controls - Strategy\OrderFreeMove.cs" />
-    <Compile Include="Assets\Scripts\Controls - Strategy\OrderGridMove.cs" />
-    <Compile Include="Assets\Scripts\Controls - Strategy\WaypointMovement.cs" />
-    <Compile Include="Assets\Scripts\Core\DebugBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Core\GameValue.cs" />
-    <Compile Include="Assets\Scripts\Core\Mathv.cs" />
-    <Compile Include="Assets\Scripts\Core\Polar2.cs" />
-    <Compile Include="Assets\Scripts\Core\Sequence.cs" />
-    <Compile Include="Assets\Scripts\Core\SerializableDictionaries.cs" />
-    <Compile Include="Assets\Scripts\Core\SerializableTypes.cs" />
-    <Compile Include="Assets\Scripts\Core\UnityExtensions.cs" />
-    <Compile Include="Assets\Scripts\Core\Warnings.cs" />
-    <Compile Include="Assets\Scripts\Data\PathPoint.cs" />
-    <Compile Include="Assets\Scripts\Data\Rotator.cs" />
-    <Compile Include="Assets\Scripts\Dialogue\Actor.cs" />
-    <Compile Include="Assets\Scripts\Dialogue\Dialogue.cs" />
-    <Compile Include="Assets\Scripts\Effects\ColorRandomizer.cs" />
-    <Compile Include="Assets\Scripts\Effects\Randomc.cs" />
-    <Compile Include="Assets\Scripts\Entities\EntityBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Entities\EntityMultiSpawner.cs" />
-    <Compile Include="Assets\Scripts\Entities\EntitySpawner.cs" />
-    <Compile Include="Assets\Scripts\Games\Candy Crush\MatchTrigger.cs" />
-    <Compile Include="Assets\Scripts\Games\Candy Crush\SpawnTrigger.cs" />
-    <Compile Include="Assets\Scripts\Games\Carpentale\AdjacencyTrigger.cs" />
-    <Compile Include="Assets\Scripts\Games\Carpentale\CarpentaleGridMovement.cs" />
-    <Compile Include="Assets\Scripts\Games\Carpentale\GrabParentProperties.cs" />
-    <Compile Include="Assets\Scripts\Games\Carpentale\GridGrabControl.cs" />
-    <Compile Include="Assets\Scripts\Games\Pokemon\PokemonActorBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Games\Pokemon\PokemonBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Games\Pokemon\PokemonDataSerializer.cs" />
-    <Compile Include="Assets\Scripts\Games\Pokemon\PokemonLevel.cs" />
-    <Compile Include="Assets\Scripts\Games\Pokemon\PokemonSpecies.cs" />
-    <Compile Include="Assets\Scripts\Generators\ProceduralGenerator.cs" />
-    <Compile Include="Assets\Scripts\Input\DefaultInputReceiver.cs" />
-    <Compile Include="Assets\Scripts\Input\InputBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Input\InputReceiver.cs" />
-    <Compile Include="Assets\Scripts\Input\RewiredInputReceiver.cs" />
-    <Compile Include="Assets\Scripts\Interactions\DialogueOnInteract.cs" />
-    <Compile Include="Assets\Scripts\Interactions\InteractableBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Interactions\InteractorBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Items\InventoryBase.cs" />
-    <Compile Include="Assets\Scripts\Items\InventoryItem.cs" />
-    <Compile Include="Assets\Scripts\Items\ItemBase.cs" />
-    <Compile Include="Assets\Scripts\Levels\IBuilder.cs" />
-    <Compile Include="Assets\Scripts\Levels\Level.cs" />
-    <Compile Include="Assets\Scripts\Levels\LevelBuilder.cs" />
-    <Compile Include="Assets\Scripts\Levels\LevelData.cs" />
-    <Compile Include="Assets\Scripts\Levels\LevelExitBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Levels\LevelManager.cs" />
-    <Compile Include="Assets\Scripts\Levels\LevelObjectBase.cs" />
-    <Compile Include="Assets\Scripts\Levels\LevelObjectExit.cs" />
-    <Compile Include="Assets\Scripts\Levels\LevelObjectNPC.cs" />
-    <Compile Include="Assets\Scripts\Levels\LevelObjectStart.cs" />
-    <Compile Include="Assets\Scripts\Levels\LevelStartLocation.cs" />
-    <Compile Include="Assets\Scripts\Modifiers\ColorModifier.cs" />
-    <Compile Include="Assets\Scripts\Modifiers\FloatModifier.cs" />
-    <Compile Include="Assets\Scripts\Modifiers\FloatModifierModifier.cs" />
-    <Compile Include="Assets\Scripts\Modifiers\GameValueModifier.cs" />
-    <Compile Include="Assets\Scripts\Modifiers\MaterialColorModifier.cs" />
-    <Compile Include="Assets\Scripts\Modifiers\ModifierBase.cs" />
-    <Compile Include="Assets\Scripts\Modifiers\MovementModifier.cs" />
-    <Compile Include="Assets\Scripts\Movement\GridMovement.cs" />
-    <Compile Include="Assets\Scripts\Movement\PathControl.cs" />
-    <Compile Include="Assets\Scripts\Movement\RigidbodyWrapper.cs" />
-    <Compile Include="Assets\Scripts\Physics\CameraCollider2D.cs" />
-    <Compile Include="Assets\Scripts\Physics\GravityField.cs" />
-    <Compile Include="Assets\Scripts\Physics\JumpEffector.cs" />
-    <Compile Include="Assets\Scripts\Physics\LaserBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Plugins\ButtonAttribute.cs" />
-    <Compile Include="Assets\Scripts\Plugins\ButtonTest.cs" />
-    <Compile Include="Assets\Scripts\Plugins\CollapsableEventDrawer.cs" />
-    <Compile Include="Assets\Scripts\Plugins\LABColor.cs" />
-    <Compile Include="Assets\Scripts\Session\DataSerializer.cs" />
-    <Compile Include="Assets\Scripts\Session\PlaySessionManager.cs" />
-    <Compile Include="Assets\Scripts\Session\ScreenDialogueBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Session\SingletonMessenger.cs" />
-    <Compile Include="Assets\Scripts\Tiles\BorderedTile.cs" />
-    <Compile Include="Assets\Scripts\Triggers\CollideTrigger.cs" />
-    <Compile Include="Assets\Scripts\Triggers\CompoundTrigger.cs" />
-    <Compile Include="Assets\Scripts\Triggers\ContextTrigger.cs" />
-    <Compile Include="Assets\Scripts\Triggers\InputTrigger.cs" />
-    <Compile Include="Assets\Scripts\Triggers\TimeTrigger.cs" />
-    <Compile Include="Assets\Scripts\Triggers\Trigger.cs" />
-    <Compile Include="Assets\Scripts\Triggers\ValueTrigger.cs" />
-    <Compile Include="Assets\Scripts\UI\INavigator.cs" />
-    <Compile Include="Assets\Scripts\UI\InGameMenu.cs" />
-    <Compile Include="Assets\Scripts\UI\PokemonUINavigator.cs" />
-    <Compile Include="Assets\Scripts\UI\UINavigator.cs" />
-    <Compile Include="Assets\Scripts\UI\UINavigatorMessenger.cs" />
+    <Compile Include="Assets\Rewired\Examples\ControlRemapping1\Scripts\ControlRemappingDemo1.cs" />
+    <Compile Include="Assets\Rewired\Examples\CustomControllersTilt\Scripts\CustomControllersTiltDemo.cs" />
+    <Compile Include="Assets\Rewired\Examples\CustomControllersTouch\Scripts\CustomControllerDemo.cs" />
+    <Compile Include="Assets\Rewired\Examples\CustomControllersTouch\Scripts\CustomControllerDemo_Player.cs" />
+    <Compile Include="Assets\Rewired\Examples\CustomControllersTouch\Scripts\TouchButtonExample.cs" />
+    <Compile Include="Assets\Rewired\Examples\CustomControllersTouch\Scripts\TouchJoystickExample.cs" />
+    <Compile Include="Assets\Rewired\Examples\EightPlayers\Scripts\EightPlayersExample_Player.cs" />
+    <Compile Include="Assets\Rewired\Examples\FallbackJoystickIdentification\Scripts\FallbackJoystickIdentificationDemo.cs" />
+    <Compile Include="Assets\Rewired\Examples\PressAnyButtonToJoin\Scripts\PressAnyButtonToJoinExample_Assigner.cs" />
+    <Compile Include="Assets\Rewired\Examples\PressAnyButtonToJoin\Scripts\PressAnyButtonToJoinExample_GamePlayer.cs" />
+    <Compile Include="Assets\Rewired\Examples\PressStartToJoin\Scripts\PressStartToJoinExample_Assigner.cs" />
+    <Compile Include="Assets\Rewired\Examples\PressStartToJoin\Scripts\PressStartToJoinExample_GamePlayer.cs" />
+    <Compile Include="Assets\Rewired\Examples\Shared\Scripts\Bullet.cs" />
+    <Compile Include="Assets\Rewired\Examples\SimpleControlRemapping\Scripts\SimpleControlRemapping.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Examples\ControlMapperDemo\Scripts\ControlMapperDemoMessage.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ButtonInfo.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\CalibrationWindow.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\CanvasScalerExt.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\CanvasScalerFitter.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ControlMapper.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ControlMapper_Classes.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ControlMapper_Enums.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ControlMapper_InputGrid.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ControlMapper_WindowManager.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\CustomButton.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\CustomSlider.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\CustomToggle.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ICustomSelectable.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\InputBehaviorWindow.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\InputFieldInfo.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\InputRow.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\LanguageData.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ScrollbarVisibilityHelper.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ScrollRectSelectableChild.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ThemedElement.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ThemeSettings.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ToggleInfo.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\UIControl.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\UIControlSet.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\UIElementInfo.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\UIGroup.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\UIImageHelper.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\UISelectionUtility.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\UISliderControl.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\UITools.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\Window.cs" />
+    <Compile Include="Assets\Rewired\Integration\UnityUI\RewiredStandaloneInputModule.cs" />
+    <Compile Include="Assets\Rewired\Internal\Scripts\DataStorage\UserDataStore_PlayerPrefs.cs" />
+    <Compile Include="Assets\Rewired\Internal\Scripts\InputManager.cs" />
+    <Compile Include="Assets\Rewired\Internal\Scripts\Misc\ExternalTools.cs" />
+    <Compile Include="Assets\Rewired\Internal\Scripts\Platforms\Ouya\OuyaInputSource.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -540,18 +589,18 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Fonts\Handwriting\Amatic_SC\OFL.txt" />
-    <None Include="Assets\Fonts\Handwriting\Dancing_Script\OFL.txt" />
-    <None Include="Assets\Fonts\Handwriting\Gloria_Hallelujah\OFL.txt" />
-    <None Include="Assets\Fonts\Handwriting\Great_Vibes\OFL.txt" />
-    <None Include="Assets\Fonts\Handwriting\Handlee\OFL.txt" />
-    <None Include="Assets\Fonts\Handwriting\Indie_Flower\OFL.txt" />
-    <None Include="Assets\Fonts\Handwriting\Itim\OFL.txt" />
-    <None Include="Assets\Fonts\Handwriting\Neucha\OFL.txt" />
-    <None Include="Assets\Fonts\Handwriting\Pacifico\OFL.txt" />
-    <None Include="Assets\Fonts\Handwriting\Patrick_Hand\OFL.txt" />
-    <None Include="Assets\Fonts\Handwriting\Sacramento\OFL.txt" />
-    <None Include="Assets\Fonts\Handwriting\Shadows_Into_Light\OFL.txt" />
+    <None Include="Assets\Assets\Fonts\Handwriting\Amatic_SC\OFL.txt" />
+    <None Include="Assets\Assets\Fonts\Handwriting\Dancing_Script\OFL.txt" />
+    <None Include="Assets\Assets\Fonts\Handwriting\Gloria_Hallelujah\OFL.txt" />
+    <None Include="Assets\Assets\Fonts\Handwriting\Great_Vibes\OFL.txt" />
+    <None Include="Assets\Assets\Fonts\Handwriting\Handlee\OFL.txt" />
+    <None Include="Assets\Assets\Fonts\Handwriting\Indie_Flower\OFL.txt" />
+    <None Include="Assets\Assets\Fonts\Handwriting\Itim\OFL.txt" />
+    <None Include="Assets\Assets\Fonts\Handwriting\Neucha\OFL.txt" />
+    <None Include="Assets\Assets\Fonts\Handwriting\Pacifico\OFL.txt" />
+    <None Include="Assets\Assets\Fonts\Handwriting\Patrick_Hand\OFL.txt" />
+    <None Include="Assets\Assets\Fonts\Handwriting\Sacramento\OFL.txt" />
+    <None Include="Assets\Assets\Fonts\Handwriting\Shadows_Into_Light\OFL.txt" />
     <None Include="Assets\Plugins\2d-extras\Assets\Tilemap\Brushes\Tint Brush Smooth\Shaders\TintedTilemap.shader" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween43.xml" />
@@ -559,10 +608,6 @@
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween50.xml" />
     <None Include="Assets\Plugins\Demigiant\DOTween\Editor\DOTweenEditor.XML" />
     <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
-    <None Include="Assets\Plugins\Rewired\Documentation\ReadMe.txt" />
-    <None Include="Assets\Plugins\Rewired\Documentation\ReleaseNotes.txt" />
-    <None Include="Assets\Plugins\Rewired\Documentation\licences.txt" />
-    <None Include="Assets\Plugins\Rewired\Internal\Libraries\Runtime\Rewired_Core.XML" />
     <None Include="Assets\ProCore\Polybrush\Font\Apache License.txt" />
     <None Include="Assets\ProCore\Polybrush\README.txt" />
     <None Include="Assets\ProCore\Polybrush\Shader\Example\z_UnlitTextureBlend.shader" />
@@ -616,6 +661,10 @@
     <None Include="Assets\ProCore\ProGrids\About\changelog.txt" />
     <None Include="Assets\ProCore\ProGrids\About\pc_AboutEntry_ProGrids.txt" />
     <None Include="Assets\ProCore\ProGrids\Shader\pg_GridShader.shader" />
+    <None Include="Assets\Rewired\Documentation\ReadMe.txt" />
+    <None Include="Assets\Rewired\Documentation\ReleaseNotes.txt" />
+    <None Include="Assets\Rewired\Documentation\licences.txt" />
+    <None Include="Assets\Rewired\Internal\Libraries\Runtime\Rewired_Core.XML" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Readme.txt" />
     <None Include="Assets\Standard Assets\Effects\Projectors\Guidelines.txt" />
@@ -647,6 +696,7 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\UETools\Readme.txt" />
     <None Include="C:\ProgramData\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.2\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="C:\ProgramData\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.2\Editor\Resources\Styles\Main_Light.uss" />
     <None Include="C:\ProgramData\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.2\Editor\Resources\Templates\Alert.uxml" />
