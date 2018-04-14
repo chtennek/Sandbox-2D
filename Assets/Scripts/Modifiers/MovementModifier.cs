@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovementModifier : FloatModifier
 {
-    private MoveControl target;
+    public MoveControl target;
 
     protected override float CurrentValue
     {

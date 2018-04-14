@@ -497,7 +497,9 @@
     <Compile Include="Assets\Scripts\Triggers\CompoundTrigger.cs" />
     <Compile Include="Assets\Scripts\Triggers\ContextTrigger.cs" />
     <Compile Include="Assets\Scripts\Triggers\InputTrigger.cs" />
+    <Compile Include="Assets\Scripts\Triggers\TimeTrigger.cs" />
     <Compile Include="Assets\Scripts\Triggers\Trigger.cs" />
+    <Compile Include="Assets\Scripts\Triggers\ValueTrigger.cs" />
     <Compile Include="Assets\Scripts\UI\INavigator.cs" />
     <Compile Include="Assets\Scripts\UI\InGameMenu.cs" />
     <Compile Include="Assets\Scripts\UI\PokemonUINavigator.cs" />
