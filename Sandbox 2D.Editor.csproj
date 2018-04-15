@@ -297,6 +297,9 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:/Program Files/Unity 2018.1.0b13/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="JMOAssets">
+      <HintPath>Assets/Imported Assets (Unused)/Shaders/JMO Assets/Editor/JMOAssets.dll</HintPath>
+    </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
@@ -433,11 +436,13 @@
     <Compile Include="Assets\Assets\Scripts\Editor\DictionaryPropertyDrawer.cs" />
     <Compile Include="Assets\Assets\Scripts\Editor\LevelBuilderEditor.cs" />
     <Compile Include="Assets\Assets\Scripts\Editor\PathEditor.cs" />
-    <Compile Include="Assets\Imported Assets (Unused)\VFX\Particlecollection_Free samples\Plugins\Effect\Editor\EffectControllerInspector.cs" />
-    <Compile Include="Assets\Imported Assets (Unused)\VFX\Particlecollection_Free samples\Plugins\Effect\Editor\EffectToolBar.cs" />
-    <Compile Include="Assets\Imported Assets (Unused)\VFX\Particlecollection_Free samples\Plugins\Effect\Editor\RenderEffectInspector.cs" />
-    <Compile Include="Assets\Imported Assets (Unused)\VFX\Particlecollection_Free samples\Plugins\Effect\Editor\ShaderCustomEditor\ShaderMaterialsEditor.cs" />
-    <Compile Include="Assets\Imported Assets (Unused)\VFX\Particlecollection_Free samples\Plugins\Effect\Editor\XUIUtils.cs" />
+    <Compile Include="Assets\Imported Assets (Unused)\Particles\Particlecollection_Free samples\Plugins\Effect\Editor\EffectControllerInspector.cs" />
+    <Compile Include="Assets\Imported Assets (Unused)\Particles\Particlecollection_Free samples\Plugins\Effect\Editor\EffectToolBar.cs" />
+    <Compile Include="Assets\Imported Assets (Unused)\Particles\Particlecollection_Free samples\Plugins\Effect\Editor\RenderEffectInspector.cs" />
+    <Compile Include="Assets\Imported Assets (Unused)\Particles\Particlecollection_Free samples\Plugins\Effect\Editor\ShaderCustomEditor\ShaderMaterialsEditor.cs" />
+    <Compile Include="Assets\Imported Assets (Unused)\Particles\Particlecollection_Free samples\Plugins\Effect\Editor\XUIUtils.cs" />
+    <Compile Include="Assets\Imported Assets (Unused)\Shaders\JMO Assets\Toony Colors\Editor\TCF_MaterialInspector.cs" />
+    <Compile Include="Assets\Imported Assets (Unused)\Shaders\WorldSpaceTransitions\fading\Editor\GenerateButtonsEditor.cs" />
     <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Brush Modes\z_BrushMode.cs" />
     <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Brush Modes\z_BrushModeMesh.cs" />
     <Compile Include="Assets\ProCore\Polybrush\Code\Editor\Brush Modes\z_BrushModePaint.cs" />
@@ -572,18 +577,53 @@
     <None Include="Assets\Imported Assets (Unused)\Models\Optimize SDKohaku-Chanz\Shader\Unitychan_chara_eye.shader" />
     <None Include="Assets\Imported Assets (Unused)\Models\Optimize SDKohaku-Chanz\Shader\readme.txt" />
     <None Include="Assets\Imported Assets (Unused)\Music\Cyberleaf Music - Chiptunes Lite\readme.txt" />
+    <None Include="Assets\Imported Assets (Unused)\Particles\Particle Ribbon by Moonflower Carnivore\Shaders\Particle Alpha Blend HDR.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Particles\Particle Ribbon by Moonflower Carnivore\readme_Simple_Particle_Ribbon.txt" />
+    <None Include="Assets\Imported Assets (Unused)\Particles\Particlecollection_Free samples\Plugins\Effect\Shader\ParticleAddEffect.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Particles\Particlecollection_Free samples\Plugins\Effect\Shader\ParticleAddSoftEffect.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Particles\Particlecollection_Free samples\Plugins\Effect\Shader\ParticleBlendEffect.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Particles\Particlecollection_Free samples\Plugins\Effect\Shader\ParticlePremultiplyBlend.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Particles\Particlecollection_Free samples\Plugins\Effect\Shader\Toon Additive.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Particles\Particlecollection_Free samples\Plugins\Effect\Shader\Toon Blended Premmultiply.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Particles\Particlecollection_Free samples\Plugins\Effect\Shader\effect_distortion_mask.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Particles\Particlecollection_Free samples\READ ME.txt" />
     <None Include="Assets\Imported Assets (Unused)\SFX\Vox Machina Demo\Instructions.txt" />
     <None Include="Assets\Imported Assets (Unused)\SFX\mai_free_voices\mai_free_voices.txt" />
-    <None Include="Assets\Imported Assets (Unused)\VFX\Particle Ribbon by Moonflower Carnivore\Shaders\Particle Alpha Blend HDR.shader" />
-    <None Include="Assets\Imported Assets (Unused)\VFX\Particle Ribbon by Moonflower Carnivore\readme_Simple_Particle_Ribbon.txt" />
-    <None Include="Assets\Imported Assets (Unused)\VFX\Particlecollection_Free samples\Plugins\Effect\Shader\ParticleAddEffect.shader" />
-    <None Include="Assets\Imported Assets (Unused)\VFX\Particlecollection_Free samples\Plugins\Effect\Shader\ParticleAddSoftEffect.shader" />
-    <None Include="Assets\Imported Assets (Unused)\VFX\Particlecollection_Free samples\Plugins\Effect\Shader\ParticleBlendEffect.shader" />
-    <None Include="Assets\Imported Assets (Unused)\VFX\Particlecollection_Free samples\Plugins\Effect\Shader\ParticlePremultiplyBlend.shader" />
-    <None Include="Assets\Imported Assets (Unused)\VFX\Particlecollection_Free samples\Plugins\Effect\Shader\Toon Additive.shader" />
-    <None Include="Assets\Imported Assets (Unused)\VFX\Particlecollection_Free samples\Plugins\Effect\Shader\Toon Blended Premmultiply.shader" />
-    <None Include="Assets\Imported Assets (Unused)\VFX\Particlecollection_Free samples\Plugins\Effect\Shader\effect_distortion_mask.shader" />
-    <None Include="Assets\Imported Assets (Unused)\VFX\Particlecollection_Free samples\READ ME.txt" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\BrokenVector\LowPolyShaders\Shaders\LowPolyPBRShader.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\BrokenVector\LowPolyShaders\Shaders\LowPolyUnlitShader.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\Colorblind Effect\Assets\Shaders\Colorblind.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\Colorblind Effect\Documentation\ReadMe.txt" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\Dissolve Edge by Moonflower Carnivore\Shaders\Transparent_Unlit_DissolveEdge.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\Dissolve Edge by Moonflower Carnivore\readme_DissolveEdge.txt" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\JMO Assets\!JMO Assets Readme.txt" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\JMO Assets\Toony Colors\!ToonyColors Readme.txt" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\JMO Assets\Toony Colors\Shaders 2.0\Regular.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\JMO Assets\Toony Colors\Shaders 2.0\Rim Alpha.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\JMO Assets\Toony Colors\Shaders 2.0\Rim Lighting.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\JMO Assets\Toony Colors\Shaders 2.0\Rim Outline.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\MadeByProfessorOakie\SimpleSonarShader\Readme.txt" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\MadeByProfessorOakie\SimpleSonarShader\SimpleSonarShader.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\Tazo_shader\Free Shader Collection\Detail\detail.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\Tazo_shader\Free Shader Collection\Height Map\Heightmap.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\Tazo_shader\Free Shader Collection\Reflect Cubemap\reflect.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\Tazo_shader\Free Shader Collection\Saturation Brightness\Saturation_Brightness.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\Tazo_shader\Free Shader Collection\UV Rotate\UV_rotate.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\WorldSpaceTransitions\AdvancedGizmo\Unlit-Color-Gizmo.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\WorldSpaceTransitions\AdvancedGizmo\Unlit-Color.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\WorldSpaceTransitions\fading\fadingShaders\CGIncludes\section_clipping_CS.cginc" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\WorldSpaceTransitions\fading\fadingShaders\CGIncludes\standard_shadow_CS.cginc" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\WorldSpaceTransitions\fading\fadingShaders\FadingDissolve.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\WorldSpaceTransitions\fading\fadingShaders\FadingDissolveGlow.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\WorldSpaceTransitions\fading\fadingShaders\FadingDissolveMetBump.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\WorldSpaceTransitions\fading\fadingShaders\FadingScreenFading.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\WorldSpaceTransitions\fading\fadingShaders\FadingScreenFadingDS.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\WorldSpaceTransitions\fading\fadingShaders\FadingScreenMetalBumped.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\WorldSpaceTransitions\fading\fadingShaders\FadingScreenMetalBumpedDS.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\WorldSpaceTransitions\fading\fadingShaders\FadingTransparent.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\WorldSpaceTransitions\fading\fadingShaders\FadingTransparentDS.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\WorldSpaceTransitions\fading\fadingShaders\NewUnlitShader.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\WorldSpaceTransitions\fading\fadingShaders\ScreenDissolveGlow.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Shaders\WorldSpaceTransitions\fading\fadingShaders\UnlitShader.shader" />
     <None Include="Assets\Plugins\2d-extras\Assets\Tilemap\Brushes\Tint Brush Smooth\Shaders\TintedTilemap.shader" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween43.xml" />
