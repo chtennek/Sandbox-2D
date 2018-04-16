@@ -10,31 +10,43 @@ public class GameValue : MonoBehaviour
     public float minValue = 0;
     public float maxValue = Mathf.Infinity;
     public float m_currentValue = 0; // Initial value
+    public bool clampMin = true;
+    public bool clampMax = true;
     public bool roundToInt = true;
     public float Value
     {
         get { return m_currentValue; }
         set
         {
-            m_currentValue = Mathf.Clamp(value, minValue, maxValue);
+            m_currentValue = Mathf.Clamp(value, clampMin ? minValue : -Mathf.Infinity, clampMax ? maxValue : Mathf.Infinity);
             if (roundToInt == true)
                 m_currentValue = Mathf.Round(m_currentValue);
         }
     }
+    public float ValuePercent
+    {
+        get { return (maxValue == 0) ? 0 : Value / maxValue; }
+        set
+        {
+            Value = value * maxValue;
+        }
+    }
 
     [Header("Display")]
-    public float m_lerpValue = .51f;
-    [Space]
+    public float m_lerpRatio = 0f;
+    public float m_lerpSpeed = 1; // Change display in [Value] amount per tick
+    public int m_lerpTick = 1; // Number of frames per tick
 
+    [Space]
     public Text m_numericalDisplay;
     public int m_zeroPadding = 0;
 
     [Space]
-
     public Image m_canvasDisplay;
     public bool m_overrideColor = false;
-    public Color[] m_displayColor;
-    public bool m_useColorGradient = false;
+    public Gradient m_displayColor;
+
+    private float m_displayValue;
 
     private void Reset()
     {
@@ -44,88 +56,64 @@ public class GameValue : MonoBehaviour
             m_canvasDisplay = GetComponent<Image>();
     }
 
-    public void AddValue(int value)
+    private void Start()
     {
-        Value = Mathf.Clamp(Value + value, minValue, maxValue);
-    }
-
-    public void SubtractValue(int value)
-    {
-        Value = Mathf.Clamp(Value - value, minValue, maxValue);
-    }
-
-    public void SetValue(int value)
-    {
-        Value = Mathf.Clamp(value, minValue, maxValue);
-    }
-
-    public void AddPercent(float percent)
-    {
-        AddValue((int)Mathf.Floor(percent * maxValue));
-    }
-
-    public void SubtractPercent(float percent)
-    {
-        SubtractValue((int)Mathf.Floor(percent * maxValue));
-    }
-
-    public void SetPercent(float percent)
-    {
-        SetValue((int)Mathf.Floor(percent * maxValue));
-    }
-
-    private void Update()
-    {
-        Value = Mathf.Clamp(Value, minValue, maxValue);
-
+        m_displayValue = Value; // If we fail to retrieve a display value, set to Value immediately
         if (m_numericalDisplay != null)
         {
-            int lastValue = 0;
-            Int32.TryParse(m_numericalDisplay.text, out lastValue);
-            m_numericalDisplay.text = Mathf.RoundToInt(Mathf.Lerp(lastValue, Value, m_lerpValue)).ToString().PadLeft(m_zeroPadding, '0');
+            Single.TryParse(m_numericalDisplay.text, out m_displayValue);
         }
-        if (m_canvasDisplay != null)
+        else if (m_canvasDisplay != null)
         {
-            m_canvasDisplay.fillAmount = Mathf.Lerp(m_canvasDisplay.fillAmount, GetValuePercent(), m_lerpValue);
-            if (m_overrideColor)
+            m_displayValue = m_canvasDisplay.fillAmount * maxValue;
+        }
+
+        IEnumerator current = Coroutine_UpdateDisplay();
+        StartCoroutine(current);
+    }
+
+    private IEnumerator Coroutine_UpdateDisplay()
+    {
+        while (true)
+        {
+            m_displayValue = DetermineNextDisplayValue(m_displayValue);
+
+            if (m_numericalDisplay != null)
             {
-                m_canvasDisplay.color = DetermineDisplayColor();
+                float finalDisplayValue = m_displayValue;
+                if (roundToInt == true)
+                    finalDisplayValue = Mathf.Round(finalDisplayValue);
+
+                m_numericalDisplay.text = finalDisplayValue.ToString().PadLeft(m_zeroPadding, '0');
+            }
+
+            if (m_canvasDisplay != null)
+            {
+                m_canvasDisplay.fillAmount = (maxValue == 0) ? 0 : m_displayValue / maxValue;
+
+                if (m_overrideColor == true)
+                {
+                    m_canvasDisplay.color = m_displayColor.Evaluate(ValuePercent);
+                }
+            }
+
+            for (int i = 0; i < m_lerpTick; i++)
+            {
+                yield return null;
             }
         }
     }
 
-    private float GetValuePercent()
+    private float DetermineNextDisplayValue(float lastValue)
     {
-        return (maxValue == 0) ? 1 : (float)Value / maxValue;
-    }
+        float nextValue = Mathf.Lerp(lastValue, Value, m_lerpRatio);
+        Debug.Log(new Vector3(Value, lastValue, nextValue));
 
-    private void SetValuePercent(float percent)
-    {
-        Value = (int)(percent * maxValue);
-    }
-
-    private Color DetermineDisplayColor()
-    {
-        if (m_displayColor.Length == 0)
-            return Color.clear;
-        if (m_displayColor.Length == 1)
-            return m_displayColor[0];
-        if (Value == maxValue)
-            return m_displayColor[m_displayColor.Length - 1];
-
-        // Find where we are in displayColor[]
-        float percent = GetValuePercent();
-        int buckets = (m_useColorGradient) ? m_displayColor.Length - 1 : m_displayColor.Length;
-        int index = (int)Mathf.Floor(percent * buckets);
-        float percentInBucket = (percent * buckets) % 1;
-
-        if (m_useColorGradient)
-        {
-            return Color.Lerp(m_displayColor[index], m_displayColor[index + 1], percentInBucket);
-        }
+        if (Mathf.Abs(Value - nextValue) <= m_lerpSpeed)
+            return Value;
+        else if (nextValue < Value)
+            return nextValue + m_lerpSpeed;
         else
-        {
-            return m_displayColor[index];
-        }
+            return nextValue - m_lerpSpeed;
     }
 }

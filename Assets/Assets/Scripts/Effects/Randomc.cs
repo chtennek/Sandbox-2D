@@ -2,13 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ColorSpace
-{
-    RGB,
-    HSV,
-    LAB,
-}
-
 public enum ColorChannel
 {
     Red,

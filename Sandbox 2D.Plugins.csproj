@@ -431,6 +431,14 @@
     <None Include="Assets\Imported Assets (Unused)\Shaders\WorldSpaceTransitions\fading\fadingShaders\NewUnlitShader.shader" />
     <None Include="Assets\Imported Assets (Unused)\Shaders\WorldSpaceTransitions\fading\fadingShaders\ScreenDissolveGlow.shader" />
     <None Include="Assets\Imported Assets (Unused)\Shaders\WorldSpaceTransitions\fading\fadingShaders\UnlitShader.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Sprites\Custom Character_Vol1\Read Me(En,Jp).txt" />
+    <None Include="Assets\Imported Assets (Unused)\Sprites\Little Cat Girl\Anima2D\Examples\Shaders\Unlit-Alpha-Cull-off.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Sprites\Little Cat Girl\Anima2D\Examples\Shaders\VertexLitOneDirectional.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Sprites\Little Cat Girl\Anima2D\Examples\Shaders\VisibleInsideMask.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Sprites\Little Cat Girl\Anima2D\Examples\Shaders\VisibleOutsideMask.shader" />
+    <None Include="Assets\Imported Assets (Unused)\Sprites\Little Cat Girl\Anima2D\Licenses.txt" />
+    <None Include="Assets\Imported Assets (Unused)\Sprites\Little Cat Girl\Anima2D\Readme.txt" />
+    <None Include="Assets\Imported Assets (Unused)\Sprites\Little Cat Girl\Anima2D\Version.txt" />
     <None Include="Assets\Plugins\2d-extras\Assets\Tilemap\Brushes\Tint Brush Smooth\Shaders\TintedTilemap.shader" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween43.xml" />
