@@ -376,6 +376,7 @@
     <Compile Include="Assets\Assets\Scripts\Controls - Strategy\OrderFreeMove.cs" />
     <Compile Include="Assets\Assets\Scripts\Controls - Strategy\OrderGridMove.cs" />
     <Compile Include="Assets\Assets\Scripts\Controls - Strategy\WaypointMovement.cs" />
+    <Compile Include="Assets\Assets\Scripts\Core\AudioManager.cs" />
     <Compile Include="Assets\Assets\Scripts\Core\DebugBehaviour.cs" />
     <Compile Include="Assets\Assets\Scripts\Core\GameValue.cs" />
     <Compile Include="Assets\Assets\Scripts\Core\Mathv.cs" />

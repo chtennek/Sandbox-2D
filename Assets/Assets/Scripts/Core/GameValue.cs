@@ -35,11 +35,12 @@ public class GameValue : MonoBehaviour
     [Header("Display")]
     public float m_lerpRatio = 0f;
     public float m_lerpSpeed = 1; // Change display in [Value] amount per tick
-    public int m_lerpTick = 1; // Number of frames per tick
+    public int m_ticksPerSecond = 10;
 
     [Space]
     public Text m_numericalDisplay;
     public int m_zeroPadding = 0;
+    public string m_tickSound; // Sound played on each tick
 
     [Space]
     public Image m_canvasDisplay;
@@ -84,7 +85,12 @@ public class GameValue : MonoBehaviour
                 if (roundToInt == true)
                     finalDisplayValue = Mathf.Round(finalDisplayValue);
 
-                m_numericalDisplay.text = finalDisplayValue.ToString().PadLeft(m_zeroPadding, '0');
+                string text = finalDisplayValue.ToString().PadLeft(m_zeroPadding, '0');
+                if (m_numericalDisplay.text != text)
+                {
+                    AudioManager.PlaySound(m_tickSound);
+                    m_numericalDisplay.text = text;
+                }
             }
 
             if (m_canvasDisplay != null)
@@ -97,17 +103,13 @@ public class GameValue : MonoBehaviour
                 }
             }
 
-            for (int i = 0; i < m_lerpTick; i++)
-            {
-                yield return null;
-            }
+            yield return new WaitForSeconds(1f / m_ticksPerSecond);
         }
     }
 
     private float DetermineNextDisplayValue(float lastValue)
     {
         float nextValue = Mathf.Lerp(lastValue, Value, m_lerpRatio);
-        Debug.Log(new Vector3(Value, lastValue, nextValue));
 
         if (Mathf.Abs(Value - nextValue) <= m_lerpSpeed)
             return Value;

@@ -1524,9 +1524,10 @@ MonoBehaviour:
   roundToInt: 1
   m_lerpRatio: 0
   m_lerpSpeed: 1
-  m_lerpTick: 1
+  m_ticksPerSecond: 10
   m_numericalDisplay: {fileID: 0}
   m_zeroPadding: 0
+  m_tickSound: 
   m_canvasDisplay: {fileID: 0}
   m_overrideColor: 0
   m_displayColor:

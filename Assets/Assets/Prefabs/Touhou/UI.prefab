@@ -203,9 +203,10 @@ MonoBehaviour:
   roundToInt: 1
   m_lerpRatio: 0.05
   m_lerpSpeed: 5
-  m_lerpTick: 1
+  m_ticksPerSecond: 30
   m_numericalDisplay: {fileID: 114613394111300706}
   m_zeroPadding: 10
+  m_tickSound: Score Up
   m_canvasDisplay: {fileID: 0}
   m_overrideColor: 0
   m_displayColor:
