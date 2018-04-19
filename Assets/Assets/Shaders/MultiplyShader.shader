@@ -13,8 +13,8 @@
     {
         Tags
         {
-        "Queue" = "Transparent"
-        "PreviewType" = "Plane"
+            "Queue" = "Transparent"
+            "PreviewType" = "Plane"
         }
 
         Pass 
@@ -56,8 +56,7 @@
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 addedCol = tex2D(_SubTex, i.uv) + (_Offset) * float4(1, 1, 1, 1);
-                fixed4 clampedCol = clamp(addedCol, 0, 1);
-                fixed4 appliedCol = lerp(float4(1, 1, 1, 1), clampedCol, _Magnitude);
+                fixed4 appliedCol = lerp(float4(1, 1, 1, 1), saturate(addedCol), _Magnitude);
                 fixed4 col = tex2D(_MainTex, i.uv) * appliedCol;
                 return col;
             }

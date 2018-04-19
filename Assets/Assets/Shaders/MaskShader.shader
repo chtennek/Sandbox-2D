@@ -1,4 +1,4 @@
-﻿Shader "Sandbox/MultiplyShader"
+﻿Shader "Sandbox/MaskShader"
 {
     Properties
     {
@@ -6,16 +6,19 @@
         _SubTex ("Texture Map", 2D) = "white" {}
         
         _Threshold("Threshold", Range(0, 1)) = 0.5
-        _Falloff("Falloff", Range(0, 1)) = 0.1
-        _Null("Null", Color) = (0, 0, 0, 1)
+        _Smoothness("Smoothness", Range(0, 1)) = 0
+
+        _HighPass("High Pass", Color) = (0, 0, 0, 0)
+        _Edge("Edge Color", Color) = (0, 0, 0, 0)
+        _LowPass("Low Pass", Color) = (0, 0, 0, 1)
     }
 
     SubShader
     {
         Tags
         {
-        "Queue" = "Transparent"
-        "PreviewType" = "Plane"
+            "Queue" = "Transparent"
+            "PreviewType" = "Plane"
         }
 
         Pass 
@@ -50,16 +53,47 @@
          
             sampler2D _MainTex;
             sampler2D _SubTex;
+            float4 _MainTex_ST;
+            float4 _SubTex_ST;
             
-            fixed _Threshold;
-            fixed _Falloff;
+            float _Threshold;
+            float _Smoothness;
 
-            fixed4 frag (v2f i) : SV_Target
+            float4 _HighPass;
+            float4 _Edge;
+            float4 _LowPass;
+
+            float4 frag (v2f i) : SV_Target
             {
-                fixed4 addedCol = tex2D(_SubTex, i.uv) + (_Threshold) * float4(1, 1, 1, 1);
-                fixed4 clampedCol = clamp(addedCol, 0, 1);
-                fixed4 appliedCol = lerp(float4(1, 1, 1, 1), clampedCol, _Falloff);
-                fixed4 col = tex2D(_MainTex, i.uv) * appliedCol;
+                float4 src = tex2D(_MainTex, i.uv * _MainTex_ST.xy);
+                float expandedThreshold = lerp(-_Smoothness, 1 + _Smoothness, _Threshold);
+
+                // Find if we are above/below the threshold
+                float val = tex2D(_SubTex, i.uv * _SubTex_ST.xy).x - expandedThreshold;
+                if (_Smoothness != 0)
+                    val = clamp(val / _Smoothness, -1, 1);
+                else
+                    val = sign(val);
+
+                // [TODO] only alpha blend what we need for performance
+                float4 high = float4(0, 0, 0, 1);
+                high.rgb = _HighPass.a * _HighPass.rgb + (1 - _HighPass.a) * src.rgb;
+
+                float4 edge = float4(0, 0, 0, 1);
+                edge.rgb = _Edge.a * _Edge.rgb + (1 - _Edge.a) * src.rgb;
+
+                float4 low = float4(0, 0, 0, 1);
+                low.rgb = _LowPass.a * _LowPass.rgb + (1 - _LowPass.a) * src.rgb;
+
+                if (val == 0)
+                    return edge;
+                else if (val > 0)
+                    return lerp(edge, high, val);
+                else
+                    return lerp(edge, low, -val);
+
+                float t = (1 + val) / 2;
+                float4 col = lerp(low, high, t);
                 return col;
             }
 

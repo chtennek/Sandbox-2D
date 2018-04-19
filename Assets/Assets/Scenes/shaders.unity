@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f696d61ab448e4782a68d46c5ac70d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effect: {fileID: 2100000, guid: fb120bfe3486d6346b0153f937c20024, type: 2}
+  effect: {fileID: 2100000, guid: a0964d88ef98c4f77a4fa86285f0a8e3, type: 2}
   propertyName: _Progress
   time: 1
   curve:
