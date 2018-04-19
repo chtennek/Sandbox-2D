@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 11452004}
   - component: {fileID: 114979640849826282}
   - component: {fileID: 114439625277176312}
+  - component: {fileID: 114351187048581784}
   m_Layer: 0
   m_Name: Rewired Input Manager
   m_TagString: Untagged
@@ -955,6 +956,52 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 136338}
   m_IsPrefabParent: 1
+--- !u!114 &114351187048581784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f9cb754cab64f16b7453dcc48e64ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comment: 
+  events:
+    onActivate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    onDeactivate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    onActive:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    onInactive:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  input: {fileID: 114439625277176312}
+  buttonName: Debug
 --- !u!114 &114439625277176312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -978,4 +1025,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7f4615940dca3a44810592214cdf483, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 0}
+  input: {fileID: 114439625277176312}

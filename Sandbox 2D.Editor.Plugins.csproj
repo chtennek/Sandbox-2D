@@ -436,6 +436,10 @@
     <Compile Include="Assets\Plugins\SerializableDictionary\Example\Editor\UserSerializableDictionaryPropertyDrawers.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Assets\Shaders\BasicShader.shader" />
+    <None Include="Assets\Assets\Shaders\MultiplyShader.shader" />
+    <None Include="Assets\Assets\Shaders\StandardShader.shader" />
+    <None Include="Assets\Assets\Shaders\UnlitShader.shader" />
     <None Include="Assets\Imported Assets (Unused)\Environments\Cartoon Temple Building Kit\ReadMe.txt" />
     <None Include="Assets\Imported Assets (Unused)\Fonts\Handwriting\Amatic_SC\OFL.txt" />
     <None Include="Assets\Imported Assets (Unused)\Fonts\Handwriting\Dancing_Script\OFL.txt" />

@@ -392,6 +392,7 @@
     <Compile Include="Assets\Assets\Scripts\Dialogue\Dialogue.cs" />
     <Compile Include="Assets\Assets\Scripts\Effects\ColorRandomizer.cs" />
     <Compile Include="Assets\Assets\Scripts\Effects\Randomc.cs" />
+    <Compile Include="Assets\Assets\Scripts\Effects\Transition.cs" />
     <Compile Include="Assets\Assets\Scripts\Entities\EntityBehaviour.cs" />
     <Compile Include="Assets\Assets\Scripts\Entities\EntityMultiSpawner.cs" />
     <Compile Include="Assets\Assets\Scripts\Entities\EntitySpawner.cs" />
@@ -656,6 +657,10 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Assets\Shaders\BasicShader.shader" />
+    <None Include="Assets\Assets\Shaders\MultiplyShader.shader" />
+    <None Include="Assets\Assets\Shaders\StandardShader.shader" />
+    <None Include="Assets\Assets\Shaders\UnlitShader.shader" />
     <None Include="Assets\Imported Assets (Unused)\Environments\Cartoon Temple Building Kit\ReadMe.txt" />
     <None Include="Assets\Imported Assets (Unused)\Fonts\Handwriting\Amatic_SC\OFL.txt" />
     <None Include="Assets\Imported Assets (Unused)\Fonts\Handwriting\Dancing_Script\OFL.txt" />

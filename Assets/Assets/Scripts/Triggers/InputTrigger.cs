@@ -10,7 +10,7 @@ public class InputTrigger : Trigger
 
     private void Reset()
     {
-        input = GetComponentInParent<InputReceiver>();
+        input = GetComponent<InputReceiver>();
     }
 
     private void Awake()
