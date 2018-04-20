@@ -2,8 +2,11 @@
 {
     Properties
     {
-        _MainTex ("Image", 2D) = "white" {}
-        _SubTex ("Texture Map", 2D) = "white" {}
+        _MainTex("Image", 2D) = "white" {}
+        _MaskTex("Mask", 2D) = "white" {}
+
+        _OffsetTex("Mask Offset", 2D) = "gray" {}
+        _OffsetFactor("Offset Multiplier", Range(0, 10)) = 1
         
         _Threshold("Threshold", Range(0, 1)) = 0.5
         _Smoothness("Smoothness", Range(0, 1)) = 0
@@ -52,10 +55,13 @@
             }
          
             sampler2D _MainTex;
-            sampler2D _SubTex;
+            sampler2D _MaskTex;
+            sampler2D _OffsetTex;
             float4 _MainTex_ST;
-            float4 _SubTex_ST;
+            float4 _MaskTex_ST;
+            float4 _OffsetTex_ST;
             
+            float _OffsetFactor;
             float _Threshold;
             float _Smoothness;
 
@@ -66,10 +72,14 @@
             float4 frag (v2f i) : SV_Target
             {
                 float4 src = tex2D(_MainTex, (i.uv + _MainTex_ST.zw) * _MainTex_ST.xy);
-                float expandedThreshold = lerp(-_Smoothness, 1 + _Smoothness, _Threshold);
+                float expand = _Smoothness + 0.5 * _OffsetFactor;
+                float expandedThreshold = lerp(-expand, 1 + expand, _Threshold);
 
                 // Find if we are above/below the threshold
-                float val = tex2D(_SubTex, (i.uv + _SubTex_ST.zw) * _SubTex_ST.xy).x - expandedThreshold;
+                float2 uv = i.uv + _MaskTex_ST.zw;
+                float offset = _OffsetFactor * (tex2D(_OffsetTex, (uv + _OffsetTex_ST.zw) * _OffsetTex_ST.xy).x - 0.5);
+                
+                float val = tex2D(_MaskTex, uv * _MaskTex_ST.xy).x + offset - expandedThreshold;
                 if (_Smoothness != 0)
                     val = clamp(val / _Smoothness, -1, 1);
                 else
