@@ -65,15 +65,17 @@
 
             float4 frag (v2f i) : SV_Target
             {
-                float4 src = tex2D(_MainTex, i.uv * _MainTex_ST.xy);
+                float4 src = tex2D(_MainTex, (i.uv + _MainTex_ST.zw) * _MainTex_ST.xy);
                 float expandedThreshold = lerp(-_Smoothness, 1 + _Smoothness, _Threshold);
 
                 // Find if we are above/below the threshold
-                float val = tex2D(_SubTex, i.uv * _SubTex_ST.xy).x - expandedThreshold;
+                float val = tex2D(_SubTex, (i.uv + _SubTex_ST.zw) * _SubTex_ST.xy).x - expandedThreshold;
                 if (_Smoothness != 0)
                     val = clamp(val / _Smoothness, -1, 1);
                 else
+                {
                     val = sign(val);
+                }
 
                 // [TODO] only alpha blend what we need for performance
                 float4 high = float4(0, 0, 0, 1);
