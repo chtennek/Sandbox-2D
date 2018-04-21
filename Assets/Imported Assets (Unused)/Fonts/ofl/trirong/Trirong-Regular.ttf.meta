@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 587b721f3cebf014ca66cae19d740eb6
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Trirong
+  fontNames:
+  - Trirong
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1839dd9811bd7a4448a8dceffbe83b5c, type: 3}
+  - {fileID: 12800000, guid: 376c32bc61c33ae40b8a8a8b5ec89f5b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -6,8 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Pokemon/menu-main.unity
-    guid: 8ca8b89912834c94e948db5ddb93ebf1
-  - enabled: 1
-    path: Assets/Scenes/Pokemon/pokemon.unity
-    guid: 004e5a86bba2afc429446205deea6b15
+    path: Assets/Assets/Scenes/shaders.unity
+    guid: 9e362935e3ea246b9953056121b23832
+  m_configObjects: {}

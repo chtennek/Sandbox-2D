@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: d97536a2746158b4eaa93bf59947ba1a
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Siemreap
+  fontNames:
+  - Siemreap
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b5c27f5f3ffd8ec4b93d9e23330d58c1, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

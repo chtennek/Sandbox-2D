@@ -18,7 +18,7 @@ public class EntitySpawner : InputBehaviour
 
     [Header("Velocity")]
     public Cylindrical3 velocity;
-    public Vector3 spread;
+    public Vector3 spread; // [TODO]
 
     private float nextAllowableSpawnTime = -Mathf.Infinity;
 
@@ -38,7 +38,8 @@ public class EntitySpawner : InputBehaviour
     }
 
     public virtual void Spawn() { Spawn(velocity); }
-    protected void Spawn(Vector3 velocity)
+    protected void Spawn(Vector3 velocity) { Spawn(velocity, offset); }
+    protected void Spawn(Vector3 velocity, Vector3 offset)
     {
         Vector3 position = transform.position + transform.rotation * (Vector3)offset;
         Vector3 rotation = Vector3.forward * ((Polar2)velocity).O;

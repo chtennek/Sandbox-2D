@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: faa386b6968a7244683b9b457ad7dad7
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Hind Colombo
+  fontNames:
+  - Hind Colombo
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 345be850fdc2aca4f9a84bf21f94e034, type: 3}
+  - {fileID: 12800000, guid: 9aa5e02591bc6c741bba399afe4f6477, type: 3}
+  - {fileID: 12800000, guid: 2f901d95ca4aeb04cbdf1f25bbddab8f, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

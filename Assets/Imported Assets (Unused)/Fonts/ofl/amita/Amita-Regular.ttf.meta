@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 895b0914b6414494c98e699438052723
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Amita
+  fontNames:
+  - Amita
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 2c7a3c8f213694b419f8d5559256bbd9, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

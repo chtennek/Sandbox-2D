@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: e1efe0c35f3678d46a64c1a8aa9efa42
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Yaldevi Colombo
+  fontNames:
+  - Yaldevi Colombo
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: bf99a18c8399a7f4b86ae8a08db09a92, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

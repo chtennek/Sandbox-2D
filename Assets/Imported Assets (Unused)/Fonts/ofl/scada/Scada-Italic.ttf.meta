@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 95400c8a65a00e341b564378650fb266
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Scada
+  fontNames:
+  - Scada
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 47af11653c94f9142a9d88a1f2ed8fff, type: 3}
+  - {fileID: 12800000, guid: 12386b16407d8304598f3517e0592948, type: 3}
+  - {fileID: 12800000, guid: 4855273e827169c499f15fe024336898, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

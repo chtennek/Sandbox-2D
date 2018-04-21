@@ -1,0 +1,36 @@
+fileFormatVersion: 2
+guid: c7f5612fb6736bf4ca76ece6b89624d1
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Fira Sans Extra Condensed
+  fontNames:
+  - Fira Sans Extra Condensed
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 46af8e001a36061448a100efa8d42dfa, type: 3}
+  - {fileID: 12800000, guid: 02de04c09273f414fb6be2e946438472, type: 3}
+  - {fileID: 12800000, guid: 376a99f1aec11ce4c96befd3bd6e2738, type: 3}
+  - {fileID: 12800000, guid: 248c4da20de62fb45831f63393084de3, type: 3}
+  - {fileID: 12800000, guid: 37b7984376f5c004d94828dbb3bd239f, type: 3}
+  - {fileID: 12800000, guid: 9481afa3d82463a49913c97041593328, type: 3}
+  - {fileID: 12800000, guid: 98f1c7b38f6f2e64e83010588b95587f, type: 3}
+  - {fileID: 12800000, guid: 2fe800e4987f8524daf8560a636d7b84, type: 3}
+  - {fileID: 12800000, guid: a7cbbe0573437644e8bca9047d27c02b, type: 3}
+  - {fileID: 12800000, guid: 2d2c0646ae0b72b4a98076a1e5f1989f, type: 3}
+  - {fileID: 12800000, guid: 5fa0cad6fe60f7d4fb8920e30522beb0, type: 3}
+  - {fileID: 12800000, guid: 707a0b0b3a102cb4a88a6e83535a2e1a, type: 3}
+  - {fileID: 12800000, guid: 2aa38c0ced8a185428f88dd4dd2999a1, type: 3}
+  - {fileID: 12800000, guid: 4d3f05cee216ae34ea290ba09537d0cd, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

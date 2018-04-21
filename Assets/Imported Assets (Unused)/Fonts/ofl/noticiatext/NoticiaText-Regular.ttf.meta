@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 60cd6ce44f4fec8419f6ad4dc8c04b03
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Noticia Text
+  fontNames:
+  - Noticia Text
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 11b376e711d00dd49891332c8e1cd0c4, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

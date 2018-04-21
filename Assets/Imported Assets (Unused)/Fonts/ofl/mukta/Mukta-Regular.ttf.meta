@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: d998482deeb4b6e42a764245dd4fb4b9
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Mukta
+  fontNames:
+  - Mukta
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b88dc1a0eee1ac145947b81042820e1c, type: 3}
+  - {fileID: 12800000, guid: 13d5f9d01f3b8de469e7ec118aecc390, type: 3}
+  - {fileID: 12800000, guid: bbb0c551a2617fc4781cc72bd7e47c36, type: 3}
+  - {fileID: 12800000, guid: b03d8eb27753ed74fbf6324274940d14, type: 3}
+  - {fileID: 12800000, guid: 622394933da47b24e80cbcec41274f7a, type: 3}
+  - {fileID: 12800000, guid: 16f9a795b0b401c4b957f7876292d45f, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

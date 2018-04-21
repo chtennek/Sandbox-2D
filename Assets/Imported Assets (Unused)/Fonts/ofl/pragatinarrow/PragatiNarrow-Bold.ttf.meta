@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 45f0f1382fd80f048948a05f3d3bd9a5
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Pragati Narrow
+  fontNames:
+  - Pragati Narrow
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 28090e4d323fedd498791dae615a0070, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

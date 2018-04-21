@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 3767f012d9bab7e43acf5387a4aee49a
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Rokkitt
+  fontNames:
+  - Rokkitt
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 04ad906583671a747864a1cef635c146, type: 3}
+  - {fileID: 12800000, guid: 00c30ce9089fc4d4ba1aeaec15d82720, type: 3}
+  - {fileID: 12800000, guid: 28ac2efb4678baa48982a228b89cb14c, type: 3}
+  - {fileID: 12800000, guid: 2481379cba8788a449bd670280dc4fbc, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

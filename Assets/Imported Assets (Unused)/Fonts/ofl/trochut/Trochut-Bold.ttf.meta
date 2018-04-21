@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: fe98da6fab58eb140a1e87929553fb0a
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Trochut
+  fontNames:
+  - Trochut
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: e85054a0fc403624a9ea58de97f74afa, type: 3}
+  - {fileID: 12800000, guid: b0f024c95534fe84fbeb2f58884b21f7, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

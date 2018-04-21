@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: bb45d23a17e1072489bc458587df81ae
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Stardos Stencil
+  fontNames:
+  - Stardos Stencil
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3ad8bcde461c4ac40931b850bc5a5b17, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

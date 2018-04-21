@@ -12,7 +12,7 @@ public class TriggerEvents
     public UnityEvent onInactive;
 }
 
-public abstract class Trigger : MonoBehaviour
+public class Trigger : MonoBehaviour
 {
     [SerializeField]
     private string comment;
@@ -45,7 +45,8 @@ public abstract class Trigger : MonoBehaviour
             events.onInactive.Invoke();
     }
 
-    public void DebugLog() {
+    public void DebugLog()
+    {
         Debug.Log(gameObject);
     }
 }

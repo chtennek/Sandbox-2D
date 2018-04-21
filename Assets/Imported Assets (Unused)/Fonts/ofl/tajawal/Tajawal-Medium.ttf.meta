@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: b29cb4873b55d404182b3115f9930641
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Tajawal
+  fontNames:
+  - Tajawal
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 7a0016666b4655d45a0e63592a2f68cc, type: 3}
+  - {fileID: 12800000, guid: 23798f09ed2f0a143ac273cdc380030b, type: 3}
+  - {fileID: 12800000, guid: a538921b5dcaadc4bb9cc713554ab0e5, type: 3}
+  - {fileID: 12800000, guid: a7a20bdfa8a1f7547b093dc2db204b08, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

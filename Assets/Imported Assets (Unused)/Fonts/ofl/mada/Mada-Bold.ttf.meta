@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: d93969e45aac6d441a55d0fe7125cf5f
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Mada
+  fontNames:
+  - Mada
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 4e6433f16bb4a0c4a989cb001c7ce7fd, type: 3}
+  - {fileID: 12800000, guid: 5067e5e832da80e4790fd0d2fd79549f, type: 3}
+  - {fileID: 12800000, guid: 0d804909200c9374fa3c21fdd65ed6e2, type: 3}
+  - {fileID: 12800000, guid: 93b995aeec4842c488add26893157b81, type: 3}
+  - {fileID: 12800000, guid: 1eefc08f71253014abd0216e47d6c01c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

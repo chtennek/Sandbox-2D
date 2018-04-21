@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 80ad4bad2b4a5e3448e75c5ac5f31139
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Mukta Vaani
+  fontNames:
+  - Mukta Vaani
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 328d2b3a4b9da2843812b9504411d5cc, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: dee32200ff5ce04439e7adb39b75e296
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: PT Serif Caption
+  fontNames:
+  - PT Serif Caption
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 49bc0a4be54978b40aa27a7f7570472e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: be256c2597aa0884b8376da01ba7aee8
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Playfair Display SC
+  fontNames:
+  - Playfair Display SC
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 57ed3164ffd5c944e990c0934949399a, type: 3}
+  - {fileID: 12800000, guid: 51e49f552f6fe8843b99f3362ab6a881, type: 3}
+  - {fileID: 12800000, guid: 1fa4fec8d9294864db32230ad268eadb, type: 3}
+  - {fileID: 12800000, guid: 311157fd116d2b84dbdae1e39dd48745, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

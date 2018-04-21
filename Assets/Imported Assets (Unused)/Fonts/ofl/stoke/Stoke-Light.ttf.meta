@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: f24ca81fd6a27dc4280d05af99ecc164
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Stoke
+  fontNames:
+  - Stoke
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3e3996c32655390419fb8271c1ab0377, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

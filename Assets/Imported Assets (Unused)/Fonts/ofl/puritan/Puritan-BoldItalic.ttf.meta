@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: e2b731e391715a746b6d63c4dcd1160b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Puritan
+  fontNames:
+  - Puritan
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 66647af22456b154187ea03727c69a5f, type: 3}
+  - {fileID: 12800000, guid: b0cdb8d37b0f4c2459c218202e139391, type: 3}
+  - {fileID: 12800000, guid: a5721ac52830f4d4eb28c21140aab855, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

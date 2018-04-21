@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: f7564814fed176148990aeb709739874
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Zilla Slab
+  fontNames:
+  - Zilla Slab
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d8947730e7547294e91f5d8b8007ffb6, type: 3}
+  - {fileID: 12800000, guid: 6aa87a707d1f6cf48a097b1f8c02a014, type: 3}
+  - {fileID: 12800000, guid: 5cd547a542851b849a2ae99945550e15, type: 3}
+  - {fileID: 12800000, guid: 464ef6162ac1a1048979c48e5a94f7d7, type: 3}
+  - {fileID: 12800000, guid: 1f217318491115643acade82370003b8, type: 3}
+  - {fileID: 12800000, guid: 797cd258c7158144d85e6b3011b6498e, type: 3}
+  - {fileID: 12800000, guid: b9d913b99c0a70742b4176d24e7c6e51, type: 3}
+  - {fileID: 12800000, guid: 96df62e97ced3954b94fe5500eafb567, type: 3}
+  - {fileID: 12800000, guid: e931af4eb2ee2c64d916050e6003b578, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

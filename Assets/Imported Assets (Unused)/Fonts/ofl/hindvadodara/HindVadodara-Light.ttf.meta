@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 2ed8d433981af3f4fbb01fbd15d05836
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Hind Vadodara
+  fontNames:
+  - Hind Vadodara
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1a7eb66e65a6491469eab323f976f195, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

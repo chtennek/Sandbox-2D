@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 743b68a6d2716cf4a9ae77a57e8ee58e
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Simonetta
+  fontNames:
+  - Simonetta
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 73b003e775a7e2a4ba026a214d0a86d5, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: bbdb5cf9bf423f5449d8c473a91ead76
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Cormorant Unicase
+  fontNames:
+  - Cormorant Unicase
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 51b4ed519df0ebd42acb78b2250c1069, type: 3}
+  - {fileID: 12800000, guid: 285d8205720edc3469c745091ecbf978, type: 3}
+  - {fileID: 12800000, guid: a4e3cc9d05ab3114a9eebfc1d90f1305, type: 3}
+  - {fileID: 12800000, guid: 1be432df35089ca448cfbaa874514dbb, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: dc402fb143ac4f145849a53f53e72d05
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Mukta Mahee
+  fontNames:
+  - Mukta Mahee
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a5f46303ff1f7ac4c85c6436c33ecde3, type: 3}
+  - {fileID: 12800000, guid: 5d784c2659c96da49b23f9f003c77a9c, type: 3}
+  - {fileID: 12800000, guid: d4a4a44778e0ec3499edac7213bd99b0, type: 3}
+  - {fileID: 12800000, guid: 1b565d69d70fc544fb84780b1f40bfec, type: 3}
+  - {fileID: 12800000, guid: 805343a9c8841274aa0d8b235c82845e, type: 3}
+  - {fileID: 12800000, guid: 326bd73e4cf0ae141a9185b3a860e8c8, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

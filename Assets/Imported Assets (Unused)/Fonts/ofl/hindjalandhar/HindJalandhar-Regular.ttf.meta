@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: abbf6d87f930a2b4a989b058bbec50b2
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Hind Jalandhar
+  fontNames:
+  - Hind Jalandhar
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 8b8a5851114a56849aa9744662129bd7, type: 3}
+  - {fileID: 12800000, guid: 4a868c3a2a6c1a643b596598ec6d7a1d, type: 3}
+  - {fileID: 12800000, guid: 210173dca1976e848b15e07313b075f7, type: 3}
+  - {fileID: 12800000, guid: 795bd6fd6632e2642a214949c884b902, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

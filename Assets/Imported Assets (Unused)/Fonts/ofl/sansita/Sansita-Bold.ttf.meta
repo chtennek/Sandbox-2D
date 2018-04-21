@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 5d0ef94bdf523c04aa319de37176880e
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Sansita
+  fontNames:
+  - Sansita
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 0dcce53aa5d724b448e4d133bb22e298, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

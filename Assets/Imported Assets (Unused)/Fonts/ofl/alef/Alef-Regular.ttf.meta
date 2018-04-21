@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 6f955e264fdb33d408bf593bc3beb2b8
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Alef
+  fontNames:
+  - Alef
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 45d1e53b0b18c874882ff31f1e10f801, type: 3}
+  - {fileID: 12800000, guid: 2fa1e32d505016145853d629b7e82539, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: d77dd7e6f32fdec4eb7190f95e651ed7
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Arapey
+  fontNames:
+  - Arapey
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 5d02d82fe3868c240b1d144e697e834a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

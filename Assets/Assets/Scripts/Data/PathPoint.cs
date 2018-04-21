@@ -48,6 +48,11 @@ public class PathPoint
         this.approachMode = approachMode;
     }
 
+    public PathPoint(Vector3 position, float approachSpeed, PathMode approachMode, AnimationCurve curve) : this(position, approachSpeed, approachMode)
+    {
+        this.approachCurve = curve;
+    }
+
     public PathPoint(Vector3 position, Quaternion rotation, float approachSpeed) : this(position, approachSpeed)
     {
         this.rotation = rotation;
@@ -57,6 +62,11 @@ public class PathPoint
     public PathPoint(Vector3 position, Quaternion rotation, float approachSpeed, PathMode approachMode) : this(position, rotation, approachSpeed)
     {
         this.approachMode = approachMode;
+    }
+
+    public PathPoint(Vector3 position, Quaternion rotation, float approachSpeed, PathMode approachMode, AnimationCurve curve) : this(position, rotation, approachSpeed, approachMode)
+    {
+        this.approachCurve = curve;
     }
 
     public void RunEvents(float t1, float t2)

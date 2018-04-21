@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: c7a21a72d9dfc884aaf293a8aa0708b6
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Ek Mukta
+  fontNames:
+  - Ek Mukta
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 4442bdd05775b2b4ea323a4b800fd77f, type: 3}
+  - {fileID: 12800000, guid: a97ee27171bdc2d49958f00780a2f9ed, type: 3}
+  - {fileID: 12800000, guid: 570254f108c1cf54c880765ba0856ab7, type: 3}
+  - {fileID: 12800000, guid: 587339a20cf213348bf1541cb801de5a, type: 3}
+  - {fileID: 12800000, guid: 8d92663835d526c479cd0177de9ccd7b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

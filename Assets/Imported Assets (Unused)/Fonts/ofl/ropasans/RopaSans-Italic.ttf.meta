@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 88e401df6d1f1f54b97211ca14d2ef5b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Ropa Sans
+  fontNames:
+  - Ropa Sans
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 806eba41adda9414492818e266ff06be, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

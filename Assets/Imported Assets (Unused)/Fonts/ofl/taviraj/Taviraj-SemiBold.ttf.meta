@@ -1,0 +1,36 @@
+fileFormatVersion: 2
+guid: 958ad5fba93ad1946a8d10771eb59e79
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Taviraj
+  fontNames:
+  - Taviraj
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 255bcbf005ebd7946bdfeea3bf916a85, type: 3}
+  - {fileID: 12800000, guid: 7a3f29c1e870c9c46b0413fc776cca17, type: 3}
+  - {fileID: 12800000, guid: 4de7dd456b6e9934687f452c0377812f, type: 3}
+  - {fileID: 12800000, guid: 436bb97693035854bb8de3600dc78412, type: 3}
+  - {fileID: 12800000, guid: 37ff8677e1b8c834081dc52b69ff3da1, type: 3}
+  - {fileID: 12800000, guid: 5f78b0085e24a7e47b019d95f44f59ad, type: 3}
+  - {fileID: 12800000, guid: 48350e99844f6b3408f6905dedbd040a, type: 3}
+  - {fileID: 12800000, guid: 116f51ba86a0ca0429b384297feffd16, type: 3}
+  - {fileID: 12800000, guid: 7d0a11abf920a6a4384c07b62abdb8de, type: 3}
+  - {fileID: 12800000, guid: 6660c71c87effcc4e8052e6d844b5225, type: 3}
+  - {fileID: 12800000, guid: 521de4bc9527a7d4f8cc98d2c0082fa8, type: 3}
+  - {fileID: 12800000, guid: 1f22a7bdb2b61b741b35da280b5e3671, type: 3}
+  - {fileID: 12800000, guid: 87dc833f81b387e4890caa8bf900ae3c, type: 3}
+  - {fileID: 12800000, guid: 7271b04f75a00ac4dbdd1e6ca82a4ad1, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

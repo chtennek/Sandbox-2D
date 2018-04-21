@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: c7ab2f93c5085334f9cdda51c75eabfb
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Rasa
+  fontNames:
+  - Rasa
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b078c264f842f564eaf115f28bba5959, type: 3}
+  - {fileID: 12800000, guid: 8196936609d078643b19b89f466b07a9, type: 3}
+  - {fileID: 12800000, guid: ac3a36d8ddcf3a54da9dcea7d76bf99e, type: 3}
+  - {fileID: 12800000, guid: 7d13898d3038885498babbeb97ef9568, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

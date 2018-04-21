@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 5550b9e10459e5b4a97af7669dd4a179
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Asap Condensed
+  fontNames:
+  - Asap Condensed
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1d6ddc0333e24f948a9ce8938a42cbf4, type: 3}
+  - {fileID: 12800000, guid: 14c10956b9ae90c4a9ccd276a0d1999a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

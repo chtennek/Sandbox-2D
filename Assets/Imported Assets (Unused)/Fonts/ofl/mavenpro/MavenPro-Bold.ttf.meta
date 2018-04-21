@@ -1,0 +1,33 @@
+fileFormatVersion: 2
+guid: e7e6eaacf044ac14491cc5b8fdee71c6
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Maven Pro
+  fontNames:
+  - Maven Pro
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 93d71d4048941504593eb14cbae43a2c, type: 3}
+  - {fileID: 12800000, guid: 7bb3c0f0b13e1d946a4fa666a768fb32, type: 3}
+  - {fileID: 12800000, guid: 63e2aed1f064edb458a409640972a6f1, type: 3}
+  - {fileID: 12800000, guid: 34c709a270c027549aa5dc60561b9de4, type: 3}
+  - {fileID: 12800000, guid: 2ed04ca272a6b274996703a5d40169fe, type: 3}
+  - {fileID: 12800000, guid: dc34e6731e9299a4cab8adf643f1e689, type: 3}
+  - {fileID: 12800000, guid: 9a35493491a1ede4fab1b4151eed3861, type: 3}
+  - {fileID: 12800000, guid: 548942d95db90ce44b5bd1c175f4c9b0, type: 3}
+  - {fileID: 12800000, guid: a121f97a77b1b6942b820e8dc7db6e45, type: 3}
+  - {fileID: 12800000, guid: 845c3ccc360d7c94aaec55c006cb3a93, type: 3}
+  - {fileID: 12800000, guid: 5b84f5dfdf63c0842b9e112d7d258d93, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: b0252c873691f744bb04de5b9b2cc11a
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Hind Kochi
+  fontNames:
+  - Hind Kochi
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 18eecd2053203d94f8d1883b0cfcb2be, type: 3}
+  - {fileID: 12800000, guid: 724367269446e3148ab81287fe87e52c, type: 3}
+  - {fileID: 12800000, guid: 1d2252ea9d0adbb4885b5e7f0e5c9c58, type: 3}
+  - {fileID: 12800000, guid: 7bd9cfce78a7f2a4fb7c0cbe550c92d6, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

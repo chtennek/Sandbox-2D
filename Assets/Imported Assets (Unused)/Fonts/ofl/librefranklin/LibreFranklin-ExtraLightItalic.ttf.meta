@@ -1,0 +1,34 @@
+fileFormatVersion: 2
+guid: a471268c9550d064c9cf5e5c626f72c8
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Libre Franklin
+  fontNames:
+  - Libre Franklin
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 94f3aec2fa0fbe946b510935c424b6ec, type: 3}
+  - {fileID: 12800000, guid: 4dc3176503006f74c835a813ff8e0ec2, type: 3}
+  - {fileID: 12800000, guid: 4c516266d1197d34eb3063cfb09c4dfa, type: 3}
+  - {fileID: 12800000, guid: 4e3187a7040aad04a8084c499d0a3c81, type: 3}
+  - {fileID: 12800000, guid: 9d9c9ec776f13424b80f477b4d57aa72, type: 3}
+  - {fileID: 12800000, guid: 454efaf8992696544997350f60e960cd, type: 3}
+  - {fileID: 12800000, guid: 890ce569a04bfd14cad13bfee3326698, type: 3}
+  - {fileID: 12800000, guid: 8e85532ad82b546499e1ba13567fa4f7, type: 3}
+  - {fileID: 12800000, guid: 80ab42ab0bb48fb4991c26efa0680839, type: 3}
+  - {fileID: 12800000, guid: 789b5ebcd12834240b43fcbfd09fc817, type: 3}
+  - {fileID: 12800000, guid: 76c794eeaae39ff418a5297483b42931, type: 3}
+  - {fileID: 12800000, guid: 43b8848f140a68b448a9b5c23348e0ef, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: e52bd4d7101eb0e48856960d4ba39486
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Post No Bills Jaffna
+  fontNames:
+  - Post No Bills Jaffna
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a5644aec9377bc64b99e46cc4a89d498, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

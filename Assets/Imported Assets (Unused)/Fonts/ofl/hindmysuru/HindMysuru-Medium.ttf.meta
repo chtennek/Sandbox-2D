@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: d0f0378fd6e4ab84a8f8a87ef5b37576
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Hind Mysuru
+  fontNames:
+  - Hind Mysuru
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 60a4b1113eb0d8e4693181b692cf60f2, type: 3}
+  - {fileID: 12800000, guid: 97600f0224e8aeb4396caab3b8427531, type: 3}
+  - {fileID: 12800000, guid: 3e8cfa36b9c880a4da8b897a08fbf2c1, type: 3}
+  - {fileID: 12800000, guid: 2bd4814feb945e04d86a6e9524e551d6, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

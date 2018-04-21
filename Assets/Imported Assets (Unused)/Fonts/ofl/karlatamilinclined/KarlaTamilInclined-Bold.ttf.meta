@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 686559c660222ef45b3ab07a2ae59427
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Karla Tamil Inclined
+  fontNames:
+  - Karla Tamil Inclined
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 38de81510ebac9d4ebdf7a395e4fa801, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

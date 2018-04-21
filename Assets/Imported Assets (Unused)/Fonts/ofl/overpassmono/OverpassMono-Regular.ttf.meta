@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: c48af16c33ea98e4d9a3862ff1987ae9
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Overpass Mono
+  fontNames:
+  - Overpass Mono
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3f9cd3320e70b804bb180dd60aac9678, type: 3}
+  - {fileID: 12800000, guid: 718fbb33fc4a99640aa86629bc86b85c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

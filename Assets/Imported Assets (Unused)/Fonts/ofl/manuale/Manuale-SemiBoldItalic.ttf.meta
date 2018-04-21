@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 51fda6f66353b804e919aab090343b6d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Manuale
+  fontNames:
+  - Manuale
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 0714cf071d1eff64584a9395ec2e93f8, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

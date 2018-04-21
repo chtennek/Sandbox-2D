@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: b9ead41bd6729a64c97f6463f8582ad6
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Marvel
+  fontNames:
+  - Marvel
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1455db06cae0c4444b377235d94daa6a, type: 3}
+  - {fileID: 12800000, guid: 7e8d997898cacce49970c10724e1b2ab, type: 3}
+  - {fileID: 12800000, guid: 1227071d8f73d1948b0ffb1e8f8f5c9a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

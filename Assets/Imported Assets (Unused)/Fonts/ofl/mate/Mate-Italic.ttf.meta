@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: ed2a3350498865a4b96cdb733a5f4cde
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Mate
+  fontNames:
+  - Mate
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3afa4ee8439588b4e95d726ce2fc3fc6, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

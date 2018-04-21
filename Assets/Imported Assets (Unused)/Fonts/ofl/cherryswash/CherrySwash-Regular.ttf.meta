@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: a4c1e605a3c0a0f47a5c8af10c7ccd5f
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Cherry Swash
+  fontNames:
+  - Cherry Swash
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 0772c43d7ef5d2443a76170b593d336e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

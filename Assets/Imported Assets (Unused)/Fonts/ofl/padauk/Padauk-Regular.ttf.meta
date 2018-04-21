@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: ca0e256977ca7434d99c6d7330a9e1df
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Padauk
+  fontNames:
+  - Padauk
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b8c409e755000364393a56eb3b32b778, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

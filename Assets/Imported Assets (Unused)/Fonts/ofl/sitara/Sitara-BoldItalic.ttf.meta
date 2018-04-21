@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: b4e57747aeaff194abcec4760878acef
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Sitara
+  fontNames:
+  - Sitara
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 53799f17a9c25c645a4b74aacd4cf447, type: 3}
+  - {fileID: 12800000, guid: 63d66a68b59192c4c82ac3119d39fe03, type: 3}
+  - {fileID: 12800000, guid: 3d6b2ecff2d169946a426c08a5a72db6, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

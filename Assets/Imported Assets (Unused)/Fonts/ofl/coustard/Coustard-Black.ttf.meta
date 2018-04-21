@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: e619066856aeb434d922f87a3b6ae377
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Coustard
+  fontNames:
+  - Coustard
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 0f8465f9d96b33442860fef439516f92, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

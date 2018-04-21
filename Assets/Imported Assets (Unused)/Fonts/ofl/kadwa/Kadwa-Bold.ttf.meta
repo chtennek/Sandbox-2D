@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: c1b48512625bbe1478292b49b170486f
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Kadwa
+  fontNames:
+  - Kadwa
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 963b2f5131c3e18468f89b9cdb9cc2b2, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

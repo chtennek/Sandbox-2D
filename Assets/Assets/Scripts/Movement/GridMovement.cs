@@ -8,6 +8,7 @@ public class GridMovement : MonoBehaviour
     [Header("Movement")]
     public LayerMask wallColliderMask = ~0;
     [SerializeField] private bool m_pushable = true;
+    [SerializeField] private AnimationCurve moveCurve = AnimationCurve.Linear(0, 0, 1, 1);
 
     [Header("Position")]
     public Vector3 gridScale = Vector3.one;
@@ -120,7 +121,7 @@ public class GridMovement : MonoBehaviour
         }
         else
         {
-            pathControl.AddWaypoint(new PathPoint(target, travelTime, PathMode.Time));
+            pathControl.AddWaypoint(new PathPoint(target, travelTime, PathMode.Time, moveCurve));
 
             if (faceMovementDirection && fixRotation == false)
                 transform.rotation = rotator.GetRotationTowards(movement);
