@@ -52,6 +52,8 @@ public abstract class InputReceiver : MonoBehaviour
     public bool GetButton(string id) { return IsUnlocked() && GetButtonRaw(id); }
     public bool GetAnyButtonDown() { return IsUnlocked() && GetAnyButtonDownRaw(); }
     public bool GetAnyButton() { return IsUnlocked() && GetAnyButtonRaw(); }
+    public virtual bool GetAxisPairDown(string id) { return GetAxisDown(id + "Horizontal") || GetAxisDown(id + "Vertical"); }
+    public virtual bool GetAxisDown(string id) { return GetPositiveAxisDown(id) || GetNegativeAxisDown(id); }
     public virtual bool GetPositiveAxisDown(string id) { return IsUnlocked() && GetPositiveAxisDownRaw(id); }
     public virtual bool GetNegativeAxisDown(string id) { return IsUnlocked() && GetNegativeAxisDownRaw(id); }
     public float GetAxis(string id)

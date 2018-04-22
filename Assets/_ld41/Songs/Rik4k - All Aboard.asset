@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1e070664fc879b488702eda6111ef3f, type: 3}
+  m_Name: Rik4k - All Aboard
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 9eef572950d5cd94c84b53cf72626131, type: 3}
+  bpm: 128
+  offset: 2.2
+  startMove: 8
+  startBeat: 16
+  beatIncrement: 0.5
+  beats:
+  - 16
+  - 20
+  - 24
+  - 28
+  - 32
+  - 36
+  - 40
+  - 44
+  - 48
+  - 52
+  - 56
+  - 60
+  - 64
+  - 68
+  - 72

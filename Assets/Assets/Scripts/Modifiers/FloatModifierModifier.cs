@@ -56,7 +56,7 @@ public class FloatModifierModifier : FloatModifier
 
     protected virtual void Reset()
     {
-        target = GetComponentInParent<FloatModifier>();
+        target = GetComponent<FloatModifier>();
     }
 
     protected virtual void Awake()

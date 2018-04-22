@@ -6,7 +6,10 @@ using UnityEngine;
 public class NoteChart : ScriptableObject
 {
     public AudioClip clip;
-    public float bpm;
+    public float bpm = 100;
     public float offset;
+    public float startMove;
+    public float startBeat;
+    public float beatIncrement = 1f;
     public float[] beats;
 }

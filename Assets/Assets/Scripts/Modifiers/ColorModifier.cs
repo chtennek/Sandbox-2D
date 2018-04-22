@@ -7,7 +7,7 @@ public class ColorModifierParameters
 {
     public float multiplier = 1f;
 
-    public bool setValue = false;
+    public bool setValue = true;
     public Color setter = Color.white;
 }
 

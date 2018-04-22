@@ -10,6 +10,7 @@ public class GridControl : MonoBehaviour
     public string axisPairName = "Move";
     public bool restrictToXAxis = true;
     public bool restrictToYAxis = true;
+    public bool requireDistinctPress = false;
     public GridLayout.CellSwizzle swizzle = GridLayout.CellSwizzle.XYZ;
     public float bufferWindow = 0f; // Set to negative for input delay
 
@@ -48,6 +49,10 @@ public class GridControl : MonoBehaviour
     protected virtual void Update()
     {
         Vector3 movement = (input == null) ? Vector2.zero : input.GetAxisPairSingle(axisPairName).normalized;
+        if (input != null && requireDistinctPress == true && input.GetAxisPairDown(axisPairName) == false)
+        {
+            movement = Vector2.zero;
+        }
         if (restrictToXAxis == true && restrictToYAxis == false) movement.y = 0;
         if (restrictToXAxis == false && restrictToYAxis == true) movement.x = 0;
         movement = Grid.Swizzle(swizzle, movement); // [TODO] merge code with MoveControl

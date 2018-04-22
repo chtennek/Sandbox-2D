@@ -16,7 +16,7 @@ public class InputBehaviour : MonoBehaviour
     {
         if (input == null)
         {
-            Warnings.ComponentMissing<InputReceiver>(this);
+            //Warnings.ComponentMissing<InputReceiver>(this);
             enabled = false;
         }
     }

@@ -1470,6 +1470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812c088d4368d4822ae358fb7c4300ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  comment: 
   activateOnStart: 0
   applyPermanently: 0
   time: Infinity

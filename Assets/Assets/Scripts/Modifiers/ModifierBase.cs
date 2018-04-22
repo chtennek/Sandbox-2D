@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class ModifierBase<T> : MonoBehaviour
 {
     [Header("Core")]
+    public string comment = "";
     public bool activateOnStart = false;
     public bool applyPermanently = false;
     public float time = Mathf.Infinity;
@@ -33,19 +34,25 @@ public abstract class ModifierBase<T> : MonoBehaviour
         Deactivate();
     }
 
-    private void Apply()
+    public void UpdateAndApply()
+    {
+        BaseValue = CurrentValue;
+        Apply();
+    }
+
+    public void Apply()
     {
         ModifyValue();
         if (applyPermanently == true)
             BaseValue = CurrentValue;
     }
 
-    private void Unapply()
+    public void Unapply()
     {
         CurrentValue = BaseValue;
     }
 
-    public void Activate()
+    public void Activate() // Apply with timed Unapply
     {
         if (time == 0)
             return;

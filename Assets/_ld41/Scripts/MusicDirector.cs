@@ -6,9 +6,15 @@ public class MusicDirector : MonoBehaviour
 {
     public NoteChart chart;
     public NoteSpawner spawner;
+    public NoteSpawner spawnerBlue;
+    public NoteSpawner spawnerYellow;
+
+    public NoteSpawner spawnerMove;
+    public NoteSpawner spawnerShot;
+
     public float travelTime = 4f;
 
-    public float inputWindow = 0.05f;
+    public float inputWindow = 0.2f;
     public InputReceiver input;
     public Trigger beatTrigger;
     public Trigger offbeatTrigger;
@@ -18,7 +24,9 @@ public class MusicDirector : MonoBehaviour
     private float startTime;
     private float lastInput;
 
-    private int currentNote;
+    private float nextBeat;
+    private float nextMove;
+    private float nextShot;
     private Queue<float> beats;
 
     private float BeatToSeconds { get { return 1 / (chart.bpm / 60); } }
@@ -40,18 +48,52 @@ public class MusicDirector : MonoBehaviour
             lastInput = Time.time;
 
         float currentBeat = GetBeat(Time.time);
-        beatTrigger.Active = inputWindow > BeatsFrom(currentBeat, 0) * BeatToSeconds;
-        offbeatTrigger.Active = inputWindow > BeatsFrom(currentBeat, 0.5f) * BeatToSeconds;
+        //beatTrigger.Active = inputWindow > BeatsFrom(currentBeat, 0) * BeatToSeconds;
+        //offbeatTrigger.Active = inputWindow > BeatsFrom(currentBeat, 0.5f) * BeatToSeconds;
 
-
-        if (beats.Count == 0)
-            return;
-        float nextNoteBeat = beats.Peek() - travelTime * SecondsToBeat;
+        // Move
+        float nextNoteBeat = nextMove - (inputWindow + travelTime) * SecondsToBeat;
         if (currentBeat >= nextNoteBeat)
         {
-            beats.Dequeue();
-            spawner.Spawn();
+            spawnerMove.Spawn();
+            nextMove++;
         }
+
+        // Shot
+        nextNoteBeat = nextShot - (inputWindow + travelTime) * SecondsToBeat;
+        if (currentBeat >= nextNoteBeat)
+        {
+            spawnerShot.Spawn();
+            nextShot++;
+        }
+
+        // Constant notes
+        nextNoteBeat = nextBeat - travelTime * SecondsToBeat;
+        if (currentBeat >= nextNoteBeat)
+        {
+            Spawn();
+            nextBeat += chart.beatIncrement;
+        }
+
+        // Custom notes
+        if (beats.Count == 0)
+            return;
+        nextNoteBeat = beats.Peek() - travelTime * SecondsToBeat;
+        if (currentBeat >= nextNoteBeat)
+        {
+            Spawn();
+            beats.Dequeue();
+        }
+    }
+
+    private void Spawn()
+    {
+        if (nextBeat % 1 == 0)
+            spawner.Spawn();
+        else if (nextBeat % 1 == 0.5f)
+            spawnerBlue.Spawn();
+        else
+            spawnerYellow.Spawn();
     }
 
     private float BeatsFrom(float beat, float other)
@@ -73,7 +115,9 @@ public class MusicDirector : MonoBehaviour
         audio.clip = chart.clip;
         audio.Play();
         startTime = Time.time;
-        currentNote = 0;
+        nextBeat = chart.startBeat;
+        nextMove = chart.startMove;
+        nextShot = chart.startMove + 0.5f;
     }
 
     private IEnumerator Coroutine_PlayAudio(float delay)

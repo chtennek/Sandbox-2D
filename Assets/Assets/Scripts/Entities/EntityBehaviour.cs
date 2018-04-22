@@ -47,6 +47,7 @@ public class EntityBehaviour : MonoBehaviour
     }
     public void Damage(int damage)
     {
+        OnDamage();
         if (damageTriggersDeath)
         {
             OnDeath();
@@ -58,9 +59,7 @@ public class EntityBehaviour : MonoBehaviour
             return;
 
         lifebar.Value -= damage;
-        if (lifebar.Value > 0)
-            OnDamage();
-        else
+        if (lifebar.Value <= 0)
             OnDeath();
     }
 
@@ -74,5 +73,10 @@ public class EntityBehaviour : MonoBehaviour
         onDeath.Invoke();
         if (destroyOnDeath == true)
             Destroy(gameObject);
+    }
+
+    public void DebugLog()
+    {
+        Debug.Log(gameObject);
     }
 }

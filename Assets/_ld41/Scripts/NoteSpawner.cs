@@ -9,7 +9,7 @@ public class NoteSpawner : EntitySpawner
 
     public override void Spawn()
     {
-        Vector3 offset = offsets.Length == 0 ? Vector3.zero : offsets[Random.Range(0, offsets.Length - 1)]; // [TODO] pick a better rand function?
+        Vector3 offset = offsets.Length == 0 ? Vector3.zero : offsets[Random.Range(0, offsets.Length)]; // [TODO] pick a better rand function?
         Spawn(velocity, offset);
     }
 }
