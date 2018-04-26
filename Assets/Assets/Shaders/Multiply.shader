@@ -1,4 +1,4 @@
-﻿Shader "Sandbox/MultiplyShader"
+﻿Shader "Sandbox/Multiply"
 {
     Properties
     {

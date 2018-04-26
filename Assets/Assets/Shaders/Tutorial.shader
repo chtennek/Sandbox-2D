@@ -1,4 +1,4 @@
-﻿Shader "Sandbox/BasicShader"
+﻿Shader "Sandbox/Tutorial"
 {
     Properties
     {

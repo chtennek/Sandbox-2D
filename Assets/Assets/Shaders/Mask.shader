@@ -1,19 +1,21 @@
-﻿Shader "Sandbox/MaskShader"
+﻿Shader "Sandbox/Mask"
 {
     Properties
     {
         _MainTex("Image", 2D) = "white" {}
-        _MaskTex("Mask", 2D) = "white" {}
-
-        _OffsetTex("Mask Offset", 2D) = "gray" {}
-        _OffsetFactor("Offset Multiplier", Range(0, 10)) = 1
-        
-        _Threshold("Threshold", Range(0, 1)) = 0.5
-        _Smoothness("Smoothness", Range(0, 1)) = 0
-
+        [Space]
         _HighPass("High Pass", Color) = (0, 0, 0, 0)
         _Edge("Edge Color", Color) = (0, 0, 0, 0)
         _LowPass("Low Pass", Color) = (0, 0, 0, 1)
+
+        _MaskTex("Mask", 2D) = "white" {}
+        _Threshold("Threshold", Range(0, 1)) = 0.5
+        _Smoothness("Smoothness", Range(0, 1)) = 0
+        [Space]
+        _OffsetTex("Tiling Offset", 2D) = "gray" {}
+        _OffsetFactor("Offset Multiplier", Range(0, 10)) = 0
+        
+
     }
 
     SubShader
@@ -71,15 +73,27 @@
 
             float4 frag (v2f i) : SV_Target
             {
-                float4 src = tex2D(_MainTex, (i.uv + _MainTex_ST.zw) * _MainTex_ST.xy);
+                float4 sample;
+
+                // Remap threshold mask value based on smoothness and offset
+                float4 src = tex2D(_MainTex, TRANSFORM_TEX(i.uv, _MainTex));
                 float expand = _Smoothness + 0.5 * _OffsetFactor;
                 float expandedThreshold = lerp(-expand, 1 + expand, _Threshold);
 
+                // Find sampling point on offset texture
+                float2 maskUV = TRANSFORM_TEX(i.uv, _MaskTex);
+                float2 offsetUV = floor(i.uv * _MaskTex_ST.xy) / _MaskTex_ST.xy;
+
+                // Calculate threshold offset
+                sample = tex2D(_OffsetTex, offsetUV);
+                float offset = _OffsetFactor * (sample.x - 0.5);
+
+                // Calculate final mask value
+                sample = tex2D(_MaskTex, maskUV);
+                float valSample = (sample.x + sample.y + sample.z) / 3;
+
                 // Find if we are above/below the threshold
-                float2 uv = i.uv + _MaskTex_ST.zw;
-                float offset = _OffsetFactor * (tex2D(_OffsetTex, (uv + _OffsetTex_ST.zw) * _OffsetTex_ST.xy).x - 0.5);
-                
-                float val = tex2D(_MaskTex, uv * _MaskTex_ST.xy).x + offset - expandedThreshold;
+                float val = valSample + offset - expandedThreshold;
                 if (_Smoothness != 0)
                     val = clamp(val / _Smoothness, -1, 1);
                 else
