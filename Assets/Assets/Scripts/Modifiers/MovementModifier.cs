@@ -13,13 +13,13 @@ public class MovementModifier : FloatModifier
             if (target == null)
                 return 0;
 
-            return target.walkSpeed;
+            return target.maxSpeed;
         }
 
         set
         {
             if (target != null)
-                target.walkSpeed = value;
+                target.maxSpeed = value;
         }
     }
 

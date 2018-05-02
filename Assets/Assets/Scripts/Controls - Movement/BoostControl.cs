@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(RigidbodyWrapper))]
-public class BoostControl : InputBehaviour
+public class BoostControl : MonoBehaviour
 {
+    public RigidbodyWrapper mover;
+
     [Header("Input")]
+    public InputReceiver input;
     public string buttonName = "Jump";
 
     [Header("Speed")]
@@ -13,16 +16,24 @@ public class BoostControl : InputBehaviour
     public float magnitude = 5f;
     public Vector3 direction = Vector3.up; // [TODO] auto-normalize this
 
-    protected RigidbodyWrapper mover;
 
-    protected override void Awake()
+    protected void Reset()
     {
-        base.Awake();
+        input = GetComponent<InputReceiver>();
         mover = GetComponent<RigidbodyWrapper>();
+    }
+
+    protected void Awake()
+    {
+        if (input == null || mover == null)
+            Warnings.ComponentMissing(this);
     }
 
     protected virtual void FixedUpdate()
     {
+        if (input == null || mover == null)
+            return;
+        
         if (input.GetButtonDown(buttonName))
             Boost(magnitude);
     }

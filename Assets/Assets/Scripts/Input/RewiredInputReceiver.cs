@@ -18,7 +18,4 @@ public class RewiredInputReceiver : InputReceiver
     public override bool GetAnyButtonDownRaw() { return player.GetAnyButtonDown(); }
     public override bool GetAnyButtonRaw() { return player.GetAnyButton(); }
     public override float GetAxisRaw(string id) { return player.GetAxisRaw(id); }
-    public override bool GetPositiveAxisDown(string id) { return player.GetButtonDown(id); }
-    public override bool GetNegativeAxisDown(string id) { return player.GetNegativeButtonDown(id); }
-
 }

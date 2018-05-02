@@ -27,34 +27,34 @@ public class GridControl : MonoBehaviour
 
     private void Reset()
     {
-        if (input == null)
-            input = GetComponent<InputReceiver>();
-
-        if (pathControl == null)
-            pathControl = GetComponent<PathControl>();
-
-        if (gridMovement == null)
-            gridMovement = GetComponent<GridMovement>();
+        input = GetComponent<InputReceiver>();
+        pathControl = GetComponent<PathControl>();
+        gridMovement = GetComponent<GridMovement>();
     }
 
     private void Awake()
     {
         if (pathControl == null || gridMovement == null)
-        {
             Warnings.ComponentMissing(this);
-            enabled = false;
-        }
     }
 
     protected virtual void Update()
     {
-        Vector3 movement = (input == null) ? Vector2.zero : input.GetAxisPairSingle(axisPairName).normalized;
-        if (input != null && requireDistinctPress == true && input.GetAxisPairDown(axisPairName) == false)
+        Vector3 movement = Vector3.zero;
+        if (input != null)
         {
-            movement = Vector2.zero;
+            if (requireDistinctPress)
+                movement = input.GetAxisPairDown(axisPairName).LargestAxis().normalized;
+            else
+                movement = input.GetAxisPair(axisPairName).LargestAxis().normalized;
         }
-        if (restrictToXAxis == true && restrictToYAxis == false) movement.y = 0;
-        if (restrictToXAxis == false && restrictToYAxis == true) movement.x = 0;
+
+        if (restrictToXAxis && restrictToYAxis)
+            movement = movement.LargestAxis();
+        else if (restrictToXAxis)
+            movement.y = 0;
+        else if (restrictToYAxis)
+            movement.x = 0;
         movement = Grid.Swizzle(swizzle, movement); // [TODO] merge code with MoveControl
 
         // Process gravity first

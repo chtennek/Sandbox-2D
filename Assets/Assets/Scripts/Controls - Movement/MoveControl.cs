@@ -2,44 +2,60 @@
 using System.Collections;
 
 [RequireComponent(typeof(RigidbodyWrapper))]
-public class MoveControl : InputBehaviour
+public class MoveControl : MonoBehaviour
 {
+    public RigidbodyWrapper mover;
+
     [Header("Input")]
+    public InputReceiver input;
     public string axisPairName = "Move";
     public bool restrictToXAxis = true;
     public bool restrictToYAxis = true;
     public GridLayout.CellSwizzle swizzle = GridLayout.CellSwizzle.XYZ;
+    public bool relativeToRotation;
 
-    [Header("Speed")]
-    public float walkSpeed = 5f;
-    public float minWalkableSpeed = 5f;
-    public float walkSpeedLevels = 2; // number of possible speeds between walkSpeed and minWalkableSpeed
-
-    [Header("Acceleration")]
+    [Header("Velocity")]
+    public float minSpeed = 5f;
+    public float maxSpeed = 5f;
+    public AnimationCurve speedMapping = AnimationCurve.Linear(0, 0, 1, 1);
     public float acceleration = 40; // How fast do we accelerate to walkSpeed?
     public float deceleration = 10; // How fast do we stop when not moving?
 
     [Header("Rotation")]
     public bool faceMovementDirection;
-    public bool onlyMoveForward;
+    public bool onlyMoveForward; // Turn on to force minimal movement when turning
     public Rotator rotator;
     public float turnSpeed = Mathf.Infinity; // Degrees per frame
 
-    private RigidbodyWrapper mover;
-
-    protected override void Awake()
+    private void Reset()
     {
-        base.Awake();
+        input = GetComponent<InputReceiver>();
         mover = GetComponent<RigidbodyWrapper>();
+    }
+
+    private void Awake()
+    {
+        if (input == null || mover == null)
+            Warnings.ComponentMissing(this);
     }
 
     protected void FixedUpdate()
     {
+        if (input == null || mover == null)
+            return;
+
         // Get input
-        Vector3 movement = (restrictToXAxis && restrictToYAxis) ? input.GetAxisPairSingle(axisPairName) : input.GetAxisPair(axisPairName);
+        Vector3 movement = input.GetAxisPair(axisPairName);
+
+        if (restrictToXAxis && restrictToYAxis)
+            movement = movement.LargestAxis();
+        else if (restrictToXAxis)
+            movement.y = 0;
+        else if (restrictToYAxis)
+            movement.x = 0;
         movement = Grid.Swizzle(swizzle, movement);
-        if (restrictToXAxis == true && restrictToYAxis == false) movement.y = 0;
-        if (restrictToXAxis == false && restrictToYAxis == true) movement.x = 0;
+        if (relativeToRotation)
+            movement = transform.rotation * movement;
 
         // Change rotation
         bool isFacingMovementDirection = true;
@@ -53,8 +69,6 @@ public class MoveControl : InputBehaviour
         }
 
         // Figure out which walk speed to use
-        float inputMagnitude = Mathf.InverseLerp(input.deadZone, 1, movement.magnitude);
-        float tq = (walkSpeedLevels <= 1) ? 1 : Mathv.LerpQRound(0, 1, inputMagnitude, walkSpeedLevels);
 
         // Calculate target velocity
         Vector3 targetVelocity;
@@ -62,11 +76,12 @@ public class MoveControl : InputBehaviour
         {
             // Turning around, move at min speed
             Vector3 forward = transform.rotation * (rotator.lookWithYAxis ? Vector3.up : Vector3.forward);
-            targetVelocity = minWalkableSpeed * forward;
+            targetVelocity = minSpeed * forward;
         }
         else
         {
-            targetVelocity = Mathf.Lerp(minWalkableSpeed, Mathf.Max(walkSpeed, minWalkableSpeed), tq) * movement.normalized;
+            float t = Mathf.InverseLerp(input.deadZone, 1, movement.magnitude);
+            targetVelocity = Mathf.Lerp(minSpeed, maxSpeed, t) * movement.normalized;
         }
 
         // Apply required force for target velocity
@@ -84,8 +99,14 @@ public class MoveControl : InputBehaviour
     {
         Vector3 v = Grid.InverseSwizzle(swizzle, mover.Velocity);
         // Only apply drag in restricted axis if we have one
-        if (restrictToXAxis == true && restrictToYAxis == false) v.y = 0;
-        if (restrictToXAxis == false && restrictToYAxis == true) v.x = 0;
+
+        if (restrictToXAxis && restrictToYAxis)
+            v = v.LargestAxis();
+        else if (restrictToXAxis)
+            v.y = 0;
+        else if (restrictToYAxis)
+            v.x = 0;
+
         v.z = 0; // Only apply drag along movement plane
         mover.AddForce(drag * -Grid.Swizzle(swizzle, v));
     }

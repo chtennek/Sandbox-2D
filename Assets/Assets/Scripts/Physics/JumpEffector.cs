@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(RigidbodyWrapper))]
-public class JumpEffector : InputBehaviour
+public class JumpEffector : MonoBehaviour
 {
+    public RigidbodyWrapper mover;
+
     [Header("Input")]
+    public InputReceiver input;
     public string buttonName = "Jump";
 
     [Header("Parameters")]
@@ -14,16 +17,23 @@ public class JumpEffector : InputBehaviour
     public float fallScale = 4f;
     public float inputReleaseScale = 12f;
 
-    private RigidbodyWrapper mover;
-
-    protected override void Awake()
+    private void Reset()
     {
-        base.Awake();
+        input = GetComponent<InputReceiver>();
         mover = GetComponent<RigidbodyWrapper>();
+    }
+
+    private void Awake()
+    {
+        if (input == null || mover == null)
+            Warnings.ComponentMissing(this);
     }
 
     protected void FixedUpdate()
     {
+        if (input == null || mover == null)
+            return;
+        
         Vector3 acceleration = Vector3.Dot(mover.GetTotalField(), direction.normalized) * direction.normalized;
         float vAlongDirection = Vector3.Dot(mover.Velocity, direction.normalized);
         float scale = 1f;

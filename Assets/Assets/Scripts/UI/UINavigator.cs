@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class UINavigator : InputBehaviour, INavigator
+public class UINavigator : MonoBehaviour, INavigator
 {
     [Header("Input")]
+    public InputReceiver input;
     public string axisPairName = "UI";
     public string submitButton = "UISubmit";
     public string cancelButton = "UICancel";
@@ -61,8 +62,22 @@ public class UINavigator : InputBehaviour, INavigator
         }
     }
 
+    private void Reset()
+    {
+        input = GetComponent<InputReceiver>();
+    }
+
+    private void Awake()
+    {
+        if (input == null)
+            Warnings.ComponentMissing(this);
+    }
+
     protected virtual void Update()
     {
+        if (input == null)
+            return;
+        
         bool closedMenuThisFrame = ActiveMenu != null && (input.GetButtonDown(closeActiveButton) || input.GetButtonDown(closeAllButton));
 
         // Movement
@@ -150,7 +165,7 @@ public class UINavigator : InputBehaviour, INavigator
     private void ProcessMovement()
     {
         float time = Time.unscaledTime;
-        Vector2 direction = input.GetAxisPairQuantized(axisPairName);
+        Vector2 direction = input.GetAxisPair(axisPairName).Quantized();
 
         // Figure out if we should move
         bool processMovement = Time.unscaledTime - m_lastActionTime >= 1f / inputsPerSecond;

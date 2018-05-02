@@ -2,29 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridGrabControl : InputBehaviour
+public class GridGrabControl : MonoBehaviour
 {
-    [SerializeField] private string buttonName = "Fire";
+    [Header("Input")]
+    [SerializeField]
+    private InputReceiver input;
+    [SerializeField]
+    private string buttonName = "Fire";
 
-    [SerializeField] private GridMovement grid;
-    [SerializeField] private CollideTrigger coll;
+    [Header("References")]
+    [SerializeField]
+    private RigidbodyWrapper mover;
+    [SerializeField]
+    private GridMovement grid;
+    [SerializeField]
+    private CollideTrigger coll;
 
     public GridMovement currentlyHeld;
-    private RigidbodyWrapper mover;
-    private Rigidbody rb;
 
-    protected override void Reset()
+    protected void Reset()
     {
-        base.Reset();
+        input = GetComponent<InputReceiver>();
+        mover = GetComponent<RigidbodyWrapper>();
         grid = GetComponent<GridMovement>();
         coll = GetComponent<CollideTrigger>();
     }
 
-    protected override void Awake()
+    protected void Awake()
     {
-        base.Awake();
-        mover = GetComponent<RigidbodyWrapper>();
-        rb = GetComponent<Rigidbody>();
+        if (input == null)
+            Warnings.ComponentMissing<InputReceiver>(this);
+        
+        if (mover == null || grid == null || coll == null)
+            Warnings.ComponentMissing(this);
     }
 
     public void Grab()

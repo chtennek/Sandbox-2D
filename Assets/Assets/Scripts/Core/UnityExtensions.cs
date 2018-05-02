@@ -28,4 +28,31 @@ public static class UnityExtensions
     {
         return value * (Vector4)color;
     }
+
+
+    public static Vector3 LargestAxis(this Vector3 vector)
+    {
+        if (Mathf.Abs(vector.x) >= Mathf.Abs(vector.y) && Mathf.Abs(vector.x) >= Mathf.Abs(vector.z))
+            return vector.x * Vector3.right;
+
+        if (Mathf.Abs(vector.y) >= Mathf.Abs(vector.z))
+            return vector.y * Vector3.up;
+
+        return vector.z * Vector3.forward;
+    }
+
+    public static Vector2 LargestAxis(this Vector2 vector)
+    {
+        return ((Vector3)vector).LargestAxis();
+    }
+
+    public static Vector3 Quantized(this Vector3 vector)
+    {
+        return new Vector3(Mathf.Sign(vector.x), Mathf.Sign(vector.y), Mathf.Sign(vector.z));
+    }
+
+    public static Vector2 Quantized(this Vector2 vector)
+    {
+        return new Vector2(Mathf.Sign(vector.x), Mathf.Sign(vector.y));
+    }
 }

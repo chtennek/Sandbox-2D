@@ -13,7 +13,7 @@ public class RigidbodyToAnimator : AnimatorBase
         rb = GetComponent<Rigidbody2D>();
     }
 
-    protected override void UpdateAnimation()
+    protected override void UpdateAnimationParameters()
     {
         if (parameters.Contains(xParameter))
             anim.SetFloat(xParameter, rb.velocity.x);

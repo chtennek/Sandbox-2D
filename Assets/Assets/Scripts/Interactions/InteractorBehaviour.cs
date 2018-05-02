@@ -2,14 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractorBehaviour : InputBehaviour
+public class InteractorBehaviour : MonoBehaviour
 {
     [Header("Input")]
-    public string inputName = "Fire";
+    public InputReceiver input;
+    public string buttonName = "Interact";
+
+    private void Reset()
+    {
+        input = GetComponent<InputReceiver>();
+    }
+
+    private void Awake()
+    {
+        if (input == null)
+            Warnings.ComponentMissing(this);
+    }
 
     private void Update()
     {
-        if (input.GetButtonDown(inputName))
+        if (input == null)
+            return;
+        
+        if (input.GetButtonDown(buttonName))
         {
             foreach (Collider2D col in Physics2D.OverlapPointAll((Vector2)transform.position))
             {

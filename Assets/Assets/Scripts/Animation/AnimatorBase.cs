@@ -13,7 +13,7 @@ public abstract class AnimatorBase : MonoBehaviour
     protected List<string> parameters;
     protected Animator anim;
 
-    protected abstract void UpdateAnimation();
+    protected abstract void UpdateAnimationParameters();
 
     protected virtual void Awake()
     {
@@ -38,6 +38,6 @@ public abstract class AnimatorBase : MonoBehaviour
 
     private void Update()
     {
-        UpdateAnimation();
+        UpdateAnimationParameters();
     }
 }

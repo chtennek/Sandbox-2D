@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class EntitySpawner : InputBehaviour
+public class EntitySpawner : MonoBehaviour
 {
+    [Header("Input")]
+    public InputReceiver input;
     public string buttonName = "Fire";
 
     [Header("Spawn")]
@@ -22,10 +24,9 @@ public class EntitySpawner : InputBehaviour
 
     private float nextAllowableSpawnTime = -Mathf.Infinity;
 
-    public Vector3 ApplySpread(Vector3 velocity)
+    private void Reset()
     {
-        Vector3 currentSpread = new Vector3(Random.Range(-spread.x, spread.x), Random.Range(-spread.x, spread.x), Random.Range(-spread.x, spread.x));
-        return velocity + currentSpread;
+        input = GetComponent<InputReceiver>();
     }
 
     private void Update()
@@ -35,6 +36,12 @@ public class EntitySpawner : InputBehaviour
             nextAllowableSpawnTime = Time.time + spawnCooldown;
             Spawn();
         }
+    }
+
+    public Vector3 ApplySpread(Vector3 velocity)
+    {
+        Vector3 currentSpread = new Vector3(Random.Range(-spread.x, spread.x), Random.Range(-spread.x, spread.x), Random.Range(-spread.x, spread.x));
+        return velocity + currentSpread;
     }
 
     public virtual void Spawn() { Spawn(velocity); }

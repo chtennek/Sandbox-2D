@@ -9,6 +9,7 @@ public class InputToAnimator : AnimatorBase
     [SerializeField]
     private InputReceiver input;
     public string axisPairName = "Move";
+    public bool restrictToOrthogonal;
 
     protected override void Awake()
     {
@@ -16,9 +17,14 @@ public class InputToAnimator : AnimatorBase
         input = GetComponent<InputReceiver>();
     }
 
-    protected override void UpdateAnimation()
+    protected override void UpdateAnimationParameters()
     {
-        Vector2 movement = input.GetAxisPairSingle(axisPairName).normalized;
+        if (input == null)
+            return;
+
+        Vector2 movement = input.GetAxisPair(axisPairName);
+        if (restrictToOrthogonal)
+            movement = movement.LargestAxis();
 
         if (parameters.Contains(xParameter))
             anim.SetFloat(xParameter, movement.x);

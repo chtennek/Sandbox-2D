@@ -13,7 +13,7 @@ public class WaypointToAnimator : AnimatorBase
         wm = GetComponent<WaypointMovement>();
     }
 
-    protected override void UpdateAnimation()
+    protected override void UpdateAnimationParameters()
     {
         Vector2 movement = (wm.GetCurrentWaypoint() - transform.position).normalized;
 
