@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PositionControl : MonoBehaviour
 {
@@ -25,18 +23,18 @@ public class PositionControl : MonoBehaviour
             Warnings.ComponentMissing(this);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (input == null)
             return;
-        
+
         Vector2 movement = input.GetAxisPair(axisPairName);
         if (allowZeroDistance == false && movement == Vector2.zero)
             return;
 
         if (restrictToOrthogonal)
             movement = movement.LargestAxis();
-        
+
         movement = movement.normalized * Mathf.Lerp(minDistance, maxDistance, (movement.magnitude - input.deadZone) / (1 - input.deadZone));
 
         transform.localPosition = movement;

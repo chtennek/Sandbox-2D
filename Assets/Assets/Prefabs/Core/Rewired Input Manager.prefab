@@ -271,6 +271,15 @@ MonoBehaviour:
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 1
+    - _id: 35
+      _name: SwitchHorizontal
+      _type: 0
+      _descriptiveName: Switch
+      _positiveDescriptiveName: Switch Next
+      _negativeDescriptiveName: Switch Prev
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 1
     - _id: 11
       _name: Fire
       _type: 1
@@ -405,7 +414,7 @@ MonoBehaviour:
       - categoryId: 0
         actionIds: 1e0000001f000000
       - categoryId: 1
-        actionIds: 000000001b000000090000001c0000000a0000000b0000002000000021000000220000000c000000
+        actionIds: 000000001b000000090000001c000000230000000a0000000b0000002000000021000000220000000c000000
       - categoryId: 2
         actionIds: 0d000000100000000e0000000f0000001d000000
       - categoryId: 3
@@ -523,6 +532,28 @@ MonoBehaviour:
         _actionId: 28
         _elementType: 0
         _elementIdentifierId: 3
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 1
+        _actionId: 35
+        _elementType: 1
+        _elementIdentifierId: 11
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 1
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 1
+        _actionId: 35
+        _elementType: 1
+        _elementIdentifierId: 13
         _axisRange: 0
         _invert: 0
         _axisContribution: 0
@@ -974,7 +1005,7 @@ MonoBehaviour:
     customControllerMaps: []
     customControllers: []
     playerIdCounter: 7
-    actionIdCounter: 35
+    actionIdCounter: 36
     actionCategoryIdCounter: 4
     inputBehaviorIdCounter: 1
     mapCategoryIdCounter: 1
@@ -1058,6 +1089,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
+  restrictToXAxis: 0
+  restrictToYAxis: 0
 --- !u!114 &114979640849826282
 MonoBehaviour:
   m_ObjectHideFlags: 1

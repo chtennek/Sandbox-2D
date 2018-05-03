@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(GridMovement))]
 public class GridControl : MonoBehaviour
@@ -48,13 +46,6 @@ public class GridControl : MonoBehaviour
             else
                 movement = input.GetAxisPair(axisPairName).LargestAxis().normalized;
         }
-
-        if (restrictToXAxis && restrictToYAxis)
-            movement = movement.LargestAxis();
-        else if (restrictToXAxis)
-            movement.y = 0;
-        else if (restrictToYAxis)
-            movement.x = 0;
         movement = Grid.Swizzle(swizzle, movement); // [TODO] merge code with MoveControl
 
         // Process gravity first

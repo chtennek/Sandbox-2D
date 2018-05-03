@@ -174,8 +174,6 @@ MonoBehaviour:
   mover: {fileID: 21083910}
   input: {fileID: 21083911}
   axisPairName: Move
-  restrictToXAxis: 0
-  restrictToYAxis: 0
   swizzle: 1
   relativeToRotation: 1
   minSpeed: 5
@@ -254,6 +252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
+  restrictToXAxis: 0
+  restrictToYAxis: 0
 --- !u!65 &21083912
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -279,7 +279,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &21083914
 MonoBehaviour:
@@ -294,11 +294,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 21083911}
   axisPairName: Aim
-  swizzle: 0
+  swizzle: 1
+  view: {fileID: 570433491}
+  mouseMode: 2
+  mouseSensitivity: 0
+  turnSpeed: Infinity
   rotator:
     lookWithYAxis: 0
     constantAxis: {x: 0, y: 0, z: 0}
-  turnLerp: 1
 --- !u!1001 &23808681
 Prefab:
   m_ObjectHideFlags: 0
@@ -2347,6 +2350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 419688662}
   - component: {fileID: 419688663}
+  - component: {fileID: 419688664}
   m_Layer: 0
   m_Name: Control Switcher
   m_TagString: Untagged
@@ -2378,12 +2382,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd7e915105144cd6b65c00b4a535aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 0}
+  input: {fileID: 419688664}
   receivers:
   - {fileID: 1903369903}
   - {fileID: 21083911}
-  axisName: Switch
+  axisName: SwitchHorizontal
   wrap: 0
+--- !u!114 &419688664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 419688661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c32b2c644a5004298317095a34b9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerId: 0
+  restrictToXAxis: 0
+  restrictToYAxis: 0
 --- !u!1001 &425477225
 Prefab:
   m_ObjectHideFlags: 0
@@ -11179,6 +11197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
+  restrictToXAxis: 0
+  restrictToYAxis: 0
 --- !u!114 &1903369904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11193,12 +11213,10 @@ MonoBehaviour:
   mover: {fileID: 1903369905}
   input: {fileID: 1903369903}
   axisPairName: Move
-  restrictToXAxis: 0
-  restrictToYAxis: 0
   swizzle: 1
   relativeToRotation: 0
-  minSpeed: 8
-  maxSpeed: 8
+  minSpeed: 5
+  maxSpeed: 5
   speedMapping:
     serializedVersion: 2
     m_Curve:

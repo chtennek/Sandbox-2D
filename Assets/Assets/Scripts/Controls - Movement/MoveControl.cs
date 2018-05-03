@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 [RequireComponent(typeof(RigidbodyWrapper))]
 public class MoveControl : MonoBehaviour
@@ -9,8 +8,6 @@ public class MoveControl : MonoBehaviour
     [Header("Input")]
     public InputReceiver input;
     public string axisPairName = "Move";
-    public bool restrictToXAxis = true;
-    public bool restrictToYAxis = true;
     public GridLayout.CellSwizzle swizzle = GridLayout.CellSwizzle.XYZ;
     public bool relativeToRotation;
 
@@ -46,13 +43,6 @@ public class MoveControl : MonoBehaviour
 
         // Get input
         Vector3 movement = input.GetAxisPair(axisPairName);
-
-        if (restrictToXAxis && restrictToYAxis)
-            movement = movement.LargestAxis();
-        else if (restrictToXAxis)
-            movement.y = 0;
-        else if (restrictToYAxis)
-            movement.x = 0;
         movement = Grid.Swizzle(swizzle, movement);
         if (relativeToRotation)
             movement = transform.rotation * movement;
@@ -100,11 +90,11 @@ public class MoveControl : MonoBehaviour
         Vector3 v = Grid.InverseSwizzle(swizzle, mover.Velocity);
         // Only apply drag in restricted axis if we have one
 
-        if (restrictToXAxis && restrictToYAxis)
+        if (input.restrictToXAxis && input.restrictToYAxis)
             v = v.LargestAxis();
-        else if (restrictToXAxis)
+        else if (input.restrictToXAxis)
             v.y = 0;
-        else if (restrictToYAxis)
+        else if (input.restrictToYAxis)
             v.x = 0;
 
         v.z = 0; // Only apply drag along movement plane

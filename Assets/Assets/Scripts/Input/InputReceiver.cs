@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class InputReceiver : MonoBehaviour
 {
     public int playerId = 0;
     public readonly float deadZone = .2f;
+    public bool restrictToXAxis = false;
+    public bool restrictToYAxis = false;
 
     public bool IsActive
     {
@@ -60,8 +60,10 @@ public abstract class InputReceiver : MonoBehaviour
     public bool GetAnyButtonDown() { return IsActive && GetAnyButtonDownRaw(); }
     public bool GetAnyButton() { return IsActive && GetAnyButtonRaw(); }
 
-    public virtual Vector2 GetAxisPairDown(string id) { return new Vector2(GetAxisDown(id + "Horizontal"), GetAxisDown(id + "Vertical")); }
-    public virtual float GetAxisDown(string id) { return GetButtonDown(id) ? GetAxis(id) : 0; }
+    public virtual float GetAxisDown(string id)
+    {
+        return GetButtonDown(id) ? GetAxis(id) : 0;
+    }
 
     public float GetAxis(string id)
     {
@@ -78,21 +80,38 @@ public abstract class InputReceiver : MonoBehaviour
         return new Vector2(x, y);
     }
 
+    public virtual Vector2 GetAxisPairDown(string axisPairName)
+    {
+        Vector2 input = GetAxisPair(axisPairName);
+        if (GetButtonDown(axisPairName + "Horizontal") == false)
+            input.x = 0;
+        if (GetButtonDown(axisPairName + "Vertical") == false)
+            input.y = 0;
+
+        return input;
+    }
+
     public Vector2 GetAxisPair(string axisPairName)
     {
         if (IsActive == false) return Vector2.zero;
 
-        Vector2 output = GetAxisPairRaw(axisPairName);
-        if (output.magnitude < deadZone)
-        {
+        Vector2 input = GetAxisPairRaw(axisPairName);
+        if (input.magnitude < deadZone)
             return Vector2.zero;
-        }
-        return output;
+
+        if (restrictToXAxis && restrictToYAxis)
+            input = input.LargestAxis();
+        else if (restrictToXAxis)
+            input.y = 0;
+        else if (restrictToYAxis)
+            input.x = 0;
+
+        return input;
     }
 
     public float GetAxisPairRotation(string axisPairName)
     {
-        Vector2 output = GetAxisPair(axisPairName);
-        return Mathf.Atan2(output.y, output.x) * Mathf.Rad2Deg;
+        Vector2 input = GetAxisPair(axisPairName);
+        return Mathf.Atan2(input.y, input.x) * Mathf.Rad2Deg;
     }
 }

@@ -1,6 +1,5 @@
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public enum SelectorType
 { // [TODO] use or remove
@@ -84,14 +83,14 @@ public class InputReceiverSelector : MonoBehaviour
             if (wrap)
                 SelectedIndex = (SelectedIndex + 1) % receivers.Count;
             else
-                SelectedIndex = Mathf.Max(SelectedIndex + 1, receivers.Count - 1);
+                SelectedIndex = Mathf.Min(SelectedIndex + 1, receivers.Count - 1);
         }
         else if (movement < 0)
         {
             if (wrap)
                 SelectedIndex = (SelectedIndex - 1 + receivers.Count) % receivers.Count;
             else
-                SelectedIndex = Mathf.Min(SelectedIndex - 1, 0);
+                SelectedIndex = Mathf.Max(SelectedIndex - 1, 0);
         }
     }
 }
