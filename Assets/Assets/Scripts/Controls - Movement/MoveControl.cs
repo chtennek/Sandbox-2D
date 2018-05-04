@@ -1,5 +1,11 @@
 ﻿using UnityEngine;
 
+public enum MoveMode {
+    WorldSpace,
+    RelativeToRotation,
+    RelativeToCamera,
+}
+
 [RequireComponent(typeof(RigidbodyWrapper))]
 public class MoveControl : MonoBehaviour
 {
@@ -9,7 +15,7 @@ public class MoveControl : MonoBehaviour
     public InputReceiver input;
     public string axisPairName = "Move";
     public GridLayout.CellSwizzle swizzle = GridLayout.CellSwizzle.XYZ;
-    public bool relativeToRotation;
+    public MoveMode moveMode;
 
     [Header("Velocity")]
     public float minSpeed = 5f;
@@ -44,8 +50,14 @@ public class MoveControl : MonoBehaviour
         // Get input
         Vector3 movement = input.GetAxisPair(axisPairName);
         movement = Grid.Swizzle(swizzle, movement);
-        if (relativeToRotation)
-            movement = transform.rotation * movement;
+        switch (moveMode) {
+            case MoveMode.RelativeToRotation:
+                movement = transform.rotation * movement;
+                break;
+            case MoveMode.RelativeToCamera:
+                movement = Camera.main.transform.rotation * movement;
+                break;
+        }
 
         // Change rotation
         bool isFacingMovementDirection = true;

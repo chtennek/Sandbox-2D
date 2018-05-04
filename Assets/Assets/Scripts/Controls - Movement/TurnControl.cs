@@ -15,9 +15,11 @@ public class TurnControl : MonoBehaviour
     public InputReceiver input;
     public string axisPairName = "Aim";
     public GridLayout.CellSwizzle swizzle = GridLayout.CellSwizzle.XYZ;
+    public bool invertX = false;
+    public bool invertY = false;
 
-    public TurnControlMode mouseMode;
-    public float mouseSensitivity; // [TODO] move to InputReceiver
+    public TurnControlMode controlMode;
+    public float mouseSensitivity = 0.1f; // [TODO] move to InputReceiver
 
     [Header("Parameters")]
     public float turnSpeed = Mathf.Infinity; // Degrees per frame
@@ -36,13 +38,15 @@ public class TurnControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 direction, movement;
-        if (mouseMode == TurnControlMode.MouseFreeLook)
+        Vector3 direction = Vector3.zero;
+        Vector3 movement = Vector3.zero;
+
+        if (controlMode == TurnControlMode.MouseFreeLook)
             Cursor.lockState = CursorLockMode.Locked;
         else
             Cursor.lockState = CursorLockMode.None;
 
-        switch (mouseMode)
+        switch (controlMode)
         {
             case TurnControlMode.SetRotation:
                 direction = input.GetAxisPair(axisPairName);
@@ -54,17 +58,21 @@ public class TurnControl : MonoBehaviour
                 RotateIn(movement);
                 break;
             case TurnControlMode.MouseFreeLook:
-                movement = Input.mouseScrollDelta * mouseSensitivity;
+                movement = input.GetAxisPair(axisPairName) * mouseSensitivity;
                 if (movement.magnitude > turnSpeed)
                     movement = turnSpeed * movement.normalized;
 
                 RotateIn(movement);
                 break;
             case TurnControlMode.MouseLookAt:
+                Vector3 normal = Grid.Swizzle(swizzle, Vector3.forward);
+                Plane plane = new Plane(normal, transform.position);
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                float distance;
+                plane.Raycast(ray, out distance);
+
+                Vector3 target = ray.GetPoint(distance);
                 direction = target - transform.position;
-                Debug.Log(Input.mousePosition);
-                Debug.Log(target);
                 RotateTowards(direction);
                 break;
         }
@@ -86,7 +94,12 @@ public class TurnControl : MonoBehaviour
         if (movement == Vector3.zero)
             return;
 
-        transform.rotation = Quaternion.AngleAxis(movement.x, transform.rotation * Grid.Swizzle(swizzle, Vector3.forward)) * transform.rotation;
-        transform.rotation = Quaternion.AngleAxis(movement.y, transform.rotation * Grid.Swizzle(swizzle, Vector3.right)) * transform.rotation;
+        Vector3 xAxis = Grid.Swizzle(swizzle, invertX ? Vector3.back : Vector3.forward);
+        Vector3 yAxis = Grid.Swizzle(swizzle, invertY ? Vector3.right : Vector3.left);
+        Quaternion xRotation = Quaternion.AngleAxis(movement.x, xAxis);
+        Quaternion yRotation = Quaternion.AngleAxis(movement.y, yAxis);
+        Vector3 facing = Grid.Swizzle(swizzle, Vector3.up);
+        Vector3 direction = yRotation * xRotation * transform.rotation * facing;
+        RotateTowards(direction);
     }
 }

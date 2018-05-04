@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public enum SelectorType
 { // [TODO] use or remove
@@ -8,15 +9,22 @@ public enum SelectorType
     Hotkeys,
 }
 
+[System.Serializable]
+public struct InputReceiverSelectable {
+    public InputReceiver receiver;
+    public CinemachineVirtualCamera camera;
+}
+
 public class InputReceiverSelector : MonoBehaviour
 {
     public InputReceiver input;
-    public List<InputReceiver> receivers;
+    public List<InputReceiverSelectable> selectables;
 
     [Header("Input")]
     public string axisName = "Switch";
 
     [Header("Selector Behaviour")]
+    public int activeCameraPriority = 11;
     public bool wrap;
 
     private int _selectedIndex;
@@ -28,29 +36,35 @@ public class InputReceiverSelector : MonoBehaviour
         }
         set
         {
-            if (0 <= value && value < receivers.Count)
-                Selected = receivers[value];
-            else
-                Selected = null;
+            if (CurrentReceiver != null)
+                CurrentReceiver.enabled = false;
+            if (CurrentCamera != null)
+                CurrentCamera.Priority = 0;
+
+            _selectedIndex = value;
+
+            if (CurrentReceiver != null)
+                CurrentReceiver.enabled = true;
+            if (CurrentCamera != null)
+                CurrentCamera.Priority = activeCameraPriority;
         }
     }
-    private InputReceiver Selected
+    private InputReceiver CurrentReceiver
     {
         get
         {
-            if (0 <= _selectedIndex && _selectedIndex < receivers.Count)
-                return receivers[_selectedIndex];
+            if (0 <= _selectedIndex && _selectedIndex < selectables.Count)
+                return selectables[_selectedIndex].receiver;
             return null;
         }
-        set
+    }
+    private CinemachineVirtualCamera CurrentCamera
+    {
+        get
         {
-            if (Selected != null)
-                Selected.enabled = false;
-
-            _selectedIndex = receivers.IndexOf(value);
-
-            if (Selected != null)
-                Selected.enabled = true;
+            if (0 <= _selectedIndex && _selectedIndex < selectables.Count)
+                return selectables[_selectedIndex].camera;
+            return null;
         }
     }
 
@@ -61,11 +75,14 @@ public class InputReceiverSelector : MonoBehaviour
 
     private void Awake()
     {
-        foreach (InputReceiver receiver in receivers)
-            receiver.enabled = false;
+        // Disable all inactive selectables
+        foreach (InputReceiverSelectable selectable in selectables) {
+            selectable.receiver.enabled = false;
+            selectable.camera.Priority = 0;
+        }
 
-        if (receivers.Count > 0)
-            Selected = receivers[0];
+        // Initialize first one
+        SelectedIndex = 0;
 
         if (input == null)
             Warnings.ComponentMissing<InputReceiver>(this);
@@ -78,17 +95,18 @@ public class InputReceiverSelector : MonoBehaviour
 
         float movement = input.GetAxisDown(axisName);
 
+        // Switch selectable
         if (movement > 0)
         {
             if (wrap)
-                SelectedIndex = (SelectedIndex + 1) % receivers.Count;
+                SelectedIndex = (SelectedIndex + 1) % selectables.Count;
             else
-                SelectedIndex = Mathf.Min(SelectedIndex + 1, receivers.Count - 1);
+                SelectedIndex = Mathf.Min(SelectedIndex + 1, selectables.Count - 1);
         }
         else if (movement < 0)
         {
             if (wrap)
-                SelectedIndex = (SelectedIndex - 1 + receivers.Count) % receivers.Count;
+                SelectedIndex = (SelectedIndex - 1 + selectables.Count) % selectables.Count;
             else
                 SelectedIndex = Mathf.Max(SelectedIndex - 1, 0);
         }

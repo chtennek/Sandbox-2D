@@ -38,6 +38,13 @@ public class AIInputReceiver : InputReceiver
         return 0;
     }
 
+    public override float GetAxisDownRaw(string id)
+    {
+        if (id == HorizontalAxis) return movement.x;
+        if (id == VerticalAxis) return movement.y;
+        return 0;
+    }
+
     public override bool GetButtonDownRaw(string id)
     {
         return false;

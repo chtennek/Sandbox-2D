@@ -48,11 +48,15 @@ public static class UnityExtensions
 
     public static Vector3 Quantized(this Vector3 vector)
     {
-        return new Vector3(Mathf.Sign(vector.x), Mathf.Sign(vector.y), Mathf.Sign(vector.z));
+        Vector3 output = vector;
+        if (output.x != 0) output.x = Mathf.Sign(output.x);
+        if (output.y != 0) output.y = Mathf.Sign(output.y);
+        if (output.z != 0) output.z = Mathf.Sign(output.z);
+        return output;
     }
 
     public static Vector2 Quantized(this Vector2 vector)
     {
-        return new Vector2(Mathf.Sign(vector.x), Mathf.Sign(vector.y));
+        return ((Vector3)vector).Quantized();
     }
 }

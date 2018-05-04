@@ -53,24 +53,6 @@ public abstract class InputReceiver : MonoBehaviour
     public abstract bool GetAnyButtonDownRaw();
     public abstract bool GetAnyButtonRaw();
     public abstract float GetAxisRaw(string id);
-
-    public bool GetButtonDown(string id) { return IsActive && GetButtonDownRaw(id); }
-    public bool GetButtonUp(string id) { return IsActive && GetButtonUpRaw(id); }
-    public bool GetButton(string id) { return IsActive && GetButtonRaw(id); }
-    public bool GetAnyButtonDown() { return IsActive && GetAnyButtonDownRaw(); }
-    public bool GetAnyButton() { return IsActive && GetAnyButtonRaw(); }
-
-    public virtual float GetAxisDown(string id)
-    {
-        return GetButtonDown(id) ? GetAxis(id) : 0;
-    }
-
-    public float GetAxis(string id)
-    {
-        float input = GetAxisRaw(id);
-        return (IsActive && Mathf.Abs(input) >= deadZone) ? input : 0;
-    }
-
     public Vector2 GetAxisPairRaw(string axisPairName)
     {
         string horizontal = axisPairName + "Horizontal";
@@ -80,13 +62,36 @@ public abstract class InputReceiver : MonoBehaviour
         return new Vector2(x, y);
     }
 
+    public abstract float GetAxisDownRaw(string id);
+    public Vector2 GetAxisPairDownRaw(string axisPairName)
+    {
+        string horizontal = axisPairName + "Horizontal";
+        string vertical = axisPairName + "Vertical";
+        float x = GetAxisDownRaw(horizontal);
+        float y = GetAxisDownRaw(vertical);
+        return new Vector2(x, y);
+    }
+
+    public bool GetButtonDown(string id) { return IsActive && GetButtonDownRaw(id); }
+    public bool GetButtonUp(string id) { return IsActive && GetButtonUpRaw(id); }
+    public bool GetButton(string id) { return IsActive && GetButtonRaw(id); }
+    public bool GetAnyButtonDown() { return IsActive && GetAnyButtonDownRaw(); }
+    public bool GetAnyButton() { return IsActive && GetAnyButtonRaw(); }
+    public float GetAxis(string id) { return IsActive ? GetAxisRaw(id) : 0; }
+    public float GetAxisDown(string id) { return IsActive ? GetAxisDownRaw(id) : 0; }
+
     public virtual Vector2 GetAxisPairDown(string axisPairName)
     {
-        Vector2 input = GetAxisPair(axisPairName);
-        if (GetButtonDown(axisPairName + "Horizontal") == false)
-            input.x = 0;
-        if (GetButtonDown(axisPairName + "Vertical") == false)
+        if (IsActive == false) return Vector2.zero;
+
+        Vector2 input = GetAxisPairDownRaw(axisPairName);
+
+        if (restrictToXAxis && restrictToYAxis)
+            input = input.LargestAxis();
+        else if (restrictToXAxis)
             input.y = 0;
+        else if (restrictToYAxis)
+            input.x = 0;
 
         return input;
     }
