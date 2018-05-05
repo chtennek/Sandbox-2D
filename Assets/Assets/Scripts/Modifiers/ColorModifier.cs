@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using DG.Tweening;
+
 [System.Serializable]
 public class ColorModifierParameters
 {
@@ -15,11 +17,23 @@ public abstract class ColorModifier : ModifierBase<Color>
 {
     public ColorModifierParameters parameters;
 
-    protected override void ModifyValue()
+    protected override Color ModifiedValue()
     {
+        Color to;
         if (parameters.setValue == true)
-            CurrentValue = parameters.setter;
+            to = parameters.setter;
         else
-            CurrentValue = BaseValue.Multiply(parameters.multiplier);
+            to = BaseValue.Multiply(parameters.multiplier);
+
+        return to;
+    }
+
+    protected override void TweenValueTo(Color to)
+    {
+        if (ease.useCustomCurve)
+            DOTween.To(() => CurrentValue, value => CurrentValue = value, to, ease.duration).SetEase(ease.curve);
+        else
+            DOTween.To(() => CurrentValue, value => CurrentValue = value, to, ease.duration)
+                .SetEase(ease.type, ease.overshootOrAmplitude, ease.period);
     }
 }
