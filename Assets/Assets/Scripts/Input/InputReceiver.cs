@@ -80,7 +80,8 @@ public abstract class InputReceiver : MonoBehaviour
     public float GetAxis(string id) { return IsActive ? GetAxisRaw(id) : 0; }
     public float GetAxisDown(string id) { return IsActive ? GetAxisDownRaw(id) : 0; }
 
-    public virtual Vector2 GetAxisPairDown(string axisPairName)
+    public Vector2 GetAxisPairDown(string axisPairName) { return GetAxisPairDown(axisPairName, restrictToXAxis, restrictToYAxis); }
+    public virtual Vector2 GetAxisPairDown(string axisPairName, bool restrictToXAxis, bool restrictToYAxis)
     {
         if (IsActive == false) return Vector2.zero;
 
@@ -96,7 +97,8 @@ public abstract class InputReceiver : MonoBehaviour
         return input;
     }
 
-    public Vector2 GetAxisPair(string axisPairName)
+    public Vector2 GetAxisPair(string axisPairName) { return GetAxisPair(axisPairName, restrictToXAxis, restrictToYAxis); }
+    public Vector2 GetAxisPair(string axisPairName, bool restrictToXAxis, bool restrictToYAxis)
     {
         if (IsActive == false) return Vector2.zero;
 

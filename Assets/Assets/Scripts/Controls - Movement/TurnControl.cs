@@ -4,9 +4,8 @@ public enum TurnControlMode
 {
     None,
     SetRotation,
-    SetAngularVelocity,
-    MouseFreeLook,
-    MouseLookAt,
+    LookAt,
+    FreeLook,
 }
 
 public class TurnControl : MonoBehaviour
@@ -15,11 +14,17 @@ public class TurnControl : MonoBehaviour
     public InputReceiver input;
     public string axisPairName = "Aim";
     public GridLayout.CellSwizzle swizzle = GridLayout.CellSwizzle.XYZ;
-    public bool invertX = false;
-    public bool invertY = false;
 
     public TurnControlMode controlMode;
-    public float mouseSensitivity = 0.1f; // [TODO] move to InputReceiver
+    public bool lockCursor;
+
+    public Vector2 sensitivity = new Vector2(.1f, 0); // Use negative to invert
+    public Vector2 xRange = new Vector2(-180, 180);
+    public bool xWrap = true;
+    public Vector2 yRange = new Vector2(-90, 90);
+    public bool yWrap = false;
+
+    private Vector2 freeLook;
 
     [Header("Parameters")]
     public float turnSpeed = Mathf.Infinity; // Degrees per frame
@@ -32,6 +37,9 @@ public class TurnControl : MonoBehaviour
 
     private void Awake()
     {
+        Vector3 rotation = Grid.InverseSwizzle(swizzle, transform.rotation.eulerAngles);
+        freeLook = new Vector2(rotation.z, rotation.x);
+
         if (input == null)
             Warnings.ComponentMissing(this);
     }
@@ -41,10 +49,7 @@ public class TurnControl : MonoBehaviour
         Vector3 direction = Vector3.zero;
         Vector3 movement = Vector3.zero;
 
-        if (controlMode == TurnControlMode.MouseFreeLook)
-            Cursor.lockState = CursorLockMode.Locked;
-        else
-            Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
 
         switch (controlMode)
         {
@@ -53,18 +58,14 @@ public class TurnControl : MonoBehaviour
                 direction = Grid.Swizzle(swizzle, direction);
                 RotateTowards(direction);
                 break;
-            case TurnControlMode.SetAngularVelocity:
-                movement = input.GetAxisPair(axisPairName).Quantized() * turnSpeed;
-                RotateIn(movement);
-                break;
-            case TurnControlMode.MouseFreeLook:
-                movement = input.GetAxisPair(axisPairName) * mouseSensitivity;
+            case TurnControlMode.FreeLook:
+                movement = input.GetAxisPair(axisPairName) * sensitivity;
                 if (movement.magnitude > turnSpeed)
                     movement = turnSpeed * movement.normalized;
 
                 RotateIn(movement);
                 break;
-            case TurnControlMode.MouseLookAt:
+            case TurnControlMode.LookAt:
                 Vector3 normal = Grid.Swizzle(swizzle, Vector3.forward);
                 Plane plane = new Plane(normal, transform.position);
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -94,12 +95,11 @@ public class TurnControl : MonoBehaviour
         if (movement == Vector3.zero)
             return;
 
-        Vector3 xAxis = Grid.Swizzle(swizzle, invertX ? Vector3.back : Vector3.forward);
-        Vector3 yAxis = Grid.Swizzle(swizzle, invertY ? Vector3.right : Vector3.left);
-        Quaternion xRotation = Quaternion.AngleAxis(movement.x, xAxis);
-        Quaternion yRotation = Quaternion.AngleAxis(movement.y, yAxis);
-        Vector3 facing = Grid.Swizzle(swizzle, Vector3.up);
-        Vector3 direction = yRotation * xRotation * transform.rotation * facing;
-        RotateTowards(direction);
+        freeLook.x = Mathf.Clamp(freeLook.x + movement.x, xRange.x, xRange.y);
+        freeLook.y = Mathf.Clamp(freeLook.y + movement.y, yRange.x, yRange.y);
+
+        Vector3 rotation = new Vector3(freeLook.y, 0, freeLook.x);
+        transform.rotation = Quaternion.Euler(Grid.Swizzle(swizzle, rotation));
+        return;
     }
 }

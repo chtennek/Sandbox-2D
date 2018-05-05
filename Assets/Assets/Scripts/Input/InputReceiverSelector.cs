@@ -1,6 +1,6 @@
+using Cinemachine;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
 
 public enum SelectorType
 { // [TODO] use or remove
@@ -10,9 +10,10 @@ public enum SelectorType
 }
 
 [System.Serializable]
-public struct InputReceiverSelectable {
+public struct InputReceiverSelectable
+{
     public InputReceiver receiver;
-    public CinemachineVirtualCamera camera;
+    public CinemachineVirtualCameraBase camera;
 }
 
 public class InputReceiverSelector : MonoBehaviour
@@ -58,7 +59,7 @@ public class InputReceiverSelector : MonoBehaviour
             return null;
         }
     }
-    private CinemachineVirtualCamera CurrentCamera
+    private CinemachineVirtualCameraBase CurrentCamera
     {
         get
         {
@@ -76,7 +77,8 @@ public class InputReceiverSelector : MonoBehaviour
     private void Awake()
     {
         // Disable all inactive selectables
-        foreach (InputReceiverSelectable selectable in selectables) {
+        foreach (InputReceiverSelectable selectable in selectables)
+        {
             selectable.receiver.enabled = false;
             selectable.camera.Priority = 0;
         }
