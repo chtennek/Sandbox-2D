@@ -4,23 +4,6 @@ using UnityEngine;
 
 using DG.Tweening;
 
-[System.Serializable]
-public class EaseSettings
-{
-    public float duration = 0;
-
-    [Space]
-    public Ease type = Ease.Linear;
-    public float overshootOrAmplitude = 1.70158f;
-    [Range(-1, 1)]
-    public float period = 0;
-    public int fps = 60;
-
-    [Space]
-    public bool useCustomCurve = false;
-    public AnimationCurve curve = AnimationCurve.Linear(0, 0, 1, 1);
-}
-
 public abstract class ModifierBase<T> : MonoBehaviour
 {
     [Header("Core")]
