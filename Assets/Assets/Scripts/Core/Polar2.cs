@@ -3,6 +3,50 @@ using UnityEditor;
 using UnityEngine;
 
 [Serializable]
+public struct FloatRange
+{
+    public float min;
+    public float max;
+
+    public FloatRange(float min, float max)
+    {
+        this.min = min;
+        this.max = max;
+    }
+
+    public override bool Equals(object obj)
+    {
+        if (!(obj is FloatRange))
+        {
+            return false;
+        }
+
+        var range = (FloatRange)obj;
+        return min == range.min &&
+               max == range.max;
+    }
+
+    public override int GetHashCode()
+    {
+        var hashCode = -897720056;
+        hashCode = hashCode * -1521134295 + base.GetHashCode();
+        hashCode = hashCode * -1521134295 + min.GetHashCode();
+        hashCode = hashCode * -1521134295 + max.GetHashCode();
+        return hashCode;
+    }
+
+    public static implicit operator Vector2(FloatRange r)
+    {
+        return new Vector2(r.min, r.max);
+    }
+
+    public static implicit operator FloatRange(Vector2 v)
+    {
+        return new FloatRange(v.x, v.y);
+    }
+}
+
+[Serializable]
 public struct Polar2
 {
     public float r;

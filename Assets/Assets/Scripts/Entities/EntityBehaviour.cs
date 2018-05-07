@@ -3,28 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+using Sandbox.RPG;
+
 public class EntityBehaviour : MonoBehaviour
 {
-    [Header("Stats")]
+    [Header("Data")]
+    public EntityType type;
+    public GameValue[] stats;
+
+    [Header("Behaviour")]
     public float lifetime = Mathf.Infinity;
     public bool destroyOnDeath = true;
-    public bool damageTriggersDeath = false;
-    public GameValue lifebar;
 
     [Header("Effects")]
-    public int damage = 0;
+    public EffectType effectOnCollision; // Used by projectile entities
 
     public UnityEvent onDamage;
     public UnityEvent onDeath;
 
     private float spawnTimestamp;
-
     private Animator anim;
 
     private void Awake()
     {
         spawnTimestamp = Time.time;
         anim = GetComponent<Animator>();
+
+        if (type != null)
+        {
+            foreach (Stat stat in type.baseStats)
+            {
+                foreach (GameValue gv in stats)
+                {
+                    if (gv.stat.type == stat.type)
+                    {
+
+                    }
+                }
+            }
+        }
     }
 
     private void Update()
@@ -35,32 +52,16 @@ public class EntityBehaviour : MonoBehaviour
         }
     }
 
-    public void Damage() { Damage(1); }
-    public void Damage(Transform other)
+    public void OnTriggerEnter(Collider other)
     {
         EntityBehaviour entity = other.GetComponent<EntityBehaviour>();
         if (entity == null)
             return;
-
-        entity.Damage(damage);
-        Damage(entity.damage);
     }
-    public void Damage(int damage)
-    {
-        OnDamage();
-        if (damageTriggersDeath)
-        {
-            OnDeath();
-            return;
-        }
-        if (lifebar == null)
-            return;
-        if (damage <= 0)
-            return;
 
-        lifebar.Value -= damage;
-        if (lifebar.Value <= 0)
-            OnDeath();
+    public void ApplyEffect(EffectType effect)
+    {
+
     }
 
     public void OnDamage()

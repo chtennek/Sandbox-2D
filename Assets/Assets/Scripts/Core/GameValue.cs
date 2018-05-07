@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using Sandbox.RPG;
+
 public class GameValue : MonoBehaviour
 {
-    public string label = "HP";
+    public Stat stat;
+
     public float minValue = 0;
     public float maxValue = Mathf.Infinity;
     public float m_currentValue = 0; // Initial value
