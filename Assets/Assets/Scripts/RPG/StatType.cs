@@ -6,9 +6,18 @@ namespace Sandbox
 {
     namespace RPG
     {
+        public enum StatMode
+        {
+            Base,
+            Additive,
+            Multiply,
+            AdditiveProportion,
+        }
+
         [System.Serializable]
         public class Stat
         {
+            public StatMode mode = StatMode.Additive;
             public StatType type;
 
             public float baseValue;

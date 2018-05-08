@@ -9,17 +9,10 @@ namespace Sandbox
         [System.Flags]
         public enum EffectTargetType
         {
-            Self,
-            Ally,
-            Enemy,
-            Location,
-        }
-
-        public enum StatEffectType
-        {
-            Base,
-            Additive,
-            Multiply,
+            Self = (1 << 0),
+            Ally = (1 << 1),
+            Enemy = (1 << 2),
+            Location = (1 << 3),
         }
 
         [CreateAssetMenu(fileName = "EffectType", menuName = "RPG/Effect Type", order = 0)]
@@ -32,13 +25,14 @@ namespace Sandbox
             public string description;
 
             [Header("Behaviour")]
-            public StatEffectType effectType;
-            public Stat[] baseEffects; // Total effect to be divided over all ticks
             [EnumFlags]
             public EffectTargetType targetType;
 
+            public Stat[] statChanges; // Total effect to be divided over all ticks
             public EffectType[] buffs;
             public bool channeled;
+            public bool chargeCancelable;
+            public bool castCancelable;
 
             [Header("Stats")]
             public float falloff = 0; // D.va bomb, Mccree, Golden sun, etc.
