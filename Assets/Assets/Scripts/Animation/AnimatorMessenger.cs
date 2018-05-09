@@ -67,6 +67,29 @@ public class AnimatorMessenger : MonoBehaviour
             animator.SetFloat(speedParameter, direction.magnitude);
     }
 
+    public void SetFloat(string parameter, float value) {
+        if (parameters.Contains(parameter))
+            animator.SetFloat(parameter, value);
+    }
+
+    public void SetInteger(string parameter, int value)
+    {
+        if (parameters.Contains(parameter))
+            animator.SetInteger(parameter, value);
+    }
+
+    public void SetBool(string parameter, bool value)
+    {
+        if (parameters.Contains(parameter))
+            animator.SetBool(parameter, value);
+    }
+
+    public void SetTrigger(string parameter)
+    {
+        if (parameters.Contains(parameter))
+            animator.SetTrigger(parameter);
+    }
+
     private Vector3 GetDirection()
     {
         switch (mode)

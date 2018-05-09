@@ -16,7 +16,7 @@ public class EntityBehaviour : MonoBehaviour
     public bool destroyOnDeath = true;
 
     [Header("Effects")]
-    public Stat statChangeOnCollision;
+    public Stat[] statChangesOnCollision;
     public EffectType effectOnCollision;
 
     public UnityEvent onDamage;
@@ -70,9 +70,6 @@ public class EntityBehaviour : MonoBehaviour
         EntityBehaviour entity = other.GetComponent<EntityBehaviour>();
         if (entity == null)
             return;
-
-        if (statChangeOnCollision != null && statChangeOnCollision.type != null)
-            entity.ApplyStatChange(statChangeOnCollision);
 
         if (effectOnCollision != null)
             entity.ApplyEffect(effectOnCollision);

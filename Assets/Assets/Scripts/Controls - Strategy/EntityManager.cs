@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EntityManager : MonoBehaviour
 {
-    private WaypointMovement wm;
+    private WaypointControl wm;
     private Canvas canvas;
 
     private void Awake()
     {
-        wm = GetComponent<WaypointMovement>();
+        wm = GetComponent<WaypointControl>();
         canvas = GetComponentInChildren<Canvas>();
         if (canvas != null)
         {

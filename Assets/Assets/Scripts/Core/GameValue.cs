@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using DG.Tweening;
 using Sandbox.RPG;
 
 public class GameValue : MonoBehaviour
@@ -21,6 +22,9 @@ public class GameValue : MonoBehaviour
         get { return m_currentValue; }
         set
         {
+            m_lastValue = m_currentValue;
+            m_lastValueChange = Time.time;
+
             m_currentValue = Mathf.Clamp(value, clampMin ? minValue : -Mathf.Infinity, clampMax ? maxValue : Mathf.Infinity);
             if (roundToInt == true)
                 m_currentValue = Mathf.Round(m_currentValue);
@@ -36,9 +40,10 @@ public class GameValue : MonoBehaviour
     }
 
     [Header("Display")]
-    public float m_lerpRatio = 0f;
-    public float m_lerpSpeed = 1; // Change display in [Value] amount per tick
-    public int m_ticksPerSecond = 10;
+    public Ease lerpMethod = Ease.Linear;
+    public float m_lerpValueScale = 0;
+    public float m_lerpTime = 0.2f;
+    public int m_ticksPerSecond = 30;
 
     [Space]
     public Text m_numericalDisplay;
@@ -50,7 +55,8 @@ public class GameValue : MonoBehaviour
     public bool m_overrideColor = false;
     public Gradient m_displayColor;
 
-    private float m_displayValue;
+    private float m_lastValueChange;
+    private float m_lastValue;
 
     private void Reset()
     {
@@ -62,63 +68,57 @@ public class GameValue : MonoBehaviour
 
     private void Start()
     {
-        m_displayValue = Value; // If we fail to retrieve a display value, set to Value immediately
-        if (m_numericalDisplay != null)
-        {
-            Single.TryParse(m_numericalDisplay.text, out m_displayValue);
-        }
-        else if (m_canvasDisplay != null)
-        {
-            m_displayValue = m_canvasDisplay.fillAmount * maxValue;
-        }
+        m_lastValue = Value; // If we fail to retrieve a display value, default to current Value
+        m_lastValueChange = Time.time;
 
-        IEnumerator current = Coroutine_UpdateDisplay();
-        StartCoroutine(current);
+        if (m_numericalDisplay != null)
+            Single.TryParse(m_numericalDisplay.text, out m_lastValue);
+        else if (m_canvasDisplay != null)
+            m_lastValue = m_canvasDisplay.fillAmount * maxValue;
+
+        if (m_numericalDisplay != null || m_canvasDisplay != null)
+        {
+            IEnumerator current = Coroutine_UpdateDisplay();
+            StartCoroutine(current);
+        }
     }
 
     private IEnumerator Coroutine_UpdateDisplay()
     {
         while (true)
         {
-            m_displayValue = DetermineNextDisplayValue(m_displayValue);
+            float displayValue = GetDisplayValue();
+            if (displayValue != Value)
+                AudioManager.PlaySound(m_tickSound);
 
             if (m_numericalDisplay != null)
             {
-                float finalDisplayValue = m_displayValue;
+                float finalDisplayValue = displayValue;
                 if (roundToInt == true)
                     finalDisplayValue = Mathf.Round(finalDisplayValue);
 
                 string text = finalDisplayValue.ToString().PadLeft(m_zeroPadding, '0');
-                if (m_numericalDisplay.text != text)
-                {
-                    AudioManager.PlaySound(m_tickSound);
-                    m_numericalDisplay.text = text;
-                }
+                m_numericalDisplay.text = text;
             }
 
             if (m_canvasDisplay != null)
             {
-                m_canvasDisplay.fillAmount = (maxValue == 0) ? 0 : m_displayValue / maxValue;
+                m_canvasDisplay.fillAmount = (maxValue == 0) ? 0 : displayValue / maxValue;
 
                 if (m_overrideColor == true)
-                {
                     m_canvasDisplay.color = m_displayColor.Evaluate(ValuePercent);
-                }
             }
 
             yield return new WaitForSeconds(1f / m_ticksPerSecond);
         }
     }
 
-    private float DetermineNextDisplayValue(float lastValue)
+    private float GetDisplayValue()
     {
-        float nextValue = Mathf.Lerp(lastValue, Value, m_lerpRatio);
-
-        if (Mathf.Abs(Value - nextValue) <= m_lerpSpeed)
-            return Value;
-        else if (nextValue < Value)
-            return nextValue + m_lerpSpeed;
-        else
-            return nextValue - m_lerpSpeed;
+        float lerpTime = m_lerpTime;
+        if (m_lerpValueScale != 0)
+            lerpTime *= Mathf.Abs(Value - m_lastValue) / m_lerpValueScale;
+        float t = Mathf.Clamp01((Time.time - m_lastValueChange) / lerpTime);
+        return DOVirtual.EasedValue(m_lastValue, Value, t, lerpMethod);
     }
 }

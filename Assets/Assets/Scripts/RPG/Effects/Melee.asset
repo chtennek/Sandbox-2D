@@ -12,17 +12,19 @@ MonoBehaviour:
   m_Name: Melee
   m_EditorClassIdentifier: 
   image: {fileID: 0}
-  animationTrigger: 
+  animationTrigger: hit01
   effectName: Melee Attack
   description: 
   targetType: 4
-  baseEffects:
+  statChanges:
   - mode: 1
     type: {fileID: 11400000, guid: 3bfff0f95d0ff9249884000df76dfcee, type: 2}
     baseValue: 0
     value: -30
   buffs: []
   channeled: 0
+  chargeCancelable: 0
+  castCancelable: 0
   falloff: 0
   baseAccuracy: 1
   minRange: 1

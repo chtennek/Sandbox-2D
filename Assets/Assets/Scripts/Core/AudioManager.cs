@@ -74,7 +74,7 @@ public class AudioManager : MonoBehaviour
     public static void PlaySound(string name)
     {
         if (singleton == null)
-            Debug.LogWarning("PlaySound(): No AudioManager in scene!");
+            return;
 
         if (singleton.m_sounds.ContainsKey(name))
             singleton.m_sounds[name].Play();

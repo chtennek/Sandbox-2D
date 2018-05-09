@@ -10,7 +10,6 @@ GameObject:
   - component: {fileID: 494002}
   - component: {fileID: 3369654}
   - component: {fileID: 2355936}
-  - component: {fileID: 114023572159796972}
   - component: {fileID: 65453239413520422}
   m_Layer: 0
   m_Name: Plain02_4
@@ -97,19 +96,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114023572159796972
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 371ff5a3b4b9b0047bbde9cd931801b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TileType: {}
-  TileTypeName: TileType_Null
-  _parts: []
-  <Index>k__BackingField: {x: 0, y: 0}
-  <Tilemap>k__BackingField: {fileID: 0}
