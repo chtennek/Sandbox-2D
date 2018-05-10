@@ -10,7 +10,7 @@ public enum AnimationMethod
 
 public class AnimatorMessenger : MonoBehaviour
 {
-    public AnimationMethod mode;
+    public AnimationMethod mode = AnimationMethod.Velocity;
 
     [Header("Parameters")]
     public string xParameter = "xVelocity";
@@ -35,39 +35,26 @@ public class AnimatorMessenger : MonoBehaviour
 
     private void Awake()
     {
-        Setup();
-    }
-
-    private void Setup()
-    {
         if (animator == null)
-        {
             Warnings.ComponentMissing(this);
-            return;
-        }
-
-        parameters = new List<string>();
-        foreach (AnimatorControllerParameter p in animator.parameters)
+        else
         {
-            parameters.Add(p.name);
+            parameters = new List<string>();
+            foreach (AnimatorControllerParameter p in animator.parameters)
+                parameters.Add(p.name);
         }
     }
 
     private void Update()
     {
         Vector3 direction = GetDirection();
-
-        if (parameters.Contains(xParameter))
-            animator.SetFloat(xParameter, direction.x);
-
-        if (parameters.Contains(yParameter))
-            animator.SetFloat(yParameter, direction.y);
-
-        if (parameters.Contains(speedParameter))
-            animator.SetFloat(speedParameter, direction.magnitude);
+        SetFloat(xParameter, direction.x);
+        SetFloat(yParameter, direction.y);
+        SetFloat(speedParameter, direction.magnitude);
     }
 
-    public void SetFloat(string parameter, float value) {
+    public void SetFloat(string parameter, float value)
+    {
         if (parameters.Contains(parameter))
             animator.SetFloat(parameter, value);
     }

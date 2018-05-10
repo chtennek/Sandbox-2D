@@ -32,12 +32,4 @@ public class EntityManager : MonoBehaviour
             canvas.enabled = false;
         }
     }
-
-    public void QueueMoveOrder(Vector2 position)
-    {
-        if (wm != null)
-        {
-            wm.AddWaypoint(position);
-        }
-    }
 }

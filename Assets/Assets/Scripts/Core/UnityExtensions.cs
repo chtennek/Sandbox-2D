@@ -4,6 +4,18 @@ using UnityEngine;
 
 public static class UnityExtensions
 {
+    public static void AssertSingleton<T>(this T behaviour, ref T singleton) where T : Component
+    {
+        if (singleton != null)
+        {
+            Warnings.DuplicateSingleton(behaviour);
+            GameObject.Destroy(behaviour);
+        }
+
+        singleton = behaviour;
+        GameObject.DontDestroyOnLoad(behaviour);
+    }
+
     public static T GetComponentInTag<T>(this MonoBehaviour behaviour, string tag, T target = null) where T : Component
     {
         if (target == null && tag.Length > 0)
