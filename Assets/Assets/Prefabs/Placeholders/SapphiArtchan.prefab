@@ -3772,7 +3772,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1297242664419074}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2, y: 0, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4770,7 +4770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62023ed6c32a7494d87d4b13cb49defe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseButton: 1
+  mouseButton: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -4993,14 +4993,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 1
+  axisPairName: 
   xParameter: 
   yParameter: 
   speedParameter: speed
   multiply: 0.5
-  axisPairName: 
   input: {fileID: 0}
-  rb: {fileID: 114765422768713274}
+  rw: {fileID: 114765422768713274}
   animator: {fileID: 95485711406580676}
+  agent: {fileID: 195753617297406100}
 --- !u!114 &114848724021241810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5088,14 +5089,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c4a87b2f9c664408259ed80674a2fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useMouse: 0
-  mouseButton: 1
+  useMouse: 1
+  mouseButton: 0
   layerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2048
   tagMask: []
   mouseRaycast: 1000
   waypointRadius: 0.1
+  waypointPrefab: {fileID: 4043060122446866, guid: c7002b17a9fba0f49985e013b71b81f6,
+    type: 2}
   agent: {fileID: 195753617297406100}
   movement: {fileID: 114613072872438104}
 --- !u!137 &137000981629364680
@@ -6734,16 +6737,16 @@ NavMeshAgent:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1297242664419074}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 5
+  m_Acceleration: 40
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 10000
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
+  m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0

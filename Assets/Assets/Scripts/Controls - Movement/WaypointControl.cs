@@ -8,6 +8,8 @@ using Rewired;
 public class WaypointControl : MonoBehaviour
 {
     [Header("Input")]
+    public InputReceiver input;
+    public string[] cancelButtonNames = { "Stop" };
     public bool useMouse = false;
     public int mouseButton = 1;
     public LayerMask layerMask = ~0;
@@ -30,9 +32,20 @@ public class WaypointControl : MonoBehaviour
         movement = GetComponent<MoveControl>();
     }
 
+    private void Awake()
+    {
+        if (agent != null)
+        {
+            agent.updatePosition = false;
+            agent.updateRotation = false;
+        }
+    }
+
     private void FixedUpdate()
     {
         Transform target;
+
+        // Process input
         if (useMouse == true && Input.GetMouseButtonDown(mouseButton))
         {
             target = GetMouseTarget();
@@ -42,19 +55,32 @@ public class WaypointControl : MonoBehaviour
                 AddWaypoint(target);
             }
         }
+        if (input != null)
+            foreach (string buttonName in cancelButtonNames)
+                if (input.GetAxisDown(buttonName) != 0)
+                    ClearWaypoints();
 
+        // Discard excess waypoints
         while (waypoints.Count > 0)
             if (waypoints.Peek() == null || Vector3.Distance(transform.position, waypoints.Peek().position) <= waypointRadius)
                 waypoints.Dequeue();
             else
                 break;
 
-        if (waypoints.Count == 0)
-            return;
+        // Process current waypoint
+        if (waypoints.Count > 0)
+        {
+            target = waypoints.Peek();
+            if (agent != null)
+            {
+                agent.SetDestination(target.position);
+                agent.stoppingDistance = waypointRadius;
 
-        target = waypoints.Peek();
-        if (agent != null && agent.enabled == true)
-            agent.SetDestination(target.position);
+                Vector3[] corners = agent.path.corners;
+                if (agent.pathPending == false && corners.Length > 0)
+                    movement.ApplyMovement((corners[0] - transform.position).normalized);
+            }
+        }
     }
 
     public void AddWaypoint(Transform target)

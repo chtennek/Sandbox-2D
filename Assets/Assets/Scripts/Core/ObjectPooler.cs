@@ -131,7 +131,7 @@ public class ObjectPooler : MonoBehaviour
     {
         if (singleton == null)
             Warnings.NoSingleton<ObjectPooler>();
-        return singleton == null;
+        return singleton != null;
     }
 
     public static void RegisterPooledObject(Transform obj, ObjectPool pool)

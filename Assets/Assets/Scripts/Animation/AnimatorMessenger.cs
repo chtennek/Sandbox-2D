@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public enum AnimationMethod
 {
     Input,
     Velocity,
+    NavAgent,
 }
 
 public class AnimatorMessenger : MonoBehaviour
 {
     public AnimationMethod mode = AnimationMethod.Velocity;
+    public string axisPairName;
 
     [Header("Parameters")]
     public string xParameter = "xVelocity";
@@ -19,18 +22,19 @@ public class AnimatorMessenger : MonoBehaviour
     public float multiply = 1;
 
     [Header("References")]
-    public string axisPairName;
     public InputReceiver input;
-    public RigidbodyWrapper rb;
+    public RigidbodyWrapper rw;
     public Animator animator;
+    public NavMeshAgent agent;
 
     private List<string> parameters;
 
     private void Reset()
     {
         input = GetComponent<InputReceiver>();
-        rb = GetComponent<RigidbodyWrapper>();
+        rw = GetComponent<RigidbodyWrapper>();
         animator = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     private void Awake()
@@ -86,8 +90,12 @@ public class AnimatorMessenger : MonoBehaviour
                     return multiply * input.GetAxisPair(axisPairName);
                 break;
             case AnimationMethod.Velocity:
-                if (rb != null)
-                    return multiply * rb.Velocity;
+                if (rw != null)
+                    return multiply * rw.Velocity;
+                break;
+            case AnimationMethod.NavAgent:
+                if (agent != null)
+                    return agent.velocity;
                 break;
         }
         return Vector3.zero;

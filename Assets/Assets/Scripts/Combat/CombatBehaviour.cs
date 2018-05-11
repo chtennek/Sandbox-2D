@@ -63,20 +63,21 @@ public class CombatBehaviour : MonoBehaviour
 
             // Move if we need to
             float distance = Vector3.Distance(transform.position, target.transform.position);
-            if (distance > currentMove.maxRange)
+            if (movement != null)
             {
-                if (movement != null)
+                if (distance > currentMove.maxRange)
                 {
                     movement.waypointRadius = currentMove.maxRange;
                     movement.ClearWaypoints();
                     movement.AddWaypoint(target.transform);
+                    yield return null; // [TODO] performance
+                    continue;
                 }
-                yield return null; // [TODO] performance
-                continue;
+                else
+                    movement.ClearWaypoints();
             }
 
             // Stop moving and use move
-            movement.ClearWaypoints();
             target.ApplyEffect(currentMove);
             if (animator != null)
                 animator.SetTrigger(currentMove.animationTrigger);

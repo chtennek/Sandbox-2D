@@ -52,7 +52,12 @@ public class MoveControl : MonoBehaviour
         // Get input
         Vector3 movement = input.GetAxisPair(axisPairName);
         movement = Grid.Swizzle(swizzle, movement);
+        float drag = ApplyMovement(movement);
+        ApplyDrag(drag);
+   }
 
+    public float ApplyMovement(Vector3 movement)
+    {
         // Modify input based on mode
         Vector3 rotation = Vector3.zero;
         switch (moveMode)
@@ -95,15 +100,16 @@ public class MoveControl : MonoBehaviour
             targetVelocity = Mathf.Lerp(minSpeed, maxSpeed, t) * movement.normalized;
         }
 
-        // Apply required force for target velocity
+        // Compute drag, apply required force for target velocity
+        float drag = 0;
         if (acceleration == Mathf.Infinity)
             mover.Velocity = targetVelocity;
         else
         {
-            float drag = targetVelocity.magnitude == 0 ? deceleration : acceleration / targetVelocity.magnitude;
-            ApplyDrag(drag);
+            drag = targetVelocity.magnitude == 0 ? deceleration : acceleration / targetVelocity.magnitude;
             mover.AddForce(acceleration * targetVelocity.normalized);
         }
+        return drag;
     }
 
     private void ApplyDrag(float drag)
