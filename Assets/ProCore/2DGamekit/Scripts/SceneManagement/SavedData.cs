@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Gamekit3D
+namespace Gamekit2D
 {
     public class SavedData : MonoBehaviour
     {
@@ -25,13 +25,13 @@ namespace Gamekit3D
         }
 
         protected static SavedData instance;
-
+    
         protected Dictionary<string, string> m_StringSavedData;
         protected Dictionary<string, bool> m_BoolSavedData;
         protected Dictionary<string, int> m_IntSavedData;
         protected Dictionary<string, float> m_FloatSavedData;
         protected Dictionary<string, Vector2> m_Vector2SavedData;
-
+    
         void Start()
         {
             if (Instance != null)
@@ -44,16 +44,16 @@ namespace Gamekit3D
             }
         }
 
-        public static string Get(string key, out string value)
+        public static string Get (string key, out string value)
         {
             if (Instance.m_StringSavedData.TryGetValue(key, out value))
                 return value;
             throw new UnityException("No string data was found with the key - " + key);
         }
 
-        public static bool Get(string key, out bool value)
+        public static bool Get (string key, out bool value)
         {
-            if (Instance.m_BoolSavedData.TryGetValue(key, out value))
+            if (Instance.m_BoolSavedData.TryGetValue (key, out value))
                 return value;
             throw new UnityException("No bool data was found with the key - " + key);
         }
@@ -79,7 +79,7 @@ namespace Gamekit3D
             throw new UnityException("No Vector2 data was found with the key - " + key);
         }
 
-        public static void Set(string key, string value)
+        public static void Set (string key, string value)
         {
             if (Instance.m_StringSavedData.ContainsKey(key))
                 Instance.m_StringSavedData[key] = value;

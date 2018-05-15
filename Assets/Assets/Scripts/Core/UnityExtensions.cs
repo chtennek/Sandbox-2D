@@ -71,4 +71,14 @@ public static class UnityExtensions
     {
         return ((Vector3)vector).Quantized();
     }
+
+    public static float Sum(this Vector3 vector)
+    {
+        return vector.x + vector.y + vector.z;
+    }
+
+    public static float Sum(this Vector2 vector)
+    {
+        return vector.x + vector.y;
+    }
 }

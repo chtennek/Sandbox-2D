@@ -14,16 +14,30 @@ public class CombatBehaviour : MonoBehaviour
     public float mouseRaycast = 1000;
 
     [Header("Properties")]
-    public EntityBehaviour target;
-    public EffectType currentMove;
+    public bool disableAfterEachMove;
     public EntityType self;
 
+    public EntityBehaviour target;
+    public EffectType currentMove;
+
     [Header("References")]
-    public WaypointControl movement;
+    public WaypointControl movement; // Leave null to ignore range limitations
     public AnimatorMessenger animator;
     public InputReceiver input;
 
+    public Transform findTarget;
+
     private IEnumerator combatLoop;
+
+    public void SetTarget(EntityBehaviour entity)
+    {
+        target = entity;
+    }
+
+    public void SetCurrentMove(EffectType move)
+    {
+        currentMove = move;
+    }
 
     private void Reset()
     {
@@ -50,12 +64,21 @@ public class CombatBehaviour : MonoBehaviour
         }
     }
 
+    public IEnumerator Coroutine_ExecuteMove()
+    {
+        if (animator != null)
+            animator.SetTrigger(currentMove.animationTrigger);
+        yield return new WaitForSeconds(currentMove.chargeTime);
+        target.ApplyEffect(currentMove);
+        yield return new WaitForSeconds(currentMove.cooldown);
+    }
+
     protected IEnumerator Coroutine_CombatLoop()
     {
         while (true)
         {
-            // Wait for a target
-            if (target == null || currentMove == null)
+            // Wait for a target or message from manager
+            if (enabled == false || target == null || currentMove == null)
             {
                 yield return null;
                 continue;
@@ -77,11 +100,7 @@ public class CombatBehaviour : MonoBehaviour
                     movement.ClearWaypoints();
             }
 
-            // Stop moving and use move
-            target.ApplyEffect(currentMove);
-            if (animator != null)
-                animator.SetTrigger(currentMove.animationTrigger);
-            yield return new WaitForSeconds(currentMove.cooldown);
+            yield return StartCoroutine(Coroutine_ExecuteMove());
         }
     }
 

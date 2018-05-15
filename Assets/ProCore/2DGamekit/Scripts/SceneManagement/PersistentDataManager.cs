@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Gamekit3D
+namespace Gamekit2D
 {
     public class PersistentDataManager : MonoBehaviour
     {
@@ -16,7 +16,7 @@ namespace Gamekit3D
                 if (instance != null)
                     return instance;
 
-                Create();
+                Create ();
                 return instance;
             }
         }
@@ -24,7 +24,7 @@ namespace Gamekit3D
         protected static PersistentDataManager instance;
         protected static bool quitting;
 
-        public static PersistentDataManager Create()
+        public static PersistentDataManager Create ()
         {
             GameObject dataManagerGameObject = new GameObject("PersistentDataManager");
             DontDestroyOnLoad(dataManagerGameObject);

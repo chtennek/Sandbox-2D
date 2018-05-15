@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Gamekit3D
+namespace Gamekit2D
 {
     /// <summary>
     /// This class is used to transition between scenes. This includes triggering all the things that need to happen on transition such as data persistence.
@@ -23,7 +23,7 @@ namespace Gamekit3D
                 if (instance != null)
                     return instance;
 
-                Create();
+                Create ();
 
                 return instance;
             }
@@ -36,7 +36,7 @@ namespace Gamekit3D
 
         protected static SceneController instance;
 
-        public static SceneController Create()
+        public static SceneController Create ()
         {
             GameObject sceneControllerGameObject = new GameObject("SceneController");
             instance = sceneControllerGameObject.AddComponent<SceneController>();
@@ -79,13 +79,12 @@ namespace Gamekit3D
 
         public static void RestartZone(bool resetHealth = true)
         {
-            // TODO:
-            // if(resetHealth && PlayerCharacter.PlayerInstance != null)
-            // {
-            //     PlayerCharacter.PlayerInstance.damageable.SetHealth(PlayerCharacter.PlayerInstance.damageable.startingHealth);
-            // }
+            if(resetHealth && PlayerCharacter.PlayerInstance != null)
+            {
+                PlayerCharacter.PlayerInstance.damageable.SetHealth(PlayerCharacter.PlayerInstance.damageable.startingHealth);
+            }
 
-            Instance.StartCoroutine(Instance.Transition(Instance.m_CurrentZoneScene.name, Instance.m_ZoneRestartDestinationTag));
+            Instance.StartCoroutine(Instance.Transition(Instance.m_CurrentZoneScene.name, true, Instance.m_ZoneRestartDestinationTag, TransitionPoint.TransitionType.DifferentZone));
         }
 
         public static void RestartZoneWithDelay(float delay, bool resetHealth = true)
@@ -95,7 +94,7 @@ namespace Gamekit3D
 
         public static void TransitionToScene(TransitionPoint transitionPoint)
         {
-            Instance.StartCoroutine(Instance.Transition(transitionPoint.newSceneName, transitionPoint.transitionDestinationTag, transitionPoint.transitionType));
+            Instance.StartCoroutine(Instance.Transition(transitionPoint.newSceneName, transitionPoint.resetInputValuesOnTransition, transitionPoint.transitionDestinationTag, transitionPoint.transitionType));
         }
 
         public static SceneTransitionDestination GetDestinationFromTag(SceneTransitionDestination.DestinationTag destinationTag)
@@ -103,28 +102,27 @@ namespace Gamekit3D
             return Instance.GetDestination(destinationTag);
         }
 
-        protected IEnumerator Transition(string newSceneName, SceneTransitionDestination.DestinationTag destinationTag, TransitionPoint.TransitionType transitionType = TransitionPoint.TransitionType.DifferentZone)
+        protected IEnumerator Transition(string newSceneName, bool resetInputValues, SceneTransitionDestination.DestinationTag destinationTag, TransitionPoint.TransitionType transitionType = TransitionPoint.TransitionType.DifferentZone)
         {
             m_Transitioning = true;
             PersistentDataManager.SaveAllData();
 
             if (m_PlayerInput == null)
                 m_PlayerInput = FindObjectOfType<PlayerInput>();
-            if (m_PlayerInput) m_PlayerInput.ReleaseControl();
+            m_PlayerInput.ReleaseControl(resetInputValues);
             yield return StartCoroutine(ScreenFader.FadeSceneOut(ScreenFader.FadeType.Loading));
             PersistentDataManager.ClearPersisters();
             yield return SceneManager.LoadSceneAsync(newSceneName);
             m_PlayerInput = FindObjectOfType<PlayerInput>();
-            if (m_PlayerInput) m_PlayerInput.ReleaseControl();
+            m_PlayerInput.ReleaseControl(resetInputValues);
             PersistentDataManager.LoadAllData();
             SceneTransitionDestination entrance = GetDestination(destinationTag);
             SetEnteringGameObjectLocation(entrance);
             SetupNewScene(transitionType, entrance);
-            if (entrance != null)
+            if(entrance != null)
                 entrance.OnReachDestination.Invoke();
             yield return StartCoroutine(ScreenFader.FadeSceneIn());
-            if (m_PlayerInput)
-                m_PlayerInput.GainControl();
+            m_PlayerInput.GainControl();
 
             m_Transitioning = false;
         }
@@ -161,7 +159,7 @@ namespace Gamekit3D
                 Debug.LogWarning("Restart information has not been set.");
                 return;
             }
-
+        
             if (transitionType == TransitionPoint.TransitionType.DifferentZone)
                 SetZoneStart(entrance);
         }

@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Gamekit3D
+namespace Gamekit2D
 {
     [CustomPropertyDrawer(typeof(SceneNameAttribute))]
     public class SceneNameDrawer : PropertyDrawer

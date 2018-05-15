@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Gamekit3D
+namespace Gamekit2D
 {
     /// <summary>
     /// This class is used to put the player character into a specific state, usually upon entering a scene.
@@ -24,13 +24,13 @@ namespace Gamekit3D
             public int intValue;
 
             protected int m_Hash;
-
+        
             public void Awake()
             {
                 m_Hash = Animator.StringToHash(parameterName);
             }
 
-            public void SetParameter(Animator animator)
+            public void SetParameter (Animator animator)
             {
                 switch (parameterType)
                 {
@@ -47,12 +47,13 @@ namespace Gamekit3D
                         animator.SetTrigger(m_Hash);
                         break;
                     default:
-                        throw new ArgumentOutOfRangeException();
+                        throw new ArgumentOutOfRangeException ();
                 }
             }
         }
 
-
+        public PlayerCharacter playerCharacter;
+    
         public bool setCharacterVelocity;
         public Vector2 characterVelocity;
 
@@ -70,22 +71,27 @@ namespace Gamekit3D
         int m_HashStateName;
         Coroutine m_SetCharacterStateCoroutine;
 
-        void Awake()
+        void Awake ()
         {
-            m_HashStateName = Animator.StringToHash(animatorStateName);
+            m_HashStateName = Animator.StringToHash (animatorStateName);
 
             for (int i = 0; i < parameterSetters.Length; i++)
-                parameterSetters[i].Awake();
+                parameterSetters[i].Awake ();
         }
 
-        public void SetCharacterState()
+        public void SetCharacterState ()
         {
             if (m_SetCharacterStateCoroutine != null)
-                StopCoroutine(m_SetCharacterStateCoroutine);
+                StopCoroutine (m_SetCharacterStateCoroutine);
 
+            if(setCharacterVelocity)
+                playerCharacter.SetMoveVector (characterVelocity);
 
-            if (setState)
-                animator.Play(m_HashStateName);
+            if(setCharacterFacing)
+                playerCharacter.UpdateFacing(faceLeft);
+
+            if(setState)
+                animator.Play (m_HashStateName);
 
             if (setParameters)
             {
@@ -94,17 +100,17 @@ namespace Gamekit3D
             }
         }
 
-        public void SetCharacterState(float delay)
+        public void SetCharacterState (float delay)
         {
             if (m_SetCharacterStateCoroutine != null)
-                StopCoroutine(m_SetCharacterStateCoroutine);
-            m_SetCharacterStateCoroutine = StartCoroutine(CallWithDelay(delay, SetCharacterState));
+                StopCoroutine (m_SetCharacterStateCoroutine);
+            m_SetCharacterStateCoroutine = StartCoroutine (CallWithDelay (delay, SetCharacterState));
         }
 
-        IEnumerator CallWithDelay(float delay, Action call)
+        IEnumerator CallWithDelay (float delay, Action call)
         {
-            yield return new WaitForSeconds(delay);
-            call();
+            yield return new WaitForSeconds (delay);
+            call ();
         }
     }
 }

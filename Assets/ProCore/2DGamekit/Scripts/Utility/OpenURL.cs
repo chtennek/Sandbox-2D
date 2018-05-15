@@ -1,14 +1,11 @@
 ﻿using UnityEngine;
 
-namespace Gamekit3D
+public class OpenURL : MonoBehaviour
 {
-    public class OpenURL : MonoBehaviour
-    {
-        public string websiteAddress;
+    public string websiteAddress;
 
-        public void OpenURLOnClick()
-        {
-            Application.OpenURL(websiteAddress);
-        }
-    } 
+    public void OpenURLOnClick()
+    {
+        Application.OpenURL(websiteAddress);
+    }
 }

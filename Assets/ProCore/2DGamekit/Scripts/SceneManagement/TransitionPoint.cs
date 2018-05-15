@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 
-namespace Gamekit3D
+namespace Gamekit2D
 {
-    [RequireComponent(typeof(Collider))]
+    [RequireComponent(typeof(Collider2D))]
     public class TransitionPoint : MonoBehaviour
     {
         public enum TransitionType
@@ -15,10 +15,10 @@ namespace Gamekit3D
 
         public enum TransitionWhen
         {
-            ExternalCall, OnTriggerEnter,
+            ExternalCall, InteractPressed, OnTriggerEnter,
         }
 
-
+    
         [Tooltip("This is the gameobject that will transition.  For example, the player.")]
         public GameObject transitioningGameObject;
         [Tooltip("Whether the transition will be within this scene, to a different zone or a non-gameplay scene.")]
@@ -31,22 +31,24 @@ namespace Gamekit3D
         public TransitionPoint destinationTransform;
         [Tooltip("What should trigger the transition to start.")]
         public TransitionWhen transitionWhen;
+        [Tooltip("The player will lose control when the transition happens but should the axis and button values reset to the default when control is lost.")]
+        public bool resetInputValuesOnTransition = true;
         [Tooltip("Is this transition only possible with specific items in the inventory?")]
         public bool requiresInventoryCheck;
         [Tooltip("The inventory to be checked.")]
-        public Gamekit3D.InventoryController inventoryController;
+        public InventoryController inventoryController;
         [Tooltip("The required items.")]
-        public Gamekit3D.InventoryController.InventoryChecker inventoryCheck;
-
+        public InventoryController.InventoryChecker inventoryCheck;
+    
         bool m_TransitioningGameObjectPresent;
 
-        void Start()
+        void Start ()
         {
             if (transitionWhen == TransitionWhen.ExternalCall)
                 m_TransitioningGameObjectPresent = true;
         }
 
-        void OnTriggerEnter(Collider other)
+        void OnTriggerEnter2D (Collider2D other)
         {
             if (other.gameObject == transitioningGameObject)
             {
@@ -56,11 +58,11 @@ namespace Gamekit3D
                     return;
 
                 if (transitionWhen == TransitionWhen.OnTriggerEnter)
-                    TransitionInternal();
+                    TransitionInternal ();
             }
         }
 
-        void OnTriggerExit(Collider other)
+        void OnTriggerExit2D (Collider2D other)
         {
             if (other.gameObject == transitioningGameObject)
             {
@@ -68,29 +70,48 @@ namespace Gamekit3D
             }
         }
 
-        protected void TransitionInternal()
+        void Update ()
         {
-            if (requiresInventoryCheck)
-            {
-                if (!inventoryCheck.CheckInventory(inventoryController))
-                    return;
-            }
+            if (ScreenFader.IsFading || SceneController.Transitioning)
+                return;
 
-            if (transitionType == TransitionType.SameScene)
+            if(!m_TransitioningGameObjectPresent)
+                return;
+
+            if (transitionWhen == TransitionWhen.InteractPressed)
             {
-                GameObjectTeleporter.Teleport(transitioningGameObject, destinationTransform.transform);
-            }
-            else
-            {
-                SceneController.TransitionToScene(this);
+                if (PlayerInput.Instance.Interact.Down)
+                {
+                    TransitionInternal ();
+                }
             }
         }
 
-        public void Transition()
+        protected void TransitionInternal ()
         {
-            if (m_TransitioningGameObjectPresent)
-                if (transitionWhen == TransitionWhen.ExternalCall)
-                    TransitionInternal();
+            if (requiresInventoryCheck)
+            {
+                if(!inventoryCheck.CheckInventory (inventoryController))
+                    return;
+            }
+        
+            if (transitionType == TransitionType.SameScene)
+            {
+                GameObjectTeleporter.Teleport (transitioningGameObject, destinationTransform.transform);
+            }
+            else
+            {
+                SceneController.TransitionToScene (this);
+            }
+        }
+
+        public void Transition ()
+        {
+            if(!m_TransitioningGameObjectPresent)
+                return;
+
+            if(transitionWhen == TransitionWhen.ExternalCall)
+                TransitionInternal ();
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Gamekit3D
+namespace Gamekit2D
 {
     public class MenuActivityController : MonoBehaviour
     {

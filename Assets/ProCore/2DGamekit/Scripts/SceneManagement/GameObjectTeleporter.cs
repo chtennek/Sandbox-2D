@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Gamekit3D
+namespace Gamekit2D
 {
     /// <summary>
     /// This class is used to move gameobjects from one position to another in the scene.
@@ -38,7 +38,7 @@ namespace Gamekit3D
         protected PlayerInput m_PlayerInput;
         protected bool m_Transitioning;
 
-        void Awake()
+        void Awake ()
         {
             if (Instance != this)
             {
@@ -51,44 +51,44 @@ namespace Gamekit3D
             m_PlayerInput = FindObjectOfType<PlayerInput>();
         }
 
-        public static void Teleport(TransitionPoint transitionPoint)
+        public static void Teleport (TransitionPoint transitionPoint)
         {
-            Transform destinationTransform = Instance.GetDestination(transitionPoint.transitionDestinationTag).transform;
-            Instance.StartCoroutine(Instance.Transition(transitionPoint.transitioningGameObject, true, destinationTransform.position, true));
+            Transform destinationTransform = Instance.GetDestination (transitionPoint.transitionDestinationTag).transform;
+            Instance.StartCoroutine (Instance.Transition (transitionPoint.transitioningGameObject, true, transitionPoint.resetInputValuesOnTransition, destinationTransform.position, true));
         }
 
-        public static void Teleport(GameObject transitioningGameObject, Transform destination)
+        public static void Teleport (GameObject transitioningGameObject, Transform destination)
         {
-            Instance.StartCoroutine(Instance.Transition(transitioningGameObject, false, destination.position, false));
+            Instance.StartCoroutine (Instance.Transition (transitioningGameObject, false, false, destination.position, false));
         }
 
-        public static void Teleport(GameObject transitioningGameObject, Vector3 destinationPosition)
+        public static void Teleport (GameObject transitioningGameObject, Vector3 destinationPosition)
         {
-            Instance.StartCoroutine(Instance.Transition(transitioningGameObject, false, destinationPosition, false));
+            Instance.StartCoroutine (Instance.Transition (transitioningGameObject, false, false, destinationPosition, false));
         }
 
-        protected IEnumerator Transition(GameObject transitioningGameObject, bool releaseControl, Vector3 destinationPosition, bool fade)
+        protected IEnumerator Transition (GameObject transitioningGameObject, bool releaseControl, bool resetInputValues, Vector3 destinationPosition, bool fade)
         {
             m_Transitioning = true;
 
             if (releaseControl)
             {
                 if (m_PlayerInput == null)
-                    m_PlayerInput = FindObjectOfType<PlayerInput>();
-                m_PlayerInput.ReleaseControl();
+                    m_PlayerInput = FindObjectOfType<PlayerInput> ();
+                m_PlayerInput.ReleaseControl (resetInputValues);
             }
 
-            if (fade)
-                yield return StartCoroutine(ScreenFader.FadeSceneOut());
+            if(fade)
+                yield return StartCoroutine (ScreenFader.FadeSceneOut ());
 
             transitioningGameObject.transform.position = destinationPosition;
-
-            if (fade)
-                yield return StartCoroutine(ScreenFader.FadeSceneIn());
+        
+            if(fade)
+                yield return StartCoroutine (ScreenFader.FadeSceneIn ());
 
             if (releaseControl)
             {
-                m_PlayerInput.GainControl();
+                m_PlayerInput.GainControl ();
             }
 
             m_Transitioning = false;

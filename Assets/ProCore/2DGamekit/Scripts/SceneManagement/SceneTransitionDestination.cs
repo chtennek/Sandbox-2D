@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace Gamekit3D
+namespace Gamekit2D
 {
     public class SceneTransitionDestination : MonoBehaviour
     {

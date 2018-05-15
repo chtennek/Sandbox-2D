@@ -16,8 +16,8 @@ namespace Sandbox
             public string description;
 
             [Space]
-            public Stat[] baseStats;
-            public EffectType[] moves;
+            public List<Stat> baseStats;
+            public List<EffectType> moves;
         }
     }
 }

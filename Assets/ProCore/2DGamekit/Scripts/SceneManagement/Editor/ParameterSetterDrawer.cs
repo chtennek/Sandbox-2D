@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
 
-namespace Gamekit3D
+namespace Gamekit2D
 {
     [CustomPropertyDrawer(typeof(CharacterStateSetter.ParameterSetter))]
     public class ParameterSetterDrawer : PropertyDrawer
@@ -19,7 +19,7 @@ namespace Gamekit3D
         CharacterStateSetter.ParameterSetter.ParameterType[] m_ParameterTypes;
         int m_ParameterNameIndex;
 
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+        public override float GetPropertyHeight (SerializedProperty property, GUIContent label)
         {
             if (m_AnimatorProp == null)
                 return 0f;
@@ -30,19 +30,19 @@ namespace Gamekit3D
             return EditorGUIUtility.singleLineHeight * 3f;
         }
 
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        public override void OnGUI (Rect position, SerializedProperty property, GUIContent label)
         {
-            if (!m_SetupCalled || m_ParameterNames == null)
-                ParameterSetterSetup(property);
+            if(!m_SetupCalled || m_ParameterNames == null)
+                ParameterSetterSetup (property);
 
             position.height = EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(position, m_AnimatorProp);
+            EditorGUI.PropertyField (position, m_AnimatorProp);
 
-            if (m_AnimatorProp.objectReferenceValue == null)
+            if(m_AnimatorProp.objectReferenceValue == null)
                 return;
 
             position.y += position.height;
-            m_ParameterNameIndex = EditorGUI.Popup(position, m_ParameterNameIndex, m_ParameterNames);
+            m_ParameterNameIndex = EditorGUI.Popup (position, m_ParameterNameIndex, m_ParameterNames);
             m_ParameterNameProp.stringValue = m_ParameterNames[m_ParameterNameIndex];
             m_ParameterTypeProp.enumValueIndex = (int)m_ParameterTypes[m_ParameterNameIndex];
 
@@ -50,7 +50,7 @@ namespace Gamekit3D
             switch ((CharacterStateSetter.ParameterSetter.ParameterType)m_ParameterTypeProp.enumValueIndex)
             {
                 case CharacterStateSetter.ParameterSetter.ParameterType.Bool:
-                    EditorGUI.PropertyField(position, m_BoolValueProp);
+                    EditorGUI.PropertyField (position, m_BoolValueProp);
                     break;
                 case CharacterStateSetter.ParameterSetter.ParameterType.Float:
                     EditorGUI.PropertyField(position, m_FloatValueProp);
@@ -61,16 +61,16 @@ namespace Gamekit3D
             }
         }
 
-        void ParameterSetterSetup(SerializedProperty property)
+        void ParameterSetterSetup (SerializedProperty property)
         {
             m_SetupCalled = true;
 
-            m_AnimatorProp = property.FindPropertyRelative("animator");
-            m_ParameterNameProp = property.FindPropertyRelative("parameterName");
-            m_ParameterTypeProp = property.FindPropertyRelative("parameterType");
-            m_BoolValueProp = property.FindPropertyRelative("boolValue");
-            m_FloatValueProp = property.FindPropertyRelative("floatValue");
-            m_IntValueProp = property.FindPropertyRelative("intValue");
+            m_AnimatorProp = property.FindPropertyRelative ("animator");
+            m_ParameterNameProp = property.FindPropertyRelative ("parameterName");
+            m_ParameterTypeProp = property.FindPropertyRelative ("parameterType");
+            m_BoolValueProp = property.FindPropertyRelative ("boolValue");
+            m_FloatValueProp = property.FindPropertyRelative ("floatValue");
+            m_IntValueProp = property.FindPropertyRelative ("intValue");
 
             if (m_AnimatorProp.objectReferenceValue == null)
             {
@@ -112,7 +112,7 @@ namespace Gamekit3D
                         m_ParameterTypes[i] = CharacterStateSetter.ParameterSetter.ParameterType.Trigger;
                         break;
                     default:
-                        throw new ArgumentOutOfRangeException();
+                        throw new ArgumentOutOfRangeException ();
                 }
             }
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Gamekit3D
+namespace Gamekit2D
 {
     public class Translator : MonoBehaviour
     {

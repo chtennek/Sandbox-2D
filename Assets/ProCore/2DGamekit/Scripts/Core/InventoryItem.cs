@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Gamekit3D
+namespace Gamekit2D
 {
-    [RequireComponent(typeof(Collider))]
+    [RequireComponent(typeof(CircleCollider2D))]
     public class InventoryItem : MonoBehaviour, IDataPersister
     {
         public string inventoryKey = "";
@@ -12,14 +12,14 @@ namespace Gamekit3D
         public bool disableOnEnter = false;
 
         [HideInInspector]
-        new public Collider collider;
+        new public CircleCollider2D collider;
 
         public AudioClip clip;
         public DataSettings dataSettings;
 
         void OnEnable()
         {
-            collider = GetComponent<Collider>();
+            collider = GetComponent<CircleCollider2D>();
             PersistentDataManager.RegisterPersister(this);
         }
 
@@ -31,12 +31,13 @@ namespace Gamekit3D
         void Reset()
         {
             layers = LayerMask.NameToLayer("Everything");
-            collider = GetComponent<Collider>();
+            collider = GetComponent<CircleCollider2D>();
+            collider.radius = 5;
             collider.isTrigger = true;
             dataSettings = new DataSettings();
         }
 
-        void OnTriggerEnter(Collider other)
+        void OnTriggerEnter2D(Collider2D other)
         {
             if (layers.Contains(other.gameObject))
             {

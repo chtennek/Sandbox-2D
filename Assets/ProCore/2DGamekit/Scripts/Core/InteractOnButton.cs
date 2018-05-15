@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
-namespace Gamekit3D
+namespace Gamekit2D
 {
     public class InteractOnButton : InteractOnTrigger
     {
@@ -12,25 +11,25 @@ namespace Gamekit3D
         public string buttonName = "X";
         public UnityEvent OnButtonPress;
 
-        bool canExecuteButtons = false;
+        bool m_CanExecuteButtons = false;
 
         protected override void ExecuteOnEnter(Collider other)
         {
-            canExecuteButtons = true;
+            m_CanExecuteButtons = true;
         }
 
         protected override void ExecuteOnExit(Collider other)
         {
-            canExecuteButtons = false;
+            m_CanExecuteButtons = false;
         }
 
         void Update()
         {
-            if (canExecuteButtons && Input.GetButtonDown(buttonName))
+            if (m_CanExecuteButtons && Input.GetButtonDown(buttonName))
             {
                 OnButtonPress.Invoke();
             }
         }
 
-    } 
+    }
 }

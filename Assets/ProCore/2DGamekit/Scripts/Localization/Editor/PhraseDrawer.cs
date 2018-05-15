@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Gamekit3D
+namespace Gamekit2D
 {
     [CustomPropertyDrawer(typeof(Phrase))]
     public class PhraseDrawer : PropertyDrawer

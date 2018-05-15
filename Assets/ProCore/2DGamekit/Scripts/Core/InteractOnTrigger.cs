@@ -3,26 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Gamekit3D
+namespace Gamekit2D
 {
-    [RequireComponent(typeof(Collider))]
+    [RequireComponent(typeof(SphereCollider))]
     public class InteractOnTrigger : MonoBehaviour
     {
         public LayerMask layers;
         public UnityEvent OnEnter, OnExit;
-        new Collider collider;
         public InventoryController.InventoryChecker[] inventoryChecks;
+
+        SphereCollider m_Collider;
 
         void Reset()
         {
             layers = LayerMask.NameToLayer("Everything");
-            collider = GetComponent<Collider>();
-            collider.isTrigger = true;
+            m_Collider = GetComponent<SphereCollider>();
+            m_Collider.radius = 5;
+            m_Collider.isTrigger = true;
         }
 
         void OnTriggerEnter(Collider other)
         {
-            if (0 != (layers.value & 1 << other.gameObject.layer))
+            if (layers.Contains (other.gameObject))
             {
                 ExecuteOnEnter(other);
             }
@@ -39,7 +41,7 @@ namespace Gamekit3D
 
         void OnTriggerExit(Collider other)
         {
-            if (0 != (layers.value & 1 << other.gameObject.layer))
+            if (layers.Contains (other.gameObject))
             {
                 ExecuteOnExit(other);
             }
@@ -54,11 +56,5 @@ namespace Gamekit3D
         {
             Gizmos.DrawIcon(transform.position, "InteractionTrigger", false);
         }
-
-        void OnDrawGizmosSelected()
-        {
-            //need to inspect events and draw arrows to relevant gameObjects.
-        }
-
-    } 
+    }
 }

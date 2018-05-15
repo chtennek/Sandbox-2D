@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Gamekit3D
+namespace Gamekit2D
 {
     public class KeyUI : MonoBehaviour
     {

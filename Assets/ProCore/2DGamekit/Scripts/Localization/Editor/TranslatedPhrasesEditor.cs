@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Gamekit3D
+namespace Gamekit2D
 {
     [CustomEditor(typeof(TranslatedPhrases))]
     public class TranslatedPhrasesEditor : Editor

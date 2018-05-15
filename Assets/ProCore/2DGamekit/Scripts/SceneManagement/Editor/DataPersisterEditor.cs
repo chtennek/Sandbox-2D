@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace Gamekit3D
+namespace Gamekit2D
 {
     public abstract class DataPersisterEditor : Editor
     {
@@ -18,17 +18,17 @@ namespace Gamekit3D
         {
             DrawDefaultInspector();
 
-            DataPersisterGUI(m_DataPersister);
+            DataPersisterGUI (m_DataPersister);
         }
 
-        public static void DataPersisterGUI(IDataPersister dataPersister)
+        public static void DataPersisterGUI (IDataPersister dataPersister)
         {
-            DataSettings dataSettings = dataPersister.GetDataSettings();
+            DataSettings dataSettings = dataPersister.GetDataSettings ();
 
-            DataSettings.PersistenceType persistenceType = (DataSettings.PersistenceType)EditorGUILayout.EnumPopup("Persistence Type", dataSettings.persistenceType);
-            string dataTag = EditorGUILayout.TextField("Data Tag", dataSettings.dataTag);
+            DataSettings.PersistenceType persistenceType = (DataSettings.PersistenceType)EditorGUILayout.EnumPopup ("Persistence Type", dataSettings.persistenceType);
+            string dataTag = EditorGUILayout.TextField ("Data Tag", dataSettings.dataTag);
 
-            dataPersister.SetDataSettings(dataTag, persistenceType);
+            dataPersister.SetDataSettings (dataTag, persistenceType);
         }
     }
 }
