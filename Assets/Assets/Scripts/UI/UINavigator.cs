@@ -27,6 +27,8 @@ public class UINavigator : MonoBehaviour, INavigator
 
     private float m_lastActionTime = 0f;
     private Vector2 m_lastDirection = Vector2.zero;
+
+    [SerializeField]
     private InGameMenu m_ActiveMenu;
     public InGameMenu ActiveMenu
     {
@@ -39,7 +41,8 @@ public class UINavigator : MonoBehaviour, INavigator
                 if (lockInputOnActive) input.Lock();
                 if (pauseOnActive) Time.timeScale = 0; // [TODO] doesn't work if another UINavigator exists
             }
-            else {
+            else
+            {
                 input.Unlock();
                 Time.timeScale = 1;
             }
@@ -77,7 +80,7 @@ public class UINavigator : MonoBehaviour, INavigator
     {
         if (input == null)
             return;
-        
+
         bool closedMenuThisFrame = ActiveMenu != null && (input.GetButtonDown(closeActiveButton) || input.GetButtonDown(closeAllButton));
 
         // Movement
@@ -152,8 +155,7 @@ public class UINavigator : MonoBehaviour, INavigator
     public void MenuSwitch(InGameMenu menu)
     {
         MenuClose(ActiveMenu);
-        if (menu != null)
-            MenuOpen(menu);
+        MenuOpen(menu);
     }
 
     public void MenuUpOneLevel()
