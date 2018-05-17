@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114981084311576078}
   - component: {fileID: 114902273214117606}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: World Canvas - HP Stat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,8 +129,9 @@ MonoBehaviour:
   clampMin: 1
   clampMax: 1
   roundToInt: 1
-  m_lerpRatio: 0
-  m_lerpSpeed: 1
+  lerpMethod: 1
+  m_lerpValueScale: 0
+  m_lerpTime: 0.2
   m_ticksPerSecond: 10
   m_numericalDisplay: {fileID: 0}
   m_zeroPadding: 0

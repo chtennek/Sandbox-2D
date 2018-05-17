@@ -8,22 +8,29 @@ using Sandbox.RPG;
 
 public class TurnBasedCombatManager : MonoBehaviour
 {
+    public bool runCombatLoopImmediately;
+
     public List<CombatBehaviour> entities;
 
-    public UnityEvent onTurnEnd; 
+    public UnityEvent onTurnEnd;
 
     private HashSet<CombatBehaviour> readyEntities;
     private IEnumerator combatLoop;
 
-	private void Awake()
-	{
+    private void Awake()
+    {
         readyEntities = new HashSet<CombatBehaviour>();
-	}
+    }
 
-	private void Start()
+    private void Start()
     {
         combatLoop = Coroutine_CombatLoop();
         StartCoroutine(combatLoop);
+    }
+
+    public void ExecuteTurn()
+    {
+        StartCoroutine(Coroutine_ExecuteTurn());
     }
 
     public IEnumerator Coroutine_ExecuteTurn()
@@ -31,6 +38,7 @@ public class TurnBasedCombatManager : MonoBehaviour
         foreach (CombatBehaviour entity in entities)
             yield return StartCoroutine(entity.Coroutine_ExecuteMove());
 
+        readyEntities.Clear();
         onTurnEnd.Invoke();
     }
 
@@ -43,13 +51,12 @@ public class TurnBasedCombatManager : MonoBehaviour
                 yield return null;
                 continue;
             }
-
             yield return StartCoroutine(Coroutine_ExecuteTurn());
-            readyEntities.Clear();
         }
     }
 
-    public void MarkAsReady(CombatBehaviour entity) {
+    public void MarkAsReady(CombatBehaviour entity)
+    {
         if (entities.Contains(entity))
             readyEntities.Add(entity);
     }

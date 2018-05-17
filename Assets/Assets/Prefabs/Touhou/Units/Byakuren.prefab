@@ -1387,6 +1387,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
+  restrictToXAxis: 0
+  restrictToYAxis: 0
 --- !u!114 &114597262733481808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1414,11 +1416,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b424a4d39d442358de5dc7e691fe52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: {fileID: 0}
+  values: []
   lifetime: Infinity
   destroyOnDeath: 1
-  damageTriggersDeath: 0
-  lifebar: {fileID: 0}
-  damage: 1
+  statChangesOnCollision: []
+  effectOnCollision: {fileID: 0}
   onDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -1473,7 +1476,7 @@ MonoBehaviour:
   comment: 
   activateOnStart: 0
   applyPermanently: 0
-  time: Infinity
+  timeInEffect: Infinity
   targetTag: 
   parameters:
     multiplier: 1
@@ -1516,15 +1519,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0420ba68a4a6c240a1fff50c1dabf2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  label: HP
+  stat:
+    mode: 1
+    type: {fileID: 0}
+    baseValue: 0
+    value: 0
   minValue: 0
   maxValue: 25
   m_currentValue: 100
   clampMin: 1
   clampMax: 1
   roundToInt: 1
-  m_lerpRatio: 0
-  m_lerpSpeed: 1
+  lerpMethod: 1
+  m_lerpValueScale: 0
+  m_lerpTime: 0.2
   m_ticksPerSecond: 10
   m_numericalDisplay: {fileID: 0}
   m_zeroPadding: 0
@@ -1571,11 +1579,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b424a4d39d442358de5dc7e691fe52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: {fileID: 0}
+  values: []
   lifetime: Infinity
   destroyOnDeath: 1
-  damageTriggersDeath: 0
-  lifebar: {fileID: 114859791607735190}
-  damage: 0
+  statChangesOnCollision: []
+  effectOnCollision: {fileID: 0}
   onDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -1597,14 +1606,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd3b6546229a5549a5fbe022cfe6a0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mover: {fileID: 0}
   input: {fileID: 114557098058623208}
   axisPairName: Move
-  restrictToXAxis: 0
-  restrictToYAxis: 0
   swizzle: 0
-  walkSpeed: 5
-  minWalkableSpeed: 1
-  walkSpeedLevels: 2
+  moveMode: 0
+  ignorePitch: 1
+  minSpeed: 5
+  maxSpeed: 5
+  speedMapping:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   acceleration: 40
   deceleration: 10
   faceMovementDirection: 0

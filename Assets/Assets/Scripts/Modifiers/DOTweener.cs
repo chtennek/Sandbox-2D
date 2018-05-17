@@ -55,6 +55,12 @@ public class DOTweener : MonoBehaviour
     private Graphic graphic;
     private Material material;
 
+    public void SetTarget(Transform target)
+    {
+        foreach (SerializableTween tween in tweens)
+            tween.target = target;
+    }
+
     private void Reset()
     {
         graphic = GetComponent<Graphic>();

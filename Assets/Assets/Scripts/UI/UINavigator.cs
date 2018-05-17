@@ -28,7 +28,8 @@ public class UINavigator : MonoBehaviour, INavigator
     private float m_lastActionTime = 0f;
     private Vector2 m_lastDirection = Vector2.zero;
 
-    [SerializeField]
+    [Header("References")]
+
     private InGameMenu m_ActiveMenu;
     public InGameMenu ActiveMenu
     {
@@ -49,6 +50,7 @@ public class UINavigator : MonoBehaviour, INavigator
         }
     }
 
+    public UICursor cursor;
     private Selectable m_Selected;
     public Selectable Selected
     {
@@ -61,7 +63,11 @@ public class UINavigator : MonoBehaviour, INavigator
 
             m_Selected = value;
             if (m_Selected != null)
+            {
                 m_Selected.OnSelect(data);
+                if (cursor != null)
+                    cursor.Target = m_Selected.transform;
+            }
         }
     }
 
@@ -76,58 +82,89 @@ public class UINavigator : MonoBehaviour, INavigator
             Warnings.ComponentMissing(this);
     }
 
-    protected virtual void Update()
+    private void Start()
     {
-        if (input == null)
-            return;
+        StartCoroutine(Coroutine_UILoop());
+    }
 
-        bool closedMenuThisFrame = ActiveMenu != null && (input.GetButtonDown(closeActiveButton) || input.GetButtonDown(closeAllButton));
+    private IEnumerator Coroutine_UILoop()
+    {
+        while (true)
+        {
+            yield return null;
+            if (input == null)
+                continue;
 
-        // Movement
-        if (Selected != null)
-            ProcessMovement();
+            bool closedMenuThisFrame = ActiveMenu != null && (input.GetButtonDown(closeActiveButton) || input.GetButtonDown(closeAllButton));
 
-        // Close menus
-        if (input.GetButtonDown(closeActiveButton))
-            MenuUpOneLevel();
-        if (input.GetButtonDown(closeAllButton))
-            while (ActiveMenu != null)
+            // Movement
+            if (Selected != null)
+                ProcessMovement();
+
+            // Close menus
+            if (input.GetButtonDown(closeActiveButton))
                 MenuUpOneLevel();
+            if (input.GetButtonDown(closeAllButton))
+                while (ActiveMenu != null)
+                    MenuUpOneLevel();
 
-        foreach (string buttonName in closeMenuButton.Keys)
-        {
-            if (input.GetButtonDown(buttonName) && closeMenuButton[buttonName].Enabled == true)
+            foreach (string buttonName in closeMenuButton.Keys)
             {
-                closedMenuThisFrame = true;
-                MenuClose(closeMenuButton[buttonName]);
-            }
-        }
-
-        // Open menus
-        if (closedMenuThisFrame == false)
-        {
-            foreach (string buttonName in openMenuButton.Keys)
-            {
-                if (input.GetButtonDown(buttonName))
+                if (input.GetButtonDown(buttonName) && closeMenuButton[buttonName].Enabled == true)
                 {
-                    MenuOpen(openMenuButton[buttonName]);
+                    closedMenuThisFrame = true;
+                    MenuClose(closeMenuButton[buttonName]);
                 }
             }
-        }
 
-        // Propagate events
-        if (input.GetButtonDown(submitButton))
-        {
-            ISubmitHandler handler = Selected as ISubmitHandler;
-            if (handler != null)
-                handler.OnSubmit(null);
+            // Open menus
+            if (closedMenuThisFrame == false)
+            {
+                foreach (string buttonName in openMenuButton.Keys)
+                {
+                    if (input.GetButtonDown(buttonName))
+                    {
+                        MenuOpen(openMenuButton[buttonName]);
+                    }
+                }
+            }
+
+            // Propagate events
+            if (input.GetButtonDown(submitButton))
+            {
+                ISubmitHandler handler = Selected as ISubmitHandler;
+                if (handler != null)
+                    handler.OnSubmit(null);
+            }
+            if (input.GetButtonDown(cancelButton))
+            {
+                ICancelHandler handler = Selected as ICancelHandler;
+                if (handler != null)
+                    handler.OnCancel(null);
+            }
         }
-        if (input.GetButtonDown(cancelButton))
+    }
+
+    private void ProcessMovement()
+    {
+        float time = Time.unscaledTime;
+        Vector2 direction = input.GetAxisPair(axisPairName).LargestAxis().Quantized();
+
+        // Figure out if we should move
+        bool processMovement = Time.unscaledTime - m_lastActionTime >= 1f / inputsPerSecond;
+        if (moveOneElementPerInput == true && direction == m_lastDirection)
+            processMovement = false;
+
+        // Move cursor
+        if (processMovement == true && direction != Vector2.zero)
         {
-            ICancelHandler handler = Selected as ICancelHandler;
-            if (handler != null)
-                handler.OnCancel(null);
+            Selectable target = Selected.FindSelectable(direction);
+            if (target != null)
+                Selected = target;
+
+            m_lastActionTime = Time.unscaledTime;
         }
+        m_lastDirection = direction;
     }
 
     public void MenuCloseActive() { MenuClose(ActiveMenu); }
@@ -164,63 +201,8 @@ public class UINavigator : MonoBehaviour, INavigator
             MenuSwitch(ActiveMenu.parentMenu);
     }
 
-    private void ProcessMovement()
-    {
-        float time = Time.unscaledTime;
-        Vector2 direction = input.GetAxisPair(axisPairName).Quantized();
-
-        // Figure out if we should move
-        bool processMovement = Time.unscaledTime - m_lastActionTime >= 1f / inputsPerSecond;
-        if (moveOneElementPerInput == true && direction == m_lastDirection)
-            processMovement = false;
-
-        // Move cursor
-        if (processMovement == true && direction != Vector2.zero)
-        {
-            Selectable target = Selected.FindSelectable(direction);
-            if (target != null)
-                Selected = target;
-
-            m_lastActionTime = Time.unscaledTime;
-        }
-        m_lastDirection = direction;
-    }
-
     public void Select(Selectable item)
     {
-        Selected = item;
-        return;
-        if (item == null)
-            return;
-
-        // Deselect
-        if (item == Selected)
-        {
-            Selected = null;
-            return;
-        }
-
-        // Swap
-        if (Selected != null && Selected != item)
-        {
-            Transform t1 = Selected.transform;
-            Transform t2 = item.transform;
-            int i1 = t1.GetSiblingIndex();
-            int i2 = t2.GetSiblingIndex();
-
-            Transform parent = t1.parent;
-            t1.parent = t2.parent;
-            t2.parent = parent;
-
-            t1.SetSiblingIndex(i2);
-            t2.SetSiblingIndex(i1);
-
-            EventSystem.current.SetSelectedGameObject(Selected.gameObject);
-            Selected = null;
-            return;
-        }
-
-        // Select
         Selected = item;
     }
 }

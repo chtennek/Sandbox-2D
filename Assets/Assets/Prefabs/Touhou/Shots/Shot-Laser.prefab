@@ -256,11 +256,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b424a4d39d442358de5dc7e691fe52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: {fileID: 0}
+  values: []
   lifetime: 5
   destroyOnDeath: 1
-  damageTriggersDeath: 1
-  lifebar: {fileID: 0}
-  damage: 3
+  statChangesOnCollision: []
+  effectOnCollision: {fileID: 0}
   onDamage:
     m_PersistentCalls:
       m_Calls: []

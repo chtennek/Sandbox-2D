@@ -14,10 +14,12 @@ public class CombatBehaviour : MonoBehaviour
     public float mouseRaycast = 1000;
 
     [Header("Properties")]
-    public bool disableAfterEachMove;
+    public bool runCombatLoop;
     public EntityType self;
 
+    public bool resetTarget;
     public EntityBehaviour target;
+    public bool resetMove;
     public EffectType currentMove;
 
     [Header("References")]
@@ -52,8 +54,11 @@ public class CombatBehaviour : MonoBehaviour
 
     protected void Start()
     {
-        combatLoop = Coroutine_CombatLoop();
-        StartCoroutine(combatLoop);
+        if (runCombatLoop)
+        {
+            combatLoop = Coroutine_CombatLoop();
+            StartCoroutine(combatLoop);
+        }
     }
 
     private void Update()
@@ -101,6 +106,10 @@ public class CombatBehaviour : MonoBehaviour
             }
 
             yield return StartCoroutine(Coroutine_ExecuteMove());
+            if (resetTarget)
+                target = null;
+            if (resetMove)
+                currentMove = null;
         }
     }
 
