@@ -17,6 +17,7 @@ public class WaypointControl : MonoBehaviour
     public float mouseRaycast = 1000;
 
     [Header("Parameters")]
+    [Tooltip("Sets how close we have to get to a waypoint before discarding it from the queue. A value that is too low can cause jitter.")]
     public float waypointRadius = .1f;
 
     [Header("References")]
@@ -63,7 +64,7 @@ public class WaypointControl : MonoBehaviour
         // Discard excess waypoints
         while (waypoints.Count > 0)
             if (waypoints.Peek() == null || Vector3.Distance(transform.position, waypoints.Peek().position) <= waypointRadius)
-                waypoints.Dequeue();
+                ObjectPooler.Destroy(waypoints.Dequeue());
             else
                 break;
 
@@ -85,12 +86,17 @@ public class WaypointControl : MonoBehaviour
 
     public void AddWaypoint(Transform target)
     {
+        if (target == null)
+            return;
+        
         waypoints.Enqueue(target);
     }
 
     public void ClearWaypoints()
     {
-        waypoints.Clear();
+        while (waypoints.Count > 0) {
+            ObjectPooler.Destroy(waypoints.Dequeue());
+        }
     }
 
     private Transform GetMouseTarget()

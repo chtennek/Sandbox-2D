@@ -26,7 +26,7 @@ public sealed class DialogueBehaviour : MonoBehaviour
     private Queue<Line> lines;
     private IEnumerator current;
     private Line currentLine;
-    private int currentLinePosition;
+    private int currentLinePosition = -1;
 
     private void Reset()
     {
@@ -91,12 +91,11 @@ public sealed class DialogueBehaviour : MonoBehaviour
             // If dialogue is finished displaying, load the next line
             NextLine();
         }
-        else
+        else if (current != null)
         {
             // Display the rest of the current line immediately
-            if (current != null)
-                StopCoroutine(current);
-            lineText.text += currentLine.text.Substring(currentLinePosition + 1);
+            StopCoroutine(current);
+            lineText.text += currentLine.text.Substring(currentLinePosition);
         }
     }
 
@@ -111,10 +110,10 @@ public sealed class DialogueBehaviour : MonoBehaviour
 
     private bool IsDisplayFinished()
     {
-        return lineText.text == currentLine.text;
+        return string.IsNullOrEmpty(currentLine.text) || currentLinePosition == currentLine.text.Length;
     }
 
-    private void DisplayLine(Line line)
+    public void DisplayLine(Line line)
     {
         if (current != null)
             StopCoroutine(current);
@@ -136,13 +135,14 @@ public sealed class DialogueBehaviour : MonoBehaviour
         if (textSpeed <= 0 || textSpeed == Mathf.Infinity)
         {
             lineText.text += line.text;
+            currentLinePosition = line.text.Length;
             yield break;
         }
 
         for (currentLinePosition = 0; currentLinePosition < line.text.Length; currentLinePosition++)
         {
-            lineText.text += line.text[currentLinePosition];
             yield return new WaitForSecondsRealtime(1 / textSpeed);
+            lineText.text += line.text[currentLinePosition];
         }
 
         if (autoAdvanceAfter > 0)

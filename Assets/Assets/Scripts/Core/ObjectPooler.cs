@@ -74,6 +74,7 @@ public class ObjectPool
         obj.localPosition = Vector3.zero;
         obj.localRotation = Quaternion.identity;
         obj.localScale = Vector3.one;
+        obj.gameObject.SetActive(true);
         foreach (IPooledObject poolable in resetLookup[obj])
             poolable.OnReset();
         return obj.transform;
