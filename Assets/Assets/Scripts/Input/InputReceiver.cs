@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public abstract class InputReceiver : MonoBehaviour
 {
@@ -11,41 +13,24 @@ public abstract class InputReceiver : MonoBehaviour
     {
         get
         {
-            bool isUnlocked = inputLock == null || inputLock == this;
-            return isUnlocked && enabled;
+            bool isLocked = inputLock.Count > 0 && inputLock.Contains(this) == false;
+            return isLocked == false && enabled;
         }
     }
 
     #region Lock pattern
-    protected static InputReceiver inputLock; // [TODO] find a better way to do this
+    protected static HashSet<InputReceiver> inputLock = new HashSet<InputReceiver>(); // [TODO] find a better way to do this
 
-    public void ForceLock()
+    public void Lock()
     {
-        inputLock = this;
-    }
-
-    public bool Lock()
-    {
-        if (IsActive)
-        {
-            inputLock = this;
-            return true;
-        }
-        Debug.LogWarning("Input locked by: " + inputLock.name);
-        return false;
+        inputLock.Add(this);
     }
 
     public void Unlock()
     {
-        if (inputLock == this) inputLock = null;
+        inputLock.Remove(this);
     }
-
     #endregion
-
-    private void Update()
-    {
-
-    }
 
     public abstract bool GetButtonDownRaw(string id);
     public abstract bool GetButtonUpRaw(string id);

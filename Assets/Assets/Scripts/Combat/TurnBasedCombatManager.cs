@@ -8,9 +8,12 @@ using Sandbox.RPG;
 
 public class TurnBasedCombatManager : MonoBehaviour
 {
+    [Header("Parameters")]
     public bool runCombatLoopImmediately;
 
+    [Header("References")]
     public List<CombatBehaviour> entities;
+    public DialogueBehaviour dialogueBox;
 
     public UnityEvent onTurnEnd;
 
@@ -20,6 +23,9 @@ public class TurnBasedCombatManager : MonoBehaviour
     private void Awake()
     {
         readyEntities = new HashSet<CombatBehaviour>();
+        if (dialogueBox != null)
+            foreach (CombatBehaviour entity in entities)
+                entity.dialogueBox = dialogueBox;
     }
 
     private void Start()

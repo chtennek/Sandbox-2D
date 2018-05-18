@@ -25,6 +25,7 @@ public class CombatBehaviour : MonoBehaviour
     [Header("References")]
     public WaypointControl movement; // Leave null to ignore range limitations
     public AnimatorMessenger animator;
+    public DialogueBehaviour dialogueBox;
     public InputReceiver input;
 
     public Transform findTarget;
@@ -69,10 +70,24 @@ public class CombatBehaviour : MonoBehaviour
         }
     }
 
+    // [TODO] Make a templating system for dialogue
+    public void SendDialogue()
+    {
+        if (dialogueBox == null)
+            return;
+
+        string text = string.Format("{0} used {1} on {2}!", name, currentMove.name, target.name);
+        Line line = new Line(text);
+        dialogueBox.AddLine(line);
+    }
+
     public IEnumerator Coroutine_ExecuteMove()
     {
         if (animator != null)
             animator.SetTrigger(currentMove.animationTrigger);
+        if (dialogueBox != null)
+            SendDialogue();
+
         yield return new WaitForSeconds(currentMove.chargeTime);
         target.ApplyEffect(currentMove);
         yield return new WaitForSeconds(currentMove.cooldown);

@@ -11,28 +11,48 @@ public sealed class DialogueBehaviour : MonoBehaviour
     public List<string> advanceOnInputNames;
 
     [Header("References")]
-    public Mask hideWindow;
     public Text actorText;
     public Text lineText;
     public Dialogue dialogue;
 
     [Header("Properties")]
+    public bool setAsMain = false;
     public float textSpeed; // characters per second
+    public float autoAdvanceAfter = 1f;
+    public bool streamDialogue = true;
+
+    public static DialogueBehaviour main;
 
     private Queue<Line> lines;
     private IEnumerator current;
     private Line currentLine;
+    private int currentLinePosition;
 
     private void Reset()
     {
         input = GetComponent<InputReceiver>();
-        hideWindow = GetComponent<Mask>();
     }
 
     public void Awake()
     {
-        if (input == null || lineText == null) enabled = false;
-        if (dialogue != null) LoadDialogue(dialogue);
+        lines = new Queue<Line>();
+
+        if (setAsMain)
+            main = this;
+
+        if (input == null || lineText == null)
+            enabled = false;
+
+        if (dialogue != null)
+            LoadDialogue(dialogue);
+    }
+
+    public void AddLine(Line line)
+    {
+        lines.Enqueue(line);
+
+        if (streamDialogue && (current == null || IsDisplayFinished()))
+            NextLine();
     }
 
     public void LoadDialogue(Dialogue d)
@@ -42,39 +62,31 @@ public sealed class DialogueBehaviour : MonoBehaviour
         foreach (Line line in dialogue.lines)
             lines.Enqueue(line);
 
-        if (actorText != null) actorText.text = "";
-        if (lineText != null) lineText.text = "";
-
         NextLine();
     }
 
     private void Update()
     {
-        if (dialogue == null)
-        {
-            input.Unlock();
-            return;
-        }
-
-        input.Lock();
-        if (ShouldAdvanceDialogue())
+        if (DialogueAdvanceRequested())
             Advance();
     }
 
-    private bool ShouldAdvanceDialogue()
+    private bool DialogueAdvanceRequested()
     {
-        bool shouldAdvance = false;
         if (advanceOnInputNames == null || advanceOnInputNames.Count == 0)
-            shouldAdvance = shouldAdvance || input.GetAnyButtonDown();
-        else
-            foreach (string inputName in advanceOnInputNames)
-                shouldAdvance = shouldAdvance || input.GetButtonDown(inputName);
-        return shouldAdvance;
+            if (input.GetAnyButtonDown())
+                return true;
+
+        foreach (string inputName in advanceOnInputNames)
+            if (input.GetButtonDown(inputName))
+                return true;
+
+        return false;
     }
 
     public void Advance()
     {
-        if (current == null)
+        if (IsDisplayFinished())
         {
             // If dialogue is finished displaying, load the next line
             NextLine();
@@ -82,8 +94,9 @@ public sealed class DialogueBehaviour : MonoBehaviour
         else
         {
             // Display the rest of the current line immediately
-            StopCoroutine(current);
-            lineText.text = currentLine.text;
+            if (current != null)
+                StopCoroutine(current);
+            lineText.text += currentLine.text.Substring(currentLinePosition + 1);
         }
     }
 
@@ -94,6 +107,11 @@ public sealed class DialogueBehaviour : MonoBehaviour
 
         Line line = lines.Dequeue();
         DisplayLine(line);
+    }
+
+    private bool IsDisplayFinished()
+    {
+        return lineText.text == currentLine.text;
     }
 
     private void DisplayLine(Line line)
@@ -109,20 +127,28 @@ public sealed class DialogueBehaviour : MonoBehaviour
     private IEnumerator Coroutine_DisplayLine(Line line)
     {
         if (actorText != null) actorText.text = line.actor.actorName;
-        lineText.text = "";
+
+        if (line.preserveDisplay)
+            lineText.text += line.separator;
+        else
+            lineText.text = "";
 
         if (textSpeed <= 0 || textSpeed == Mathf.Infinity)
         {
-            lineText.text = line.text;
+            lineText.text += line.text;
             yield break;
         }
 
-        for (int i = 0; i < line.text.Length; i++)
+        for (currentLinePosition = 0; currentLinePosition < line.text.Length; currentLinePosition++)
         {
-            lineText.text += line.text[i];
+            lineText.text += line.text[currentLinePosition];
             yield return new WaitForSecondsRealtime(1 / textSpeed);
         }
 
-        current = null;
+        if (autoAdvanceAfter > 0)
+        {
+            yield return new WaitForSecondsRealtime(autoAdvanceAfter);
+            NextLine();
+        }
     }
 }

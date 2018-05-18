@@ -12,7 +12,7 @@ public class InGameMenu : MonoBehaviour
     public InGameMenu parentMenu;
     public float inactiveAlpha = 0f;
 
-    private CanvasGroup canvas;
+    public CanvasGroup canvas;
 
     public bool Enabled
     {
@@ -24,12 +24,15 @@ public class InGameMenu : MonoBehaviour
         }
     }
 
+    private void Reset()
+    {
+        canvas = GetComponent<CanvasGroup>();
+    }
+
     protected void Awake()
     {
         if (firstSelected == null)
             firstSelected = GetComponentInChildren<Selectable>();
-
-        canvas = GetComponent<CanvasGroup>();
         Enabled = Enabled;
     }
 
