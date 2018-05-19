@@ -50,7 +50,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1165980260867274
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 225901132917082310}
   - component: {fileID: 114120340564577964}
   - component: {fileID: 114395057069907546}
+  - component: {fileID: 114072330626469462}
   m_Layer: 5
   m_Name: Move Select
   m_TagString: Untagged
@@ -88,7 +89,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1283025751677870
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
@@ -177,6 +178,75 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114072330626469462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1270481454658796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f6705aa5cb120945b28871a0680fb8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnAwake: 0
+  ease:
+    duration: 0
+    type: 1
+    overshootOrAmplitude: 1.70158
+    period: 0
+    fps: 60
+    useCustomCurve: 0
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 1
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 1
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  prependTime: 0
+  tweens:
+  - obj: {fileID: 224896392536346392}
+    graphic: {fileID: 114110903976833966}
+    material: {fileID: 0}
+    type: 2
+    from: 1
+    endTarget: {fileID: 0}
+    endValue: {x: 1, y: 0, z: 1}
+    appendTime: 0
+    delay: 0
+    duration: 0.2
+    vibrato: 0
+    elasticityOrRandomness: 0
+  - obj: {fileID: 224896392536346392}
+    graphic: {fileID: 114110903976833966}
+    material: {fileID: 0}
+    type: 12
+    from: 0
+    endTarget: {fileID: 0}
+    endValue: {x: 1, y: 0, z: 1}
+    appendTime: 0
+    delay: 0
+    duration: 0.2
+    vibrato: 0
+    elasticityOrRandomness: 0
 --- !u!114 &114110903976833966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -282,7 +352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstSelected: {fileID: 0}
   parentMenu: {fileID: 0}
-  inactiveAlpha: 0
+  tweenOnOpen: {fileID: 114072330626469462}
   canvas: {fileID: 225901132917082310}
 --- !u!114 &114397676300593616
 MonoBehaviour:
@@ -659,7 +729,7 @@ RectTransform:
   m_Children:
   - {fileID: 224889894489232554}
   m_Father: {fileID: 224373656173188446}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -676,7 +746,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 224373656173188446}
+  - {fileID: 224896392536346392}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -695,15 +765,14 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 224896392536346392}
   - {fileID: 224529880626250276}
   - {fileID: 224141802806952106}
-  m_Father: {fileID: 224232293593649492}
+  m_Father: {fileID: 224896392536346392}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -40, y: -40.27881}
+  m_AnchoredPosition: {x: 0, y: 0.13769531}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!224 &224529880626250276
@@ -718,7 +787,7 @@ RectTransform:
   m_Children:
   - {fileID: 224571034278629928}
   m_Father: {fileID: 224373656173188446}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -770,14 +839,15 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 224373656173188446}
+  m_Children:
+  - {fileID: 224373656173188446}
+  m_Father: {fileID: 224232293593649492}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.13785934}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 288.74997, y: 141.66666}
+  m_SizeDelta: {x: -657.49994, y: -364.16663}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &225901132917082310
 CanvasGroup:

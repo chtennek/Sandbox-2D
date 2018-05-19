@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 225969914166554940}
   - component: {fileID: 114726235256791026}
   - component: {fileID: 114601333072902462}
+  - component: {fileID: 114980097864150098}
   m_Layer: 5
   m_Name: Target Select
   m_TagString: Untagged
@@ -648,7 +649,7 @@ MonoBehaviour:
     m_Right: 20
     m_Top: 20
     m_Bottom: 20
-  m_ChildAlignment: 2
+  m_ChildAlignment: 4
   m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -689,7 +690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstSelected: {fileID: 0}
   parentMenu: {fileID: 0}
-  inactiveAlpha: 0
+  tweenOnOpen: {fileID: 114980097864150098}
   canvas: {fileID: 225969914166554940}
 --- !u!114 &114606886795772376
 MonoBehaviour:
@@ -1008,6 +1009,75 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
+--- !u!114 &114980097864150098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1633642913434822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f6705aa5cb120945b28871a0680fb8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnAwake: 1
+  ease:
+    duration: 0
+    type: 1
+    overshootOrAmplitude: 1.70158
+    period: 0
+    fps: 60
+    useCustomCurve: 0
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 1
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 1
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  prependTime: 0
+  tweens:
+  - obj: {fileID: 224293743008422474}
+    graphic: {fileID: 0}
+    material: {fileID: 0}
+    type: 0
+    from: 1
+    endTarget: {fileID: 0}
+    endValue: {x: 100, y: 0, z: 0}
+    appendTime: 0
+    delay: 0
+    duration: 0.3
+    vibrato: 0
+    elasticityOrRandomness: 0
+  - obj: {fileID: 224293743008422474}
+    graphic: {fileID: 114245905254817776}
+    material: {fileID: 0}
+    type: 9
+    from: 0
+    endTarget: {fileID: 0}
+    endValue: {x: 0, y: 0, z: 0}
+    appendTime: 0
+    delay: 0
+    duration: 0.5
+    vibrato: 0
+    elasticityOrRandomness: 0
 --- !u!222 &222192719584600126
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -1118,11 +1188,11 @@ RectTransform:
   m_Father: {fileID: 224844815259307870}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -40, y: -40.27881}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224577251411981456
 RectTransform:
   m_ObjectHideFlags: 1

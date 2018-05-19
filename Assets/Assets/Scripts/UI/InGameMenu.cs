@@ -2,41 +2,68 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(CanvasGroup))]
+using DG.Tweening;
+
 public class InGameMenu : MonoBehaviour
 {
     public Selectable firstSelected;
     public InGameMenu parentMenu;
-    public float inactiveAlpha = 0f;
 
+    public DOTweener tweenOnOpen;
     public CanvasGroup canvas;
 
     public bool Enabled
     {
-        get { return canvas.interactable; }
+        get { return canvas != null && canvas.interactable; }
         set
         {
-            canvas.interactable = value;
-            canvas.alpha = Enabled ? 1f : inactiveAlpha;
+            if (canvas != null)
+                canvas.interactable = value;
+
+            if (tweenOnOpen != null) {
+                if (value == true) {
+                    tweenOnOpen.PlayForward();
+                }
+                else {
+                    tweenOnOpen.PlayBackwards();
+                }
+            }
         }
     }
 
     private void Reset()
     {
+        tweenOnOpen = GetComponent<DOTweener>();
         canvas = GetComponent<CanvasGroup>();
     }
 
     protected void Awake()
     {
+        if (canvas == null)
+            Warnings.ComponentMissing<CanvasGroup>(this);
+
         if (firstSelected == null)
             firstSelected = GetComponentInChildren<Selectable>();
-        Enabled = Enabled;
+
+        if (tweenOnOpen != null)
+            if (Enabled)
+                tweenOnOpen.GotoEnd();
+            else
+                tweenOnOpen.Goto(0);
     }
 
-    public void ToggleEnabled()
+    public void Enable()
+    {
+        Enabled = true;
+    }
+
+    public void Disable()
+    {
+        Enabled = false;
+    }
+
+    public void Toggle()
     {
         Enabled = !Enabled;
     }

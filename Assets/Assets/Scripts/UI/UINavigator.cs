@@ -63,11 +63,13 @@ public class UINavigator : MonoBehaviour, INavigator
 
             m_Selected = value;
             if (m_Selected != null)
-            {
                 m_Selected.OnSelect(data);
-                if (cursor != null)
+
+            if (cursor != null)
+                if (m_Selected != null)
                     cursor.Target = m_Selected.transform;
-            }
+                else
+                    cursor.Target = null;
         }
     }
 
@@ -177,16 +179,28 @@ public class UINavigator : MonoBehaviour, INavigator
             ActiveMenu = null;
             Selected = null;
         }
-        menu.Enabled = false;
+        menu.Disable();
     }
 
     public void MenuOpen(InGameMenu menu)
     {
         if (menu == null)
             return;
-        menu.Enabled = true;
+        menu.Enable();
         Selected = menu.firstSelected;
         ActiveMenu = menu;
+
+        if (cursor != null) // [TODO] refactor UICursor
+            cursor.transform.position = Selected.transform.position;
+    }
+
+    public void MenuToggle(InGameMenu menu) {
+        if (menu == null)
+            return;
+        if (ActiveMenu == menu)
+            MenuClose(menu);
+        else
+            MenuOpen(menu);
     }
 
     public void MenuSwitch(InGameMenu menu)

@@ -5,10 +5,18 @@ using DG.Tweening;
 
 public enum SerializableTweenType
 {
-    ToTransform,
-    FromTransform,
-    Punch,
-    Shake,
+    Position,
+    Rotation,
+    Scale,
+    RelativePosition,
+    RelativeRotation,
+    RelativeScale,
+    PunchPosition,
+    PunchRotation,
+    PunchScale,
+    ShakePosition,
+    ShakeRotation,
+    ShakeScale,
     FadeIn,
     FadeOut
 }
@@ -16,13 +24,39 @@ public enum SerializableTweenType
 [System.Serializable]
 public class SerializableTween
 {
+    [Header("Object")]
+    public Transform obj;
+    public CanvasGroup canvas;
+    public Graphic graphic;
+    public Material material;
+
+    [Header("Tween")]
     public SerializableTweenType type;
-    public Transform target;
-    public float duration;
+    public bool useStartValue = false;
+    public Transform startTarget;
+    public Vector3 startValue;
+    public bool from = false;
+    public Transform endTarget;
+    public Vector3 endValue;
+
+    [Header("Parameters")]
     public float appendTime;
+    public float delay;
+    public float duration = .1f;
 
     public int vibrato = 10;
     public float elasticityOrRandomness = 1;
+
+    public Tweener DOFade(float endValue, float duration)
+    {
+        if (canvas != null)
+            return canvas.DOFade(endValue, duration);
+        if (graphic != null)
+            return graphic.DOFade(endValue, duration);
+        if (material != null)
+            return material.DOFade(endValue, duration);
+        return null;
+    }
 }
 
 [System.Serializable]
@@ -44,7 +78,7 @@ public class EaseSettings
 
 public class DOTweener : MonoBehaviour
 {
-    public bool playOnAwake = true;
+    public bool playOnAwake;
 
     public EaseSettings ease;
     public float prependTime;
@@ -52,92 +86,166 @@ public class DOTweener : MonoBehaviour
 
     private Sequence sequence;
 
-    private Graphic graphic;
-    private Material material;
-
     public void SetTarget(Transform target)
     {
         foreach (SerializableTween tween in tweens)
-            tween.target = target;
-    }
-
-    private void Reset()
-    {
-        graphic = GetComponent<Graphic>();
-        material = GetComponent<Material>();
+            tween.endTarget = target;
     }
 
     private void Awake()
     {
-        sequence = DOTween.Sequence();
-
-        float time = 0;
-        foreach (SerializableTween tween in tweens)
-        {
-            switch (tween.type)
-            {
-                case SerializableTweenType.ToTransform:
-                    sequence.Insert(time, transform.DOMove(tween.target.position, tween.duration));
-                    sequence.Insert(time, transform.DORotate(tween.target.eulerAngles, tween.duration));
-                    sequence.Insert(time, transform.DOScale(tween.target.localScale, tween.duration));
-                    break;
-
-                case SerializableTweenType.FromTransform:
-                    sequence.Insert(time, transform.DOMove(tween.target.position, tween.duration).From());
-                    sequence.Insert(time, transform.DORotate(tween.target.eulerAngles, tween.duration).From());
-                    sequence.Insert(time, transform.DOScale(tween.target.localScale, tween.duration).From());
-                    break;
-
-                case SerializableTweenType.Punch:
-                    sequence.Insert(time, transform.DOPunchPosition(tween.target.position, tween.duration, tween.vibrato, tween.elasticityOrRandomness));
-                    sequence.Insert(time, transform.DOPunchRotation(tween.target.eulerAngles, tween.duration, tween.vibrato, tween.elasticityOrRandomness));
-                    sequence.Insert(time, transform.DOPunchScale(tween.target.localScale, tween.duration, tween.vibrato, tween.elasticityOrRandomness));
-                    break;
-
-                case SerializableTweenType.Shake:
-                    sequence.Insert(time, transform.DOShakePosition(tween.duration, tween.target.position, tween.vibrato, tween.elasticityOrRandomness));
-                    sequence.Insert(time, transform.DOShakeRotation(tween.duration, tween.target.eulerAngles, tween.vibrato, tween.elasticityOrRandomness));
-                    sequence.Insert(time, transform.DOShakeScale(tween.duration, tween.target.localScale, tween.vibrato, tween.elasticityOrRandomness));
-                    break;
-
-                case SerializableTweenType.FadeIn:
-                    if (graphic != null)
-                        sequence.Insert(time, graphic.DOFade(1, tween.duration));
-                    if (material != null)
-                        sequence.Insert(time, material.DOFade(1, tween.duration));
-                    break;
-
-                case SerializableTweenType.FadeOut:
-                    if (graphic != null)
-                        sequence.Insert(time, graphic.DOFade(0, tween.duration));
-                    if (material != null)
-                        sequence.Insert(time, material.DOFade(0, tween.duration));
-                    break;
-            }
-            time += tween.appendTime;
-        }
-        sequence.PrependInterval(prependTime);
-
-
-        if (ease.useCustomCurve)
-            sequence.SetEase(ease.curve);
-        else
-            sequence.SetEase(ease.type, ease.overshootOrAmplitude, ease.period);
+        sequence = BuildSequence();
     }
 
     private void Start()
     {
         if (playOnAwake)
-            Play();
+            PlayForward();
     }
 
-    public void Play()
+    public void GotoEnd()
     {
-        sequence.Play();
+        sequence.Goto(sequence.Duration());
+    }
+
+    public void Goto(float to)
+    {
+        sequence.Goto(to);
+    }
+
+    public void PlayForward()
+    {
+        sequence.PlayForward();
     }
 
     public void PlayBackwards()
     {
         sequence.PlayBackwards();
+    }
+
+    private Sequence BuildSequence()
+    {
+        Sequence seq = DOTween.Sequence();
+        float time = 0;
+        foreach (SerializableTween tween in tweens)
+        {
+            bool useStartValue = tween.useStartValue;
+            Tweener initTweener = null;
+            Vector3 startValue = tween.startValue;
+            Tweener tweener = null;
+            Vector3 endValue = tween.endValue;
+            switch (tween.type)
+            {
+                case SerializableTweenType.Position:
+                case SerializableTweenType.RelativePosition:
+                case SerializableTweenType.PunchPosition:
+                case SerializableTweenType.ShakePosition:
+                    if (tween.startTarget != null)
+                        startValue = tween.startTarget.position;
+                    initTweener = tween.obj.DOMove(startValue, 0);
+
+                    if (tween.endTarget != null)
+                        endValue = tween.endTarget.position;
+                    break;
+                case SerializableTweenType.Rotation:
+                case SerializableTweenType.RelativeRotation:
+                case SerializableTweenType.PunchRotation:
+                case SerializableTweenType.ShakeRotation:
+                    if (tween.startTarget != null)
+                        startValue = tween.startTarget.eulerAngles;
+                    initTweener = tween.obj.DORotate(startValue, 0);
+
+                    if (tween.endTarget != null)
+                        endValue = tween.endTarget.eulerAngles;
+                    break;
+                case SerializableTweenType.Scale:
+                case SerializableTweenType.RelativeScale:
+                case SerializableTweenType.PunchScale:
+                case SerializableTweenType.ShakeScale:
+                    if (tween.startTarget != null)
+                        startValue = tween.startTarget.localScale;
+                    initTweener = tween.obj.DOScale(startValue, 0);
+
+                    if (tween.endTarget != null)
+                        endValue = tween.endTarget.localScale;
+                    break;
+
+                case SerializableTweenType.FadeIn:
+                    useStartValue = true;
+                    initTweener = tween.DOFade(0, 0);
+                    tweener = tween.DOFade(1, tween.duration);
+                    break;
+                case SerializableTweenType.FadeOut:
+                    useStartValue = true;
+                    initTweener = tween.DOFade(1, 0);
+                    tweener = tween.DOFade(0, tween.duration);
+                    break;
+            }
+
+            if (tween.obj != null)
+                switch (tween.type)
+                {
+                    case SerializableTweenType.Position:
+                        tweener = tween.obj.DOMove(endValue, tween.duration);
+                        break;
+                    case SerializableTweenType.Rotation:
+                        tweener = tween.obj.DORotate(endValue, tween.duration);
+                        break;
+                    case SerializableTweenType.Scale:
+                        tweener = tween.obj.DOScale(endValue, tween.duration);
+                        break;
+
+                    case SerializableTweenType.RelativePosition:
+                        tweener = tween.obj.DOMove(transform.position + endValue, tween.duration);
+                        break;
+                    case SerializableTweenType.RelativeRotation:
+                        Quaternion endRotation = transform.rotation * Quaternion.Euler(endValue);
+                        tweener = tween.obj.DORotate(endRotation.eulerAngles, tween.duration);
+                        break;
+                    case SerializableTweenType.RelativeScale:
+                        tweener = tween.obj.DOScale(Vector3.Scale(transform.localScale, endValue), tween.duration);
+                        break;
+
+                    case SerializableTweenType.PunchPosition:
+                        tweener = tween.obj.DOPunchPosition(endValue, tween.duration, tween.vibrato, tween.elasticityOrRandomness);
+                        break;
+                    case SerializableTweenType.PunchRotation:
+                        tweener = tween.obj.DOPunchRotation(endValue, tween.duration, tween.vibrato, tween.elasticityOrRandomness);
+                        break;
+                    case SerializableTweenType.PunchScale:
+                        tweener = tween.obj.DOPunchScale(endValue, tween.duration, tween.vibrato, tween.elasticityOrRandomness);
+                        break;
+
+                    case SerializableTweenType.ShakePosition:
+                        tweener = tween.obj.DOShakePosition(tween.duration, endValue, tween.vibrato, tween.elasticityOrRandomness);
+                        break;
+                    case SerializableTweenType.ShakeRotation:
+                        tweener = tween.obj.DOShakeRotation(tween.duration, endValue, tween.vibrato, tween.elasticityOrRandomness);
+                        break;
+                    case SerializableTweenType.ShakeScale:
+                        tweener = tween.obj.DOShakeScale(tween.duration, endValue, tween.vibrato, tween.elasticityOrRandomness);
+                        break;
+                }
+
+            time += tween.appendTime;
+            if (tween.from)
+                tweener = tweener.From();
+            
+            if (useStartValue && initTweener != null)
+                seq.Insert(time, initTweener);
+            if (tweener != null)
+                seq.Insert(time + tween.delay, tweener);
+        }
+
+        seq.PrependInterval(prependTime);
+
+
+        if (ease.useCustomCurve)
+            seq.SetEase(ease.curve);
+        else
+            seq.SetEase(ease.type, ease.overshootOrAmplitude, ease.period);
+
+        seq.SetAutoKill(false);
+        return seq;
     }
 }

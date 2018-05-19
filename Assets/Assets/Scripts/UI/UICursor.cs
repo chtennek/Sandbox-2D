@@ -7,7 +7,10 @@ using DG.Tweening;
 
 public class UICursor : MonoBehaviour
 {
-    public float duration = .1f;
+    public DOTweener tweener;
+    public float lerpValue = .5f;
+
+    private RectTransform rect;
 
     [SerializeField]
     private Transform m_target;
@@ -16,37 +19,43 @@ public class UICursor : MonoBehaviour
         get { return m_target; }
         set
         {
-            if (value == null)
+            if (Target != null && value == null)
             {
-                if (material != null)
-                    material.DOFade(0, duration);
-                if (image != null)
-                    image.DOFade(0, duration);
+                tweener.PlayBackwards();
             }
-            else if (m_target != null && value != null)
+            else if (Target == null && value != null)
             {
-
-                transform.DOMove(value.position, duration);
-            }
-            else if (m_target == null && value != null)
-            {
-
                 transform.position = value.position;
-
-                if (material != null)
-                    material.DOFade(1, duration);
-                if (image != null)
-                    image.DOFade(1, duration);
+                tweener.PlayForward();
             }
+
+            m_target = value;
+
+            RectTransform source = value as RectTransform;
+            if (rect != null && source != null)
+                rect.sizeDelta = source.sizeDelta;
         }
     }
 
-    public Material material;
-    public Image image;
-
     private void Reset()
     {
-        material = GetComponent<Material>();
-        image = GetComponent<Image>();
+        tweener = GetComponent<DOTweener>();
+    }
+
+    private void Awake()
+    {
+        rect = transform as RectTransform;
+
+        if (tweener != null)
+            if (Target != null)
+                tweener.GotoEnd();
+            else
+                tweener.Goto(0);
+    }
+
+    private void Update()
+    {
+        if (Target != null)
+            transform.position = Vector3.Lerp(transform.position, Target.position, lerpValue);
     }
 }
