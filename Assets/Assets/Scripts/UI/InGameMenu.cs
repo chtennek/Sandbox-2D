@@ -7,11 +7,22 @@ using DG.Tweening;
 
 public class InGameMenu : MonoBehaviour
 {
-    public Selectable firstSelected;
+    [SerializeField]
+    private Selectable firstSelected;
     public InGameMenu parentMenu;
 
     public DOTweener tweenOnOpen;
     public CanvasGroup canvas;
+
+    public Selectable FirstSelected
+    {
+        get
+        {
+            if (firstSelected == null)
+                firstSelected = GetComponentInChildren<Selectable>();
+            return firstSelected;
+        }
+    }
 
     public bool Enabled
     {
@@ -21,13 +32,12 @@ public class InGameMenu : MonoBehaviour
             if (canvas != null)
                 canvas.interactable = value;
 
-            if (tweenOnOpen != null) {
-                if (value == true) {
+            if (tweenOnOpen != null)
+            {
+                if (value == true)
                     tweenOnOpen.PlayForward();
-                }
-                else {
+                else
                     tweenOnOpen.PlayBackwards();
-                }
             }
         }
     }
@@ -38,19 +48,16 @@ public class InGameMenu : MonoBehaviour
         canvas = GetComponent<CanvasGroup>();
     }
 
-    protected void Awake()
+    protected void Start()
     {
         if (canvas == null)
             Warnings.ComponentMissing<CanvasGroup>(this);
-
-        if (firstSelected == null)
-            firstSelected = GetComponentInChildren<Selectable>();
 
         if (tweenOnOpen != null)
             if (Enabled)
                 tweenOnOpen.GotoEnd();
             else
-                tweenOnOpen.Goto(0);
+                tweenOnOpen.GotoStart();
     }
 
     public void Enable()

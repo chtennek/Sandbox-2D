@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a7e66220a985443bf4ca3904b9746b, type: 3}
+  m_Name: Viridian City - 002
+  m_EditorClassIdentifier: 
+  lines:
+  - text: "Those POKE BALLS at your waist! You have POKEMON! It's great that\r you
+      can carry and use POKEMON any time, anywhere!"
+    actor: {fileID: 0}
+    preserveDisplay: 0
+    separator: 
+    audio: {fileID: 0}
+  - text: You want to know about the 2 kinds of caterpillar POKEMON?
+    actor: {fileID: 0}
+    preserveDisplay: 0
+    separator: 
+    audio: {fileID: 0}
+  branches:
+  - selection: YES
+    branch: {fileID: 11400000, guid: 3e20cc81e83eb0a438ec59557084acab, type: 2}
+  - selection: NO
+    branch: {fileID: 11400000, guid: 078ec8e7e5a4395479fc0c47bad1d9d8, type: 2}

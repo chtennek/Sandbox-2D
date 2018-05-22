@@ -187,14 +187,15 @@ public class UINavigator : MonoBehaviour, INavigator
         if (menu == null)
             return;
         menu.Enable();
-        Selected = menu.firstSelected;
+        Selected = menu.FirstSelected;
         ActiveMenu = menu;
 
         if (cursor != null) // [TODO] refactor UICursor
             cursor.transform.position = Selected.transform.position;
     }
 
-    public void MenuToggle(InGameMenu menu) {
+    public void MenuToggle(InGameMenu menu)
+    {
         if (menu == null)
             return;
         if (ActiveMenu == menu)

@@ -23,9 +23,9 @@ public class CombatBehaviour : MonoBehaviour
     public EffectType currentMove;
 
     [Header("References")]
+    public DialogueBehaviour dialogueBox; // Stream combat dialogue
     public WaypointControl movement; // Leave null to ignore range limitations
     public AnimatorMessenger animator;
-    public DialogueBehaviour dialogueBox;
     public InputReceiver input;
 
     public Transform findTarget;

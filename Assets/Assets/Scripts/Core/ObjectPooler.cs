@@ -43,7 +43,7 @@ public class ObjectPool
         ObjectPooler.RegisterPooledObject(obj, this);
         inactive.Enqueue(obj);
 
-        obj.transform.parent = folder;
+        obj.transform.SetParent(folder);
         obj.gameObject.SetActive(false);
         resetLookup.Add(obj, obj.GetComponentsInChildren<IPooledObject>());
         return obj;
@@ -88,7 +88,7 @@ public class ObjectPool
         active.Remove(obj);
         inactive.Enqueue(obj);
 
-        obj.transform.parent = folder;
+        obj.transform.SetParent(folder);
         obj.gameObject.SetActive(false);
         return true;
     }
@@ -106,7 +106,8 @@ public class ObjectPooler : MonoBehaviour
 
     private void Awake()
     {
-        this.AssertSingleton(ref singleton);
+        if (this.AssertSingleton(ref singleton) == false)
+            return;
 
         foreach (ObjectPool pool in pools)
         {
@@ -158,13 +159,19 @@ public class ObjectPooler : MonoBehaviour
         return pool.Instantiate();
     }
 
-    public static bool Destroy(Transform obj)
+    public static void Destroy(Transform obj)
     {
+        if (ObjectPooler.HasSingleton() == false)
+        {
+            Object.Destroy(obj.gameObject);
+            return;
+        }
+
         ObjectPool pool;
         singleton.poolLookup.TryGetValue(obj, out pool);
         if (pool != null)
             pool.Destroy(obj);
-
-        return pool != null;
+        else
+            Object.Destroy(obj.gameObject);
     }
 }

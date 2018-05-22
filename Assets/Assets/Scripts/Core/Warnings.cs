@@ -27,4 +27,10 @@ public static class Warnings
         string message = c.name + "." + c.GetType().Name + ": Missing " + typeof(T).ToString() + "!";
         Debug.LogWarning(message);
     }
+
+    public static void Log(Component c, string msg)
+    {
+        string message = c.name + "." + c.GetType().Name + ": " + msg;
+        Debug.LogWarning(message);
+    }
 }

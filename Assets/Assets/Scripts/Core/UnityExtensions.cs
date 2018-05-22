@@ -1,6 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class StringUnityEvent : UnityEvent<string> { }
+
+[System.Serializable]
+public class ContextUnityEvent : UnityEvent<Transform> { }
 
 public static class UnityExtensions
 {
@@ -17,16 +24,18 @@ public static class UnityExtensions
         }
     }
 
-    public static void AssertSingleton<T>(this T behaviour, ref T singleton) where T : Component
+    public static bool AssertSingleton<T>(this T behaviour, ref T singleton) where T : Component
     {
         if (singleton != null)
         {
             Warnings.DuplicateSingleton(behaviour);
             GameObject.Destroy(behaviour);
+            return false;
         }
 
         singleton = behaviour;
         GameObject.DontDestroyOnLoad(behaviour);
+        return true;
     }
 
     public static T GetComponentInTag<T>(this MonoBehaviour behaviour, string tag, T target = null) where T : Component

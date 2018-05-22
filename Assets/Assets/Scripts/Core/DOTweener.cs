@@ -18,7 +18,8 @@ public enum SerializableTweenType
     ShakeRotation,
     ShakeScale,
     FadeIn,
-    FadeOut
+    FadeOut,
+    Fade,
 }
 
 [System.Serializable]
@@ -74,6 +75,22 @@ public class EaseSettings
     [Space]
     public bool useCustomCurve = false;
     public AnimationCurve curve = AnimationCurve.Linear(0, 0, 1, 1);
+
+    public void SetEase(Sequence sequence)
+    {
+        if (useCustomCurve)
+            sequence.SetEase(curve);
+        else
+            sequence.SetEase(type, overshootOrAmplitude, period);
+    }
+
+    public void SetEase(Tweener tweener)
+    {
+        if (useCustomCurve)
+            tweener.SetEase(curve);
+        else
+            tweener.SetEase(type, overshootOrAmplitude, period);
+    }
 }
 
 public class DOTweener : MonoBehaviour
@@ -103,6 +120,11 @@ public class DOTweener : MonoBehaviour
             PlayForward();
     }
 
+    public void GotoStart()
+    {
+        sequence.Goto(0);
+    }
+
     public void GotoEnd()
     {
         sequence.Goto(sequence.Duration());
@@ -110,16 +132,19 @@ public class DOTweener : MonoBehaviour
 
     public void Goto(float to)
     {
+        Debug.Log(to);
         sequence.Goto(to);
     }
 
     public void PlayForward()
     {
+        Debug.Log(true);
         sequence.PlayForward();
     }
 
     public void PlayBackwards()
     {
+        Debug.Log(false);
         sequence.PlayBackwards();
     }
 
@@ -180,6 +205,10 @@ public class DOTweener : MonoBehaviour
                     initTweener = tween.DOFade(1, 0);
                     tweener = tween.DOFade(0, tween.duration);
                     break;
+                case SerializableTweenType.Fade:
+                    initTweener = tween.DOFade(tween.startValue.x, 0);
+                    tweener = tween.DOFade(tween.endValue.x, tween.duration);
+                    break;
             }
 
             if (tween.obj != null)
@@ -230,7 +259,7 @@ public class DOTweener : MonoBehaviour
             time += tween.appendTime;
             if (tween.from)
                 tweener = tweener.From();
-            
+
             if (useStartValue && initTweener != null)
                 seq.Insert(time, initTweener);
             if (tweener != null)
@@ -238,14 +267,8 @@ public class DOTweener : MonoBehaviour
         }
 
         seq.PrependInterval(prependTime);
-
-
-        if (ease.useCustomCurve)
-            seq.SetEase(ease.curve);
-        else
-            seq.SetEase(ease.type, ease.overshootOrAmplitude, ease.period);
-
         seq.SetAutoKill(false);
+        ease.SetEase(seq);
         return seq;
     }
 }

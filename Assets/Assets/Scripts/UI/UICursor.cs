@@ -7,7 +7,7 @@ using DG.Tweening;
 
 public class UICursor : MonoBehaviour
 {
-    public DOTweener tweener;
+    public DOTweener tweenOnActive;
     public float lerpValue = .5f;
 
     private RectTransform rect;
@@ -21,12 +21,12 @@ public class UICursor : MonoBehaviour
         {
             if (Target != null && value == null)
             {
-                tweener.PlayBackwards();
+                tweenOnActive.PlayBackwards();
             }
             else if (Target == null && value != null)
             {
                 transform.position = value.position;
-                tweener.PlayForward();
+                tweenOnActive.PlayForward();
             }
 
             m_target = value;
@@ -39,18 +39,18 @@ public class UICursor : MonoBehaviour
 
     private void Reset()
     {
-        tweener = GetComponent<DOTweener>();
+        tweenOnActive = GetComponent<DOTweener>();
     }
 
     private void Awake()
     {
         rect = transform as RectTransform;
 
-        if (tweener != null)
+        if (tweenOnActive != null)
             if (Target != null)
-                tweener.GotoEnd();
+                tweenOnActive.GotoEnd();
             else
-                tweener.Goto(0);
+                tweenOnActive.GotoStart();
     }
 
     private void Update()

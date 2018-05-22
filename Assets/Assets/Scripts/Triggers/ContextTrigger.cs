@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
-public class ContextUnityEvent : UnityEvent<Transform> { }
-
-[System.Serializable]
 public class ContextTriggerEvents
 {
     public ContextUnityEvent onActivate;
@@ -14,7 +11,8 @@ public class ContextTriggerEvents
     public ContextUnityEvent onActive;
 }
 
-public class ContextTrigger : Trigger {
+public class ContextTrigger : Trigger
+{
     public ContextTriggerEvents contextEvents;
 
     private HashSet<Transform> targets = new HashSet<Transform>();
@@ -28,7 +26,8 @@ public class ContextTrigger : Trigger {
         }
     }
 
-    public bool AddTarget(Transform target) {
+    public bool AddTarget(Transform target)
+    {
         if (targets.Add(target) == false)
             return false;
 
