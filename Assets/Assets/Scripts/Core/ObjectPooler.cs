@@ -161,6 +161,7 @@ public class ObjectPooler : MonoBehaviour
 
     public static void Destroy(Transform obj)
     {
+        Debug.Log(obj);
         if (ObjectPooler.HasSingleton() == false)
         {
             Object.Destroy(obj.gameObject);

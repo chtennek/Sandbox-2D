@@ -10,6 +10,8 @@ public class MenuPopulator : MonoBehaviour
     public Transform menuItemParent;
     public Transform menuItemPrefab;
 
+    public bool populateOnAwake = false;
+
     public StringUnityEvent onSelect;
 
     public List<string> selections;
@@ -20,9 +22,10 @@ public class MenuPopulator : MonoBehaviour
         menuItemParent = transform;
     }
 
-    private void Start()
+    private void Awake()
     {
-        PopulateMenu();
+        if (populateOnAwake)
+            PopulateMenu();
     }
 
     public virtual List<string> GetMenuItems()
@@ -38,11 +41,16 @@ public class MenuPopulator : MonoBehaviour
 
     public void PopulateMenu()
     {
+        // Destroy current menu items
+        List<Transform> children = new List<Transform>();
+        foreach (Transform child in menuItemParent)
+            children.Add(child);
         foreach (Transform child in menuItemParent)
             ObjectPooler.Destroy(child);
 
         foreach (string selection in selections)
         {
+            Debug.Log(selection);
             Transform obj = ObjectPooler.Instantiate(menuItemPrefab);
             if (obj == null)
                 continue;

@@ -132,19 +132,16 @@ public class DOTweener : MonoBehaviour
 
     public void Goto(float to)
     {
-        Debug.Log(to);
         sequence.Goto(to);
     }
 
     public void PlayForward()
     {
-        Debug.Log(true);
         sequence.PlayForward();
     }
 
     public void PlayBackwards()
     {
-        Debug.Log(false);
         sequence.PlayBackwards();
     }
 

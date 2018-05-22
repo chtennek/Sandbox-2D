@@ -120,28 +120,34 @@ public sealed class DialogueBehaviour : MonoBehaviour
 
     private void NextLine()
     {
-        if (lines == null || lines.Count == 0)
+        StartCoroutine(Coroutine_NextLine());
+    }
+
+    private IEnumerator Coroutine_NextLine()
+    {
+        yield return null; // Wait a frame to prevent conflicting inputs
+
+        // Display the next line if we have one
+        if (lines != null && lines.Count > 0)
         {
-            // Display response menu if we have one
-            if (dialogue.skipBranchSelection)
-            {
-                if (dialogue.branches.Count > 0)
-                    LoadDialogue(dialogue.branches[0].dialogue);
-            }
-            else
-            {
-                if (navigator != null && dialogueResponder != null)
-                {
-                    navigator.MenuOpen(dialogueResponder.menu);
-                }
-                else
-                    Warnings.ComponentMissing(this);
-            }
-            return;
+            Line line = lines.Dequeue();
+            DisplayLine(line);
+            yield break;
         }
 
-        Line line = lines.Dequeue();
-        DisplayLine(line);
+        // Otherwise display the response menu if we have one
+        if (dialogue.skipBranchSelection)
+        {
+            if (dialogue.branches.Count > 0)
+                LoadDialogue(dialogue.branches[0].dialogue);
+        }
+        else
+        {
+            if (navigator != null && dialogueResponder != null)
+                navigator.MenuOpen(dialogueResponder.menu);
+            else
+                Warnings.ComponentMissing(this);
+        }
     }
 
     private bool IsDisplayFinished()
