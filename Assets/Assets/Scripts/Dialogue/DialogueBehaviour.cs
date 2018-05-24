@@ -17,10 +17,14 @@ public sealed class DialogueBehaviour : MonoBehaviour
     public Text lineText;
     public Dialogue dialogue;
 
+    [Tooltip("The UINavigator that should assume control when dialogue needs to be responded to.")]
     public UINavigator navigator;
+
+    [Tooltip("The DialogueResponder whose menu we will pick a response from.")]
     public DialogueResponder dialogueResponder;
 
     [Header("Properties")]
+    public bool playDialogueOnLoad = true;
     public bool setAsMain = false;
     public float textSpeed; // characters per second
     public float autoAdvanceAfter = 1f;
@@ -83,7 +87,8 @@ public sealed class DialogueBehaviour : MonoBehaviour
         if (dialogueResponder != null)
             dialogueResponder.PopulateMenu(dialogue.branches);
 
-        NextLine();
+        if (playDialogueOnLoad)
+            NextLine();
     }
 
     private void Update()
@@ -112,9 +117,9 @@ public sealed class DialogueBehaviour : MonoBehaviour
     {
         lastAdvanceTime = Time.time;
 
-        if (IsDisplayFinished())
+        if (IsDisplayFinished()) // Start displaying the next line
             NextLine();
-        else if (current != null)
+        else if (current != null) // Auto-complete current line
             current.Complete();
     }
 
@@ -125,7 +130,7 @@ public sealed class DialogueBehaviour : MonoBehaviour
 
     private IEnumerator Coroutine_NextLine()
     {
-        yield return null; // Wait a frame to prevent conflicting inputs
+        yield return null; // Prevent multiple input steps in same frame
 
         // Display the next line if we have one
         if (lines != null && lines.Count > 0)

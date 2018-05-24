@@ -29,7 +29,7 @@ public static class UnityExtensions
         if (singleton != null)
         {
             Warnings.DuplicateSingleton(behaviour);
-            GameObject.Destroy(behaviour);
+            GameObject.Destroy(behaviour.gameObject);
             return false;
         }
 

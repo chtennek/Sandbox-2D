@@ -50,18 +50,21 @@ public abstract class InputReceiver : MonoBehaviour
         UpdateLockStatuses();
     }
 
-    private void UpdateLockStatuses() {
+    private void UpdateLockStatuses()
+    {
         bool lockSet = false;
         int lockPriority = 0;
-        foreach (InputReceiver input in hierarchy) {
+        foreach (InputReceiver input in hierarchy)
+        {
             if (lockSet == false)
                 input.isUnlocked = true;
             else if (lockPriority <= input.priority)
                 input.isUnlocked = true;
             else
                 input.isUnlocked = false;
-            
-            if (lockSet == false && input.lockInput == true) {
+
+            if (lockSet == false && input.lockInput == true)
+            {
                 lockPriority = input.priority;
                 lockSet = true;
             }

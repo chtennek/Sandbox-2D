@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 48952296}
   - component: {fileID: 48952298}
   - component: {fileID: 48952297}
+  - component: {fileID: 48952300}
   - component: {fileID: 48952299}
   m_Layer: 5
   m_Name: Controller
@@ -198,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88233a3ccf5a488fb33411672ec9295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 348335426}
+  input: {fileID: 48952300}
   advanceOnInputNames:
   - UISubmit
   actorText: {fileID: 0}
@@ -206,6 +207,7 @@ MonoBehaviour:
   dialogue: {fileID: 11400000, guid: 97bc28b2174742d4dbc6a09764d5474c, type: 2}
   navigator: {fileID: 348335424}
   dialogueResponder: {fileID: 1633580647}
+  playDialogueOnLoad: 1
   setAsMain: 1
   textSpeed: 1
   autoAdvanceAfter: 0
@@ -241,6 +243,22 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+--- !u!114 &48952300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 48952295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c32b2c644a5004298317095a34b9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerId: 0
+  restrictToXAxis: 0
+  restrictToYAxis: 0
+  priority: 9
+  lockInput: 0
 --- !u!1 &147352059
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +387,6 @@ MonoBehaviour:
   closeMenuButton:
     m_keys: []
     m_values: []
-  pauseOnActive: 1
   lockInputOnActive: 1
   moveOneElementPerInput: 1
   inputsPerSecond: 10
@@ -496,7 +513,7 @@ CanvasGroup:
   m_GameObject: {fileID: 570356098}
   m_Enabled: 1
   m_Alpha: 0.33
-  m_Interactable: 1
+  m_Interactable: 0
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!1 &641293753
@@ -1113,7 +1130,7 @@ MonoBehaviour:
     endTarget: {fileID: 0}
     endValue: {x: 1, y: 0, z: 0}
     appendTime: 0
-    delay: 0
+    delay: 0.1
     duration: 0.1
     vibrato: 0
     elasticityOrRandomness: 0
@@ -1128,6 +1145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 868d8fb6627a1424199b4fd048a81a9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  closeMenuOnSubmit: 1
+  closeMenuOnCancel: 1
   firstSelected: {fileID: 0}
   parentMenu: {fileID: 0}
   tweenOnOpen: {fileID: 1633580645}
@@ -1400,7 +1419,7 @@ Prefab:
     - target: {fileID: 114351187048581784, guid: c15f282b6cfd7c54b9b0309d82074bb4,
         type: 2}
       propertyPath: events.onActivate.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114351187048581784, guid: c15f282b6cfd7c54b9b0309d82074bb4,
         type: 2}
@@ -1411,17 +1430,22 @@ Prefab:
         type: 2}
       propertyPath: events.onActivate.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1633580645}
+      objectReference: {fileID: 348335424}
     - target: {fileID: 114351187048581784, guid: c15f282b6cfd7c54b9b0309d82074bb4,
         type: 2}
       propertyPath: events.onActivate.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GotoEnd
+      value: MenuOpen
       objectReference: {fileID: 0}
     - target: {fileID: 114351187048581784, guid: c15f282b6cfd7c54b9b0309d82074bb4,
         type: 2}
       propertyPath: events.onActivate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: InGameMenu, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 114351187048581784, guid: c15f282b6cfd7c54b9b0309d82074bb4,
+        type: 2}
+      propertyPath: events.onActivate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1633580646}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c15f282b6cfd7c54b9b0309d82074bb4, type: 2}
   m_IsPrefabParent: 0

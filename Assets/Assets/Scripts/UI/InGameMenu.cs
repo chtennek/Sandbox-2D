@@ -7,6 +7,9 @@ using DG.Tweening;
 
 public class InGameMenu : MonoBehaviour
 {
+    public bool closeMenuOnSubmit = true;
+    public bool closeMenuOnCancel = true;
+
     [SerializeField]
     private Selectable firstSelected;
     public InGameMenu parentMenu;
@@ -34,6 +37,7 @@ public class InGameMenu : MonoBehaviour
 
             if (tweenOnOpen != null)
             {
+                Debug.Log(value);
                 if (value == true)
                     tweenOnOpen.PlayForward();
                 else

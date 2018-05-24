@@ -50,7 +50,6 @@ public class MenuPopulator : MonoBehaviour
 
         foreach (string selection in selections)
         {
-            Debug.Log(selection);
             Transform obj = ObjectPooler.Instantiate(menuItemPrefab);
             if (obj == null)
                 continue;
@@ -65,10 +64,7 @@ public class MenuPopulator : MonoBehaviour
 
             Button button = obj.GetComponentInChildren<Button>();
             if (button != null)
-                button.onClick.AddListener(delegate
-                {
-                    onSelect.Invoke(selection);
-                });
+                button.onClick.AddListener(delegate { onSelect.Invoke(selection); });
         }
     }
 }

@@ -19,7 +19,6 @@ public class UINavigator : MonoBehaviour, INavigator
     public StringToMenuDictionary closeMenuButton = new StringToMenuDictionary();
 
     [Header("Parameters")]
-    public bool pauseOnActive = true;
     public bool lockInputOnActive = true;
     public bool moveOneElementPerInput = true;
     public int inputsPerSecond = 10;
@@ -40,12 +39,10 @@ public class UINavigator : MonoBehaviour, INavigator
             if (m_ActiveMenu != null)
             {
                 if (lockInputOnActive) input.Lock();
-                if (pauseOnActive) Time.timeScale = 0; // [TODO] doesn't work if another UINavigator exists
             }
             else
             {
                 input.Unlock();
-                Time.timeScale = 1;
             }
         }
     }
@@ -84,66 +81,67 @@ public class UINavigator : MonoBehaviour, INavigator
             Warnings.ComponentMissing(this);
     }
 
-    private void Start()
+    private void Update()
     {
-        StartCoroutine(Coroutine_UILoop());
-    }
+        if (input == null)
+            return;
 
-    private IEnumerator Coroutine_UILoop()
-    {
-        while (true)
-        {
-            yield return null;
-            if (input == null)
-                continue;
+        //yield return null; // Prevent multiple input steps in same frame
 
-            bool closedMenuThisFrame = ActiveMenu != null && (input.GetButtonDown(closeActiveButton) || input.GetButtonDown(closeAllButton));
+        bool closedMenuThisFrame = ActiveMenu != null && (input.GetButtonDown(closeActiveButton) || input.GetButtonDown(closeAllButton));
 
-            // Movement
-            if (Selected != null)
-                ProcessMovement();
+        // Cursor movement
+        if (Selected != null)
+            ProcessMovement();
 
-            // Close menus
-            if (input.GetButtonDown(closeActiveButton))
+        // Close menus
+        if (input.GetButtonDown(closeActiveButton))
+            MenuUpOneLevel();
+        if (input.GetButtonDown(closeAllButton))
+            while (ActiveMenu != null)
                 MenuUpOneLevel();
-            if (input.GetButtonDown(closeAllButton))
-                while (ActiveMenu != null)
-                    MenuUpOneLevel();
 
-            foreach (string buttonName in closeMenuButton.Keys)
+        foreach (string buttonName in closeMenuButton.Keys)
+        {
+            if (input.GetButtonDown(buttonName) && closeMenuButton[buttonName].Enabled == true)
             {
-                if (input.GetButtonDown(buttonName) && closeMenuButton[buttonName].Enabled == true)
+                closedMenuThisFrame = true;
+                MenuClose(closeMenuButton[buttonName]);
+            }
+        }
+
+        // Open menus
+        if (closedMenuThisFrame == false)
+        {
+            foreach (string buttonName in openMenuButton.Keys)
+            {
+                if (input.GetButtonDown(buttonName))
                 {
-                    closedMenuThisFrame = true;
-                    MenuClose(closeMenuButton[buttonName]);
+                    MenuOpen(openMenuButton[buttonName]);
                 }
             }
+        }
 
-            // Open menus
-            if (closedMenuThisFrame == false)
-            {
-                foreach (string buttonName in openMenuButton.Keys)
-                {
-                    if (input.GetButtonDown(buttonName))
-                    {
-                        MenuOpen(openMenuButton[buttonName]);
-                    }
-                }
-            }
+        // Handle submit
+        if (input.GetButtonDown(submitButton))
+        {
+            ISubmitHandler handler = Selected as ISubmitHandler;
+            if (handler != null)
+                handler.OnSubmit(null);
 
-            // Propagate events
-            if (input.GetButtonDown(submitButton))
-            {
-                ISubmitHandler handler = Selected as ISubmitHandler;
-                if (handler != null)
-                    handler.OnSubmit(null);
-            }
-            if (input.GetButtonDown(cancelButton))
-            {
-                ICancelHandler handler = Selected as ICancelHandler;
-                if (handler != null)
-                    handler.OnCancel(null);
-            }
+            if (ActiveMenu != null && ActiveMenu.closeMenuOnSubmit)
+                MenuCloseActive();
+        }
+
+        // Handle cancel
+        if (input.GetButtonDown(cancelButton))
+        {
+            ICancelHandler handler = Selected as ICancelHandler;
+            if (handler != null)
+                handler.OnCancel(null);
+
+            if (ActiveMenu != null && ActiveMenu.closeMenuOnCancel)
+                MenuCloseActive();
         }
     }
 

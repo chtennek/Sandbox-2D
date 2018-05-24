@@ -135,6 +135,11 @@ public class DOTweener : MonoBehaviour
         sequence.Goto(to);
     }
 
+    public void Flip()
+    {
+        sequence.Flip();
+    }
+
     public void PlayForward()
     {
         sequence.PlayForward();
