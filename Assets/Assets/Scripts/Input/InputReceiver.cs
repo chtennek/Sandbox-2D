@@ -34,12 +34,16 @@ public abstract class InputReceiver : MonoBehaviour
 
     public void Lock()
     {
+        if (lockInput == true)
+            return;
         lockInput = true;
         UpdateLockStatuses();
     }
 
     public void Unlock()
     {
+        if (lockInput == false)
+            return;
         lockInput = false;
         UpdateLockStatuses();
     }

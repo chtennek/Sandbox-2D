@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 
 public class UINavigator : MonoBehaviour, INavigator
 {
+    private bool isTransitioning = false;
+
     [Header("Input")]
     public InputReceiver input;
     public string axisPairName = "UI";
@@ -19,7 +21,7 @@ public class UINavigator : MonoBehaviour, INavigator
     public StringToMenuDictionary closeMenuButton = new StringToMenuDictionary();
 
     [Header("Parameters")]
-    public bool lockInputOnActive = true;
+    public bool lockInput = true;
     public bool moveOneElementPerInput = true;
     public int inputsPerSecond = 10;
     //public float repeatDelay = 0.1f;
@@ -28,46 +30,12 @@ public class UINavigator : MonoBehaviour, INavigator
     private Vector2 m_lastDirection = Vector2.zero;
 
     [Header("References")]
+    public GameMenu activeMenu;
 
-    private InGameMenu m_ActiveMenu;
-    public InGameMenu ActiveMenu
-    {
-        get { return m_ActiveMenu; }
-        set
-        {
-            m_ActiveMenu = value;
-            if (m_ActiveMenu != null)
-            {
-                if (lockInputOnActive) input.Lock();
-            }
-            else
-            {
-                input.Unlock();
-            }
-        }
-    }
-
-    public UICursor cursor;
-    private Selectable m_Selected;
-    public Selectable Selected
-    {
-        get { return m_Selected; }
-        set
-        {
-            BaseEventData data = new BaseEventData(null);
-            if (m_Selected != null)
-                m_Selected.OnDeselect(data); // [TODO] doesn't work if another UINavigator exists
-
-            m_Selected = value;
-            if (m_Selected != null)
-                m_Selected.OnSelect(data);
-
-            if (cursor != null)
-                if (m_Selected != null)
-                    cursor.Target = m_Selected.transform;
-                else
-                    cursor.Target = null;
-        }
+    private Selectable GetHighlighted() {
+        if (activeMenu == null || activeMenu.cursor == null)
+            return null;
+        return activeMenu.cursor.Highlighted;
     }
 
     private void Reset()
@@ -83,22 +51,19 @@ public class UINavigator : MonoBehaviour, INavigator
 
     private void Update()
     {
-        if (input == null)
+        if (isTransitioning || input == null)
             return;
 
-        //yield return null; // Prevent multiple input steps in same frame
-
-        bool closedMenuThisFrame = ActiveMenu != null && (input.GetButtonDown(closeActiveButton) || input.GetButtonDown(closeAllButton));
+        bool closedMenuThisFrame = activeMenu != null && (input.GetButtonDown(closeActiveButton) || input.GetButtonDown(closeAllButton));
 
         // Cursor movement
-        if (Selected != null)
-            ProcessMovement();
+        ProcessMovement();
 
         // Close menus
         if (input.GetButtonDown(closeActiveButton))
             MenuUpOneLevel();
         if (input.GetButtonDown(closeAllButton))
-            while (ActiveMenu != null)
+            while (activeMenu != null)
                 MenuUpOneLevel();
 
         foreach (string buttonName in closeMenuButton.Keys)
@@ -125,28 +90,31 @@ public class UINavigator : MonoBehaviour, INavigator
         // Handle submit
         if (input.GetButtonDown(submitButton))
         {
-            ISubmitHandler handler = Selected as ISubmitHandler;
+            ISubmitHandler handler = GetHighlighted() as ISubmitHandler;
             if (handler != null)
                 handler.OnSubmit(null);
 
-            if (ActiveMenu != null && ActiveMenu.closeMenuOnSubmit)
+            if (activeMenu != null && activeMenu.closeMenuOnSubmit)
                 MenuCloseActive();
         }
 
         // Handle cancel
         if (input.GetButtonDown(cancelButton))
         {
-            ICancelHandler handler = Selected as ICancelHandler;
+            ICancelHandler handler = GetHighlighted() as ICancelHandler;
             if (handler != null)
                 handler.OnCancel(null);
 
-            if (ActiveMenu != null && ActiveMenu.closeMenuOnCancel)
+            if (activeMenu != null && activeMenu.closeMenuOnCancel)
                 MenuCloseActive();
         }
     }
 
     private void ProcessMovement()
     {
+        if (activeMenu == null || activeMenu.cursor == null)
+            return;
+
         float time = Time.unscaledTime;
         Vector2 direction = input.GetAxisPair(axisPairName).LargestAxis().Quantized();
 
@@ -158,64 +126,68 @@ public class UINavigator : MonoBehaviour, INavigator
         // Move cursor
         if (processMovement == true && direction != Vector2.zero)
         {
-            Selectable target = Selected.FindSelectable(direction);
-            if (target != null)
-                Selected = target;
-
+            activeMenu.cursor.Move(direction);
             m_lastActionTime = Time.unscaledTime;
         }
         m_lastDirection = direction;
     }
 
-    public void MenuCloseActive() { MenuClose(ActiveMenu); }
-    public void MenuClose(InGameMenu menu)
+    public void MenuCloseActive() { MenuClose(activeMenu); }
+    public void MenuClose(GameMenu menu)
     {
-        if (menu == null)
-            return;
-        if (ActiveMenu == menu)
-        {
-            ActiveMenu = null;
-            Selected = null;
-        }
-        menu.Disable();
+        IEnumerator coroutine = Coroutine_SetMenu(menu, false);
+        StartCoroutine(coroutine);
     }
 
-    public void MenuOpen(InGameMenu menu)
+    public void MenuOpen(GameMenu menu)
     {
-        if (menu == null)
-            return;
-        menu.Enable();
-        Selected = menu.FirstSelected;
-        ActiveMenu = menu;
-
-        if (cursor != null) // [TODO] refactor UICursor
-            cursor.transform.position = Selected.transform.position;
+        Debug.Log(menu);
+        IEnumerator coroutine = Coroutine_SetMenu(menu, true);
+        StartCoroutine(coroutine);
     }
 
-    public void MenuToggle(InGameMenu menu)
+    private IEnumerator Coroutine_SetMenu(GameMenu menu, bool menuEnabled)
+    {
+        if (menu == null)
+            yield break;
+
+        // If we can't update menu.Enabled, break
+        IEnumerator coroutineMenu = menu.SetEnabled(menuEnabled);
+        if (coroutineMenu == null)
+            yield break;
+
+        isTransitioning = true;
+
+        // Wait for menu animations/handling
+        yield return coroutineMenu;
+
+        if (menuEnabled) // Open menu
+            activeMenu = menu;
+        else if (activeMenu == menu) // Close menu
+            activeMenu = null;
+
+        isTransitioning = false;
+    }
+
+    public void MenuToggle(GameMenu menu)
     {
         if (menu == null)
             return;
-        if (ActiveMenu == menu)
+        if (activeMenu == menu)
             MenuClose(menu);
         else
             MenuOpen(menu);
     }
 
-    public void MenuSwitch(InGameMenu menu)
+    public void MenuSwitch(GameMenu menu)
     {
-        MenuClose(ActiveMenu);
+        MenuClose(activeMenu);
         MenuOpen(menu);
     }
 
     public void MenuUpOneLevel()
     {
-        if (ActiveMenu != null)
-            MenuSwitch(ActiveMenu.parentMenu);
-    }
-
-    public void Select(Selectable item)
-    {
-        Selected = item;
+        if (activeMenu != null)
+            MenuSwitch(activeMenu.parentMenu);
     }
 }

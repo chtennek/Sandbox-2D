@@ -4,9 +4,9 @@ using UnityEngine;
 
 public interface INavigator
 {
-    void MenuClose(InGameMenu menu);
+    void MenuClose(GameMenu menu);
     void MenuCloseActive();
-    void MenuOpen(InGameMenu menu);
-    void MenuSwitch(InGameMenu menu);
+    void MenuOpen(GameMenu menu);
+    void MenuSwitch(GameMenu menu);
     void MenuUpOneLevel();
 }

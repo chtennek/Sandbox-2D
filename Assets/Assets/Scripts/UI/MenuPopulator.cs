@@ -6,26 +6,25 @@ using UnityEngine.Events;
 
 public class MenuPopulator : MonoBehaviour
 {
-    public InGameMenu menu;
+    public GameMenu menu;
     public Transform menuItemParent;
     public Transform menuItemPrefab;
 
+    public StringUnityEvent onSubmit;
+
     public bool populateOnAwake = false;
-
-    public StringUnityEvent onSelect;
-
-    public List<string> selections;
+    private List<string> selections = new List<string>();
 
     private void Reset()
     {
-        menu = GetComponent<InGameMenu>();
+        menu = GetComponent<GameMenu>();
         menuItemParent = transform;
     }
 
     private void Awake()
     {
         if (populateOnAwake)
-            PopulateMenu();
+            PopulateMenu(selections);
     }
 
     public virtual List<string> GetMenuItems()
@@ -33,38 +32,41 @@ public class MenuPopulator : MonoBehaviour
         return selections;
     }
 
-    public void PopulateMenu(List<string> selections)
-    {
-        this.selections = selections;
-        PopulateMenu();
-    }
+    public void ClearMenu() {
+        selections = new List<string>();
 
-    public void PopulateMenu()
-    {
         // Destroy current menu items
         List<Transform> children = new List<Transform>();
         foreach (Transform child in menuItemParent)
             children.Add(child);
         foreach (Transform child in menuItemParent)
             ObjectPooler.Destroy(child);
+    }
 
+    public void AddMenuItem(string selection) {
+        selections.Add(selection);
+            
+        Transform obj = ObjectPooler.Instantiate(menuItemPrefab);
+        if (obj == null)
+            return;
+
+        Vector3 scale = obj.localScale;
+        obj.SetParent(menuItemParent);
+        obj.localScale = scale;
+
+        Text text = obj.GetComponentInChildren<Text>();
+        if (text != null)
+            text.text = selection;
+
+        Button button = obj.GetComponentInChildren<Button>();
+        if (button != null)
+            button.onClick.AddListener(delegate { onSubmit.Invoke(selection); });
+    }
+
+    public void PopulateMenu(IEnumerable selections)
+    {
+        ClearMenu();
         foreach (string selection in selections)
-        {
-            Transform obj = ObjectPooler.Instantiate(menuItemPrefab);
-            if (obj == null)
-                continue;
-
-            Vector3 scale = obj.localScale;
-            obj.SetParent(menuItemParent);
-            obj.localScale = scale;
-
-            Text text = obj.GetComponentInChildren<Text>();
-            if (text != null)
-                text.text = selection;
-
-            Button button = obj.GetComponentInChildren<Button>();
-            if (button != null)
-                button.onClick.AddListener(delegate { onSelect.Invoke(selection); });
-        }
+            AddMenuItem(selection);
     }
 }

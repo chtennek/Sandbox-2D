@@ -12,4 +12,4 @@ public class ScriptableObjectDictionary : SerializableDictionary<string, Scripta
 public class TilemapDataDictionary : SerializableDictionary<string, Levels.LevelTilemapData> { }
 
 [Serializable]
-public class StringToMenuDictionary : SerializableDictionary<string, InGameMenu> { }
+public class StringToMenuDictionary : SerializableDictionary<string, GameMenu> { }

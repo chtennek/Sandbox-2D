@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 using DG.Tweening;
 
 public sealed class DialogueBehaviour : MonoBehaviour
 {
-    [Header("Input")]
-    public InputReceiver input;
-    public List<string> advanceOnInputNames;
-
     [Header("References")]
     public Text actorText;
     public Text lineText;
@@ -20,39 +16,29 @@ public sealed class DialogueBehaviour : MonoBehaviour
     [Tooltip("The UINavigator that should assume control when dialogue needs to be responded to.")]
     public UINavigator navigator;
 
-    [Tooltip("The DialogueResponder whose menu we will pick a response from.")]
-    public DialogueResponder dialogueResponder;
+    [Tooltip("The MenuPopular whose menu we will pick a response from.")]
+    public MenuPopulator responseMenu;
 
     [Header("Properties")]
     public bool playDialogueOnLoad = true;
     public bool setAsMain = false;
     public float textSpeed; // characters per second
-    public float autoAdvanceAfter = 1f;
+    public float autoAdvanceAfter = 1f; // [TODO]
     public bool streamDialogue = true;
     public EaseSettings ease;
 
+    public UnityEvent onAdvanceEmpty;
+
     public static DialogueBehaviour main;
 
-    private Queue<Line> lines;
+    private Queue<Line> lines = new Queue<Line>();
     private Line currentLine;
-    private Tweener current;
-    private float lastAdvanceTime;
-
-    private void Reset()
-    {
-        input = GetComponent<InputReceiver>();
-    }
+    private Tweener tweener;
 
     public void Start()
     {
-        lastAdvanceTime = Time.time;
-        lines = new Queue<Line>();
-
         if (setAsMain)
             main = this;
-
-        if (input == null || lineText == null)
-            enabled = false;
 
         if (dialogue != null)
             LoadDialogue(dialogue);
@@ -84,72 +70,48 @@ public sealed class DialogueBehaviour : MonoBehaviour
         foreach (Line line in dialogue.lines)
             lines.Enqueue(line);
 
-        if (dialogueResponder != null)
-            dialogueResponder.PopulateMenu(dialogue.branches);
+        // Populate options menu after dialogue is complete
+        if (responseMenu != null)
+        {
+            responseMenu.ClearMenu();
+            foreach (DialogueBranch branch in dialogue.branches)
+                responseMenu.AddMenuItem(branch.selection);
+        }
 
         if (playDialogueOnLoad)
             NextLine();
     }
 
-    private void Update()
-    {
-        if (DialogueAdvanceRequested())
-            Advance();
-    }
-
-    private bool DialogueAdvanceRequested()
-    {
-        if (advanceOnInputNames == null || advanceOnInputNames.Count == 0)
-            if (input.GetAnyButtonDown())
-                return true;
-
-        foreach (string inputName in advanceOnInputNames)
-            if (input.GetButtonDown(inputName))
-                return true;
-
-        if (autoAdvanceAfter > 0 && Time.time - lastAdvanceTime >= autoAdvanceAfter)
-            return true;
-
-        return false;
-    }
-
     public void Advance()
     {
-        lastAdvanceTime = Time.time;
-
         if (IsDisplayFinished()) // Start displaying the next line
             NextLine();
-        else if (current != null) // Auto-complete current line
-            current.Complete();
+        else if (tweener != null) // Auto-complete current line
+            tweener.Complete();
     }
 
     private void NextLine()
     {
-        StartCoroutine(Coroutine_NextLine());
-    }
-
-    private IEnumerator Coroutine_NextLine()
-    {
-        yield return null; // Prevent multiple input steps in same frame
-
         // Display the next line if we have one
         if (lines != null && lines.Count > 0)
         {
             Line line = lines.Dequeue();
             DisplayLine(line);
-            yield break;
+            return;
         }
+
+        if (dialogue.branches.Count == 0)
+            return;
 
         // Otherwise display the response menu if we have one
         if (dialogue.skipBranchSelection)
         {
-            if (dialogue.branches.Count > 0)
-                LoadDialogue(dialogue.branches[0].dialogue);
+            LoadDialogue(dialogue.branches[0].dialogue);
         }
         else
         {
-            if (navigator != null && dialogueResponder != null)
-                navigator.MenuOpen(dialogueResponder.menu);
+            if (navigator != null && responseMenu != null)
+                navigator.MenuSwitch(responseMenu.menu);
             else
                 Warnings.ComponentMissing(this);
         }
@@ -157,7 +119,7 @@ public sealed class DialogueBehaviour : MonoBehaviour
 
     private bool IsDisplayFinished()
     {
-        return string.IsNullOrEmpty(currentLine.text) || current == null || current.IsPlaying() == false;
+        return string.IsNullOrEmpty(currentLine.text) || tweener == null || tweener.IsPlaying() == false;
     }
 
     public void DisplayLine(Line line)
@@ -169,6 +131,7 @@ public sealed class DialogueBehaviour : MonoBehaviour
 
         if (lineText != null)
         {
+            // Determine if we should flush contents from previous lines
             string textEndValue = "";
             if (line.preserveDisplay && string.IsNullOrEmpty(lineText.text) == false)
                 textEndValue = lineText.text + line.separator;
@@ -176,8 +139,8 @@ public sealed class DialogueBehaviour : MonoBehaviour
                 lineText.text = "";
 
             textEndValue += line.text;
-            current = lineText.DOText(textEndValue, textSpeed);
-            ease.SetEase(current);
+            tweener = lineText.DOText(textEndValue, textSpeed);
+            ease.SetEase(tweener);
         }
     }
 }

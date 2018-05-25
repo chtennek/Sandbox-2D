@@ -150,6 +150,15 @@ public class DOTweener : MonoBehaviour
         sequence.PlayBackwards();
     }
 
+    public YieldInstruction WaitForStart() {
+        return sequence.WaitForPosition(0);
+    }
+
+    public YieldInstruction WaitForEnd()
+    {
+        return sequence.WaitForCompletion();
+    }
+
     private Sequence BuildSequence()
     {
         Sequence seq = DOTween.Sequence();
@@ -269,7 +278,7 @@ public class DOTweener : MonoBehaviour
         }
 
         seq.PrependInterval(prependTime);
-        seq.SetAutoKill(false);
+        seq.SetAutoKill(false).SetUpdate(true);
         ease.SetEase(seq);
         return seq;
     }
