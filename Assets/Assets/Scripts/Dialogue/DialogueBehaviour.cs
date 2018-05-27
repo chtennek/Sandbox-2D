@@ -81,7 +81,7 @@ public sealed class DialogueBehaviour : MonoBehaviour
             lines.Enqueue(line);
 
         // Populate options menu after dialogue is complete
-        if (responseMenu != null)
+        if (responseMenu != null && dialogue.skipBranchSelection == false && dialogue.branches.Count > 0)
         {
             responseMenu.ClearMenu();
             foreach (DialogueBranch branch in dialogue.branches)
@@ -121,7 +121,7 @@ public sealed class DialogueBehaviour : MonoBehaviour
             LoadDialogue(dialogue.branches[0].dialogue);
         // Otherwise display the response menu if we have one
         else if (navigator != null && responseMenu != null)
-            navigator.MenuSwitch(responseMenu.menu);
+            navigator.MenuOpen(responseMenu.menu);
         // Otherwise we have nothing to do
         else
             onAdvanceEmpty.Invoke();

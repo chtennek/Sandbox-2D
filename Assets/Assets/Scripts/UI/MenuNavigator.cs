@@ -6,8 +6,6 @@ using UnityEngine.EventSystems;
 
 public class MenuNavigator : MonoBehaviour, INavigator
 {
-    private bool isTransitioning = false;
-
     [Header("Input")]
     public InputReceiver input;
     public string axisPairName = "UI";
@@ -58,11 +56,13 @@ public class MenuNavigator : MonoBehaviour, INavigator
 
     private void Update()
     {
-        if (isTransitioning || input == null)
+        if (input == null)
             return;
 
         if (activeMenu != null && lockInput)
             input.Lock();
+        else
+            input.Unlock();
 
         bool closedMenuThisFrame = activeMenu != null && (input.GetButtonDown(closeActiveButton) || input.GetButtonDown(closeAllButton));
 
@@ -145,41 +145,24 @@ public class MenuNavigator : MonoBehaviour, INavigator
     public void MenuCloseActive() { MenuClose(activeMenu); }
     public void MenuClose(GameMenu menu)
     {
-        Debug.Log(menu);
-        IEnumerator coroutine = Coroutine_SetMenu(menu, false);
-        StartCoroutine(coroutine);
+        if (menu == null)
+            return;
+
+        if (activeMenu == menu)
+            activeMenu = null;
+
+        menu.Enabled = false;
     }
 
     public void MenuOpen(GameMenu menu)
     {
-        Debug.Log(menu);
-        if (menu != null)
-            menu.ResetCursor();
-
-        IEnumerator coroutine = Coroutine_SetMenu(menu, true);
-        StartCoroutine(coroutine);
-    }
-
-    private IEnumerator Coroutine_SetMenu(GameMenu menu, bool menuEnabled)
-    {
         if (menu == null)
-            yield break;
+            return;
 
-        // If we can't update menu.Enabled, break
-        IEnumerator coroutine = menu.SetEnabled(menuEnabled);
+        activeMenu = menu;
 
-        isTransitioning = true;
-
-        if (menuEnabled) // Open menu [TODO] open menu may not mean change activeMenu
-            activeMenu = menu;
-        else if (activeMenu == menu) // Close menu
-            activeMenu = null;
-
-        // Wait for menu animations/handling
-        if (coroutine != null)
-            yield return coroutine;
-
-        isTransitioning = false;
+        menu.ResetCursor();
+        menu.Enabled = true;
     }
 
     public void MenuToggle(GameMenu menu)

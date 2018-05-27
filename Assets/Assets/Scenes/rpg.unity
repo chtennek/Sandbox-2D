@@ -1960,6 +1960,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 503957180}
   m_Script: {fileID: 11500000, guid: e88233a3ccf5a488fb33411672ec9295, type: 3}
+--- !u!114 &332269616 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114002969694368230, guid: 53ec161d59c35411dbd08fee79d5f009,
+    type: 2}
+  m_PrefabInternal: {fileID: 503957180}
+  m_Script: {fileID: 11500000, guid: 417f5da6dc5f042f7b3bc08daaa44cd8, type: 3}
 --- !u!1001 &338914720
 Prefab:
   m_ObjectHideFlags: 0
@@ -3644,7 +3650,7 @@ Prefab:
     - target: {fileID: 114301393754162258, guid: 53ec161d59c35411dbd08fee79d5f009,
         type: 2}
       propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: MenuClose
+      value: MenuSwitch
       objectReference: {fileID: 0}
     - target: {fileID: 114301393754162258, guid: 53ec161d59c35411dbd08fee79d5f009,
         type: 2}
@@ -3655,7 +3661,7 @@ Prefab:
         type: 2}
       propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1826792645}
+      objectReference: {fileID: 332269616}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53ec161d59c35411dbd08fee79d5f009, type: 2}
   m_IsPrefabParent: 0
@@ -12246,12 +12252,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsLevel: 0
   GridSize: 1
---- !u!114 &1826792645 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114255175893262170, guid: 53ec161d59c35411dbd08fee79d5f009,
-    type: 2}
-  m_PrefabInternal: {fileID: 503957180}
-  m_Script: {fileID: 11500000, guid: 417f5da6dc5f042f7b3bc08daaa44cd8, type: 3}
 --- !u!114 &1838740233 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114798478590689866, guid: 20a0ea57ec57f354e91a261ff13f2c14,

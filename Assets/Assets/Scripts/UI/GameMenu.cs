@@ -10,8 +10,6 @@ public class GameMenu : MonoBehaviour
 {
     [Header("Animation")]
     public DOTweener tweenOnOpen;
-    public bool interruptable;
-    private IEnumerator coroutine;
 
     [Header("Properties")]
     public bool closeMenuOnSubmit = false;
@@ -40,7 +38,15 @@ public class GameMenu : MonoBehaviour
         get { return canvas.interactable; }
         set
         {
-            SetEnabled(value);
+            canvas.interactable = value;
+
+            if (tweenOnOpen == null)
+                return;
+
+            if (value == true)
+                tweenOnOpen.PlayForward();
+            else
+                tweenOnOpen.PlayBackwards();
         }
     }
 
@@ -110,38 +116,9 @@ public class GameMenu : MonoBehaviour
             cursor.Highlighted = target;
     }
 
-    public IEnumerator SetEnabled(bool value)
+    // Helper for UnityEvents
+    public void SetEnabled(bool value)
     {
-        if (coroutine != null)
-            if (interruptable == false)
-                return null;
-            else
-                StopCoroutine(coroutine);
-
-        coroutine = Coroutine_SetEnabled(value);
-        StartCoroutine(coroutine);
-        return coroutine;
-    }
-
-    private IEnumerator Coroutine_SetEnabled(bool value)
-    {
-        if (tweenOnOpen == null)
-        {
-            canvas.interactable = value;
-            yield break;
-        }
-
-        if (value == true)
-        {
-            tweenOnOpen.PlayForward();
-            yield return tweenOnOpen.WaitForEnd();
-        }
-        else
-        {
-            tweenOnOpen.PlayBackwards();
-            yield return tweenOnOpen.WaitForStart();
-        }
-
-        canvas.interactable = value;
+        Enabled = value;
     }
 }

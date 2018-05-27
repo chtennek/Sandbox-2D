@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 
 public class MenuButton : Button
 {
-    public GameMenu menu;
+    private GameMenu menu;
     public GameMenu Menu { get { return menu; } }
 
     protected override void Awake()
