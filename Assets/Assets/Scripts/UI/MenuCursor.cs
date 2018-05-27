@@ -10,6 +10,8 @@ public class MenuCursor : MonoBehaviour
 {
     public float lerpValue = .5f;
 
+    private RectTransform rect;
+
     [SerializeField]
     private Selectable m_Highlighted;
     public Selectable Highlighted
@@ -23,30 +25,28 @@ public class MenuCursor : MonoBehaviour
 
             m_Highlighted = value;
             if (Highlighted == null)
+            {
+                transform.SetParent(null);
                 return;
-            else
-                Highlighted.OnSelect(data);
+            }
 
+            Highlighted.OnSelect(data);
             transform.SetParent(value.transform);
+
+            if (rect != null)
+                rect.sizeDelta = Vector2.zero; // [TODO] make this more flexible
         }
+    }
+
+    private void Awake()
+    {
+        rect = transform as RectTransform;
     }
 
     private void Update()
     {
+        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one, lerpValue);
         if (m_Highlighted != null)
             transform.position = Vector3.Lerp(transform.position, m_Highlighted.transform.position, lerpValue);
-    }
-
-    public void Move(Vector2 direction)
-    {
-        if (direction == Vector2.zero)
-            return;
-
-        if (Highlighted == null)
-            return;
-        
-        Selectable target = Highlighted.FindSelectable(direction);
-        if (target != null)
-            Highlighted = target;
     }
 }

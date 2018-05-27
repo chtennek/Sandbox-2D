@@ -13,17 +13,22 @@ public sealed class DialogueBehaviour : MonoBehaviour
     public Text lineText;
     public Dialogue dialogue;
 
+    [Space]
     [Tooltip("The UINavigator that should assume control when dialogue needs to be responded to.")]
-    public UINavigator navigator;
+    public MenuNavigator navigator;
+
+    [Tooltip("The GameMenu to open when we start a dialogue.")]
+    public GameMenu menu;
 
     [Tooltip("The MenuPopular whose menu we will pick a response from.")]
     public MenuPopulator responseMenu;
 
     [Header("Properties")]
+    public bool loadDialogueOnAwake = false;
     public bool playDialogueOnLoad = true;
     public bool setAsMain = false;
-    public float textSpeed; // characters per second
-    public float autoAdvanceAfter = 1f; // [TODO]
+    public float textSpeed = 60f; // characters per second
+    public float autoAdvanceAfter = 0; // [TODO]
     public bool streamDialogue = true;
     public EaseSettings ease;
 
@@ -34,6 +39,11 @@ public sealed class DialogueBehaviour : MonoBehaviour
     private Queue<Line> lines = new Queue<Line>();
     private Line currentLine;
     private Tweener tweener;
+
+    private void Reset()
+    {
+        menu = GetComponent<GameMenu>();
+    }
 
     public void Start()
     {
@@ -101,20 +111,20 @@ public sealed class DialogueBehaviour : MonoBehaviour
         }
 
         if (dialogue.branches.Count == 0)
+        {
+            onAdvanceEmpty.Invoke();
             return;
+        }
 
-        // Otherwise display the response menu if we have one
+        // Load the first dialogue branch by default
         if (dialogue.skipBranchSelection)
-        {
             LoadDialogue(dialogue.branches[0].dialogue);
-        }
+        // Otherwise display the response menu if we have one
+        else if (navigator != null && responseMenu != null)
+            navigator.MenuSwitch(responseMenu.menu);
+        // Otherwise we have nothing to do
         else
-        {
-            if (navigator != null && responseMenu != null)
-                navigator.MenuSwitch(responseMenu.menu);
-            else
-                Warnings.ComponentMissing(this);
-        }
+            onAdvanceEmpty.Invoke();
     }
 
     private bool IsDisplayFinished()
@@ -139,7 +149,9 @@ public sealed class DialogueBehaviour : MonoBehaviour
                 lineText.text = "";
 
             textEndValue += line.text;
-            tweener = lineText.DOText(textEndValue, textSpeed);
+
+            float duration = line.text.Length * (1 / textSpeed);
+            tweener = lineText.DOText(textEndValue, duration);
             ease.SetEase(tweener);
         }
     }

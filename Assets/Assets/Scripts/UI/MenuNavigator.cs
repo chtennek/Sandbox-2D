@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class UINavigator : MonoBehaviour, INavigator
+public class MenuNavigator : MonoBehaviour, INavigator
 {
     private bool isTransitioning = false;
 
@@ -21,6 +21,7 @@ public class UINavigator : MonoBehaviour, INavigator
     public StringToMenuDictionary closeMenuButton = new StringToMenuDictionary();
 
     [Header("Parameters")]
+    public bool setAsMain = true;
     public bool lockInput = true;
     public bool moveOneElementPerInput = true;
     public int inputsPerSecond = 10;
@@ -32,7 +33,10 @@ public class UINavigator : MonoBehaviour, INavigator
     [Header("References")]
     public GameMenu activeMenu;
 
-    private Selectable GetHighlighted() {
+    public static MenuNavigator main;
+
+    private Selectable GetHighlighted()
+    {
         if (activeMenu == null || activeMenu.cursor == null)
             return null;
         return activeMenu.cursor.Highlighted;
@@ -45,6 +49,9 @@ public class UINavigator : MonoBehaviour, INavigator
 
     private void Awake()
     {
+        if (setAsMain)
+            main = this;
+
         if (input == null)
             Warnings.ComponentMissing(this);
     }
@@ -53,6 +60,9 @@ public class UINavigator : MonoBehaviour, INavigator
     {
         if (isTransitioning || input == null)
             return;
+
+        if (activeMenu != null && lockInput)
+            input.Lock();
 
         bool closedMenuThisFrame = activeMenu != null && (input.GetButtonDown(closeActiveButton) || input.GetButtonDown(closeAllButton));
 
@@ -112,7 +122,7 @@ public class UINavigator : MonoBehaviour, INavigator
 
     private void ProcessMovement()
     {
-        if (activeMenu == null || activeMenu.cursor == null)
+        if (activeMenu == null)
             return;
 
         float time = Time.unscaledTime;
@@ -126,7 +136,7 @@ public class UINavigator : MonoBehaviour, INavigator
         // Move cursor
         if (processMovement == true && direction != Vector2.zero)
         {
-            activeMenu.cursor.Move(direction);
+            activeMenu.MoveCursor(direction);
             m_lastActionTime = Time.unscaledTime;
         }
         m_lastDirection = direction;
@@ -135,6 +145,7 @@ public class UINavigator : MonoBehaviour, INavigator
     public void MenuCloseActive() { MenuClose(activeMenu); }
     public void MenuClose(GameMenu menu)
     {
+        Debug.Log(menu);
         IEnumerator coroutine = Coroutine_SetMenu(menu, false);
         StartCoroutine(coroutine);
     }
@@ -142,6 +153,9 @@ public class UINavigator : MonoBehaviour, INavigator
     public void MenuOpen(GameMenu menu)
     {
         Debug.Log(menu);
+        if (menu != null)
+            menu.ResetCursor();
+
         IEnumerator coroutine = Coroutine_SetMenu(menu, true);
         StartCoroutine(coroutine);
     }
@@ -152,19 +166,18 @@ public class UINavigator : MonoBehaviour, INavigator
             yield break;
 
         // If we can't update menu.Enabled, break
-        IEnumerator coroutineMenu = menu.SetEnabled(menuEnabled);
-        if (coroutineMenu == null)
-            yield break;
+        IEnumerator coroutine = menu.SetEnabled(menuEnabled);
 
         isTransitioning = true;
 
-        // Wait for menu animations/handling
-        yield return coroutineMenu;
-
-        if (menuEnabled) // Open menu
+        if (menuEnabled) // Open menu [TODO] open menu may not mean change activeMenu
             activeMenu = menu;
         else if (activeMenu == menu) // Close menu
             activeMenu = null;
+
+        // Wait for menu animations/handling
+        if (coroutine != null)
+            yield return coroutine;
 
         isTransitioning = false;
     }

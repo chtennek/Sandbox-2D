@@ -1,13 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-
-[System.Serializable]
-public class StringUnityEvent : UnityEvent<string> { }
-
-[System.Serializable]
-public class ContextUnityEvent : UnityEvent<Transform> { }
 
 public static class UnityExtensions
 {

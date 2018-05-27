@@ -26,6 +26,11 @@ public class DebugBehaviour : MonoBehaviour
             ReloadScene();
     }
 
+    public void Log(string message)
+    {
+        Debug.Log(message);
+    }
+
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

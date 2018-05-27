@@ -27,6 +27,8 @@ public class SerializableTween
 {
     [Header("Object")]
     public Transform obj;
+
+    [Space]
     public CanvasGroup canvas;
     public Graphic graphic;
     public Material material;
@@ -150,7 +152,8 @@ public class DOTweener : MonoBehaviour
         sequence.PlayBackwards();
     }
 
-    public YieldInstruction WaitForStart() {
+    public YieldInstruction WaitForStart()
+    {
         return sequence.WaitForPosition(0);
     }
 
@@ -170,6 +173,8 @@ public class DOTweener : MonoBehaviour
             Vector3 startValue = tween.startValue;
             Tweener tweener = null;
             Vector3 endValue = tween.endValue;
+
+            // Set start and end values based on tween type
             switch (tween.type)
             {
                 case SerializableTweenType.Position:
@@ -178,7 +183,9 @@ public class DOTweener : MonoBehaviour
                 case SerializableTweenType.ShakePosition:
                     if (tween.startTarget != null)
                         startValue = tween.startTarget.position;
-                    initTweener = tween.obj.DOMove(startValue, 0);
+
+                    if (tween.obj != null)
+                        initTweener = tween.obj.DOMove(startValue, 0);
 
                     if (tween.endTarget != null)
                         endValue = tween.endTarget.position;
@@ -189,7 +196,9 @@ public class DOTweener : MonoBehaviour
                 case SerializableTweenType.ShakeRotation:
                     if (tween.startTarget != null)
                         startValue = tween.startTarget.eulerAngles;
-                    initTweener = tween.obj.DORotate(startValue, 0);
+
+                    if (tween.obj != null)
+                        initTweener = tween.obj.DORotate(startValue, 0);
 
                     if (tween.endTarget != null)
                         endValue = tween.endTarget.eulerAngles;
@@ -200,7 +209,9 @@ public class DOTweener : MonoBehaviour
                 case SerializableTweenType.ShakeScale:
                     if (tween.startTarget != null)
                         startValue = tween.startTarget.localScale;
-                    initTweener = tween.obj.DOScale(startValue, 0);
+                    if (tween.obj != null)
+
+                        initTweener = tween.obj.DOScale(startValue, 0);
 
                     if (tween.endTarget != null)
                         endValue = tween.endTarget.localScale;
@@ -222,6 +233,7 @@ public class DOTweener : MonoBehaviour
                     break;
             }
 
+            // Create the main tween
             if (tween.obj != null)
                 switch (tween.type)
                 {

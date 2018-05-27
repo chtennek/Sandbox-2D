@@ -5,28 +5,8 @@ using UnityEngine.Events;
 
 public class CollideTrigger : ContextTrigger
 {
-    public LayerMask layerMask = ~0;
-    public string[] tagMask;
-    public bool ignoreSiblings = true;
+    public CompoundMask mask;
     public bool preferRigidbody = true;
-
-    private bool TransformMask(Transform other)
-    {
-        if (ignoreSiblings && other.parent != null && transform.parent == other.transform.parent)
-            return false;
-        if (layerMask.Contains(other.gameObject.layer) == false)
-            return false;
-
-        if (tagMask.Length == 0)
-            return true;
-        for (int i = 0; i < tagMask.Length; i++)
-        {
-            if (other.tag == tagMask[i])
-                return true;
-        }
-
-        return false;
-    }
 
     public void DestroyObject(Transform other)
     {
@@ -62,7 +42,7 @@ public class CollideTrigger : ContextTrigger
     {
         Transform other = FindRigidbody(collision.transform, coll: collision);
 
-        if (TransformMask(other) == false)
+        if (mask.Check(transform, other) == false)
             return;
 
         CollideOn(other);
@@ -72,7 +52,7 @@ public class CollideTrigger : ContextTrigger
     {
         Transform other = FindRigidbody(collision.transform, coll2D: collision);
 
-        if (TransformMask(other) == false)
+        if (mask.Check(transform, other) == false)
             return;
 
         CollideOn(other);
@@ -82,7 +62,7 @@ public class CollideTrigger : ContextTrigger
     {
         Transform other = FindRigidbody(collision.transform, coll: collision);
 
-        if (TransformMask(other) == false)
+        if (mask.Check(transform, other) == false)
             return;
 
         CollideOff(other);
@@ -92,7 +72,7 @@ public class CollideTrigger : ContextTrigger
     {
         Transform other = FindRigidbody(collision.transform, coll2D: collision);
 
-        if (TransformMask(other) == false)
+        if (mask.Check(transform, other) == false)
             return;
 
         CollideOff(other);

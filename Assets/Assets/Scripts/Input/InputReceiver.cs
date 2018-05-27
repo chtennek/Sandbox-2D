@@ -1,36 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class InputButtonEvent
+{
+    public string buttonName;
+
+    public UnityEvent onButtonDown;
+    public UnityEvent onButton;
+    public UnityEvent onButtonUp;
+}
 
 public abstract class InputReceiver : MonoBehaviour
 {
     public int playerId = 0;
+    public InputButtonEvent[] buttonEvents;
     public readonly float deadZone = .2f;
     public bool restrictToXAxis = false;
     public bool restrictToYAxis = false;
 
-    [Space]
     #region Lock pattern
+    [Header("Input Locking")]
     public int priority = 0; // readonly
     public bool lockInput = false;
 
-    private bool isUnlocked = true; // cached lock status based on priority and lockInput
+    private bool isActive = true; // cached lock status based on priority and lockInput
     private static List<InputReceiver> hierarchy = new List<InputReceiver>();
-
-    private void Register(InputReceiver input)
-    {
-        if (hierarchy.Contains(input))
-            return;
-
-        for (int i = 0; i <= hierarchy.Count; i++)
-            if (hierarchy[i].priority < input.priority)
-            {
-                hierarchy.Insert(i, input);
-                break;
-            }
-
-        UpdateLockStatuses();
-    }
 
     public void Lock()
     {
@@ -61,11 +58,11 @@ public abstract class InputReceiver : MonoBehaviour
         foreach (InputReceiver input in hierarchy)
         {
             if (lockSet == false)
-                input.isUnlocked = true;
-            else if (lockPriority <= input.priority)
-                input.isUnlocked = true;
+                input.isActive = true;
+            else if (input.priority >= lockPriority)
+                input.isActive = true;
             else
-                input.isUnlocked = false;
+                input.isActive = false;
 
             if (lockSet == false && input.lockInput == true)
             {
@@ -74,11 +71,41 @@ public abstract class InputReceiver : MonoBehaviour
             }
         }
     }
+
+    private void Register(InputReceiver input)
+    {
+        if (hierarchy.Contains(input))
+            return;
+
+        for (int i = 0; i <= hierarchy.Count; i++)
+            if (i == hierarchy.Count || input.priority > hierarchy[i].priority)
+            {
+                hierarchy.Insert(i, input);
+                break;
+            }
+
+        UpdateLockStatuses();
+    }
     #endregion
 
-    private void Awake()
+    protected void Start()
     {
         Register(this); // O(n^2)
+    }
+
+    private void Update()
+    {
+        foreach (InputButtonEvent e in buttonEvents)
+        {
+            if (GetButtonDown(e.buttonName))
+                e.onButtonDown.Invoke();
+
+            if (GetButton(e.buttonName))
+                e.onButton.Invoke();
+
+            if (GetButtonUp(e.buttonName))
+                e.onButtonUp.Invoke();
+        }
     }
 
     public abstract bool GetButtonDownRaw(string id);
@@ -106,18 +133,18 @@ public abstract class InputReceiver : MonoBehaviour
         return new Vector2(x, y);
     }
 
-    public bool GetButtonDown(string id) { return isUnlocked && GetButtonDownRaw(id); }
-    public bool GetButtonUp(string id) { return isUnlocked && GetButtonUpRaw(id); }
-    public bool GetButton(string id) { return isUnlocked && GetButtonRaw(id); }
-    public bool GetAnyButtonDown() { return isUnlocked && GetAnyButtonDownRaw(); }
-    public bool GetAnyButton() { return isUnlocked && GetAnyButtonRaw(); }
-    public float GetAxis(string id) { return isUnlocked ? GetAxisRaw(id) : 0; }
-    public float GetAxisDown(string id) { return isUnlocked ? GetAxisDownRaw(id) : 0; }
+    public bool GetButtonDown(string id) { return isActive && GetButtonDownRaw(id); }
+    public bool GetButtonUp(string id) { return isActive && GetButtonUpRaw(id); }
+    public bool GetButton(string id) { return isActive && GetButtonRaw(id); }
+    public bool GetAnyButtonDown() { return isActive && GetAnyButtonDownRaw(); }
+    public bool GetAnyButton() { return isActive && GetAnyButtonRaw(); }
+    public float GetAxis(string id) { return isActive ? GetAxisRaw(id) : 0; }
+    public float GetAxisDown(string id) { return isActive ? GetAxisDownRaw(id) : 0; }
 
     public Vector2 GetAxisPairDown(string axisPairName) { return GetAxisPairDown(axisPairName, restrictToXAxis, restrictToYAxis); }
     public virtual Vector2 GetAxisPairDown(string axisPairName, bool restrictToXAxis, bool restrictToYAxis)
     {
-        if (isUnlocked == false) return Vector2.zero;
+        if (isActive == false) return Vector2.zero;
 
         Vector2 input = GetAxisPairDownRaw(axisPairName);
 
@@ -134,7 +161,7 @@ public abstract class InputReceiver : MonoBehaviour
     public Vector2 GetAxisPair(string axisPairName) { return GetAxisPair(axisPairName, restrictToXAxis, restrictToYAxis); }
     public Vector2 GetAxisPair(string axisPairName, bool restrictToXAxis, bool restrictToYAxis)
     {
-        if (isUnlocked == false) return Vector2.zero;
+        if (isActive == false) return Vector2.zero;
 
         Vector2 input = GetAxisPairRaw(axisPairName);
         if (input.magnitude < deadZone)

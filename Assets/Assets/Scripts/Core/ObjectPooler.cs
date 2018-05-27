@@ -97,7 +97,7 @@ public class ObjectPool
 public class ObjectPooler : MonoBehaviour
 {
     public List<ObjectPool> pools;
-    public bool addPoolsAsNeeded = true;
+    public bool addPoolsAsNeeded = false;
     public bool keepPoolsAsChildren = true;
 
     private Dictionary<Transform, ObjectPool> poolLookup = new Dictionary<Transform, ObjectPool>(); // Maps prefabs AND their instances to their ObjectPool

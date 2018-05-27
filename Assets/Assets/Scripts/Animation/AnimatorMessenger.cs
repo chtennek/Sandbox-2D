@@ -22,18 +22,18 @@ public class AnimatorMessenger : MonoBehaviour
     public float multiply = 1;
 
     [Header("References")]
+    public Animator animator;
     public InputReceiver input;
     public RigidbodyWrapper rw;
-    public Animator animator;
     public NavMeshAgent agent;
 
     private List<string> parameters;
 
     private void Reset()
     {
+        animator = GetComponent<Animator>();
         input = GetComponent<InputReceiver>();
         rw = GetComponent<RigidbodyWrapper>();
-        animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
     }
 

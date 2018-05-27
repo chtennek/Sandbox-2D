@@ -2050,8 +2050,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
+  buttonEvents: []
   restrictToXAxis: 0
   restrictToYAxis: 0
+  priority: 99999
+  lockInput: 0
 --- !u!114 &114979640849826282
 MonoBehaviour:
   m_ObjectHideFlags: 1

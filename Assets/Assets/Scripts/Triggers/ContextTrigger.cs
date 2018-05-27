@@ -6,9 +6,9 @@ using UnityEngine.Events;
 [System.Serializable]
 public class ContextTriggerEvents
 {
-    public ContextUnityEvent onActivate;
-    public ContextUnityEvent onDeactivate;
-    public ContextUnityEvent onActive;
+    public TransformUnityEvent onActivate;
+    public TransformUnityEvent onDeactivate;
+    public TransformUnityEvent onActive;
 }
 
 public class ContextTrigger : Trigger
