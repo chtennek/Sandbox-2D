@@ -15,20 +15,17 @@ public class CombatBehaviour : MonoBehaviour
 
     [Header("Properties")]
     public bool runCombatLoop;
-    public EntityType self;
+    public bool resetTargetOnExecute;
+    public bool resetMoveOnExecute;
 
-    public bool resetTarget;
+    public EntityType self;
     public EntityBehaviour target;
-    public bool resetMove;
     public EffectType currentMove;
 
     [Header("References")]
     public DialogueBehaviour dialogueBox; // Stream combat dialogue
     public WaypointControl movement; // Leave null to ignore range limitations
     public AnimatorMessenger animator;
-    public InputReceiver input;
-
-    public Transform findTarget;
 
     private IEnumerator combatLoop;
 
@@ -50,7 +47,6 @@ public class CombatBehaviour : MonoBehaviour
 
         movement = GetComponent<WaypointControl>();
         animator = GetComponent<AnimatorMessenger>();
-        input = GetComponent<InputReceiver>();
     }
 
     protected void Start()
@@ -121,9 +117,9 @@ public class CombatBehaviour : MonoBehaviour
             }
 
             yield return StartCoroutine(Coroutine_ExecuteMove());
-            if (resetTarget)
+            if (resetTargetOnExecute)
                 target = null;
-            if (resetMove)
+            if (resetMoveOnExecute)
                 currentMove = null;
         }
     }
