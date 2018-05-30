@@ -17,4 +17,5 @@ MonoBehaviour:
     preserveDisplay: 0
     separator: 
     audio: {fileID: 0}
+  skipBranchSelection: 0
   branches: []

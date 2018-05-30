@@ -8,11 +8,6 @@ public class CollideTrigger : ContextTrigger
     public CompoundMask mask;
     public bool preferRigidbody = true;
 
-    public void DestroyObject(Transform other)
-    {
-        Destroy(other.gameObject);
-    }
-
     private void CollideOn(Transform other)
     {
         AddTarget(other);

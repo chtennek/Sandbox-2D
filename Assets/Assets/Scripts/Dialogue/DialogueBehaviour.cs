@@ -21,7 +21,7 @@ public sealed class DialogueBehaviour : MonoBehaviour
     public GameMenu menu;
 
     [Tooltip("The MenuPopular whose menu we will pick a response from.")]
-    public MenuPopulator responseMenu;
+    public ResponseMenuDisplay responseMenu;
 
     [Header("Properties")]
     public bool loadDialogueOnAwake = false;

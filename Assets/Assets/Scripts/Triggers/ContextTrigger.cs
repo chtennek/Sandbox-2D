@@ -26,6 +26,11 @@ public class ContextTrigger : Trigger
         }
     }
 
+    public void DestroyObject(Transform other)
+    {
+        ObjectPooler.Destroy(other.gameObject);
+    }
+
     public bool AddTarget(Transform target)
     {
         if (targets.Add(target) == false)

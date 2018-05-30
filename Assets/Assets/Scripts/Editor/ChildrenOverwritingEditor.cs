@@ -11,7 +11,7 @@ public class ChildrenOverwritingEditor : Editor
         if (GUILayout.Button("Refresh Children"))
         {
             InventoryBase inventory = target as InventoryBase;
-            inventory.ResetView();
+            inventory.UpdateView();
         }
         DrawDefaultInspector();
     }

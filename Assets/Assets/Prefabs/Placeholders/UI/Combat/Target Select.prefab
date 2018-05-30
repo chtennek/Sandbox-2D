@@ -1055,9 +1055,13 @@ MonoBehaviour:
   prependTime: 0
   tweens:
   - obj: {fileID: 224293743008422474}
+    canvas: {fileID: 0}
     graphic: {fileID: 0}
     material: {fileID: 0}
     type: 0
+    useStartValue: 0
+    startTarget: {fileID: 0}
+    startValue: {x: 0, y: 0, z: 0}
     from: 1
     endTarget: {fileID: 0}
     endValue: {x: 100, y: 0, z: 0}
@@ -1067,9 +1071,13 @@ MonoBehaviour:
     vibrato: 0
     elasticityOrRandomness: 0
   - obj: {fileID: 224293743008422474}
+    canvas: {fileID: 0}
     graphic: {fileID: 114245905254817776}
     material: {fileID: 0}
     type: 9
+    useStartValue: 0
+    startTarget: {fileID: 0}
+    startValue: {x: 0, y: 0, z: 0}
     from: 0
     endTarget: {fileID: 0}
     endValue: {x: 0, y: 0, z: 0}

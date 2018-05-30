@@ -14,32 +14,32 @@ public abstract class InventoryBase : MonoBehaviour
     [Header("Properties")]
     public float maxWeight;
 
-    public abstract void ResetView();
-    public abstract void UpdateEntry(Transform child, ItemType item);
+    public abstract void UpdateView();
 
     public abstract bool AddItem(ItemType item);
+
+    public void AddItem(Transform target) {
+        ItemBehaviour item = target.GetComponent<ItemBehaviour>();
+        if (item != null)
+            AddItem(item.type);
+    }
+
     public int AddItem(ItemType item, int count)
     {
         for (int i = 0; i < count; i++)
-        {
             if (AddItem(item) == false)
-            {
-                return count - i;
-            }
-        }
-        return 0;
+                return i;
+
+        return count;
     }
 
     public abstract bool RemoveItem(ItemType item);
     public int RemoveItem(ItemType item, int count)
     {
         for (int i = 0; i < count; i++)
-        {
             if (RemoveItem(item) == false)
-            {
-                return count - i;
-            }
-        }
-        return 0;
+                return i;
+
+        return count;
     }
 }

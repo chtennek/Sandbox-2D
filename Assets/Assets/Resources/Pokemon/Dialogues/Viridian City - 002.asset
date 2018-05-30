@@ -23,8 +23,9 @@ MonoBehaviour:
     preserveDisplay: 0
     separator: 
     audio: {fileID: 0}
+  skipBranchSelection: 0
   branches:
   - selection: YES
-    branch: {fileID: 11400000, guid: 3e20cc81e83eb0a438ec59557084acab, type: 2}
+    dialogue: {fileID: 11400000, guid: 3e20cc81e83eb0a438ec59557084acab, type: 2}
   - selection: NO
-    branch: {fileID: 11400000, guid: 078ec8e7e5a4395479fc0c47bad1d9d8, type: 2}
+    dialogue: {fileID: 11400000, guid: 078ec8e7e5a4395479fc0c47bad1d9d8, type: 2}

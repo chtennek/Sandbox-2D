@@ -6,11 +6,35 @@ namespace Sandbox
 {
     namespace RPG
     {
+        [System.Serializable]
+        public struct ItemStack
+        {
+            public ItemType type;
+            public int count;
+
+            public static readonly ItemStack none = new ItemStack(null, 0);
+
+            public ItemStack(ItemType type, int count)
+            {
+                this.type = type;
+                this.count = count;
+            }
+
+            public int Add(int amount) {
+                if (type == null)
+                    return 0;
+                
+                int previousCount = count;
+                count = Mathf.Clamp(count + amount, 0, type.maxPerStack);
+                return count - previousCount;
+            }
+        }
+
         [CreateAssetMenu(fileName = "ItemType", menuName = "RPG/Item Type", order = 0)]
         public class ItemType : ScriptableObject
         {
             public Sprite image;
-            public string itemName = "Sword";
+            public string displayName = "Sword";
             [TextArea(1, 5)]
             public string description;
 

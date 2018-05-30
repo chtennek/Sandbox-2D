@@ -144,7 +144,7 @@ public class ObjectPooler : MonoBehaviour
         singleton.poolLookup.Add(obj, pool);
     }
 
-    public static Transform Instantiate(Transform prefab)
+    public static Transform Instantiate(Transform prefab, Transform parent = null)
     {
         if (ObjectPooler.HasSingleton() == false)
             return null;
@@ -156,7 +156,13 @@ public class ObjectPooler : MonoBehaviour
         if (singleton.poolLookup.TryGetValue(prefab, out pool) == false)
             return null;
 
-        return pool.Instantiate();
+        Transform obj = pool.Instantiate();
+        if (obj != null) {
+            Vector3 scale = obj.localScale;
+            obj.SetParent(parent);
+            obj.localScale = scale;
+        }
+        return obj;
     }
 
     public static void Destroy(Transform obj)

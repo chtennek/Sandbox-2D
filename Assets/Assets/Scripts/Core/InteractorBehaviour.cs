@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 public class InteractorBehaviour : MonoBehaviour
 {
+    [SerializeField]
+    private string comment;
+
     [Header("Properties")]
     public float sensitivity = .5f;
     public CompoundMask mask;
