@@ -61,7 +61,7 @@ public abstract class MenuPopulator<D, T> : MonoBehaviour, IDisplayer<IEnumerabl
                 children.Add(child);
 
         foreach (Transform child in children)
-            ObjectPooler.Destroy(child);
+            ObjectPooler.Deallocate(child);
     }
 
     public D Add(T data)

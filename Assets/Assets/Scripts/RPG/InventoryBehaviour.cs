@@ -26,7 +26,7 @@ public class InventoryBehaviour : MonoBehaviour
             Collapse();
 
         if (display != null)
-            display.Display(items);
+            display.Refresh(items);
     }
 
     public void Collapse()
@@ -50,7 +50,8 @@ public class InventoryBehaviour : MonoBehaviour
                 items[i].type = null;
     }
 
-    public void Add(Transform target) {
+    public void Add(Transform target)
+    {
         ItemBehaviour item = target.GetComponent<ItemBehaviour>();
         if (item == null)
             return;
