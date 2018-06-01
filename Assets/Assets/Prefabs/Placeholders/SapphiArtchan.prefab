@@ -640,6 +640,7 @@ GameObject:
   - component: {fileID: 114068336922976850}
   - component: {fileID: 195753617297406100}
   - component: {fileID: 114992790643672086}
+  - component: {fileID: 114940784150322272}
   m_Layer: 0
   m_Name: SapphiArtchan
   m_TagString: Untagged
@@ -2270,8 +2271,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4332033317653222}
-  - component: {fileID: 135116796976858168}
   - component: {fileID: 114165714252489262}
+  - component: {fileID: 114820308689369964}
   m_Layer: 0
   m_Name: Interactor
   m_TagString: Untagged
@@ -4809,16 +4810,14 @@ MonoBehaviour:
   - Enemy
   mouseRaycast: 1000
   runCombatLoop: 0
+  resetTargetOnExecute: 0
+  resetMoveOnExecute: 0
   self: {fileID: 11400000, guid: baf7a1ad376dc85478e33ccb82ccf83f, type: 2}
-  resetTarget: 0
   target: {fileID: 0}
-  resetMove: 0
   currentMove: {fileID: 11400000, guid: caa7f22f1b5ce3548bccf7749a9e6dd9, type: 2}
   dialogueBox: {fileID: 0}
   movement: {fileID: 0}
   animator: {fileID: 114798607392194086}
-  input: {fileID: 114798478590689866}
-  findTarget: {fileID: 0}
 --- !u!114 &114165714252489262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4830,19 +4829,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd9fb13d643e04477b67817370652e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  comment: Pick up items
   mask:
     layerMask:
       serializedVersion: 2
       m_Bits: 4294967295
-    tagMask: []
+    tagMask:
+    - Item
     ignoreSiblings: 0
-  limitOneInteractable: 0
+  radius: 1
+  offset: {x: 0, y: 0, z: 0}
+  limitOneInteractable: 1
   onInteract:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onInteractWithTransform:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: TransformUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
@@ -5043,6 +5041,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
+  buttonEvents:
+  - buttonName: Jump
+    onButtonDown:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114165714252489262}
+          m_MethodName: Interact
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    onButton:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    onButtonUp:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   restrictToXAxis: 0
   restrictToYAxis: 0
   priority: 0
@@ -5068,6 +5094,33 @@ MonoBehaviour:
   input: {fileID: 0}
   rw: {fileID: 114765422768713274}
   agent: {fileID: 195753617297406100}
+--- !u!114 &114820308689369964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1937308616124180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9fb13d643e04477b67817370652e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comment: Start dialogue
+  mask:
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    tagMask:
+    - NPC
+    ignoreSiblings: 0
+  radius: 1
+  offset: {x: 0, y: 0, z: 0}
+  limitOneInteractable: 1
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: TransformUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114848724021241810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5144,6 +5197,26 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
+--- !u!114 &114940784150322272
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1297242664419074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872c68e0e4e9848f99b3e13707efce0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  display: {fileID: 0}
+  alwaysCollapse: 0
+  items:
+  - type: {fileID: 11400000, guid: 51beb60c8aa274d7f896302073d493c7, type: 2}
+    count: 1
+  - type: {fileID: 0}
+    count: 0
+  - type: {fileID: 0}
+    count: 0
 --- !u!114 &114992790643672086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5172,18 +5245,6 @@ MonoBehaviour:
     type: 2}
   agent: {fileID: 195753617297406100}
   movement: {fileID: 114613072872438104}
---- !u!135 &135116796976858168
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1937308616124180}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &137000981629364680
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

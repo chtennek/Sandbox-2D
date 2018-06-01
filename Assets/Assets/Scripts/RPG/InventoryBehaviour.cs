@@ -6,15 +6,18 @@ using Sandbox.RPG;
 
 public class InventoryBehaviour : MonoBehaviour
 {
-    public ItemStack[] items;
-    public bool alwaysCollapse;
+    [SerializeField]
+    private InventoryDisplay display;
 
-    public InventoryDisplay display;
+    [SerializeField]
+    private bool alwaysCollapse;
 
-    private void Awake()
+    [SerializeField]
+    private List<ItemStack> items;
+
+    private void Start()
     {
-        if (display != null)
-            display.PopulateMenu(items);
+        Refresh();
     }
 
     public void Refresh()
@@ -23,14 +26,14 @@ public class InventoryBehaviour : MonoBehaviour
             Collapse();
 
         if (display != null)
-            display.PopulateMenu(items);
+            display.Display(items);
     }
 
     public void Collapse()
     {
-        for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < items.Count; i++)
         {
-            for (int j = i + 1; j < items.Length; j++)
+            for (int j = i + 1; j < items.Count; j++)
             {
                 if (items[i].type == items[j].type)
                 {
@@ -40,63 +43,71 @@ public class InventoryBehaviour : MonoBehaviour
             }
         }
 
-        // Null empty stacks
+        // Set empty stacks to null type
         // [TODO] couple this logic to the item stack?
-        for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < items.Count; i++)
             if (items[i].count == 0)
-                items[i] = ItemStack.none;
+                items[i].type = null;
+    }
+
+    public void Add(Transform target) {
+        ItemBehaviour item = target.GetComponent<ItemBehaviour>();
+        if (item == null)
+            return;
+
+        Add(item.type);
     }
 
     public int Add(ItemType type, int amount = 1)
     {
-        int total = amount;
+        int remaining = amount;
 
         // Add to all existing stacks first
         foreach (ItemStack stack in items)
         {
-            if (amount <= 0)
+            if (remaining <= 0)
                 break;
 
             if (stack.type != type)
                 continue;
 
-            amount -= stack.Add(amount);
+            remaining -= stack.Add(remaining);
         }
 
         // Create new stacks as needed
-        for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < items.Count; i++)
         {
-            if (amount <= 0)
+            if (remaining <= 0)
                 break;
 
             if (items[i].type != null)
                 continue;
 
-            items[i] = new ItemStack(type, 0);
-            amount -= items[i].Add(amount);
+            items[i].type = type;
+            remaining -= items[i].Add(remaining);
         }
 
         Refresh();
-        return total - amount;
+        return amount - remaining;
     }
 
     public int Remove(ItemType type, int amount = 1)
     {
-        int total = amount;
-        for (int i = items.Length - 1; i >= 0; i--)
+        int remaining = amount;
+        for (int i = items.Count - 1; i >= 0; i--)
         {
-            if (amount <= 0)
+            if (remaining <= 0)
                 break;
 
             if (items[i].type != type)
                 continue;
 
-            amount += items[i].Add(-amount);
+            remaining += items[i].Add(-remaining);
             if (items[i].count == 0)
-                items[i] = ItemStack.none;
+                items[i].type = null;
         }
 
         Refresh();
-        return total - amount;
+        return amount - remaining;
     }
 }

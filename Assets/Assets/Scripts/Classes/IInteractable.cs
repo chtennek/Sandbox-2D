@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    void OnInteract(Transform source);
+    void OnInteractBy(Transform source);
 }

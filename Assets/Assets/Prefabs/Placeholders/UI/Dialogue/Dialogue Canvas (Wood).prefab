@@ -267,7 +267,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenOnOpen: {fileID: 114071506406615214}
-  interruptable: 0
   closeMenuOnSubmit: 0
   closeMenuOnCancel: 0
   restrictCursorToMenu: 1
@@ -351,32 +350,32 @@ MonoBehaviour:
     canvas: {fileID: 225762455530981778}
     graphic: {fileID: 0}
     material: {fileID: 0}
-    type: 12
+    type: 14
     useStartValue: 0
     startTarget: {fileID: 0}
-    startValue: {x: 0, y: 0, z: 0}
+    startValue: {x: 0.3, y: 0, z: 0}
     from: 0
     endTarget: {fileID: 0}
-    endValue: {x: 0, y: 0, z: 0}
+    endValue: {x: 1, y: 0, z: 0}
     appendTime: 0
     delay: 0
-    duration: 0.5
+    duration: 0.2
     vibrato: 0
     elasticityOrRandomness: 0
   - obj: {fileID: 224790364043065398}
     canvas: {fileID: 0}
     graphic: {fileID: 0}
     material: {fileID: 0}
-    type: 8
-    useStartValue: 0
+    type: 2
+    useStartValue: 1
     startTarget: {fileID: 0}
-    startValue: {x: 0, y: 0, z: 0}
+    startValue: {x: 0.5, y: 0.5, z: 0.5}
     from: 0
     endTarget: {fileID: 0}
-    endValue: {x: 0.1, y: 0.1, z: 0.1}
+    endValue: {x: 1, y: 1, z: 1}
     appendTime: 0
     delay: 0
-    duration: 0.5
+    duration: 0.2
     vibrato: 0
     elasticityOrRandomness: 0
 --- !u!114 &114072421300702142
@@ -515,7 +514,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  menu: {fileID: 114255175893262170}
 --- !u!114 &114255175893262170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -528,7 +526,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenOnOpen: {fileID: 114321963446470230}
-  interruptable: 0
   closeMenuOnSubmit: 0
   closeMenuOnCancel: 0
   restrictCursorToMenu: 1
@@ -576,7 +573,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: StringUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+    m_CallsDirty: 1
   populateOnAwake: 0
+  selections: []
 --- !u!114 &114304344350704738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -653,32 +652,32 @@ MonoBehaviour:
     canvas: {fileID: 225377042962126310}
     graphic: {fileID: 0}
     material: {fileID: 0}
-    type: 12
+    type: 14
     useStartValue: 0
     startTarget: {fileID: 0}
-    startValue: {x: 0, y: 0, z: 0}
+    startValue: {x: 0.3, y: 0, z: 0}
     from: 0
     endTarget: {fileID: 0}
-    endValue: {x: 0, y: 0, z: 0}
+    endValue: {x: 1, y: 0, z: 0}
     appendTime: 0
     delay: 0
-    duration: 0.5
+    duration: 0.2
     vibrato: 0
     elasticityOrRandomness: 0
   - obj: {fileID: 224336243950157474}
     canvas: {fileID: 0}
     graphic: {fileID: 0}
     material: {fileID: 0}
-    type: 8
-    useStartValue: 0
+    type: 2
+    useStartValue: 1
     startTarget: {fileID: 0}
-    startValue: {x: 0, y: 0, z: 0}
+    startValue: {x: 0.5, y: 0.5, z: 0.5}
     from: 0
     endTarget: {fileID: 0}
-    endValue: {x: 0.1, y: 0.1, z: 0.1}
+    endValue: {x: 1, y: 1, z: 1}
     appendTime: 0
     delay: 0
-    duration: 0.5
+    duration: 0.2
     vibrato: 0
     elasticityOrRandomness: 0
 --- !u!114 &114416665024534336
@@ -840,7 +839,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  menu: {fileID: 114002969694368230}
 --- !u!114 &114664223878174734
 MonoBehaviour:
   m_ObjectHideFlags: 1

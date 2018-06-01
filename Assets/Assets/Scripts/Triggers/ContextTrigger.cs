@@ -28,7 +28,7 @@ public class ContextTrigger : Trigger
 
     public void DestroyObject(Transform other)
     {
-        ObjectPooler.Destroy(other.gameObject);
+        ObjectPooler.Deallocate(other);
     }
 
     public bool AddTarget(Transform target)

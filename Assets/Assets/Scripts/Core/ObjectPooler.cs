@@ -18,7 +18,7 @@ public class ObjectPool
     public ObjectPool(Transform prefab, Transform folder = null, int initialSize = 3, bool reuseActive = false, bool expandAsNeeded = true)
     {
         this.prefab = prefab;
-        this.folder = folder;
+        this.folder = folder;{}
         this.initialSize = initialSize;
         this.reuseActive = reuseActive;
         this.expandAsNeeded = expandAsNeeded;
@@ -138,15 +138,15 @@ public class ObjectPooler : MonoBehaviour
 
     public static void RegisterPooledObject(Transform obj, ObjectPool pool)
     {
-        if (ObjectPooler.HasSingleton() == false)
+        if (HasSingleton() == false)
             return;
 
         singleton.poolLookup.Add(obj, pool);
     }
 
-    public static Transform Instantiate(Transform prefab, Transform parent = null)
+    public static Transform Allocate(Transform prefab, Transform parent = null)
     {
-        if (ObjectPooler.HasSingleton() == false)
+        if (HasSingleton() == false)
             return null;
 
         if (singleton.addPoolsAsNeeded && singleton.poolLookup.ContainsKey(prefab) == false)
@@ -165,11 +165,11 @@ public class ObjectPooler : MonoBehaviour
         return obj;
     }
 
-    public static void Destroy(Transform obj)
+    public static void Deallocate(Transform obj)
     {
-        if (ObjectPooler.HasSingleton() == false)
+        if (HasSingleton() == false)
         {
-            Object.Destroy(obj.gameObject);
+            Destroy(obj.gameObject);
             return;
         }
 
@@ -178,6 +178,6 @@ public class ObjectPooler : MonoBehaviour
         if (pool != null)
             pool.Destroy(obj);
         else
-            Object.Destroy(obj.gameObject);
+            Destroy(obj.gameObject);
     }
 }

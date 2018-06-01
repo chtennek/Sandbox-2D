@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueOnInteract : MonoBehaviour, IInteractable
+public class NPCBehaviour : MonoBehaviour, IInteractable
 {
     public Dialogue dialogue;
 
-    public void OnInteract(Transform source)
+    public void OnInteractBy(Transform source)
     {
         if (DialogueBehaviour.main == null)
             return;

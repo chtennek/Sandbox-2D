@@ -4,16 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public abstract class MenuPopulator<D, T> : MonoBehaviour where D : IDisplayer<T>
+public abstract class MenuPopulator<D, T> : MonoBehaviour, IDisplayer<IEnumerable<T>> where D : IDisplayer<T>
 {
     public GameMenu menu;
     public bool preserveChildrenWithLayoutElements = true;
     public Transform menuItemParent;
     public Transform menuItemPrefab;
 
-    public bool populateOnAwake = false;
+    [SerializeField]
+    private bool useInitialValues;
 
-    private List<D> displays = new List<D>();
+    [SerializeField]
+    private List<T> initialValues;
+
+    private Dictionary<T, D> displayLookup = new Dictionary<T, D>();
 
     private void Reset()
     {
@@ -21,13 +25,29 @@ public abstract class MenuPopulator<D, T> : MonoBehaviour where D : IDisplayer<T
         menuItemParent = transform;
     }
 
-    private void Awake()
+    private void Start()
     {
-        if (populateOnAwake)
-            PopulateMenu(displays);
+        if (useInitialValues)
+            Display(initialValues);
     }
 
-    public void ClearMenu()
+    public void Refresh(IEnumerable<T> data)
+    {
+        foreach (T entry in data)
+            if (displayLookup.ContainsKey(entry))
+                displayLookup[entry].Display(entry);
+            else
+                Add(entry);
+    }
+
+    public void Display(IEnumerable<T> data)
+    {
+        Clear();
+        foreach (T entry in data)
+            Add(entry);
+    }
+
+    public void Clear()
     {
         // Keep the menu cursor around
         if (menu.cursor != null)
@@ -44,23 +64,24 @@ public abstract class MenuPopulator<D, T> : MonoBehaviour where D : IDisplayer<T
             ObjectPooler.Destroy(child);
     }
 
-    public void PopulateMenu(IEnumerable<T> datas)
+    public D Add(T data)
     {
-        ClearMenu();
-        foreach (T data in datas)
-            AddMenuItem(data);
-    }
+        if (displayLookup.ContainsKey(data))
+        {
+            Debug.LogWarning("Duplicate menu item not added.");
+            return default(D);
+        }
 
-    public void AddMenuItem(T data)
-    {
         Transform obj = ObjectPooler.Instantiate(menuItemPrefab, menuItemParent);
         if (obj == null)
-            return;
+            return default(D);
 
-        D displayer = obj.GetComponent<D>();
-        if (displayer == null)
-            return;
+        D display = obj.GetComponent<D>();
+        if (display == null)
+            return default(D);
 
-        displayer.Display(data);
+        displayLookup.Add(data, display);
+        display.Display(data);
+        return display;
     }
 }

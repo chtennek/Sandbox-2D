@@ -64,7 +64,7 @@ public class WaypointControl : MonoBehaviour
         // Discard excess waypoints
         while (waypoints.Count > 0)
             if (waypoints.Peek() == null || Vector3.Distance(transform.position, waypoints.Peek().position) <= waypointRadius)
-                ObjectPooler.Destroy(waypoints.Dequeue());
+                ObjectPooler.Deallocate(waypoints.Dequeue());
             else
                 break;
 
@@ -95,7 +95,7 @@ public class WaypointControl : MonoBehaviour
     public void ClearWaypoints()
     {
         while (waypoints.Count > 0) {
-            ObjectPooler.Destroy(waypoints.Dequeue());
+            ObjectPooler.Deallocate(waypoints.Dequeue());
         }
     }
 
@@ -112,7 +112,7 @@ public class WaypointControl : MonoBehaviour
         if (waypointPrefab == null)
             return hit.transform;
 
-        Transform waypoint = ObjectPooler.Instantiate(waypointPrefab);
+        Transform waypoint = ObjectPooler.Allocate(waypointPrefab);
         if (waypoint != null)
             waypoint.position = hit.point;
         return waypoint;

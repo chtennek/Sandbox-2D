@@ -65,11 +65,7 @@ public class GameMenu : MonoBehaviour
         if (canvas == null)
             Warnings.ComponentMissing<CanvasGroup>(this);
 
-        if (tweenOnOpen != null)
-            if (Enabled)
-                tweenOnOpen.GotoEnd();
-            else
-                tweenOnOpen.GotoStart();
+        Enabled = Enabled;
     }
 
     public void ResetCursor()

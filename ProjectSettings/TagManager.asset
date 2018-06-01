@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Score
   - Item
+  - NPC
   layers:
   - Default
   - TransparentFX

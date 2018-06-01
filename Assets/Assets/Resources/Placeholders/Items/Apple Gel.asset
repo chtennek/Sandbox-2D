@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Apple Gel
   m_EditorClassIdentifier: 
   image: {fileID: 0}
-  itemName: Sword
+  displayName: Apple Gel
   description: 
   category: Default
   equippable: 0

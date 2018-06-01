@@ -9,7 +9,7 @@ public class LevelObjectNPC : LevelObjectBase
     public override LevelObjectData ToData()
     {
         LevelObjectData objData = base.ToData();
-        DialogueOnInteract script = GetComponent<DialogueOnInteract>();
+        NPCBehaviour script = GetComponent<NPCBehaviour>();
         if (script != null)
         {
             objData.data["Dialogue"] = script.dialogue;
@@ -20,7 +20,7 @@ public class LevelObjectNPC : LevelObjectBase
     public override void LoadData(LevelObjectData objData)
     {
         base.LoadData(objData);
-        DialogueOnInteract script = GetComponent<DialogueOnInteract>();
+        NPCBehaviour script = GetComponent<NPCBehaviour>();
 
         if (script != null && objData.data.ContainsKey("Dialogue"))
         {

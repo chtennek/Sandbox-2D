@@ -83,9 +83,9 @@ public sealed class DialogueBehaviour : MonoBehaviour
         // Populate options menu after dialogue is complete
         if (responseMenu != null && dialogue.skipBranchSelection == false && dialogue.branches.Count > 0)
         {
-            responseMenu.ClearMenu();
+            responseMenu.Clear();
             foreach (DialogueBranch branch in dialogue.branches)
-                responseMenu.AddMenuItem(branch.selection);
+                responseMenu.Add(branch.selection);
         }
 
         if (playDialogueOnLoad)

@@ -8,8 +8,11 @@ public class ItemBehaviour : MonoBehaviour, IInteractable
 {
     public ItemType type;
 
-    public void OnInteract(Transform source)
+    [SerializeField]
+    private TransformUnityEvent onInteractBy;
+
+    public void OnInteractBy(Transform source)
     {
-        throw new System.NotImplementedException();
+        onInteractBy.Invoke(source);
     }
 }

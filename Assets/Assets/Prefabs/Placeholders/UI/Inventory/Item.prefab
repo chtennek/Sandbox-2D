@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 224888256714813848}
   - component: {fileID: 222308740645504414}
   - component: {fileID: 114774033749875532}
+  - component: {fileID: 114257635234114576}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -45,6 +46,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114257635234114576
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1808626097398470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f808a3970ff4acbb954c4eb52304b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: {fileID: 114774033749875532}
+  stackSize: {fileID: 114383607388796814}
+  description: {fileID: 0}
+  image: {fileID: 0}
 --- !u!114 &114383607388796814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77,7 +93,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 12
+  m_Text: 1234
 --- !u!114 &114774033749875532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,7 +126,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Apple Gel
+  m_Text: (Item)
 --- !u!222 &222137058980896482
 CanvasRenderer:
   m_ObjectHideFlags: 1

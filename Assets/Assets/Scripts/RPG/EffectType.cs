@@ -20,7 +20,7 @@ namespace Sandbox
         {
             public Sprite image;
             public string animationTrigger;
-            public string effectName = "Melee Attack";
+            public string displayName = "Melee Attack";
             [TextArea(1, 5)]
             public string description;
 

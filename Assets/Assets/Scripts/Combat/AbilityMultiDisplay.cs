@@ -4,5 +4,5 @@ using UnityEngine;
 
 using Sandbox.RPG;
 
-public class InventoryDisplay : MenuPopulator<ItemDisplay, ItemStack> {
+public class AbilityMultiDisplay : MenuPopulator<AbilityDisplay, EffectType> {
 }

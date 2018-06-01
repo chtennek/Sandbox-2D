@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Bat Wing
   m_EditorClassIdentifier: 
   image: {fileID: 0}
-  itemName: Bat Wing
+  displayName: Bat Wing
   description: 
   category: Default
   equippable: 0

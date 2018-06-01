@@ -9,20 +9,50 @@ public class InteractorBehaviour : MonoBehaviour
     private string comment;
 
     [Header("Properties")]
-    public float sensitivity = .5f;
-    public CompoundMask mask;
-    public bool limitOneInteractable;
+    [SerializeField]
+    private CompoundMask mask;
 
-    public TransformUnityEvent onInteract;
+    [SerializeField]
+    private float radius = .5f;
+
+    [SerializeField]
+    private Vector3 offset = Vector3.zero;
+
+    [SerializeField]
+    private bool limitOneInteractable;
+
+    public TransformUnityEvent onInteractWith;
+
+    public void Deallocate()
+    {
+        ObjectPooler.Deallocate(transform);
+    }
+
+    public void Deallocate(Transform target)
+    {
+        ObjectPooler.Deallocate(target);
+    }
 
     public void Interact()
     {
         // Check 2D and 3D for possible targets
         List<Transform> targets = new List<Transform>();
-        foreach (Collider coll in Physics.OverlapSphere(transform.position, sensitivity))
-            targets.Add(coll.transform);
-        foreach (Collider2D coll2D in Physics2D.OverlapCircleAll(transform.position, sensitivity))
-            targets.Add(coll2D.transform);
+
+        // 3D
+        foreach (Collider coll in Physics.OverlapSphere(transform.position + offset, radius)) {
+            if (coll.attachedRigidbody == null)
+                targets.Add(coll.transform);
+            else
+                targets.Add(coll.attachedRigidbody.transform);
+        }
+
+        // 2D
+        foreach (Collider2D coll2D in Physics2D.OverlapCircleAll(transform.position + offset, radius)) {
+            if (coll2D.attachedRigidbody == null)
+                targets.Add(coll2D.transform);
+            else
+                targets.Add(coll2D.attachedRigidbody.transform);
+        }
 
         // Filter for interactables
         foreach (Transform target in targets)
@@ -34,12 +64,19 @@ public class InteractorBehaviour : MonoBehaviour
             if (interactable == null)
                 continue;
 
-            interactable.OnInteract(transform);
+            // Call the Interactable
+            interactable.OnInteractBy(transform);
 
-            onInteract.Invoke(target.transform);
+            // Call our own OnInteract handling function
+            onInteractWith.Invoke(target.transform);
 
             if (limitOneInteractable)
                 return;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position + offset, radius);
     }
 }

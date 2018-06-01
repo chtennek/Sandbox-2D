@@ -7,9 +7,9 @@ namespace Sandbox
     namespace RPG
     {
         [System.Serializable]
-        public struct ItemStack
+        public class ItemStack
         {
-            public ItemType type;
+            public ItemType type; // [TODO] hide this
             public int count;
 
             public static readonly ItemStack none = new ItemStack(null, 0);
@@ -18,6 +18,11 @@ namespace Sandbox
             {
                 this.type = type;
                 this.count = count;
+            }
+
+            public void Null() {
+                this.type = null;
+                this.count = 0;
             }
 
             public int Add(int amount) {
@@ -34,7 +39,7 @@ namespace Sandbox
         public class ItemType : ScriptableObject
         {
             public Sprite image;
-            public string displayName = "Sword";
+            public string displayName = "(Item Name)";
             [TextArea(1, 5)]
             public string description;
 
