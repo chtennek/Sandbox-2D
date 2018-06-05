@@ -4,29 +4,49 @@ using UnityEngine;
 
 public class ValueTrigger : Trigger
 {
-    public GameValue m_value;
-    public string m_tagName;
+    [SerializeField]
+    private GameValue value;
+
+    [SerializeField]
+    private bool sendEventOnAwake;
 
     public float valueMin = -Mathf.Infinity;
     public float valueMax = Mathf.Infinity;
 
+    private bool lastSetValue;
+
     private void Reset()
     {
-        m_value = GetComponentInParent<GameValue>();
+        value = GetComponentInParent<GameValue>();
     }
 
     private void Awake()
     {
-        m_value = this.GetComponentInTag(m_tagName, m_value);
+        if (value == null)
+            enabled = false;
     }
 
-    protected override void Update()
+    private void Start()
     {
-        if (valueMin <= m_value.Value && m_value.Value <= valueMax)
-            Active = true;
-        else
-            Active = false;
+        lastSetValue = (valueMin <= value.Value && value.Value <= valueMax);
 
-        base.Update();
+        if (sendEventOnAwake)
+            if (lastSetValue)
+                Set(transform);
+            else
+                Unset(transform);
+    }
+
+    protected void Update()
+    {
+        bool currentSetValue = (valueMin <= value.Value && value.Value <= valueMax);
+
+        if (lastSetValue != currentSetValue)
+            if (currentSetValue)
+                Set();
+            else
+                Unset();
+
+        lastSetValue = currentSetValue;
     }
 }

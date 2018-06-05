@@ -17,7 +17,7 @@ MonoBehaviour:
   category: Default
   equippable: 1
   consumable: 0
-  maxPerStack: 1
+  maxPerStack: 999
   stats:
   - mode: 1
     type: {fileID: 11400000, guid: 105e3aa1352303842a896e08d93649a8, type: 2}

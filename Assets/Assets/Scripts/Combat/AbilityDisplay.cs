@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 using Sandbox.RPG;
 
-public class AbilityDisplay : MonoBehaviour, IDisplayer<EffectType> {
+public class AbilityDisplay : MonoBehaviour, IDisplayer<EffectType>
+{
     [Header("References")]
     [SerializeField]
     private Image image;
@@ -15,6 +16,12 @@ public class AbilityDisplay : MonoBehaviour, IDisplayer<EffectType> {
 
     [SerializeField]
     private Text description;
+
+    private void Reset()
+    {
+        image = GetComponent<Image>();
+        displayName = GetComponent<Text>();
+    }
 
     public void Display(EffectType ability)
     {

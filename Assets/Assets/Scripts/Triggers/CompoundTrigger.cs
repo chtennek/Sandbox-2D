@@ -33,11 +33,11 @@ public class CompoundTrigger : Trigger
 
         foreach (Trigger trigger in triggers)
         {
-            trigger.events.onActivate.AddListener(activeDelegates[trigger]);
-            trigger.events.onDeactivate.AddListener(inactiveDelegates[trigger]);
+            //    trigger.events.onActivate.AddListener(activeDelegates[trigger]);
+            //    trigger.events.onDeactivate.AddListener(inactiveDelegates[trigger]);
 
-            if (trigger.Active == true)
-                activeChildren.Add(trigger);
+            //    if (trigger.Active == true)
+            //        activeChildren.Add(trigger);
         }
         UpdateActiveStatus();
     }
@@ -46,20 +46,20 @@ public class CompoundTrigger : Trigger
     {
         foreach (Trigger trigger in triggers)
         {
-            trigger.events.onActivate.RemoveListener(activeDelegates[trigger]);
-            trigger.events.onDeactivate.RemoveListener(inactiveDelegates[trigger]);
+            //trigger.events.onActivate.RemoveListener(activeDelegates[trigger]);
+            //trigger.events.onDeactivate.RemoveListener(inactiveDelegates[trigger]);
         }
     }
 
     private void UpdateActiveStatus()
     {
-        if (requireAllActive == true)
-            Active = activeChildren.Count == triggers.Count;
-        else
-            Active = activeChildren.Count > 0;
+        //if (requireAllActive == true)
+        //    IsSet = activeChildren.Count == triggers.Count;
+        //else
+        //    IsSet = activeChildren.Count > 0;
 
-        if (requireAllInactive == true)
-            Active = activeChildren.Count > 0;
+        //if (requireAllInactive == true)
+        //    IsSet = activeChildren.Count > 0;
     }
 
     private void MarkChildActive(Trigger trigger)

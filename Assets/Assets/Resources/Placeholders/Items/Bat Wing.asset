@@ -17,5 +17,5 @@ MonoBehaviour:
   category: Default
   equippable: 0
   consumable: 0
-  maxPerStack: 50
+  maxPerStack: 999
   stats: []

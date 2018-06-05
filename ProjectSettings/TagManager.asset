@@ -9,6 +9,9 @@ TagManager:
   - Score
   - Item
   - NPC
+  - explosion
+  - shield
+  - Effect
   layers:
   - Default
   - TransparentFX
@@ -25,8 +28,8 @@ TagManager:
   - Hitbox
   - Hurtbox
   - Triggers
-  - 
-  - 
+  - Effects
+  - Abilities
   - 
   - 
   - 

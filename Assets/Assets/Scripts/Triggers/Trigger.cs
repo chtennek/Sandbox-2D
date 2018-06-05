@@ -3,50 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class TriggerEvents
-{
-    public UnityEvent onActivate;
-    public UnityEvent onDeactivate;
-    public UnityEvent onActive;
-    public UnityEvent onInactive;
-}
-
 public class Trigger : MonoBehaviour
 {
     [SerializeField]
     private string comment;
 
-    public TriggerEvents events;
+    public bool active;
 
-    protected bool isActive = false;
-    public bool Active
+    [SerializeField]
+    private TransformUnityEvent onSet;
+
+    [SerializeField]
+    private TransformUnityEvent onUnset;
+
+    public void Set() { Set(transform); }
+    public void Set(Transform target)
     {
-        get
-        {
-            return isActive;
-        }
-        set
-        {
-            if (enabled && isActive == false && value == true)
-                events.onActivate.Invoke();
-            if (enabled && isActive == true && value == false)
-                events.onDeactivate.Invoke();
-
-            isActive = value;
-        }
+        if (active)
+            onSet.Invoke(target);
     }
 
-    protected virtual void Update()
+    public void Unset() { Unset(transform); }
+    public void Unset(Transform target)
     {
-        if (Active == true)
-            events.onActive.Invoke();
-        else
-            events.onInactive.Invoke();
+        if (active)
+            onUnset.Invoke(target);
     }
 
-    public void DebugLog()
+    public void Deallocate(Transform target)
     {
-        Debug.Log(gameObject);
+        ObjectPooler.Deallocate(target);
+    }
+
+    public void Log()
+    {
+        Debug.Log(transform);
+    }
+
+    public void Log(Transform target)
+    {
+        Debug.Log(target);
     }
 }

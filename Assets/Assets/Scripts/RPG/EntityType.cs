@@ -17,7 +17,7 @@ namespace Sandbox
 
             [Space]
             public List<Stat> baseStats;
-            public List<EffectType> moves;
+            public List<EffectType> abilities;
         }
     }
 }

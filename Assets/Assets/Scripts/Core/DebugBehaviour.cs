@@ -26,6 +26,16 @@ public class DebugBehaviour : MonoBehaviour
             ReloadScene();
     }
 
+    public void Log(Transform target)
+    {
+        Debug.Log(target);
+    }
+
+    public void Log(Transform target, string message)
+    {
+        Debug.Log(target + " " + message);
+    }
+
     public void Log(string message)
     {
         Debug.Log(message);

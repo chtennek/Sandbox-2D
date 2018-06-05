@@ -18,11 +18,20 @@ namespace Sandbox
         [CreateAssetMenu(fileName = "EffectType", menuName = "RPG/Effect Type", order = 0)]
         public class EffectType : ScriptableObject
         {
+            [Tooltip("Image to use in UI.")]
             public Sprite image;
-            public string animationTrigger;
+
             public string displayName = "Melee Attack";
+
             [TextArea(1, 5)]
             public string description;
+
+            [Header("Audiovisual")]
+            public string chargeTrigger = "charge";
+            public string castTrigger = "cast";
+            public AudioClip audio;
+            public Transform spawnOnCharge;
+            public Transform spawnOnCast;
 
             [Header("Behaviour")]
             [EnumFlags]
@@ -35,11 +44,11 @@ namespace Sandbox
             public bool castCancelable;
 
             [Header("Stats")]
-            public float falloff = 0; // D.va bomb, Mccree, Golden sun, etc.
-            public float baseAccuracy = 1;
-            public float minRange = 1;
             public float maxRange = 1;
-            //public float critChance = 0.1f;
+            public float minRange = 1;
+            public float falloff = 0; // D.va bomb/Mccree (per meter), Golden sun (per unit), etc.
+            public float baseAccuracy = 1;
+            public float baseCritical = 0.1f;
 
             [Header("Time")]
             public float chargeTime = 0; // Time before cast

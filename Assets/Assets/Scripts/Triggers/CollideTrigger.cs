@@ -3,73 +3,65 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CollideTrigger : ContextTrigger
+public class CollideTrigger : Trigger
 {
     public CompoundMask mask;
     public bool preferRigidbody = true;
 
     private void CollideOn(Transform other)
     {
-        AddTarget(other);
-        Active = true;
+        if (other == null)
+            return;
+        Set(other);
     }
 
     private void CollideOff(Transform other)
     {
-        RemoveTarget(other);
-        Active = false;
+        if (other == null)
+            return;
+        Unset(other);
     }
 
-    private Transform FindRigidbody(Transform other, Collider coll = null, Collider2D coll2D = null)
+    private Transform GetTransform(Transform other, Collider coll = null, Collider2D coll2D = null)
     {
+        Transform target = other;
+
         if (preferRigidbody == true)
         {
             if (coll != null && coll.attachedRigidbody != null)
-                return coll.attachedRigidbody.transform;
+                target = coll.attachedRigidbody.transform;
 
             if (coll2D != null && coll2D.attachedRigidbody != null)
-                return coll2D.attachedRigidbody.transform;
+                target = coll2D.attachedRigidbody.transform;
         }
-        return other;
+
+        if (mask.CheckAll(transform, target) == false)
+            return null;
+
+        return target;
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        Transform other = FindRigidbody(collision.transform, coll: collision);
-
-        if (mask.Check(transform, other) == false)
-            return;
-
+        Transform other = GetTransform(collision.transform, coll: collision.collider);
         CollideOn(other);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Transform other = FindRigidbody(collision.transform, coll2D: collision);
-
-        if (mask.Check(transform, other) == false)
-            return;
-
+        Transform other = GetTransform(collision.transform, coll2D: collision.collider);
         CollideOn(other);
     }
 
-    private void OnTriggerExit(Collider collision)
+    private void OnCollisionExit(Collision collision)
     {
-        Transform other = FindRigidbody(collision.transform, coll: collision);
-
-        if (mask.Check(transform, other) == false)
-            return;
-
+        Transform other = GetTransform(collision.transform, coll: collision.collider);
         CollideOff(other);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        Transform other = FindRigidbody(collision.transform, coll2D: collision);
-
-        if (mask.Check(transform, other) == false)
-            return;
-
+        Transform other = GetTransform(collision.transform, coll2D: collision.collider);
         CollideOff(other);
     }
 }

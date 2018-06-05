@@ -7,7 +7,10 @@ public class RigidbodyWrapper : MonoBehaviour
     public ColliderChecker colliderCheck; // [TODO] move this
 
     [SerializeField]
-    private Vector3 m_velocity = Vector3.zero;
+    private Vector3 initialAngularVelocity = Vector3.zero;
+
+    [SerializeField]
+    private Vector3 initialVelocity = Vector3.zero;
 
     private HashSet<Transform> grounds = new HashSet<Transform>();
     private HashSet<GravityField> fields = new HashSet<GravityField>();
@@ -17,6 +20,24 @@ public class RigidbodyWrapper : MonoBehaviour
     private Collider coll;
     private Collider2D coll2D;
 
+    private Vector3 m_angularVelocity;
+    public Vector3 AngularVelocity
+    {
+        get
+        {
+            if (rb != null) return rb.angularVelocity;
+            else if (rb2D != null) return new Vector3(0, 0, rb2D.angularVelocity);
+            return m_angularVelocity;
+        }
+        set
+        {
+            if (rb != null) rb.angularVelocity = value;
+            else if (rb2D != null) rb2D.angularVelocity = value.y;
+            m_angularVelocity = value;
+        }
+    }
+
+    private Vector3 m_velocity;
     public Vector3 Velocity
     {
         get
@@ -35,14 +56,8 @@ public class RigidbodyWrapper : MonoBehaviour
 
     public float Speed
     {
-        get
-        {
-            return Velocity.magnitude;
-        }
-        set
-        {
-            Velocity = value * Velocity.normalized;
-        }
+        get { return Velocity.magnitude; }
+        set { Velocity = value * Velocity.normalized; }
     }
 
     private void Awake()
@@ -51,6 +66,12 @@ public class RigidbodyWrapper : MonoBehaviour
         rb2D = GetComponentInParent<Rigidbody2D>();
         coll = GetComponent<Collider>();
         coll2D = GetComponent<Collider2D>();
+    }
+
+    private void Start()
+    {
+        Velocity = initialVelocity;
+        AngularVelocity = initialAngularVelocity;
     }
 
     private void FixedUpdate()
@@ -65,12 +86,12 @@ public class RigidbodyWrapper : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-		UnityEngine.ContactPoint[] contacts = collision.contacts;
+        UnityEngine.ContactPoint[] contacts = collision.contacts;
         foreach (UnityEngine.ContactPoint contact in contacts)
         {
             if (contact.normal == Vector3.up)
             {
-				grounds.Add(contact.otherCollider.transform);
+                grounds.Add(contact.otherCollider.transform);
             }
         }
     }

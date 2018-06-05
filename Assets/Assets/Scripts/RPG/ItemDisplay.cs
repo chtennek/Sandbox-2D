@@ -22,6 +22,12 @@ namespace Sandbox
             [SerializeField]
             private Text description;
 
+            private void Reset()
+            {
+                image = GetComponent<Image>();
+                displayName = GetComponent<Text>();
+            }
+
             public void Display(ItemStack stack)
             {
                 ItemType type = stack.type;

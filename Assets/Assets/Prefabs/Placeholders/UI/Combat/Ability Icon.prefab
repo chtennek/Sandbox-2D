@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 222788945464807174}
   - component: {fileID: 114167698080698554}
   - component: {fileID: 114389962634457564}
+  - component: {fileID: 114123560368230132}
   m_Layer: 5
   m_Name: Ability Icon
   m_TagString: Untagged
@@ -29,6 +30,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114123560368230132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773077638485718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b66f34790bfef4b5b95642af334cd7d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 114167698080698554}
+  displayName: {fileID: 0}
+  description: {fileID: 0}
 --- !u!114 &114167698080698554
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -16,9 +16,6 @@ public class InteractorBehaviour : MonoBehaviour
     private float radius = .5f;
 
     [SerializeField]
-    private Vector3 offset = Vector3.zero;
-
-    [SerializeField]
     private bool limitOneInteractable;
 
     public TransformUnityEvent onInteractWith;
@@ -33,50 +30,47 @@ public class InteractorBehaviour : MonoBehaviour
         ObjectPooler.Deallocate(target);
     }
 
-    public void Interact()
+    public void InteractWith(Transform target)
+    {
+        if (target == null)
+            return;
+
+        IInteractable interactable = target.GetComponent<IInteractable>();
+        InteractWith(target, interactable);
+    }
+
+    public bool InteractWith(Transform target, IInteractable interactable)
+    {
+        if (target == null || interactable == null)
+            return false;
+
+        // Call the Interactable
+        interactable.OnInteractBy(transform);
+
+        // Call our own OnInteract handling function
+        onInteractWith.Invoke(target);
+
+        return true;
+    }
+
+    public void InteractWithAll()
     {
         // Check 2D and 3D for possible targets
-        List<Transform> targets = new List<Transform>();
-
-        // 3D
-        foreach (Collider coll in Physics.OverlapSphere(transform.position + offset, radius)) {
-            if (coll.attachedRigidbody == null)
-                targets.Add(coll.transform);
-            else
-                targets.Add(coll.attachedRigidbody.transform);
-        }
-
-        // 2D
-        foreach (Collider2D coll2D in Physics2D.OverlapCircleAll(transform.position + offset, radius)) {
-            if (coll2D.attachedRigidbody == null)
-                targets.Add(coll2D.transform);
-            else
-                targets.Add(coll2D.attachedRigidbody.transform);
-        }
+        List<Transform> targets = mask.GetCollidersWithin(radius, transform);
 
         // Filter for interactables
         foreach (Transform target in targets)
         {
-            if (mask.Check(transform, target) == false)
-                continue;
-
             IInteractable interactable = target.GetComponent<IInteractable>();
-            if (interactable == null)
-                continue;
+            bool success = InteractWith(target, interactable);
 
-            // Call the Interactable
-            interactable.OnInteractBy(transform);
-
-            // Call our own OnInteract handling function
-            onInteractWith.Invoke(target.transform);
-
-            if (limitOneInteractable)
+            if (success && limitOneInteractable)
                 return;
         }
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position + offset, radius);
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

@@ -10,32 +10,36 @@ public class TimeTrigger : Trigger
     public bool loop = false;
     public float loopWindow = 1f;
 
-    private float t0;
+    private float t0, previous;
 
     private void Awake()
     {
-        t0 = Time.time;
+        ResetTimer();
     }
 
-    protected override void Update()
+    public void ResetTimer()
     {
-        float relativeTime = Time.time - delay;
+        t0 = Time.time;
+        previous = -Mathf.Infinity;
+    }
+
+    protected void Update()
+    {
+        float current = (Time.time - t0) - delay; // Trigger activates at active == 0
+        float previousInactive = previous - activeTime;
+        float currentInactive = current - activeTime;
         if (loop == true)
-            relativeTime %= loopWindow;
-
-        if (activeTime == 0)
         {
-            if (0 <= relativeTime && relativeTime < Time.deltaTime)
-                events.onActivate.Invoke();
+            current %= loopWindow;
+            currentInactive %= loopWindow;
         }
-        else
-        {
-            if (0 <= relativeTime && relativeTime < activeTime)
-                Active = true;
-            else
-                Active = false;
 
-            base.Update();
-        }
+        if (0 <= current && (current < previous || previous < 0))
+            Set();
+
+        if (0 <= currentInactive && (currentInactive < previousInactive || previousInactive < 0))
+            Unset();
+
+        previous = current;
     }
 }
