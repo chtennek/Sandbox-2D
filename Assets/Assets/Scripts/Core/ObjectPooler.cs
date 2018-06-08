@@ -18,7 +18,8 @@ public class ObjectPool
     public ObjectPool(Transform prefab, Transform folder = null, int initialSize = 3, bool reuseActive = false, bool expandAsNeeded = true)
     {
         this.prefab = prefab;
-        this.folder = folder;{}
+        this.folder = folder;
+        { }
         this.initialSize = initialSize;
         this.reuseActive = reuseActive;
         this.expandAsNeeded = expandAsNeeded;
@@ -157,7 +158,8 @@ public class ObjectPooler : MonoBehaviour
             return null;
 
         Transform obj = pool.Instantiate();
-        if (obj != null) {
+        if (obj != null)
+        {
             Vector3 scale = obj.localScale;
             obj.SetParent(parent);
             obj.localScale = scale;
