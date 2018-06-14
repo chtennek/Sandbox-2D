@@ -42,7 +42,7 @@ public class CombatBehaviour : MonoBehaviour
 
     public void SetTarget(Transform target)
     {
-        SetTarget(target.GetComponent<EntityBehaviour>());
+        SetTarget(target?.GetComponent<EntityBehaviour>());
     }
 
     public void SetTarget(EntityBehaviour entity)

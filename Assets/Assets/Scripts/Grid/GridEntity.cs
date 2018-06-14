@@ -17,20 +17,17 @@ public enum GridDirection
     DownRight,
 }
 
-public class GridBehaviour : MonoBehaviour
+public class GridEntity : MonoBehaviour
 {
     [Header("Properties")]
-    [SerializeField] private Vector3 scale = Vector3.one;
-    [SerializeField] private Vector3 offset = Vector3.zero;
     [SerializeField] private float duration = .5f;
     [SerializeField] private bool durationPerDistance = true;
 
     [Header("References")]
+    [SerializeField] private GridSettings grid;
     [SerializeField] private Transform visual;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private CompoundMask mask;
-
-    public Vector3UnityEvent onMove;
 
     private Vector3Int _gridPosition;
     public Vector3Int GridPosition
@@ -50,7 +47,7 @@ public class GridBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        GridPosition = ToGridSpace(rb.transform.position);
+        GridPosition = grid.ToGridSpace(rb.transform.position);
     }
 
     public void Warp(float x, float y, float z) { Warp(Vector3Int.RoundToInt(new Vector3(x, y, z))); }
@@ -95,7 +92,7 @@ public class GridBehaviour : MonoBehaviour
         Vector3[] path = new Vector3[points.Length];
         for (int i = 0; i < path.Length; i++)
         {
-            path[i] = ToWorldSpace(points[i]);
+            path[i] = grid.ToWorldSpace(points[i]);
         }
 
         float calculatedDuration = duration;
@@ -116,16 +113,5 @@ public class GridBehaviour : MonoBehaviour
             origin = waypoint;
         }
         return distance;
-    }
-
-    public Vector3Int ToGridSpace(Vector3 position)
-    {
-        Vector3 inverseGridSize = new Vector3(1 / scale.x, 1 / scale.y, 1 / scale.z);
-        return Vector3Int.RoundToInt(Vector3.Scale(inverseGridSize, position - offset));
-    }
-
-    public Vector3 ToWorldSpace(Vector3Int coordinates)
-    {
-        return Vector3.Scale(coordinates, scale) + offset;
     }
 }

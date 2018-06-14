@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,41 +9,79 @@ public class CompoundMask
     public LayerMask layerMask = ~0;
     public List<string> tagMask;
     public bool ignoreSiblings = false;
+    public float raycastDistance = 1000f;
 
-    public List<Transform> GetCollidersWithin(float distance, Transform self) { return GetCollidersWithin(distance, self, Vector3.zero); }
-    public List<Transform> GetCollidersWithin(float distance, Transform self, Vector3 offset)
+    public List<Transform> GetCollidersWithin(float distance, Transform self = null) { return GetCollidersWithin(distance, Vector3.zero, self); }
+    public List<Transform> GetCollidersWithin(float distance, Vector3 offset, Transform self = null)
     {
         List<Transform> targets = new List<Transform>();
-        Transform target = null;
 
         // 3D
         foreach (Collider coll in Physics.OverlapSphere(self.position + offset, distance, layerMask))
         {
-            if (coll.attachedRigidbody == null)
-                target = coll.transform;
-            else
-                target = coll.attachedRigidbody.transform;
-
-            if (CheckAll(self, target))
+            Transform target = GetTarget(coll);
+            if (target != null)
                 targets.Add(target);
         }
 
         // 2D
         foreach (Collider2D coll2D in Physics2D.OverlapCircleAll(self.position + offset, distance, layerMask))
         {
-            if (coll2D.attachedRigidbody == null)
-                target = coll2D.transform;
-            else
-                target = coll2D.attachedRigidbody.transform;
-
-            if (CheckAll(self, target))
+            Transform target = GetTarget(coll2D);
+            if (target != null)
                 targets.Add(target);
         }
 
         return targets;
     }
 
-    public bool CheckAll(Transform self, Transform other)
+    public List<Vector3> Mousecast(Transform self = null)
+    {
+        List<Vector3> targets = new List<Vector3>();
+
+        // 3D
+        List<RaycastHit> hits = new List<RaycastHit>(Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition), raycastDistance, layerMask));
+        hits.OrderBy((hit) => hit.distance);
+        foreach (RaycastHit hit in hits)
+        {
+            Transform target = GetTarget(hit.collider);
+            if (target != null)
+                targets.Add(hit.point);
+        }
+
+        return targets;
+    }
+
+    private Transform GetTarget(Collider coll, Transform self = null) {
+        Transform target;
+
+        if (coll.attachedRigidbody == null)
+            target = coll.transform;
+        else
+            target = coll.attachedRigidbody.transform;
+
+        if (Check(target, self))
+            return target;
+
+        return null;
+    }
+
+    private Transform GetTarget(Collider2D coll, Transform self = null)
+    {
+        Transform target;
+
+        if (coll.attachedRigidbody == null)
+            target = coll.transform;
+        else
+            target = coll.attachedRigidbody.transform;
+
+        if (Check(target, self))
+            return target;
+
+        return null;
+    }
+
+    public bool Check(Transform other, Transform self = null)
     {
         // Ignore siblings if set
         if (ignoreSiblings && other.parent != null && self.parent == other.parent)

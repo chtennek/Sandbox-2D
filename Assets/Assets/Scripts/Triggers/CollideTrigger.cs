@@ -35,7 +35,7 @@ public class CollideTrigger : Trigger
                 target = coll2D.attachedRigidbody.transform;
         }
 
-        if (mask.CheckAll(transform, target) == false)
+        if (mask.Check(target, transform) == false)
             return null;
 
         return target;
