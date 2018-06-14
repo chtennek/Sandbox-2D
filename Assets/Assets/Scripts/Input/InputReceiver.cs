@@ -9,7 +9,6 @@ public class InputButtonEvent
     public string buttonName;
 
     public UnityEvent onButtonDown;
-    public UnityEvent onButton;
     public UnityEvent onButtonUp;
 }
 
@@ -99,9 +98,6 @@ public abstract class InputReceiver : MonoBehaviour
         {
             if (GetButtonDown(e.buttonName))
                 e.onButtonDown.Invoke();
-
-            if (GetButton(e.buttonName))
-                e.onButton.Invoke();
 
             if (GetButtonUp(e.buttonName))
                 e.onButtonUp.Invoke();

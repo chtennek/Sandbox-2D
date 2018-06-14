@@ -12,3 +12,6 @@ public class BoolUnityEvent : UnityEvent<bool> { }
 
 [System.Serializable]
 public class TransformUnityEvent : UnityEvent<Transform> { }
+
+[System.Serializable]
+public class Vector3UnityEvent : UnityEvent<float, float, float> { }
