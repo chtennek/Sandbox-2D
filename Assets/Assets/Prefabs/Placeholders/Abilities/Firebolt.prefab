@@ -322,8 +322,8 @@ MonoBehaviour:
   lifetime: Infinity
   destroyOnDeath: 1
   statChangesOnCollision: []
-  effectOnCollision: {fileID: 0}
-  onDamage:
+  effectOnCollision: {fileID: 11400000, guid: e1afb3b6dee1d184ba940b60499aff28, type: 2}
+  onCollision:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,

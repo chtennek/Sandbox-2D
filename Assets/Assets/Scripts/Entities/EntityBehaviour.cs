@@ -19,7 +19,7 @@ public class EntityBehaviour : MonoBehaviour
     public Stat[] statChangesOnCollision;
     public EffectType effectOnCollision;
 
-    public UnityEvent onDamage;
+    public UnityEvent onCollision;
     public UnityEvent onDeath;
 
     private Dictionary<EffectType, float> buffStack; // Value = start time, [TODO] track stacks
@@ -114,20 +114,20 @@ public class EntityBehaviour : MonoBehaviour
         }
     }
 
-    public void OnDamage()
+    public void OnCollision()
     {
-        onDamage.Invoke();
+        onCollision.Invoke();
     }
 
     public void OnDeath()
     {
         onDeath.Invoke();
         if (destroyOnDeath == true)
-            Destroy(gameObject);
+            ObjectPooler.Deallocate(transform);
     }
 
-    public void DebugLog()
+    public void Log(string message)
     {
-        Debug.Log(gameObject);
+        Debug.Log(message);
     }
 }
