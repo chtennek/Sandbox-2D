@@ -13,14 +13,14 @@ public class PathBuilder : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private LineRenderer renderer;
-    [SerializeField] private GridSettings grid;
+    [SerializeField] private GridEntity entity;
 
     private List<Vector3Int> points = new List<Vector3Int>();
 
     private void Reset()
     {
         renderer = GetComponent<LineRenderer>();
-        grid = GetComponent<GridSettings>();
+        entity = GetComponent<GridEntity>();
     }
 
     private void Update()
@@ -31,13 +31,14 @@ public class PathBuilder : MonoBehaviour
             if (targets.Count > 0)
             {
                 Vector3 target = targets[0];
-                Vector3Int point = grid.ToGridSpace(target);
+                Vector3Int point = entity.grid.ToGridSpace(target);
                 BuildPathAt(point);
             }
         }
     }
 
-    private void BuildPathAt(Vector3Int point)
+    public void BuildPathAt(int x, int y, int z) { BuildPathAt(new Vector3Int(x, y, z)); }
+    public void BuildPathAt(Vector3Int point)
     {
         int indexOf = points.LastIndexOf(point);
         if (indexOf == -1)
@@ -71,7 +72,7 @@ public class PathBuilder : MonoBehaviour
     {
         Vector3[] waypoints = new Vector3[points.Count];
         for (int i = 0; i < points.Count; i++)
-            waypoints[i] = Grid.InverseSwizzle(swizzle, grid.ToWorldSpace(points[i]));
+            waypoints[i] = Grid.InverseSwizzle(swizzle, entity.grid.ToWorldSpace(points[i]));
         renderer.positionCount = waypoints.Length;
         renderer.SetPositions(waypoints);
     }

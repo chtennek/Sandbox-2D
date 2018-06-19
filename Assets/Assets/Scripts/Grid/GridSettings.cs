@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Grid Settings", menuName = "Grid Settings", order = 0)]
-public class GridSettings : ScriptableObject {
+public class GridSettings : ScriptableObject
+{
     public Vector3 scale = Vector3.one;
     public Vector3 offset = Vector3.zero;
 

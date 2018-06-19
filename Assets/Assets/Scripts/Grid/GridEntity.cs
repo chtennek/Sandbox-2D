@@ -24,10 +24,16 @@ public class GridEntity : MonoBehaviour
     [SerializeField] private bool durationPerDistance = true;
 
     [Header("References")]
-    [SerializeField] private GridSettings grid;
+    public GridSettings grid;
     [SerializeField] private Transform visual;
-    [SerializeField] private Rigidbody rb;
-    [SerializeField] private CompoundMask mask;
+    [SerializeField] private Rigidbody rb; // [TODO] Use rigidbody instead of transform to sweep for push/collision logic
+
+    [Tooltip("Entity can't occupy a point if occupied by a collider matching blacklistMask.")]
+    [SerializeField] private CompoundMask blacklistMask;
+
+    [Tooltip("Entity can't occupy a point unless already occupied by a collider matching whitelistMask.")]
+    [SerializeField] private CompoundMask whitelistMask;
+    [SerializeField] private bool useWhitelist;
 
     private Vector3Int _gridPosition;
     public Vector3Int GridPosition
@@ -40,6 +46,20 @@ public class GridEntity : MonoBehaviour
         }
     }
 
+    public Vector3 LogicalPosition
+    {
+        get
+        {
+            if (rb != null) return rb.transform.position;
+            return transform.position;
+        }
+        set
+        {
+            if (rb != null) rb.transform.position = value;
+            else transform.position = value;
+        }
+    }
+
     private void Reset()
     {
         rb = GetComponent<Rigidbody>();
@@ -47,26 +67,30 @@ public class GridEntity : MonoBehaviour
 
     private void Awake()
     {
-        GridPosition = grid.ToGridSpace(rb.transform.position);
+        GridPosition = grid.ToGridSpace(LogicalPosition);
     }
 
     public void Warp(float x, float y, float z) { Warp(Vector3Int.RoundToInt(new Vector3(x, y, z))); }
+    public void Warp(int x, int y, int z) { Warp(new Vector3Int(x, y, z)); }
     public void Warp(Vector3Int offset)
     {
         WarpTo(GridPosition + offset);
     }
 
     public void WarpTo(float x, float y, float z) { WarpTo(Vector3Int.RoundToInt(new Vector3(x, y, z))); }
+    public void WarpTo(int x, int y, int z) { WarpTo(new Vector3Int(x, y, z)); }
     public void WarpTo(Vector3Int point)
     {
-        visual.transform.position = point;
-        rb.transform.position = point;
+        if (CanOccupy(point) == false)
+            return;
+
+        LogicalPosition = point;
+        if (visual != null)
+            visual.transform.position = point;
     }
 
-    public void MoveX(float x) { Move(x, 0, 0); }
-    public void MoveY(float y) { Move(0, y, 0); }
-    public void MoveZ(float z) { Move(0, 0, z); }
     public void Move(float x, float y, float z) { Move(Vector3Int.RoundToInt(new Vector3(x, y, z))); }
+    public void Move(int x, int y, int z) { Move(new Vector3Int(x, y, z)); }
     public void Move(Vector3Int offset)
     {
         MoveTo(GridPosition + offset);
@@ -89,18 +113,24 @@ public class GridEntity : MonoBehaviour
 
     public void MoveThrough(Vector3Int[] points)
     {
-        Vector3[] path = new Vector3[points.Length];
-        for (int i = 0; i < path.Length; i++)
+        if (points.Length == 0 || CanOccupy(points[points.Length - 1]) == false)
+            return;
+
+        LogicalPosition = points[points.Length - 1];
+        if (visual != null)
         {
-            path[i] = grid.ToWorldSpace(points[i]);
+            Vector3[] path = new Vector3[points.Length];
+            for (int i = 0; i < path.Length; i++)
+            {
+                path[i] = grid.ToWorldSpace(points[i]);
+            }
+
+            float calculatedDuration = duration;
+            if (durationPerDistance)
+                calculatedDuration *= CalculatePathDistance(path);
+
+            visual.DOPath(path, calculatedDuration);
         }
-
-        float calculatedDuration = duration;
-        if (durationPerDistance)
-            calculatedDuration *= CalculatePathDistance(path);
-
-        visual.DOPath(path, calculatedDuration);
-        rb.transform.position = points[points.Length - 1];
     }
 
     private float CalculatePathDistance(Vector3[] path)
@@ -113,5 +143,18 @@ public class GridEntity : MonoBehaviour
             origin = waypoint;
         }
         return distance;
+    }
+
+    private bool CanOccupy(Vector3Int point)
+    {
+        List<Transform> blacklist = blacklistMask.GetCollidersWithin(0, grid.ToWorldSpace(point));
+        if (blacklist.Count > 0)
+            return false;
+
+        if (useWhitelist == false)
+            return true;
+
+        List<Transform> whitelist = whitelistMask.GetCollidersWithin(0, grid.ToWorldSpace(point));
+        return whitelist.Count > 0;
     }
 }

@@ -14,4 +14,13 @@ public class BoolUnityEvent : UnityEvent<bool> { }
 public class TransformUnityEvent : UnityEvent<Transform> { }
 
 [System.Serializable]
-public class Vector3UnityEvent : UnityEvent<float, float, float> { }
+public class Int2UnityEvent : UnityEvent<int, int> { }
+
+[System.Serializable]
+public class Int3UnityEvent : UnityEvent<int, int, int> { }
+
+[System.Serializable]
+public class Float2UnityEvent : UnityEvent<float, float> { }
+
+[System.Serializable]
+public class Float3UnityEvent : UnityEvent<float, float, float> { }

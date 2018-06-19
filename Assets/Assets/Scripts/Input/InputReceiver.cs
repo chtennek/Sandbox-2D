@@ -9,13 +9,35 @@ public class InputButtonEvent
     public string buttonName;
 
     public UnityEvent onButtonDown;
+    public UnityEvent onButton;
     public UnityEvent onButtonUp;
+}
+
+[System.Serializable]
+public class InputAxisEvent
+{
+    public string axisName;
+
+    public FloatUnityEvent onAxisDown;
+    public FloatUnityEvent onAxis;
+}
+
+[System.Serializable]
+public class InputAxisPairEvent
+{
+    public string axisPairName;
+    public Grid.CellSwizzle swizzle;
+
+    public Float3UnityEvent onAxisPairDown;
+    public Float3UnityEvent onAxisPair;
 }
 
 public abstract class InputReceiver : MonoBehaviour
 {
     public int playerId = 0;
     public InputButtonEvent[] buttonEvents;
+    public InputAxisEvent[] axisEvents;
+    public InputAxisPairEvent[] axisPairEvents;
     public readonly float deadZone = .2f;
     public bool restrictToXAxis = false;
     public bool restrictToYAxis = false;
@@ -99,8 +121,26 @@ public abstract class InputReceiver : MonoBehaviour
             if (GetButtonDown(e.buttonName))
                 e.onButtonDown.Invoke();
 
+            if (GetButton(e.buttonName))
+                e.onButton.Invoke();
+
             if (GetButtonUp(e.buttonName))
                 e.onButtonUp.Invoke();
+        }
+        foreach (InputAxisEvent e in axisEvents)
+        {
+            e.onAxisDown.Invoke(GetAxisDown(e.axisName));
+            e.onAxis.Invoke(GetAxis(e.axisName));
+        }
+        foreach (InputAxisPairEvent e in axisPairEvents)
+        {
+            Vector3 input;
+
+            input = Grid.Swizzle(e.swizzle, GetAxisPairDown(e.axisPairName));
+            e.onAxisPairDown.Invoke(input.x, input.y, input.z);
+
+            input = Grid.Swizzle(e.swizzle, GetAxisPair(e.axisPairName));
+            e.onAxisPair.Invoke(input.x, input.y, input.z);
         }
     }
 
