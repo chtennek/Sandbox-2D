@@ -97,6 +97,7 @@ public class GridEntity : MonoBehaviour
     }
 
     public void MoveTo(float x, float y, float z) { MoveTo(Vector3Int.RoundToInt(new Vector3(x, y, z))); }
+    public void MoveTo(int x, int y, int z) { MoveTo(new Vector3Int(x, y, z)); }
     public void MoveTo(Vector3Int point, bool orthogonalPath = true)
     {
         if (orthogonalPath == false)
