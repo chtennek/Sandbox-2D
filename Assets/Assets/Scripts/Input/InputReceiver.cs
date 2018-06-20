@@ -27,9 +27,25 @@ public class InputAxisPairEvent
 {
     public string axisPairName;
     public Grid.CellSwizzle swizzle;
+    public bool singleAxis;
+    public bool quantize;
+    public bool alwaysInvoke;
 
     public Float3UnityEvent onAxisPairDown;
     public Float3UnityEvent onAxisPair;
+
+    public Vector3 ModifyInput(Vector3 input)
+    {
+        input = Grid.Swizzle(swizzle, input);
+
+        if (singleAxis) // Filter out smaller axis contributions first
+            input = input.LargestAxis();
+
+        if (quantize) // Quantize takes priority over normalizing
+            input = input.Quantized();
+
+        return input;
+    }
 }
 
 public abstract class InputReceiver : MonoBehaviour
@@ -136,11 +152,13 @@ public abstract class InputReceiver : MonoBehaviour
         {
             Vector3 input;
 
-            input = Grid.Swizzle(e.swizzle, GetAxisPairDown(e.axisPairName));
-            e.onAxisPairDown.Invoke(input.x, input.y, input.z);
+            input = e.ModifyInput(GetAxisPairDown(e.axisPairName));
+            if (e.alwaysInvoke || input != Vector3.zero)
+                e.onAxisPairDown.Invoke(input.x, input.y, input.z);
 
-            input = Grid.Swizzle(e.swizzle, GetAxisPair(e.axisPairName));
-            e.onAxisPair.Invoke(input.x, input.y, input.z);
+            input = e.ModifyInput(GetAxisPair(e.axisPairName));
+            if (e.alwaysInvoke || input != Vector3.zero)
+                e.onAxisPair.Invoke(input.x, input.y, input.z);
         }
     }
 
@@ -217,5 +235,10 @@ public abstract class InputReceiver : MonoBehaviour
     {
         Vector2 input = GetAxisPair(axisPairName);
         return Mathf.Atan2(input.y, input.x) * Mathf.Rad2Deg;
+    }
+
+    public void DebugLog(string message)
+    {
+        Debug.Log(message);
     }
 }
