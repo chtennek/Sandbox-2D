@@ -17,6 +17,19 @@ public static class UnityExtensions
         }
     }
 
+    public static string Hierarchy(this MonoBehaviour behaviour)
+    {
+        Stack<string> names = new Stack<string>();
+        Transform target = behaviour.transform;
+
+        while (target != null)
+        {
+            names.Push(target.name);
+            target = target.parent;
+        }
+        return string.Join("::", names);
+    }
+
     public static bool AssertSingleton<T>(this T behaviour, ref T singleton) where T : Component
     {
         if (singleton != null)

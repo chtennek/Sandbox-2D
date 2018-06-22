@@ -4390,17 +4390,17 @@ Prefab:
     - target: {fileID: 114977145785951744, guid: 72413578d508faa4c90e19e9c791db07,
         type: 2}
       propertyPath: inputScaleFactor.x
-      value: -1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114977145785951744, guid: 72413578d508faa4c90e19e9c791db07,
         type: 2}
       propertyPath: inputScaleFactor.y
-      value: -1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114977145785951744, guid: 72413578d508faa4c90e19e9c791db07,
         type: 2}
       propertyPath: inputScaleFactor.z
-      value: -1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1507113053168626, guid: 72413578d508faa4c90e19e9c791db07, type: 2}
       propertyPath: m_Name

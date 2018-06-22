@@ -72,7 +72,8 @@ public class GridManager : MonoBehaviour
 
         // Test for validity
         bool allValid = true;
-        SortedSet<GridEntity> invalidEntities = new SortedSet<GridEntity>(new PriorityComparer());
+        //SortedSet<GridEntity> invalidEntities = new SortedSet<GridEntity>(new PriorityComparer());
+        HashSet<GridEntity> invalidEntities = new HashSet<GridEntity>();
         do
         {
             // Find invalid moves
@@ -94,7 +95,6 @@ public class GridManager : MonoBehaviour
             // Reset invalid positions and remove move submission for invalids
             foreach (GridEntity entity in invalidEntities)
             {
-                Debug.Log(entity);
                 entity.WarpTo(undoLookup[entity], force: true, moveVisual: false);
                 moveLookup.Remove(entity);
             }
