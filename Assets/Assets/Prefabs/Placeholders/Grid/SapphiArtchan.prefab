@@ -1652,7 +1652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1621017491601540
 GameObject:
   m_ObjectHideFlags: 1
@@ -5427,17 +5427,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 114538760791040766}
-          m_MethodName: DebugLog
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
       m_TypeName: Float3UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
     onAxisPair:
@@ -5480,6 +5469,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16bc24e669f25416d9bcf1e66fcea293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  register: 1
+  order: 0
+  priority: 0
   duration: 0.1
   durationPerDistance: 1
   grid: {fileID: 11400000, guid: cd68e3453234148b9b3135412c225df4, type: 2}
@@ -5488,7 +5480,7 @@ MonoBehaviour:
   blacklistMask:
     layerMask:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 2304
     tagMask: []
     ignoreSiblings: 0
     raycastDistance: 1000
@@ -5559,6 +5551,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16bc24e669f25416d9bcf1e66fcea293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  register: 1
+  order: 0
+  priority: 0
   duration: 0.5
   durationPerDistance: 1
   grid: {fileID: 11400000, guid: cd68e3453234148b9b3135412c225df4, type: 2}

@@ -11,8 +11,8 @@ public class CompoundMask
     public bool ignoreSiblings = false;
     public float raycastDistance = 1000f;
 
-    public List<Transform> GetCollidersWithin(float distance, Transform self) { return GetCollidersWithin(distance, self.position); }
-    public List<Transform> GetCollidersWithin(float distance, Vector3 position)
+    public List<Transform> GetCollidersWithin(float distance, Transform self) { return GetCollidersWithin(distance, self.position, self); }
+    public List<Transform> GetCollidersWithin(float distance, Vector3 position, Transform self = null)
     {
         List<Transform> targets = new List<Transform>();
 
@@ -20,7 +20,7 @@ public class CompoundMask
         foreach (Collider coll in Physics.OverlapSphere(position, distance, layerMask))
         {
             Transform target = GetTarget(coll);
-            if (target != null)
+            if (target != null && target != self)
                 targets.Add(target);
         }
 
@@ -28,7 +28,7 @@ public class CompoundMask
         foreach (Collider2D coll2D in Physics2D.OverlapCircleAll(position, distance, layerMask))
         {
             Transform target = GetTarget(coll2D);
-            if (target != null)
+            if (target != null && target != self)
                 targets.Add(target);
         }
 

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 using DG.Tweening;
@@ -17,91 +16,115 @@ public enum GridDirection
     DownRight,
 }
 
-public class GridEntity : MonoBehaviour
+public class GridEntity : MonoBehaviour, IPrioritizable
 {
+    [Header("Execution Order")]
+    [SerializeField] protected bool register = false;
+    public int order = 0;
+    [SerializeField] protected int priority = 0;
+    public int Priority { get { return priority; } set { priority = value; } }
+
     [Header("Properties")]
-    [SerializeField] private float duration = .5f;
-    [SerializeField] private bool durationPerDistance = true;
+    [SerializeField] protected float duration = .5f;
+    [SerializeField] protected bool durationPerDistance = true;
 
     [Header("References")]
     public GridSettings grid;
-    [SerializeField] private Transform visual;
-    [SerializeField] private Rigidbody rb; // [TODO] Use rigidbody instead of transform to sweep for push/collision logic
+    [SerializeField] protected Transform visual;
+    [SerializeField] protected Rigidbody logical; // [TODO] Use rigidbody instead of transform to sweep for push/collision logic
 
     [Tooltip("Entity can't occupy a point if occupied by a collider matching blacklistMask.")]
-    [SerializeField] private CompoundMask blacklistMask;
+    [SerializeField] protected CompoundMask blacklistMask;
 
     [Tooltip("Entity can't occupy a point unless already occupied by a collider matching whitelistMask.")]
-    [SerializeField] private CompoundMask whitelistMask;
-    [SerializeField] private bool useWhitelist;
+    [SerializeField] protected CompoundMask whitelistMask;
+    [SerializeField] protected bool useWhitelist;
 
-    private Vector3Int m_gridPosition;
+    protected Vector3Int m_gridPosition;
     public Vector3Int GridPosition
     {
         get { return m_gridPosition; }
         set { WarpTo(value); }
     }
 
-    private Vector3 LogicalPosition // GridPosition transformed to world space
+    protected Vector3 LogicalPosition // GridPosition transformed to world space
     {
         get
         {
-            if (rb != null) return rb.transform.position;
+            if (logical != null) return logical.transform.position;
             return transform.position;
         }
         set
         {
-            if (rb != null) rb.transform.position = value;
+            if (logical != null) logical.transform.position = value;
             else transform.position = value;
         }
     }
 
-    private void Reset()
+    protected void Reset()
     {
-        rb = GetComponent<Rigidbody>();
+        logical = GetComponent<Rigidbody>();
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         // Start by locking ourselves to the nearest grid position in world space
-        m_gridPosition = grid.ToGridSpace(LogicalPosition);
-        Debug.Log(transform);
-        Debug.Log(m_gridPosition);
+        WarpTo(grid.ToGridSpace(LogicalPosition), force: true);
+    }
+
+    protected virtual void Start()
+    {
+        if (register && GridManager.main != null)
+            GridManager.main.Register(this);
+    }
+
+    protected virtual void OnDisable()
+    {
+        if (register && GridManager.main != null)
+            GridManager.main.Deregister(this);
     }
 
     public void Warp(float x, float y, float z) { Warp(Vector3Int.RoundToInt(new Vector3(x, y, z))); }
     public void Warp(int x, int y, int z) { Warp(new Vector3Int(x, y, z)); }
-    public void Warp(Vector3Int offset)
+    public virtual void Warp(Vector3Int offset, bool force = false, bool moveVisual = true)
     {
         if (offset != Vector3Int.zero)
-            WarpTo(GridPosition + offset);
+            WarpTo(GridPosition + offset, force, moveVisual);
     }
 
+    // Ignore collision/CanOccupy restrictions
     public void WarpTo(float x, float y, float z) { WarpTo(Vector3Int.RoundToInt(new Vector3(x, y, z))); }
     public void WarpTo(int x, int y, int z) { WarpTo(new Vector3Int(x, y, z)); }
-    public void WarpTo(Vector3Int point)
+    public void WarpTo(Vector3Int point, bool force = false, bool moveVisual = true)
     {
-        if (CanOccupy(point) == false)
+        if (force == false && CanOccupy(point) == false)
             return;
-
-        if (visual != null)
-            visual.transform.position = LogicalPosition;
 
         m_gridPosition = point;
         LogicalPosition = grid.ToWorldSpace(point);
+
+        if (moveVisual && visual != null)
+            visual.transform.position = LogicalPosition;
+    }
+
+    public void SubmitMove(float x, float y, float z) { SubmitMove(Vector3Int.RoundToInt(new Vector3(x, y, z))); }
+    public void SubmitMove(int x, int y, int z) { SubmitMove(new Vector3Int(x, y, z)); }
+    public void SubmitMove(Vector3Int move)
+    {
+        GridManager.main.SubmitMove(this, move);
     }
 
     public void Move(float x, float y, float z) { Move(Vector3Int.RoundToInt(new Vector3(x, y, z))); }
     public void Move(int x, int y, int z) { Move(new Vector3Int(x, y, z)); }
-    public void Move(Vector3Int offset)
+    public void Move(Vector3Int offset, bool force = false, bool orthogonalPath = true)
     {
         if (offset != Vector3Int.zero)
-            MoveTo(GridPosition + offset);
+            MoveTo(GridPosition + offset, force, orthogonalPath);
     }
 
     public void MoveTo(float x, float y, float z) { MoveTo(Vector3Int.RoundToInt(new Vector3(x, y, z))); }
     public void MoveTo(int x, int y, int z) { MoveTo(new Vector3Int(x, y, z)); }
-    public void MoveTo(Vector3Int point, bool orthogonalPath = true)
+    public void MoveTo(Vector3Int point, bool force = false, bool orthogonalPath = true)
     {
         if (orthogonalPath == false)
         {
@@ -112,13 +135,17 @@ public class GridEntity : MonoBehaviour
         Vector3Int waypointX = new Vector3Int(point.x, GridPosition.y, GridPosition.z);
         Vector3Int waypointY = new Vector3Int(point.x, point.y, GridPosition.z);
         Vector3Int waypointZ = new Vector3Int(point.x, point.y, point.z);
-        MoveThrough(new Vector3Int[] { waypointX, waypointY, waypointZ, point });
+        MoveThrough(new Vector3Int[] { GridPosition, waypointX, waypointY, waypointZ, point }, force);
     }
 
-    public void MoveThrough(Vector3Int[] points)
+    public void MoveThrough(Vector3Int[] points, bool force = false)
     {
-        if (points.Length == 0 || CanOccupy(points[points.Length - 1]) == false)
+        if (force == false && (points.Length == 0 || CanOccupy(points[points.Length - 1]) == false))
             return;
+
+        Vector3Int point = points[points.Length - 1];
+        m_gridPosition = point;
+        LogicalPosition = grid.ToWorldSpace(point);
 
         // Build tween path for visual to move through
         if (visual != null)
@@ -127,7 +154,6 @@ public class GridEntity : MonoBehaviour
             for (int i = 0; i < path.Length; i++)
             {
                 path[i] = grid.ToWorldSpace(points[i]);
-                Debug.Log(path[i]);
             }
 
             float calculatedDuration = duration;
@@ -136,13 +162,9 @@ public class GridEntity : MonoBehaviour
 
             visual.DOPath(path, calculatedDuration);
         }
-
-        Vector3Int point = points[points.Length - 1];
-        m_gridPosition = point;
-        LogicalPosition = grid.ToWorldSpace(point);
     }
 
-    private float CalculatePathDistance(Vector3[] path)
+    protected float CalculatePathDistance(Vector3[] path)
     {
         float distance = 0;
         Vector3 origin = LogicalPosition;
@@ -154,9 +176,10 @@ public class GridEntity : MonoBehaviour
         return distance;
     }
 
-    private bool CanOccupy(Vector3Int point)
+    public bool IsCurrentPositionLegal() { return CanOccupy(GridPosition); }
+    public bool CanOccupy(Vector3Int point)
     {
-        List<Transform> blacklist = blacklistMask.GetCollidersWithin(0, grid.ToWorldSpace(point));
+        List<Transform> blacklist = blacklistMask.GetCollidersWithin(0, grid.ToWorldSpace(point), logical.transform);
 
         if (blacklist.Count > 0)
             return false;
@@ -164,7 +187,7 @@ public class GridEntity : MonoBehaviour
         if (useWhitelist == false)
             return true;
 
-        List<Transform> whitelist = whitelistMask.GetCollidersWithin(0, grid.ToWorldSpace(point));
+        List<Transform> whitelist = whitelistMask.GetCollidersWithin(0, grid.ToWorldSpace(point), logical.transform);
         return whitelist.Count > 0;
     }
 }
